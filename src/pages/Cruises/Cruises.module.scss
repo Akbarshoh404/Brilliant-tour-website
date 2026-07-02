@@ -1,0 +1,63 @@
+@use '../../styles/catalog' as *;
+@use '../../styles/variables' as *;
+
+.hero {
+  @extend %catalogHero;
+}
+.heroOverlay {
+  @extend %catalogHeroOverlay;
+}
+.heroInner {
+  @extend %catalogHeroInner;
+}
+.eyebrow {
+  @extend %catalogEyebrow;
+}
+.title {
+  @extend %catalogTitle;
+}
+.intro {
+  @extend %catalogIntro;
+}
+.sectionInner {
+  @extend %catalogSectionInner;
+}
+
+.comparisonSection {
+  background-color: $color-plaster-50;
+}
+
+.subheading {
+  font-size: 1.5rem;
+  margin-bottom: $space-md;
+}
+
+.comparisonWrap {
+  max-width: 460px;
+}
+
+.offersSection {
+  background-color: $color-plaster-50;
+}
+
+.gridLayout {
+  @extend %catalogGridLayout;
+}
+.results {
+  @extend %catalogResults;
+}
+.resultsHeader {
+  @extend %catalogResultsHeader;
+}
+.resultCount {
+  @extend %catalogResultCount;
+}
+.mobileFilterBtn {
+  @extend %catalogMobileFilterBtn;
+}
+.offerGrid {
+  @extend %catalogOfferGrid;
+}
+.noResults {
+  @extend %catalogNoResults;
+}

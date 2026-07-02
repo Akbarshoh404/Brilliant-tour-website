@@ -1,0 +1,15 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+@use '../styles/animations' as *;
+
+.loader {
+  min-height: 60vh;
+  @include flex-center;
+}
+
+.bar {
+  width: 220px;
+  height: 6px;
+  border-radius: $radius-pill;
+  @include shimmer-bg;
+}

@@ -1,0 +1,195 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/catalog' as *;
+
+.hero {
+  @extend %catalogHero;
+}
+.heroOverlay {
+  @extend %catalogHeroOverlay;
+}
+.heroInner {
+  @extend %catalogHeroInner;
+}
+.eyebrow {
+  @extend %catalogEyebrow;
+}
+.title {
+  @extend %catalogTitle;
+}
+.intro {
+  @extend %catalogIntro;
+}
+.sectionInner {
+  @extend %catalogSectionInner;
+}
+
+// --- region chips + country grid ---
+.regionSection {
+  background-color: $color-plaster-50;
+}
+
+.regionTitle {
+  font-size: 1.4rem;
+  margin-bottom: $space-md;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2xs;
+  margin-bottom: $space-lg;
+}
+
+.chip {
+  background-color: $color-white;
+  border: 1px solid $color-plaster-100;
+  border-radius: $radius-pill;
+  padding: 0.5rem 1.1rem;
+  font-size: 0.85rem;
+  color: $color-ink-900;
+  transition: background-color $duration-fast $ease-base, color $duration-fast $ease-base;
+}
+
+.chipActive {
+  background-color: $color-turquoise-500;
+  border-color: $color-turquoise-500;
+  color: $color-white;
+}
+
+.countryGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: $space-md;
+
+  @include respond(below-desktop) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include respond(mobile) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.countryTile {
+  position: relative;
+  display: block;
+  border-radius: $radius-md;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  @include card-hover;
+}
+
+.countryImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.countryTile::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  @include gradient-overlay(rgba(11, 28, 40, 0.05), rgba(11, 28, 40, 0.7));
+}
+
+.countryName {
+  position: absolute;
+  bottom: $space-sm;
+  left: $space-sm;
+  z-index: 1;
+  color: $color-white;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+// --- curated rows ---
+.curated {
+  background-color: $color-plaster-50;
+}
+
+.row {
+  margin-bottom: $space-2xl;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.rowHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: $space-md;
+
+  h2 {
+    font-size: 1.4rem;
+  }
+}
+
+.viewAll {
+  font-size: 0.85rem;
+  color: $color-turquoise-500;
+  text-decoration: underline;
+  white-space: nowrap;
+}
+
+.rowScroll {
+  display: flex;
+  gap: $space-md;
+  overflow-x: auto;
+  padding-bottom: $space-sm;
+  scroll-snap-type: x mandatory;
+}
+
+.rowItem {
+  flex: 0 0 300px;
+  scroll-snap-align: start;
+
+  @include respond(mobile) {
+    flex-basis: 260px;
+  }
+}
+
+// --- full filterable grid toggle ---
+.allOffers {
+  background-color: $color-plaster-50;
+}
+
+.toggleBtn {
+  width: 100%;
+  text-align: left;
+  background-color: $color-white;
+  border: 1px solid $color-plaster-100;
+  border-radius: $radius-md;
+  padding: $space-md;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: $color-ink-900;
+  margin-bottom: $space-lg;
+}
+
+.gridLayout {
+  @extend %catalogGridLayout;
+}
+.results {
+  @extend %catalogResults;
+}
+.resultsHeader {
+  @extend %catalogResultsHeader;
+}
+.resultCount {
+  @extend %catalogResultCount;
+}
+.mobileFilterBtn {
+  @extend %catalogMobileFilterBtn;
+}
+.offerGrid {
+  @extend %catalogOfferGrid;
+}
+.noResults {
+  @extend %catalogNoResults;
+}

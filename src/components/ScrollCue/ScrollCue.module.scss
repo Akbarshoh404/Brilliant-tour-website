@@ -1,0 +1,56 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+@keyframes scroll-cue-dot {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  60% {
+    transform: translateY(8px);
+    opacity: 0.3;
+  }
+  61% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.cue {
+  position: absolute;
+  bottom: $space-lg;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-2xs;
+  color: rgba(255, 255, 255, 0.75);
+
+  @include respond(mobile) {
+    display: none;
+  }
+}
+
+.label {
+  @include mono-eyebrow;
+  font-size: 0.62rem;
+}
+
+.icon {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.dot {
+  animation: scroll-cue-dot 1.8s ease-in-out infinite;
+  transform-origin: center;
+
+  @include reduce-motion {
+    animation: none;
+  }
+}

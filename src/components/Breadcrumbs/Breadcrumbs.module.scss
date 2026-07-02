@@ -1,0 +1,38 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.breadcrumbs {
+  margin-bottom: $space-md;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: $space-3xs;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: $space-3xs;
+  font-family: $font-mono;
+  font-size: 0.78rem;
+  color: $color-stone-600;
+
+  a {
+    transition: color $duration-fast $ease-base;
+
+    &:hover {
+      color: $color-turquoise-500;
+    }
+  }
+
+  span[aria-current='page'] {
+    color: $color-ink-900;
+  }
+}
+
+.sep {
+  opacity: 0.5;
+}

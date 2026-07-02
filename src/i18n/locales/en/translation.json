@@ -1,0 +1,258 @@
+{
+  "nav": {
+    "international": "International",
+    "domestic": "Domestic",
+    "cruises": "Cruises",
+    "visas": "Visas",
+    "about": "About",
+    "contact": "Contact",
+    "search": "Search",
+    "menu": "Menu",
+    "close": "Close"
+  },
+  "footer": {
+    "tagline": "Two routes. One journey.",
+    "destinations": "Destinations",
+    "company": "Company",
+    "support": "Support",
+    "aboutUs": "About us",
+    "ourStory": "Our story",
+    "careers": "Careers",
+    "faq": "FAQs",
+    "supportCentre": "Support centre",
+    "termsPrivacy": "Terms & privacy",
+    "newsletterTitle": "Join the caravan",
+    "newsletterText": "Route ideas and seasonal offers, once a month.",
+    "newsletterPlaceholder": "Your email",
+    "newsletterCta": "Subscribe",
+    "rights": "All rights reserved."
+  },
+  "common": {
+    "viewAll": "View all",
+    "learnMore": "Learn more",
+    "bookNow": "Book now",
+    "from": "from",
+    "perPerson": "per person",
+    "days": "days",
+    "nights": "nights",
+    "loading": "Loading",
+    "noResults": "No journeys match these filters yet.",
+    "clearFilters": "Clear all",
+    "filters": "Filters",
+    "sortBy": "Sort by",
+    "results": "results",
+    "backToTop": "Back to top",
+    "scroll": "Scroll",
+    "readMore": "Read more",
+    "traveler": "Traveler",
+    "influencer": "Influencer"
+  },
+  "hero": {
+    "eyebrow": "Brilliant Travel",
+    "titleLine1": "Discover the",
+    "titleLine2": "Silk Road",
+    "titleLine3": "and beyond",
+    "subtitle": "Two routes, one journey — handcrafted trips across Uzbekistan and the world.",
+    "searchPlaceholder": "Where to next? Try \"Samarkand\" or \"Maldives\""
+  },
+  "home": {
+    "splitTitle": "Two routes, one journey",
+    "splitText": "Wherever your road leads — across Uzbekistan's deserts and mountains, or far beyond its borders — Brilliant plots the way.",
+    "domesticCta": "Explore Uzbekistan",
+    "internationalCta": "Explore the world",
+    "popularTitle": "Popular destinations",
+    "popularText": "A mix of nearby wonders and far-flung escapes, chosen by our travelers.",
+    "travelYourWayTitle": "Travel your way",
+    "travelYourWayText": "Every journey starts with how you want to travel.",
+    "seasonalTitle": "Seasonal offers",
+    "seasonalText": "Limited-time routes timed to the best season for each destination.",
+    "statsTitle": "Brilliant, by the numbers",
+    "whyTitle": "Why travel with Brilliant",
+    "why1Title": "Local route experts",
+    "why1Text": "Guides who grew up on these roads, from the Registan to the Pamirs.",
+    "why2Title": "Two markets, one standard",
+    "why2Text": "The same careful planning for a weekend in Chimgan as for a month abroad.",
+    "why3Title": "Flexible by design",
+    "why3Text": "Economy, Standard or Premium on every package — change your mind anytime before departure.",
+    "testimonialsTitle": "Stories from the road",
+    "partnersTitle": "Trusted by travelers and partners alike",
+    "pressTitle": "As featured in",
+    "faqTitle": "Common questions",
+    "faqItems": [
+      {
+        "q": "Do I need a visa to visit Uzbekistan?",
+        "a": "Citizens of more than 90 countries can travel to Uzbekistan visa-free for stays up to 30 days. Most others qualify for a simple e-visa obtainable online before arrival. We include a visa briefing with every domestic itinerary."
+      },
+      {
+        "q": "Can I combine an international trip with a local Uzbekistan route?",
+        "a": "Absolutely — and many clients do. A common pairing: fly in from Dubai, spend three days in Samarkand and Bukhara, then continue to your international destination. We plan both segments as a single itinerary so nothing falls through the gaps."
+      },
+      {
+        "q": "How far in advance should I book?",
+        "a": "For Uzbekistan routes, 3-4 weeks is usually comfortable. Seasonal favourites (Navruz in March, summer mountain treks) fill up faster — 6-8 weeks ahead is safer. International packages generally need 6+ weeks, especially those involving chartered routes."
+      },
+      {
+        "q": "What's actually included in the price?",
+        "a": "Every quote specifies exactly what's included for the chosen tier. Economy always covers accommodation and transfers; Standard adds a private transfer and priority support; Premium includes a VIP transfer, 24/7 concierge, and the extras listed in the package comparison. Nothing is hidden — if it's not listed, it's not included, and we'll tell you upfront."
+      }
+    ],
+    "newsletterTitle": "Get the next route first",
+    "newsletterText": "Seasonal offers and new itineraries, straight to your inbox."
+  },
+  "categories": {
+    "luxury": "Luxury",
+    "budget": "Budget",
+    "group": "Group",
+    "family": "Family",
+    "honeymoon": "Honeymoon",
+    "business": "Business",
+    "cruise": "Cruise",
+    "religious": "Religious",
+    "custom-private": "Custom & Private"
+  },
+  "domesticCategories": {
+    "historical": "Historical",
+    "weekend": "Weekend",
+    "cultural": "Cultural",
+    "mountain": "Mountain",
+    "desert": "Desert",
+    "family": "Family",
+    "group": "Group",
+    "premium": "Premium local",
+    "seasonal": "Seasonal"
+  },
+  "international": {
+    "eyebrow": "International Tourism",
+    "title": "Routes beyond the border",
+    "intro": "From desert dunes to alpine peaks — curated international journeys, planned with the same care as a trip next door.",
+    "regions": "Regions",
+    "allRegions": "All regions",
+    "seasonalOffers": "Seasonal offers",
+    "luxuryTrips": "Luxury trips",
+    "honeymoonPackages": "Honeymoon packages",
+    "cruisePackages": "Cruise packages",
+    "religiousTourism": "Religious tourism",
+    "allOffers": "All international offers"
+  },
+  "domestic": {
+    "eyebrow": "Uzbekistan Tourism",
+    "title": "The road through Uzbekistan",
+    "intro": "Silk Road cities, desert horizons and mountain air — closer than you think.",
+    "featuredTitle": "Featured Uzbekistan journeys"
+  },
+  "country": {
+    "bestSeason": "Best season",
+    "flightTime": "Flight time",
+    "visaNote": "Visa",
+    "currency": "Currency",
+    "citiesTitle": "Cities to explore",
+    "offersTitle": "Journeys in"
+  },
+  "city": {
+    "offersTitle": "Journeys in"
+  },
+  "filters": {
+    "destination": "Destination",
+    "priceRange": "Price range",
+    "duration": "Duration",
+    "departureDate": "Departure date",
+    "travelType": "Travel type",
+    "budgetTier": "Budget tier",
+    "packageLevel": "Package level",
+    "visaRequirement": "Visa requirement",
+    "hotelCategory": "Hotel category",
+    "transportation": "Transportation",
+    "activities": "Activities",
+    "tourLanguage": "Tour language",
+    "groupSize": "Group size",
+    "season": "Season",
+    "apply": "Apply filters"
+  },
+  "sort": {
+    "popular": "Most popular",
+    "recommended": "Recommended",
+    "priceLow": "Lowest price",
+    "priceHigh": "Highest price",
+    "premiumFirst": "Premium first",
+    "shortest": "Shortest duration",
+    "newest": "Newest",
+    "rated": "Highest rated"
+  },
+  "search": {
+    "heroTitle": "Find your journey",
+    "heroSubtitle": "Every trip starts with a question. Ask it here.",
+    "placeholder": "Search countries, cities, journeys...",
+    "popularSearches": "Popular searches",
+    "recentSearches": "Recent searches",
+    "countries": "Countries",
+    "cities": "Cities",
+    "tours": "Journeys",
+    "services": "Services",
+    "visas": "Visas",
+    "cruises": "Cruises",
+    "noResults": "Nothing found for"
+  },
+  "offer": {
+    "includedServices": "Included services",
+    "packageComparison": "Choose your package",
+    "availableDates": "Available dates",
+    "viewGallery": "View all photos",
+    "relatedTitle": "You might also like",
+    "economy": "Economy",
+    "standard": "Standard",
+    "premium": "Premium",
+    "hotelCategory": "Hotel category",
+    "transfer": "Transfer",
+    "support": "Support",
+    "extras": "Extras",
+    "concierge": "Personal concierge",
+    "dateAvailable": "Available",
+    "dateLimited": "Limited",
+    "dateSoldOut": "Sold out",
+    "selectDate": "Select a date",
+    "totalPrice": "Total price",
+    "travelLevel": "Travel level",
+    "easy": "Easy",
+    "moderate": "Moderate",
+    "adventure": "Adventure"
+  },
+  "cruises": {
+    "eyebrow": "Cruises",
+    "title": "Set sail, on either route",
+    "intro": "River routes through Uzbekistan's history and open-sea voyages beyond it.",
+    "cabinComparison": "Compare cabin classes",
+    "interior": "Interior",
+    "oceanView": "Ocean view",
+    "balcony": "Balcony suite"
+  },
+  "visas": {
+    "eyebrow": "Visas",
+    "title": "Know before you go",
+    "intro": "Visa requirements for every destination we route to.",
+    "searchPlaceholder": "Search a country",
+    "visaFree": "Visa-free",
+    "eVisa": "E-visa",
+    "visaRequired": "Visa required"
+  },
+  "about": {
+    "eyebrow": "About Brilliant",
+    "title": "Built on two roads",
+    "heroIntro": "A Tashkent-born agency. Thirteen years, one belief: that good travel planning changes how you experience a place.",
+    "story": "Brilliant began as a small Tashkent agency guiding travelers across Uzbekistan. We grew outward the same way the Silk Road did — one trusted route at a time.",
+    "missionTitle": "Our mission",
+    "mission": "To plan every journey, near or far, with the same care a caravan once took crossing the desert.",
+    "teamTitle": "The people behind the routes"
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Let's plan your route",
+    "heroIntro": "A real person reads every message — usually within a day, often the same afternoon.",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send message",
+    "sent": "Message sent — we'll reply within a day.",
+    "officeTitle": "Our office",
+    "officeAddress": "12 Amir Temur Avenue, Tashkent, Uzbekistan"
+  }
+}

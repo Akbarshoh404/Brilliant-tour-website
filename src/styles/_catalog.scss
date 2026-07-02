@@ -1,0 +1,136 @@
+// Shared placeholder selectors for hero + filterable-grid catalog pages
+// (International/Domestic hubs, Country/City, Category, Collection, Search).
+// @extend these from each page's own .module.scss instead of duplicating
+// the layout across seven near-identical pages.
+@use 'variables' as *;
+@use 'mixins' as *;
+
+%catalogHero {
+  position: relative;
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  padding-top: $navbar-height;
+  isolation: isolate;
+}
+
+%catalogHeroOverlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  background-image: linear-gradient(
+    to bottom,
+    rgba($color-ink-950, 0.55) 0%,
+    rgba($color-ink-950, 0.25) 35%,
+    rgba($color-ink-950, 0.55) 70%,
+    rgba($color-ink-950, 0.96) 100%
+  );
+}
+
+%catalogHeroInner {
+  position: relative;
+  z-index: 1;
+  @include container;
+  width: 100%;
+  padding: $space-xl $space-lg $space-3xl;
+
+  @include respond(mobile) {
+    padding: $space-lg $space-md $space-2xl;
+  }
+}
+
+%catalogEyebrow {
+  @include mono-eyebrow;
+  color: $color-gold-300;
+  display: block;
+  margin-bottom: $space-xs;
+}
+
+%catalogTitle {
+  font-size: clamp(2.6rem, 6vw, 4.2rem);
+  color: $color-white;
+  max-width: 18ch;
+  line-height: 1.05;
+}
+
+%catalogIntro {
+  margin-top: $space-md;
+  color: $color-mist;
+  max-width: 60ch;
+  font-size: 1.05rem;
+}
+
+%catalogSectionInner {
+  @include container;
+  padding: $space-2xl $space-lg;
+
+  @include respond(mobile) {
+    padding: $space-xl $space-md;
+  }
+}
+
+%catalogGridLayout {
+  display: flex;
+  gap: $space-lg;
+  align-items: flex-start;
+}
+
+%catalogResults {
+  flex: 1;
+  min-width: 0;
+}
+
+%catalogResultsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-sm;
+  margin-bottom: $space-md;
+  flex-wrap: wrap;
+}
+
+%catalogResultCount {
+  font-family: $font-mono;
+  font-size: 0.82rem;
+  color: $color-stone-600;
+}
+
+%catalogMobileFilterBtn {
+  display: none;
+  background-color: $color-white;
+  border: 1px solid $color-plaster-100;
+  border-radius: $radius-pill;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+
+  @media (max-width: #{$bp-tablet - 1px}) {
+    display: block;
+  }
+}
+
+%catalogOfferGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $space-md;
+
+  @include respond(below-desktop) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond(mobile) {
+    grid-template-columns: 1fr;
+  }
+}
+
+%catalogNoResults {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: $color-stone-600;
+  padding: $space-xl 0;
+}

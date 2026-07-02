@@ -1,0 +1,204 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.footer {
+  width: 100%;
+  background-color: $color-ink-900;
+  padding: $space-3xl $space-lg $space-lg;
+
+  @include respond(mobile) {
+    padding: $space-xl $space-md $space-md;
+  }
+}
+
+.inner {
+  @include container;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  gap: $space-2xl;
+  padding-bottom: $space-xl;
+
+  @include respond(below-desktop) {
+    flex-direction: column;
+    gap: $space-xl;
+  }
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  max-width: 260px;
+}
+
+.logo {
+  font-family: $font-display;
+  font-weight: 700;
+  font-size: 2rem;
+  color: $color-white;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.tagline {
+  margin-top: $space-2xs;
+  color: $color-mist;
+  font-size: 0.88rem;
+}
+
+.social {
+  display: flex;
+  gap: $space-md;
+  margin-top: $space-md;
+}
+
+.socialLink {
+  color: $color-mist;
+  font-size: 0.85rem;
+  transition: color $duration-fast $ease-base;
+
+  &:hover {
+    color: $color-white;
+  }
+}
+
+.columns {
+  display: flex;
+  gap: $space-2xl;
+
+  @include respond(mobile) {
+    flex-wrap: wrap;
+    gap: $space-xl;
+  }
+}
+
+.colTitle {
+  font-family: $font-body;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $color-white;
+}
+
+.colDivider {
+  margin: $space-xs 0 $space-sm;
+  border-color: rgba(255, 255, 255, 0.1);
+  opacity: 1;
+}
+
+.colLinks {
+  display: flex;
+  flex-direction: column;
+  gap: $space-xs;
+}
+
+.colLink {
+  position: relative;
+  width: fit-content;
+  color: $color-mist;
+  font-size: 0.9rem;
+  transition: color $duration-fast $ease-base;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 1px;
+    background-color: $color-white;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform $duration-base $ease-out-expo;
+  }
+
+  &:hover {
+    color: $color-white;
+
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+}
+
+.newsletter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: $space-lg;
+  padding: $space-xl 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  flex-wrap: wrap;
+  position: relative;
+
+  @include respond(mobile) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.newsletterTitle {
+  color: $color-white;
+  font-size: 1.2rem;
+}
+
+.newsletterText {
+  color: $color-mist;
+  font-size: 0.88rem;
+  margin-top: $space-3xs;
+}
+
+.newsletterForm {
+  display: flex;
+  gap: $space-xs;
+
+  @include respond(mobile) {
+    width: 100%;
+  }
+}
+
+.newsletterInput {
+  background-color: $color-ink-800;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: $radius-sm;
+  padding: 0.7rem 1.2rem;
+  color: $color-white;
+  font-size: 0.88rem;
+  min-width: 200px;
+  @include focus-ring($color-white);
+
+  &::placeholder {
+    color: $color-mist;
+  }
+
+  @include respond(mobile) {
+    min-width: 0;
+    flex: 1;
+  }
+}
+
+.newsletterBtn {
+  @include btn-primary;
+  padding: 0.7rem 1.4rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.thanks {
+  position: absolute;
+  bottom: -1.5rem;
+  left: 0;
+  color: $color-gold-300;
+  font-size: 0.82rem;
+}
+
+.bottom {
+  padding-top: $space-md;
+  color: $color-mist;
+  font-size: 0.78rem;
+}

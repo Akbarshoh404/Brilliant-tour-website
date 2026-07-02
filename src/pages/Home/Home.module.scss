@@ -1,0 +1,819 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+// ── Shared section helpers ───────────────────────────────────────────────────
+
+.sectionInner {
+  @include container;
+  padding: 0 $space-lg;
+
+  @include respond(mobile) {
+    padding: 0 $space-md;
+  }
+}
+
+.sectionRow {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: $space-md;
+  margin-bottom: $space-xl;
+  flex-wrap: wrap;
+}
+
+.sectionHeading {
+  h2 {
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    color: $color-ink-900;
+  }
+
+  p {
+    margin-top: $space-xs;
+    color: $color-stone-600;
+    font-size: 0.95rem;
+    max-width: 52ch;
+  }
+}
+
+.sectionHeadingLight {
+  h2 {
+    color: $color-white;
+  }
+
+  p {
+    color: $color-mist;
+  }
+}
+
+// ── Carousel arrows (shared by popular + seasonal) ───────────────────────────
+
+.carouselArrows {
+  display: flex;
+  gap: $space-xs;
+  flex-shrink: 0;
+}
+
+.carouselArrow {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid $color-plaster-100;
+  background: $color-white;
+  color: $color-ink-900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color $duration-fast $ease-base, background $duration-fast $ease-base, color $duration-fast $ease-base;
+
+  &:hover {
+    border-color: $color-ink-900;
+    background: $color-ink-900;
+    color: $color-white;
+  }
+}
+
+// ── HERO ─────────────────────────────────────────────────────────────────────
+
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 640px;
+  overflow: hidden;
+}
+
+// Background slideshow
+.heroBg {
+  position: absolute;
+  inset: 0;
+}
+
+.heroSlide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+
+  @include reduce-motion {
+    transition: none;
+  }
+}
+
+.heroSlideActive {
+  opacity: 1;
+}
+
+// Gradient overlay — strong on left for text, fades right for photo impact
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(to right, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.55) 40%, rgba(0, 0, 0, 0.1) 75%, rgba(0, 0, 0, 0) 100%),
+    linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, transparent 40%);
+}
+
+// Content grid
+.heroInner {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  @include container;
+  padding: $navbar-height $space-lg $space-2xl;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: $space-xl;
+
+  @include respond(mobile) {
+    padding-left: $space-md;
+    padding-right: $space-md;
+    padding-bottom: $space-xl;
+  }
+}
+
+// Left: headline content
+.heroText {
+  max-width: 560px;
+  padding-bottom: $space-lg;
+
+  @include respond(below-desktop) {
+    max-width: 100%;
+  }
+}
+
+.heroEyebrow {
+  @include mono-eyebrow;
+  color: rgba(255, 255, 255, 0.55);
+  display: block;
+  margin-bottom: $space-sm;
+}
+
+.heroTitle {
+  font-family: $font-display;
+  font-size: clamp(3rem, 7vw, 6.5rem);
+  font-weight: 700;
+  color: $color-white;
+  line-height: 1.0;
+  letter-spacing: -0.015em;
+
+  em {
+    font-style: italic;
+    color: $color-gold-300;
+  }
+}
+
+.heroSubtitle {
+  margin-top: $space-md;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 1rem;
+  max-width: 44ch;
+  line-height: 1.65;
+}
+
+// Search bar embedded in hero
+.heroSearch {
+  margin-top: $space-lg;
+  display: flex;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: $radius-sm;
+  overflow: hidden;
+  max-width: 440px;
+
+  @include respond(mobile) {
+    max-width: 100%;
+  }
+}
+
+.heroSearchInput {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 0.9rem 1.2rem;
+  font-size: 0.9rem;
+  color: $color-white;
+  min-width: 0;
+
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.45);
+  }
+}
+
+.heroSearchBtn {
+  border: none;
+  background: $color-white;
+  color: $color-ink-900;
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0 1.4rem;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background $duration-fast $ease-base, color $duration-fast $ease-base;
+
+  &:hover {
+    background: $color-gold-500;
+    color: $color-white;
+  }
+}
+
+// Right: floating preview cards
+.heroCards {
+  display: flex;
+  align-items: flex-end;
+  gap: $space-sm;
+  flex-shrink: 0;
+  padding-bottom: $space-lg;
+
+  @include respond(below-desktop) {
+    display: none;
+  }
+}
+
+.heroCard {
+  position: relative;
+  border-radius: $radius-md;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.heroCardPrimary {
+  width: 210px;
+  height: 308px;
+}
+
+.heroCardSecondary {
+  width: 170px;
+  height: 252px;
+  opacity: 0.88;
+}
+
+.heroCardImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.heroCardGrad {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.72) 0%, transparent 55%);
+}
+
+.heroCardLabel {
+  position: absolute;
+  bottom: $space-sm;
+  left: $space-sm;
+  right: $space-sm;
+  z-index: 1;
+  color: $color-white;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+// Arrow navigation (right-center of hero)
+.heroArrows {
+  position: absolute;
+  right: $space-md;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: $space-xs;
+
+  @include respond(mobile) {
+    flex-direction: row;
+    top: auto;
+    bottom: 6rem;
+    right: $space-md;
+    transform: none;
+  }
+}
+
+.heroArrowBtn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(6px);
+  color: $color-white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color $duration-fast $ease-base, background $duration-fast $ease-base;
+
+  &:hover {
+    border-color: $color-white;
+    background: rgba(255, 255, 255, 0.18);
+  }
+}
+
+// Slide counter (bottom-right)
+.heroCounter {
+  position: absolute;
+  bottom: $space-xl;
+  right: calc(#{$space-md} + 44px + #{$space-xs});
+  z-index: 3;
+  display: flex;
+  align-items: baseline;
+  gap: 0.2em;
+  font-family: $font-mono;
+  pointer-events: none;
+
+  @include respond(mobile) {
+    display: none;
+  }
+}
+
+.heroCounterCurrent {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: $color-white;
+}
+
+.heroCounterDiv {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.35);
+  margin: 0 0.1em;
+}
+
+.heroCounterTotal {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+// Current location indicator (bottom-left)
+.heroLocation {
+  position: absolute;
+  bottom: $space-md;
+  left: $space-lg;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: $space-xs;
+  pointer-events: none;
+
+  @include respond(mobile) {
+    left: $space-md;
+    bottom: $space-sm;
+  }
+}
+
+.heroLocationDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: $color-gold-500;
+  flex-shrink: 0;
+}
+
+.heroLocationName {
+  color: $color-white;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.heroLocationTag {
+  color: rgba(255, 255, 255, 0.45);
+  font-family: $font-mono;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+// ── SPLIT (Two Routes) ────────────────────────────────────────────────────────
+
+.split {
+  background-color: $color-white;
+  @include section-pad;
+}
+
+.splitInner {
+  @include container;
+}
+
+.splitText {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto $space-xl;
+}
+
+.splitTitle {
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: $color-ink-900;
+}
+
+.splitBody {
+  margin-top: $space-xs;
+  color: $color-stone-600;
+  font-size: 0.95rem;
+}
+
+.splitCards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-md;
+
+  @include respond(mobile) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.splitCard {
+  position: relative;
+  border-radius: $radius-md;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  display: block;
+  @include card-hover;
+}
+
+.splitCardImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform $duration-slow $ease-out-expo;
+
+  .splitCard:hover & {
+    transform: scale(1.05);
+  }
+}
+
+.splitCard::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0) 100%);
+}
+
+.splitCardBody {
+  position: absolute;
+  bottom: $space-md;
+  left: $space-md;
+  right: $space-md;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: $space-2xs;
+}
+
+.splitCardEyebrow {
+  @include mono-eyebrow;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.splitCardLabel {
+  font-family: $font-display;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: $color-white;
+  line-height: 1.1;
+}
+
+.splitCardArrow {
+  font-size: 1.2rem;
+  color: $color-gold-300;
+  display: inline-block;
+  transition: transform $duration-base $ease-out-expo;
+
+  .splitCard:hover & {
+    transform: translateX(6px);
+  }
+}
+
+// Accent line at bottom of each card
+.splitCardDomestic .splitCardLabel {
+  border-bottom: 2px solid $color-turquoise-500;
+  padding-bottom: $space-2xs;
+  display: inline;
+}
+
+.splitCardIntl .splitCardLabel {
+  border-bottom: 2px solid $color-gold-500;
+  padding-bottom: $space-2xs;
+  display: inline;
+}
+
+// ── POPULAR / SEASONAL ────────────────────────────────────────────────────────
+
+.popular,
+.seasonal {
+  background-color: $color-plaster-50;
+  @include section-pad;
+}
+
+.popularScroll {
+  display: flex;
+  gap: $space-md;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: $space-xs;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.popularItem {
+  flex: 0 0 300px;
+  scroll-snap-align: start;
+
+  @include respond(mobile) {
+    flex-basis: 270px;
+  }
+}
+
+// ── STATS ─────────────────────────────────────────────────────────────────────
+
+.stats {
+  background-color: $color-ink-900;
+  @include section-pad;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $space-md;
+  text-align: center;
+  @include container;
+
+  @include respond(mobile) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: $space-lg;
+  }
+}
+
+// ── TRAVEL YOUR WAY ───────────────────────────────────────────────────────────
+
+.travelWay {
+  background-color: $color-white;
+  @include section-pad;
+}
+
+.tileGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $space-sm;
+  margin-top: $space-xl;
+
+  @include respond(below-desktop) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond(mobile) {
+    grid-template-columns: 1fr 1fr;
+    gap: $space-xs;
+  }
+}
+
+.tile {
+  position: relative;
+  display: block;
+  border-radius: $radius-sm;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+}
+
+.tileImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform $duration-slow $ease-out-expo;
+
+  .tile:hover & {
+    transform: scale(1.07);
+  }
+}
+
+.tileOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.15) 60%, rgba(0, 0, 0, 0) 100%);
+}
+
+.tileLabel {
+  position: absolute;
+  bottom: $space-sm;
+  left: $space-sm;
+  right: $space-sm;
+  z-index: 1;
+  color: $color-white;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.01em;
+}
+
+// ── TESTIMONIALS ─────────────────────────────────────────────────────────────
+
+.testimonials {
+  background-color: $color-ink-900;
+  @include section-pad;
+}
+
+.testimonialGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $space-md;
+  margin-top: $space-xl;
+
+  @include respond(below-desktop) {
+    grid-template-columns: 1fr;
+    max-width: 540px;
+  }
+}
+
+.testimonialCard {
+  background-color: $color-ink-800;
+  border-radius: $radius-md;
+  padding: $space-lg;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.testimonialQuote {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  line-height: 1.65;
+  margin-bottom: $space-md;
+  font-style: italic;
+  font-family: $font-display;
+  font-size: 1.1rem;
+}
+
+.testimonialAuthor {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+}
+
+.testimonialAvatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.testimonialName {
+  display: block;
+  color: $color-white;
+  font-weight: 600;
+  font-size: 0.88rem;
+}
+
+.testimonialRole {
+  display: block;
+  color: $color-mist;
+  font-family: $font-mono;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+// ── PARTNERS ─────────────────────────────────────────────────────────────────
+
+.partners {
+  background-color: $color-plaster-50;
+  padding: $space-xl $space-lg;
+  border-top: 1px solid $color-plaster-100;
+  border-bottom: 1px solid $color-plaster-100;
+
+  @include respond(mobile) {
+    padding: $space-lg $space-md;
+  }
+}
+
+.partnersTitle {
+  display: block;
+  text-align: center;
+  @include mono-eyebrow;
+  color: $color-stone-600;
+  margin-bottom: $space-md;
+}
+
+// ── FAQ ───────────────────────────────────────────────────────────────────────
+
+.faq {
+  background-color: $color-white;
+  @include section-pad;
+}
+
+.faqList {
+  max-width: 720px;
+  margin: $space-xl auto 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.faqItem {
+  border-bottom: 1px solid $color-plaster-100;
+
+  &:first-child {
+    border-top: 1px solid $color-plaster-100;
+  }
+}
+
+.faqQ {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-md;
+  padding: $space-md 0;
+  background: transparent;
+  border: none;
+  text-align: left;
+  font-family: $font-display;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: $color-ink-900;
+  cursor: pointer;
+  transition: color $duration-fast $ease-base;
+
+  &:hover {
+    color: $color-gold-500;
+  }
+}
+
+.faqIcon {
+  font-size: 1.4rem;
+  line-height: 1;
+  color: $color-gold-500;
+  flex-shrink: 0;
+  width: 28px;
+  text-align: center;
+}
+
+.faqAWrap {
+  overflow: hidden;
+}
+
+.faqA {
+  padding-bottom: $space-md;
+  color: $color-stone-600;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  max-width: 640px;
+}
+
+// ── NEWSLETTER CTA ────────────────────────────────────────────────────────────
+
+.newsletterCta {
+  background-color: $color-plaster-50;
+  padding: 0 $space-lg $space-3xl;
+
+  @include respond(mobile) {
+    padding: 0 $space-md $space-xl;
+  }
+}
+
+.newsletterInner {
+  @include container;
+  background-color: $color-ink-900;
+  border-radius: $radius-lg;
+  padding: $space-2xl;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-sm;
+
+  @include respond(mobile) {
+    padding: $space-xl $space-md;
+  }
+}
+
+.newsletterTitle {
+  color: $color-white;
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+}
+
+.newsletterText {
+  color: $color-mist;
+  max-width: 44ch;
+  font-size: 0.95rem;
+}
+
+.newsletterBtn {
+  @include btn-primary;
+  margin-top: $space-sm;
+  padding: 0.85rem 2rem;
+  font-size: 0.88rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  display: inline-block;
+  text-decoration: none;
+}

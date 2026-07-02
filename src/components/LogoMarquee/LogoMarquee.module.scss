@@ -1,0 +1,34 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/animations' as *;
+
+.marquee {
+  width: 100%;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  gap: $space-2xl;
+  animation: marquee-scroll 28s linear infinite;
+
+  @include reduce-motion {
+    animation: none;
+  }
+}
+
+.item {
+  font-family: $font-mono;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  color: $color-stone-600;
+  opacity: 0.6;
+  white-space: nowrap;
+  transition: opacity $duration-fast $ease-base;
+
+  &:hover {
+    opacity: 1;
+  }
+}

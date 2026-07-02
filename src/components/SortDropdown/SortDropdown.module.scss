@@ -1,0 +1,65 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.wrap {
+  position: relative;
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  gap: $space-2xs;
+  background-color: $color-white;
+  border: 1px solid $color-plaster-100;
+  border-radius: $radius-pill;
+  padding: 0.55rem 1rem;
+  font-size: 0.85rem;
+  color: $color-ink-900;
+  @include focus-ring;
+}
+
+.label {
+  color: $color-stone-600;
+}
+
+.value {
+  font-weight: 600;
+}
+
+.chevron {
+  color: $color-stone-600;
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% + #{$space-2xs});
+  right: 0;
+  background-color: $color-white;
+  border-radius: $radius-sm;
+  box-shadow: $shadow-card-hover;
+  padding: $space-2xs;
+  min-width: 200px;
+  z-index: 10;
+}
+
+.option {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: $space-2xs $space-sm;
+  border-radius: $radius-sm;
+  background: transparent;
+  border: none;
+  font-size: 0.85rem;
+  color: $color-ink-900;
+  transition: background-color $duration-fast $ease-base;
+
+  &:hover {
+    background-color: $color-plaster-100;
+  }
+}
+
+.active {
+  color: $color-turquoise-500;
+  font-weight: 600;
+}

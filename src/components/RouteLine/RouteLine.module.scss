@@ -1,0 +1,30 @@
+@use '../../styles/variables' as *;
+
+.routeLine {
+  overflow: visible;
+  display: block;
+}
+
+.pathTurquoise {
+  stroke: $color-turquoise-500;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.pathGold {
+  stroke: $color-gold-500;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.dotTurquoise {
+  fill: $color-turquoise-500;
+}
+
+.dotGold {
+  fill: $color-gold-500;
+}
+
+.dotOrigin {
+  fill: $color-white;
+}

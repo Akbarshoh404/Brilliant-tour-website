@@ -1,0 +1,152 @@
+@use 'variables' as *;
+
+@mixin flex-center($direction: row) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: $direction;
+}
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == mobile {
+    @media (max-width: #{$bp-mobile - 1px}) {
+      @content;
+    }
+  } @else if $breakpoint == tablet {
+    @media (min-width: $bp-mobile) {
+      @content;
+    }
+  } @else if $breakpoint == tablet-only {
+    @media (min-width: $bp-mobile) and (max-width: #{$bp-tablet - 1px}) {
+      @content;
+    }
+  } @else if $breakpoint == below-desktop {
+    @media (max-width: #{$bp-tablet - 1px}) {
+      @content;
+    }
+  } @else if $breakpoint == desktop {
+    @media (min-width: $bp-tablet) {
+      @content;
+    }
+  } @else {
+    @error 'Unknown breakpoint: #{$breakpoint}';
+  }
+}
+
+@mixin gradient-overlay($from: rgba(8, 8, 8, 0), $to: rgba(8, 8, 8, 0.88)) {
+  background-image: linear-gradient(to bottom, $from 0%, $to 100%);
+}
+
+@mixin card-hover {
+  transition: transform $duration-base $ease-out-expo, box-shadow $duration-base $ease-base;
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: $shadow-card-hover;
+  }
+}
+
+@mixin card-hover-premium {
+  transition: transform $duration-base $ease-out-expo, box-shadow $duration-base $ease-base;
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: $shadow-gold-glow, $shadow-card-hover;
+  }
+}
+
+@mixin section-pad {
+  padding: $section-pad-desktop $space-lg;
+
+  @include respond(mobile) {
+    padding: $section-pad-mobile $space-md;
+  }
+}
+
+@mixin container {
+  max-width: $content-max;
+  margin: 0 auto;
+}
+
+@mixin mono-eyebrow {
+  font-family: $font-mono;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+@mixin reduce-motion {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}
+
+@mixin focus-ring($color: $color-gold-500) {
+  &:focus-visible {
+    outline: 2px solid $color;
+    outline-offset: 3px;
+    border-radius: $radius-sm;
+  }
+}
+
+// Primary CTA — accent fill, no pill (rectangular with small radius)
+@mixin btn-primary {
+  background-color: $color-gold-500;
+  color: $color-white;
+  border: none;
+  border-radius: $radius-sm;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: background-color $duration-fast $ease-base, box-shadow $duration-fast $ease-base, transform $duration-fast $ease-base;
+
+  &:hover {
+    background-color: $color-gold-600;
+    box-shadow: $shadow-gold-glow;
+    transform: translateY(-2px);
+  }
+
+  @include focus-ring;
+}
+
+// Ghost button — transparent + border
+@mixin btn-ghost($border-color: currentColor) {
+  background: transparent;
+  border: 1.5px solid $border-color;
+  border-radius: $radius-sm;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: background-color $duration-fast $ease-base, color $duration-fast $ease-base, border-color $duration-fast $ease-base;
+
+  &:hover {
+    background-color: rgba(200, 92, 30, 0.1);
+    border-color: $color-gold-500;
+    color: $color-gold-500;
+  }
+
+  @include focus-ring;
+}
+
+// Animated underline
+@mixin link-underline($color: $color-gold-500) {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 1.5px;
+    background-color: $color;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform $duration-base $ease-out-expo;
+  }
+
+  &:hover::after,
+  &.active::after {
+    transform: scaleX(1);
+  }
+}

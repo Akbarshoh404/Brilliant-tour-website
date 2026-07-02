@@ -1,0 +1,45 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes pulse-badge {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(193, 98, 63, 0.45);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(193, 98, 63, 0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@mixin shimmer-bg {
+  background: linear-gradient(
+    90deg,
+    $color-plaster-100 25%,
+    $color-plaster-50 37%,
+    $color-plaster-100 63%
+  );
+  background-size: 400% 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+
+  @include reduce-motion {
+    animation: none;
+  }
+}

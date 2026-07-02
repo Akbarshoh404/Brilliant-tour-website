@@ -1,0 +1,124 @@
+@use '../../styles/catalog' as *;
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.heroBand {
+  @extend %catalogHero;
+}
+
+.heroOverlay {
+  @extend %catalogHeroOverlay;
+}
+
+.heroInner {
+  @extend %catalogHeroInner;
+}
+
+.eyebrow {
+  @extend %catalogEyebrow;
+}
+
+.heroIntro {
+  @extend %catalogIntro;
+}
+
+.title {
+  @extend %catalogTitle;
+}
+
+.section {
+  background-color: $color-plaster-50;
+}
+
+.sectionInner {
+  @extend %catalogSectionInner;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-2xl;
+
+  @include respond(below-desktop) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: $space-md;
+  position: relative;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2xs;
+}
+
+.label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: $color-ink-900;
+}
+
+.input,
+.textarea {
+  padding: 0.8rem 1rem;
+  border-radius: $radius-sm;
+  border: 1.5px solid $color-plaster-100;
+  background-color: $color-white;
+  font-size: 0.95rem;
+  font-family: $font-body;
+  transition: border-color $duration-fast $ease-base, box-shadow $duration-fast $ease-base;
+
+  &:focus {
+    outline: none;
+    border-color: $color-turquoise-500;
+    box-shadow: 0 0 0 3px rgba(43, 169, 161, 0.18);
+  }
+}
+
+.textarea {
+  resize: vertical;
+}
+
+.submitBtn {
+  @include btn-primary;
+  align-self: flex-start;
+  padding: 0.85rem 1.8rem;
+  font-size: 0.92rem;
+}
+
+.success {
+  color: $color-turquoise-500;
+  font-size: 0.9rem;
+}
+
+.officePanel {
+  border-radius: $radius-lg;
+  overflow: hidden;
+  background-color: $color-white;
+  box-shadow: $shadow-card;
+}
+
+.mapImg {
+  width: 100%;
+  aspect-ratio: 16 / 11;
+  object-fit: cover;
+}
+
+.officeInfo {
+  padding: $space-lg;
+
+  h2 {
+    font-size: 1.2rem;
+    margin-bottom: $space-2xs;
+  }
+
+  p {
+    color: $color-stone-600;
+    font-size: 0.92rem;
+  }
+}

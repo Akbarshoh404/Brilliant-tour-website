@@ -1,0 +1,84 @@
+// ===== Design tokens — Brilliant v2 (B&W premium, Nike-inspired) =====
+
+// --- Dark surfaces (pure blacks, no colour cast) ---
+$color-ink-950: #080808;
+$color-ink-900: #111111;
+$color-ink-800: #1c1c1c;
+$color-ink-700: #272727;
+
+// --- Light surfaces (clean whites) ---
+$color-plaster-50: #f5f5f5;
+$color-plaster-100: #e0e0e0;
+
+// --- Brand accent — single warm accent (burnt terracotta) ---
+$color-gold-600: #9e4616;   // dark hover
+$color-gold-500: #c85c1e;   // primary accent
+$color-gold-300: #e8906a;   // light accent (on dark)
+
+// --- Distinction colour (route lines + domestic vs intl labels only) ---
+$color-turquoise-600: #136e8a;
+$color-turquoise-500: #1a93b8;
+$color-turquoise-300: #79cde8;
+
+// --- Badge ---
+$color-clay-500: #d9382a;
+
+// --- Text ---
+$color-white: #ffffff;
+$color-mist: #9a9a9a;       // body text on dark
+$color-stone-600: #666666;  // body text on light
+
+// --- Fonts ---
+$font-display: 'Cormorant Garamond', serif;
+$font-body: 'Plus Jakarta Sans', sans-serif;
+$font-mono: 'IBM Plex Mono', monospace;
+
+// --- Spacing scale ---
+$space-3xs: 0.25rem;
+$space-2xs: 0.5rem;
+$space-xs: 0.75rem;
+$space-sm: 1rem;
+$space-md: 1.5rem;
+$space-lg: 2.5rem;
+$space-xl: 4rem;
+$space-2xl: 6rem;
+$space-3xl: 9rem;
+
+$section-pad-desktop: $space-3xl;
+$section-pad-mobile: $space-xl;
+
+// --- Radius (sharper, editorial) ---
+$radius-sm: 8px;
+$radius-md: 14px;
+$radius-lg: 22px;
+$radius-pill: 999px;
+
+// --- Breakpoints ---
+$bp-mobile: 640px;
+$bp-tablet: 1024px;
+
+// --- Layout ---
+$content-max: 1320px;
+$navbar-height: 72px;
+$z-navbar: 100;
+$z-overlay: 300;
+$z-drawer: 250;
+
+// --- Shadows ---
+$shadow-card: 0 2px 20px rgba(0, 0, 0, 0.07);
+$shadow-card-hover: 0 16px 48px rgba(0, 0, 0, 0.18);
+$shadow-elevated: 0 32px 80px rgba(0, 0, 0, 0.30);
+$shadow-gold-glow: 0 0 0 1px rgba(200, 92, 30, 0.28), 0 12px 36px rgba(200, 92, 30, 0.16);
+$shadow-turquoise-glow: 0 0 0 1px rgba(26, 147, 184, 0.28), 0 12px 36px rgba(26, 147, 184, 0.14);
+
+// --- Glass surfaces ---
+$glass-bg: rgba(255, 255, 255, 0.06);
+$glass-bg-hover: rgba(255, 255, 255, 0.10);
+$glass-border: rgba(255, 255, 255, 0.14);
+
+// --- Motion ---
+$duration-fast: 0.18s;
+$duration-base: 0.32s;
+$duration-slow: 0.55s;
+$ease-base: cubic-bezier(0.22, 1, 0.36, 1);
+$ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);

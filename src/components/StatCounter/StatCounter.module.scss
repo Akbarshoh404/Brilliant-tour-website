@@ -1,0 +1,22 @@
+@use '../../styles/variables' as *;
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3xs;
+}
+
+.value {
+  font-family: $font-display;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 600;
+  color: $color-white;
+}
+
+.label {
+  font-family: $font-mono;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: $color-mist;
+}

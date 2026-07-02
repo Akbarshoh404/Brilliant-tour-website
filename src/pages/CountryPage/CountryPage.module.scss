@@ -1,0 +1,133 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/catalog' as *;
+
+.hero {
+  @extend %catalogHero;
+}
+.heroOverlay {
+  @extend %catalogHeroOverlay;
+}
+.heroInner {
+  @extend %catalogHeroInner;
+}
+.title {
+  @extend %catalogTitle;
+}
+.intro {
+  @extend %catalogIntro;
+}
+.sectionInner {
+  @extend %catalogSectionInner;
+}
+
+.factsSection {
+  background-color: $color-plaster-50;
+  padding-top: 0;
+}
+
+.factsStrip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $space-md;
+  background-color: $color-white;
+  border-radius: $radius-md;
+  padding: $space-lg;
+  box-shadow: $shadow-card;
+
+  @include respond(mobile) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.fact {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.factLabel {
+  @include mono-eyebrow;
+  color: $color-stone-600;
+}
+
+.factValue {
+  font-weight: 700;
+  color: $color-ink-900;
+}
+
+.citiesSection,
+.offersSection {
+  background-color: $color-plaster-50;
+}
+
+.subheading {
+  font-size: 1.5rem;
+  margin-bottom: $space-md;
+}
+
+.cityGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $space-md;
+
+  @include respond(below-desktop) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.cityTile {
+  position: relative;
+  display: block;
+  border-radius: $radius-md;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  @include card-hover;
+}
+
+.cityImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cityTile::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  @include gradient-overlay(rgba(11, 28, 40, 0.05), rgba(11, 28, 40, 0.7));
+}
+
+.cityName {
+  position: absolute;
+  bottom: $space-sm;
+  left: $space-sm;
+  z-index: 1;
+  color: $color-white;
+  font-weight: 700;
+}
+
+.gridLayout {
+  @extend %catalogGridLayout;
+}
+.results {
+  @extend %catalogResults;
+}
+.resultsHeader {
+  @extend %catalogResultsHeader;
+}
+.resultCount {
+  @extend %catalogResultCount;
+}
+.mobileFilterBtn {
+  @extend %catalogMobileFilterBtn;
+}
+.offerGrid {
+  @extend %catalogOfferGrid;
+}
+.noResults {
+  @extend %catalogNoResults;
+}

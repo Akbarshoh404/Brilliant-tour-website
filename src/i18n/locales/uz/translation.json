@@ -1,0 +1,258 @@
+{
+  "nav": {
+    "international": "Xalqaro",
+    "domestic": "Ichki",
+    "cruises": "Kruizlar",
+    "visas": "Vizalar",
+    "about": "Biz haqimizda",
+    "contact": "Aloqa",
+    "search": "Qidiruv",
+    "menu": "Menyu",
+    "close": "Yopish"
+  },
+  "footer": {
+    "tagline": "Ikki yo'l. Bitta sayohat.",
+    "destinations": "Yo'nalishlar",
+    "company": "Kompaniya",
+    "support": "Yordam",
+    "aboutUs": "Biz haqimizda",
+    "ourStory": "Bizning tariximiz",
+    "careers": "Karyera",
+    "faq": "Savol-javoblar",
+    "supportCentre": "Yordam markazi",
+    "termsPrivacy": "Shartlar va maxfiylik",
+    "newsletterTitle": "Brilliantga qo'shiling",
+    "newsletterText": "Marshrut g'oyalari va mavsumiy takliflar, oyiga bir marta.",
+    "newsletterPlaceholder": "Email manzilingiz",
+    "newsletterCta": "Obuna bo'lish",
+    "rights": "Barcha huquqlar himoyalangan."
+  },
+  "common": {
+    "viewAll": "Barchasini ko'rish",
+    "learnMore": "Batafsil",
+    "bookNow": "Band qilish",
+    "from": "dan boshlab",
+    "perPerson": "bir kishi uchun",
+    "days": "kun",
+    "nights": "tun",
+    "loading": "Yuklanmoqda",
+    "noResults": "Ushbu filtrlarga mos sayohatlar topilmadi.",
+    "clearFilters": "Barchasini tozalash",
+    "filters": "Filtrlar",
+    "sortBy": "Saralash",
+    "results": "natija",
+    "backToTop": "Yuqoriga",
+    "scroll": "Pastga aylantiring",
+    "readMore": "Batafsil o'qish",
+    "traveler": "Sayohatchi",
+    "influencer": "Bloger"
+  },
+  "hero": {
+    "eyebrow": "Brilliant Travel",
+    "titleLine1": "Buyuk Ipak Yo'lini",
+    "titleLine2": "kashf eting",
+    "titleLine3": "va undan ham uzoqroqqa",
+    "subtitle": "Ikki yo'l, bitta sayohat — O'zbekiston va butun dunyo bo'ylab maxsus tuzilgan turlar.",
+    "searchPlaceholder": "Qayerga boramiz? \"Samarqand\" yoki \"Maldiv\" deb yozing"
+  },
+  "home": {
+    "splitTitle": "Ikki yo'l, bitta sayohat",
+    "splitText": "Yo'lingiz qayerga olib bormasin — O'zbekiston choʻllari va tog'lari orqalimi yoki uning chegaralaridan uzoqqami — Brilliant yo'lni chizib beradi.",
+    "domesticCta": "O'zbekistonni kashf eting",
+    "internationalCta": "Dunyoni kashf eting",
+    "popularTitle": "Mashhur yo'nalishlar",
+    "popularText": "Sayohatchilarimiz tanlagan yaqin mo''jizalar va uzoq sayohatlar aralashmasi.",
+    "travelYourWayTitle": "O'zingizga mos sayohat",
+    "travelYourWayText": "Har bir sayohat qanday sayohat qilishni xohlashingizdan boshlanadi.",
+    "seasonalTitle": "Mavsumiy takliflar",
+    "seasonalText": "Har bir yo'nalish uchun eng yaxshi mavsumga moslashtirilgan marshrutlar.",
+    "statsTitle": "Brilliant raqamlarda",
+    "whyTitle": "Nega Brilliant",
+    "why1Title": "Mahalliy marshrut mutaxassislari",
+    "why1Text": "Registondan Pomirgacha shu yo'llarda o'sgan gidlar.",
+    "why2Title": "Ikki bozor, bitta standart",
+    "why2Text": "Chimg'onda dam olish kuni uchun ham, chet elda bir oy uchun ham bir xil sinchkov rejalashtirish.",
+    "why3Title": "Moslashuvchanlik — birinchi o'rinda",
+    "why3Text": "Har bir paketda Economy, Standard yoki Premium — jo'nashdan oldin istalgan vaqt fikringizni o'zgartiring.",
+    "testimonialsTitle": "Yo'ldagi hikoyalar",
+    "partnersTitle": "Sayohatchilar va hamkorlar tomonidan ishonilgan",
+    "pressTitle": "Biz haqimizda yozilgan",
+    "faqTitle": "Ko'p so'raladigan savollar",
+    "faqItems": [
+      {
+        "q": "O'zbekistonga tashrif buyurish uchun viza kerakmi?",
+        "a": "90 dan ortiq mamlakatlar fuqarolari O'zbekistonga 30 kungacha vizasiz kelishi mumkin. Qolganlari onlayn elektron viza olishlari mumkin. Biz har bir ichki marshrut bilan viza bo'yicha ma'lumot beramiz."
+      },
+      {
+        "q": "Xalqaro sayohatni O'zbekiston marshrutiga qo'shib rejalashtirsam bo'ladimi?",
+        "a": "Ha — va ko'plab mijozlarimiz shunday qiladi. Mashhur variant: Dubaydan uchib kelib, Samarqand va Buxoroda uch kun o'tkazib, keyin xalqaro yo'nalishda davom etish. Biz ikki qismni ham bitta marshrut sifatida rejalashtiramiz."
+      },
+      {
+        "q": "Qancha oldin band qilish kerak?",
+        "a": "O'zbekiston uchun odatda 3–4 hafta yetarli. Mavsumiy marshrutlar (Navro'z, yozgi tog' safarlari) uchun 6–8 hafta oldin band qilish ma'qul. Xalqaro paketlar uchun 6+ hafta kerak."
+      },
+      {
+        "q": "Narxga nima kiradi?",
+        "a": "Har bir taklifda tanlangan daraja nima kiritishini aniq ko'rsatamiz. Economy — yashash va transfer; Standard — xususiy transfer va ustuvor yordam; Premium — VIP transfer, 24/7 konsyerj va qo'shimcha xizmatlar. Yashirin to'lovlar yo'q."
+      }
+    ],
+    "newsletterTitle": "Yangi marshrutlardan birinchi bo'lib xabardor bo'ling",
+    "newsletterText": "Mavsumiy takliflar va yangi marshrutlar to'g'ridan-to'g'ri pochtangizga."
+  },
+  "categories": {
+    "luxury": "Lyuks",
+    "budget": "Byudjet",
+    "group": "Guruh",
+    "family": "Oilaviy",
+    "honeymoon": "Asal oyi",
+    "business": "Biznes",
+    "cruise": "Kruiz",
+    "religious": "Diniy turizm",
+    "custom-private": "Individual tur"
+  },
+  "domesticCategories": {
+    "historical": "Tarixiy",
+    "weekend": "Dam olish kunlari",
+    "cultural": "Madaniy",
+    "mountain": "Tog'",
+    "desert": "Cho'l",
+    "family": "Oilaviy",
+    "group": "Guruhli",
+    "premium": "Mahalliy premium",
+    "seasonal": "Mavsumiy"
+  },
+  "international": {
+    "eyebrow": "Xalqaro turizm",
+    "title": "Chegaradan tashqaridagi yo'llar",
+    "intro": "Cho'l qumlaridan Alp tog' cho'qqilarigacha — qo'shni shahardagi sayohat kabi sinchkovlik bilan rejalashtirilgan xalqaro sayohatlar.",
+    "regions": "Hududlar",
+    "allRegions": "Barcha hududlar",
+    "seasonalOffers": "Mavsumiy takliflar",
+    "luxuryTrips": "Lyuks turlar",
+    "honeymoonPackages": "Asal oyi paketlari",
+    "cruisePackages": "Kruiz paketlari",
+    "religiousTourism": "Diniy turizm",
+    "allOffers": "Barcha xalqaro turlar"
+  },
+  "domestic": {
+    "eyebrow": "O'zbekiston turizmi",
+    "title": "O'zbekiston bo'ylab yo'l",
+    "intro": "Ipak yo'li shaharlari, cho'l ufqlari va tog' havosi — o'ylaganingizdan yaqinroq.",
+    "featuredTitle": "Tavsiya etilgan O'zbekiston sayohatlari"
+  },
+  "country": {
+    "bestSeason": "Eng yaxshi mavsum",
+    "flightTime": "Parvoz vaqti",
+    "visaNote": "Viza",
+    "currency": "Valyuta",
+    "citiesTitle": "Tashrif buyuriladigan shaharlar",
+    "offersTitle": "Sayohatlar:"
+  },
+  "city": {
+    "offersTitle": "Sayohatlar:"
+  },
+  "filters": {
+    "destination": "Yo'nalish",
+    "priceRange": "Narx oralig'i",
+    "duration": "Davomiyligi",
+    "departureDate": "Jo'nash sanasi",
+    "travelType": "Sayohat turi",
+    "budgetTier": "Byudjet darajasi",
+    "packageLevel": "Paket darajasi",
+    "visaRequirement": "Viza talabi",
+    "hotelCategory": "Mehmonxona toifasi",
+    "transportation": "Transport",
+    "activities": "Faoliyatlar",
+    "tourLanguage": "Tur tili",
+    "groupSize": "Guruh hajmi",
+    "season": "Mavsum",
+    "apply": "Filtrlarni qo'llash"
+  },
+  "sort": {
+    "popular": "Eng mashhur",
+    "recommended": "Tavsiya etilgan",
+    "priceLow": "Avval arzon",
+    "priceHigh": "Avval qimmat",
+    "premiumFirst": "Avval premium",
+    "shortest": "Qisqa muddatli",
+    "newest": "Eng yangi",
+    "rated": "Yuqori baholangan"
+  },
+  "search": {
+    "heroTitle": "Sayohatingizni toping",
+    "heroSubtitle": "Har bir sayohat savoldan boshlanadi. Uni shu yerda bering.",
+    "placeholder": "Davlat, shahar, sayohat qidirish...",
+    "popularSearches": "Mashhur qidiruvlar",
+    "recentSearches": "So'nggi qidiruvlar",
+    "countries": "Davlatlar",
+    "cities": "Shaharlar",
+    "tours": "Sayohatlar",
+    "services": "Xizmatlar",
+    "visas": "Vizalar",
+    "cruises": "Kruizlar",
+    "noResults": "Bo'yicha hech narsa topilmadi"
+  },
+  "offer": {
+    "includedServices": "Narxga kiritilgan xizmatlar",
+    "packageComparison": "Paketni tanlang",
+    "availableDates": "Mavjud sanalar",
+    "viewGallery": "Barcha fotolar",
+    "relatedTitle": "Sizga yoqishi mumkin",
+    "economy": "Economy",
+    "standard": "Standard",
+    "premium": "Premium",
+    "hotelCategory": "Mehmonxona toifasi",
+    "transfer": "Transfer",
+    "support": "Yordam",
+    "extras": "Qo'shimchalar",
+    "concierge": "Shaxsiy konsyerj",
+    "dateAvailable": "Mavjud",
+    "dateLimited": "Joylar kam qoldi",
+    "dateSoldOut": "Joylar qolmadi",
+    "selectDate": "Sanani tanlang",
+    "totalPrice": "Umumiy narx",
+    "travelLevel": "Sayohat darajasi",
+    "easy": "Yengil",
+    "moderate": "O'rtacha",
+    "adventure": "Sarguzasht"
+  },
+  "cruises": {
+    "eyebrow": "Kruizlar",
+    "title": "Qaysi yo'l bo'lmasin, suzib chiqing",
+    "intro": "O'zbekiston tarixi bo'ylab daryo marshrutlari va undan tashqaridagi dengiz sayohatlari.",
+    "cabinComparison": "Kayut toifalarini solishtirish",
+    "interior": "Ichki kayut",
+    "oceanView": "Dengiz manzarali",
+    "balcony": "Balkonli lyuks"
+  },
+  "visas": {
+    "eyebrow": "Vizalar",
+    "title": "Oldindan biling",
+    "intro": "Bizning har bir marshrutimiz uchun viza talablari.",
+    "searchPlaceholder": "Davlatni qidirish",
+    "visaFree": "Vizasiz",
+    "eVisa": "Elektron viza",
+    "visaRequired": "Viza talab qilinadi"
+  },
+  "about": {
+    "eyebrow": "Brilliant haqida",
+    "title": "Ikki yo'l ustiga qurilgan",
+    "heroIntro": "Toshkentdan chiqqan agentlik. O'n uch yil, bir ishonch: yaxshi rejalashtirish joy haqidagi tajribangizni o'zgartiradi.",
+    "story": "Brilliant Toshkentdagi kichik agentlik sifatida O'zbekiston bo'ylab sayohatchilarni kuzatishdan boshlandi. Biz xuddi Ipak yo'li kabi — bir vaqtning o'zida bitta ishonchli marshrut bilan o'sib bordik.",
+    "missionTitle": "Bizning maqsadimiz",
+    "mission": "Har bir sayohatni, yaqin yoki uzoq bo'lsin, karvon cho'lni kesib o'tganidagi kabi sinchkovlik bilan rejalashtirish.",
+    "teamTitle": "Marshrutlar ortidagi odamlar"
+  },
+  "contact": {
+    "eyebrow": "Aloqa",
+    "title": "Marshrutingizni rejalashtiraylik",
+    "heroIntro": "Har bir xabarni jonli inson o'qiydi — odatda bir kun ichida javob beramiz.",
+    "name": "Ism",
+    "email": "Email",
+    "message": "Xabar",
+    "send": "Xabar yuborish",
+    "sent": "Xabar yuborildi — bir kun ichida javob beramiz.",
+    "officeTitle": "Bizning ofis",
+    "officeAddress": "Amir Temur shoh ko'chasi, 12, Toshkent, O'zbekiston"
+  }
+}

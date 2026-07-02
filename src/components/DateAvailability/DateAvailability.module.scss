@@ -1,0 +1,105 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.wrap {
+  position: relative;
+}
+
+.heading {
+  font-size: 1.2rem;
+  margin-bottom: $space-sm;
+}
+
+.routeRow {
+  position: absolute;
+  top: 38px;
+  left: 0;
+  opacity: 0.35;
+  pointer-events: none;
+
+  @include respond(mobile) {
+    display: none;
+  }
+}
+
+.connector {
+  display: block;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-sm;
+  position: relative;
+}
+
+.chip {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  min-width: 78px;
+  padding: $space-xs $space-sm;
+  border-radius: $radius-sm;
+  background-color: $color-white;
+  border: 1.5px solid $color-plaster-100;
+  transition: border-color $duration-fast $ease-base, background-color $duration-fast $ease-base;
+  @include focus-ring;
+
+  &:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+}
+
+.chipDate {
+  font-family: $font-mono;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: $color-ink-900;
+}
+
+.chipStatus {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.available {
+  .chipStatus {
+    color: $color-turquoise-500;
+  }
+
+  &:hover {
+    border-color: $color-turquoise-500;
+  }
+}
+
+.limited {
+  .chipStatus {
+    color: $color-gold-500;
+  }
+
+  &:hover {
+    border-color: $color-gold-500;
+  }
+}
+
+.soldout {
+  .chipStatus {
+    color: $color-stone-600;
+  }
+}
+
+.selected {
+  background-color: $color-ink-900;
+  border-color: $color-ink-900;
+
+  .chipDate {
+    color: $color-white;
+  }
+
+  .chipStatus {
+    color: $color-turquoise-300;
+  }
+}

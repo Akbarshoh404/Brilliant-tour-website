@@ -1,0 +1,395 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.page {
+  background-color: $color-plaster-50;
+  padding-bottom: $space-3xl;
+
+  @include respond(mobile) {
+    padding-bottom: calc(#{$space-2xl} + 70px);
+  }
+}
+
+// ===== 100VH HERO =====
+.hero {
+  position: relative;
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-top: $navbar-height;
+  isolation: isolate;
+}
+
+.heroOverlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  background-image: linear-gradient(
+    to bottom,
+    rgba($color-ink-950, 0.45) 0%,
+    rgba($color-ink-950, 0.1) 40%,
+    rgba($color-ink-950, 0.6) 70%,
+    rgba($color-ink-950, 0.97) 100%
+  );
+}
+
+.heroTop {
+  position: absolute;
+  top: calc(#{$navbar-height} + #{$space-md});
+  left: 0;
+  right: 0;
+  z-index: 1;
+  @include container;
+  padding: 0 $space-lg;
+
+  @include respond(mobile) {
+    padding: 0 $space-md;
+  }
+}
+
+.heroContent {
+  position: relative;
+  z-index: 1;
+  @include container;
+  padding: 0 $space-lg $space-2xl;
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+
+  @include respond(mobile) {
+    padding: 0 $space-md $space-xl;
+  }
+}
+
+.heroEyebrow {
+  @include mono-eyebrow;
+  color: $color-gold-300;
+}
+
+.heroTitle {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  color: $color-white;
+  max-width: 16ch;
+  line-height: 1.05;
+}
+
+.heroMeta {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+  font-size: 0.92rem;
+  color: $color-mist;
+  flex-wrap: wrap;
+}
+
+.levelPill {
+  font-family: $font-mono;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  padding: 0.2rem 0.6rem;
+  border-radius: $radius-pill;
+  background-color: $glass-bg;
+  border: 1px solid $glass-border;
+  color: $color-white;
+}
+
+.easy { color: $color-turquoise-300; }
+.moderate { color: $color-gold-300; }
+.adventure { color: #f99072; }
+
+.galleryBtn {
+  margin-top: $space-xs;
+  align-self: flex-start;
+  background-color: $glass-bg;
+  border: 1px solid $glass-border;
+  color: $color-white;
+  border-radius: $radius-pill;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: background-color $duration-fast $ease-base;
+  backdrop-filter: blur(8px);
+
+  &:hover {
+    background-color: $glass-bg-hover;
+  }
+}
+
+// ===== GALLERY THUMBNAILS (below hero) =====
+.gallery {
+  @include container;
+  padding: $space-sm $space-lg 0;
+  display: flex;
+  gap: $space-sm;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: $space-sm;
+
+  @include respond(mobile) {
+    padding: $space-sm $space-md 0;
+  }
+}
+
+.galleryThumb {
+  flex: 0 0 160px;
+  height: 110px;
+  border: none;
+  padding: 0;
+  border-radius: $radius-sm;
+  overflow: hidden;
+  scroll-snap-align: start;
+  transition: opacity $duration-fast $ease-base, box-shadow $duration-fast $ease-base;
+
+  &:hover {
+    opacity: 0.85;
+    box-shadow: $shadow-gold-glow;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @include respond(mobile) {
+    flex-basis: 120px;
+    height: 85px;
+  }
+}
+
+// ===== LAYOUT =====
+.layout {
+  @include container;
+  padding: $space-xl $space-lg 0;
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: $space-2xl;
+  align-items: flex-start;
+
+  @include respond(below-desktop) {
+    grid-template-columns: 1fr;
+    padding: $space-lg $space-md 0;
+  }
+}
+
+.main {
+  min-width: 0;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2xs;
+}
+
+.tagPill {
+  font-family: $font-mono;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background-color: $color-plaster-100;
+  color: $color-stone-600;
+  padding: 0.2rem 0.6rem;
+  border-radius: $radius-pill;
+}
+
+.description {
+  margin-top: $space-lg;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: $color-stone-600;
+  max-width: 70ch;
+}
+
+.blockHeading {
+  font-size: 1.3rem;
+  margin-bottom: $space-md;
+}
+
+.servicesBlock {
+  margin-top: $space-2xl;
+}
+
+.servicesList {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-sm;
+
+  @include respond(mobile) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.serviceItem {
+  display: flex;
+  align-items: center;
+  gap: $space-2xs;
+  font-size: 0.92rem;
+  color: $color-ink-900;
+
+  svg {
+    color: $color-turquoise-500;
+    flex-shrink: 0;
+  }
+}
+
+.comparisonBlock {
+  margin-top: $space-2xl;
+}
+
+.datesBlock {
+  margin-top: $space-2xl;
+}
+
+// ===== STICKY BOOKING PANEL =====
+.booking {
+  position: sticky;
+  top: calc(#{$navbar-height} + #{$space-md});
+
+  @include respond(below-desktop) {
+    display: none;
+  }
+}
+
+.bookingCard {
+  background-color: $color-white;
+  border-radius: $radius-md;
+  padding: $space-lg;
+  box-shadow: $shadow-card;
+}
+
+.bookingPriceRow {
+  display: flex;
+  align-items: baseline;
+  gap: $space-2xs;
+  flex-wrap: wrap;
+}
+
+.bookingPriceFrom {
+  color: $color-stone-600;
+  font-size: 0.85rem;
+}
+
+.bookingPrice {
+  font-family: $font-mono;
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: $color-ink-900;
+}
+
+.bookingPriceUnit {
+  color: $color-stone-600;
+  font-size: 0.8rem;
+}
+
+.bookingTier {
+  margin-top: $space-2xs;
+  font-size: 0.85rem;
+  color: $color-gold-500;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.bookingDate {
+  margin-top: $space-sm;
+  font-size: 0.85rem;
+  color: $color-stone-600;
+
+  strong {
+    color: $color-ink-900;
+  }
+}
+
+.bookingCta {
+  margin-top: $space-md;
+  width: 100%;
+  background-color: $color-gold-500;
+  color: $color-ink-950;
+  border: none;
+  border-radius: $radius-pill;
+  padding: 0.85rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: background-color $duration-fast $ease-base, box-shadow $duration-fast $ease-base;
+
+  &:hover {
+    background-color: $color-gold-300;
+    box-shadow: $shadow-gold-glow;
+  }
+}
+
+// ===== MOBILE STICKY BAR =====
+.mobileBar {
+  display: none;
+
+  @include respond(below-desktop) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: $z-navbar;
+    background-color: $color-white;
+    padding: $space-sm $space-md;
+    box-shadow: 0 -8px 24px rgba(6, 15, 20, 0.16);
+  }
+}
+
+.mobileBarPrice {
+  font-family: $font-mono;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: $color-ink-900;
+  margin-right: $space-2xs;
+}
+
+.mobileBarUnit {
+  font-size: 0.78rem;
+  color: $color-stone-600;
+}
+
+.mobileBarCta {
+  background-color: $color-gold-500;
+  color: $color-ink-950;
+  border: none;
+  border-radius: $radius-pill;
+  padding: 0.7rem 1.4rem;
+  font-weight: 700;
+  font-size: 0.88rem;
+}
+
+// ===== RELATED =====
+.relatedSection {
+  margin-top: $space-3xl;
+}
+
+.relatedInner {
+  @include container;
+  padding: 0 $space-lg;
+
+  @include respond(mobile) {
+    padding: 0 $space-md;
+  }
+}
+
+.relatedGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $space-md;
+
+  @include respond(below-desktop) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include respond(mobile) {
+    grid-template-columns: 1fr;
+  }
+}

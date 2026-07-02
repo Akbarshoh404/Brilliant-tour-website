@@ -1,0 +1,68 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.wrap {
+  position: relative;
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  gap: $space-2xs;
+  background: transparent;
+  border: 1px solid currentColor;
+  border-radius: $radius-pill;
+  padding: 0.4rem 0.8rem;
+  font-family: $font-mono;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: inherit;
+  @include focus-ring;
+}
+
+.chevron {
+  opacity: 0.7;
+}
+
+.light .trigger {
+  color: $color-white;
+}
+
+.dark .trigger {
+  color: $color-ink-900;
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% + #{$space-2xs});
+  right: 0;
+  background-color: $color-white;
+  border-radius: $radius-sm;
+  box-shadow: $shadow-card-hover;
+  padding: $space-2xs;
+  min-width: 84px;
+  z-index: $z-overlay;
+}
+
+.option {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: $space-2xs $space-xs;
+  border-radius: $radius-sm;
+  background: transparent;
+  border: none;
+  font-family: $font-mono;
+  font-size: 0.8rem;
+  color: $color-ink-900;
+  transition: background-color $duration-fast $ease-base;
+
+  &:hover {
+    background-color: $color-plaster-100;
+  }
+}
+
+.active {
+  color: $color-turquoise-500;
+  font-weight: 600;
+}

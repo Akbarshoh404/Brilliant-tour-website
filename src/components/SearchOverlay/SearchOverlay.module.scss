@@ -1,0 +1,148 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: $z-overlay;
+  background-color: rgba(11, 28, 40, 0.75);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  padding: 8vh $space-md $space-md;
+
+  @include respond(mobile) {
+    padding: $space-md;
+  }
+}
+
+.panel {
+  width: 100%;
+  max-width: 680px;
+  max-height: 78vh;
+  background-color: $color-plaster-50;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-elevated;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.inputRow {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+  padding: $space-md;
+  border-bottom: 1px solid rgba(11, 28, 40, 0.08);
+}
+
+.searchIcon {
+  color: $color-stone-600;
+  flex-shrink: 0;
+}
+
+.input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-family: $font-body;
+  font-size: 1.05rem;
+  color: $color-ink-900;
+  outline: none;
+
+  &::placeholder {
+    color: $color-stone-600;
+  }
+}
+
+.closeBtn {
+  background: transparent;
+  border: none;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: $color-stone-600;
+  @include focus-ring;
+}
+
+.results {
+  overflow-y: auto;
+  padding: $space-md;
+}
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  gap: $space-md;
+}
+
+.chipGroup {
+  display: flex;
+  flex-direction: column;
+  gap: $space-xs;
+}
+
+.chipLabel {
+  @include mono-eyebrow;
+  color: $color-stone-600;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2xs;
+}
+
+.chip {
+  background-color: $color-plaster-100;
+  border: none;
+  border-radius: $radius-pill;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.85rem;
+  color: $color-ink-900;
+  transition: background-color $duration-fast $ease-base;
+
+  &:hover {
+    background-color: $color-turquoise-300;
+  }
+}
+
+.noResults {
+  color: $color-stone-600;
+  font-size: 0.95rem;
+  padding: $space-md 0;
+}
+
+.group {
+  margin-bottom: $space-md;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.groupTitle {
+  @include mono-eyebrow;
+  color: $color-stone-600;
+  display: block;
+  margin-bottom: $space-2xs;
+}
+
+.resultItem {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  padding: $space-xs $space-sm;
+  border-radius: $radius-sm;
+  font-size: 0.98rem;
+  color: $color-ink-900;
+  transition: background-color $duration-fast $ease-base;
+}
+
+.activeItem {
+  background-color: $color-turquoise-300;
+}

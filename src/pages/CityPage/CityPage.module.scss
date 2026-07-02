@@ -1,0 +1,52 @@
+@use '../../styles/catalog' as *;
+@use '../../styles/variables' as *;
+
+.hero {
+  @extend %catalogHero;
+}
+.heroOverlay {
+  @extend %catalogHeroOverlay;
+}
+.heroInner {
+  @extend %catalogHeroInner;
+}
+.title {
+  @extend %catalogTitle;
+}
+.intro {
+  @extend %catalogIntro;
+}
+.sectionInner {
+  @extend %catalogSectionInner;
+}
+
+.offersSection {
+  background-color: $color-plaster-50;
+}
+
+.subheading {
+  font-size: 1.5rem;
+  margin-bottom: $space-md;
+}
+
+.gridLayout {
+  @extend %catalogGridLayout;
+}
+.results {
+  @extend %catalogResults;
+}
+.resultsHeader {
+  @extend %catalogResultsHeader;
+}
+.resultCount {
+  @extend %catalogResultCount;
+}
+.mobileFilterBtn {
+  @extend %catalogMobileFilterBtn;
+}
+.offerGrid {
+  @extend %catalogOfferGrid;
+}
+.noResults {
+  @extend %catalogNoResults;
+}
