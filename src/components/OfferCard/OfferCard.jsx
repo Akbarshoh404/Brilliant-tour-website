@@ -5,20 +5,10 @@ import { getLocalizedField } from '../../utils/getLocalizedField';
 import { formatPrice, applyPriceModifier } from '../../utils/formatPrice';
 import countries from '../../data/countries';
 import categories from '../../data/categories';
-import RouteLine from '../RouteLine/RouteLine';
 import styles from './OfferCard.module.scss';
 
 const countryBySlug = Object.fromEntries(countries.map((c) => [c.slug, c]));
 const categoryBySlug = Object.fromEntries(categories.map((c) => [c.slug, c]));
-
-function StarRating({ rating }) {
-  const filled = Math.round(rating);
-  return (
-    <span className={styles.stars} aria-label={`Rating: ${rating}`}>
-      {'★'.repeat(filled)}{'☆'.repeat(Math.max(0, 5 - filled))}
-    </span>
-  );
-}
 
 export default function OfferCard({ offer, packageLevel = 'standard', index = 0 }) {
   const { t, i18n } = useTranslation();
@@ -49,47 +39,36 @@ export default function OfferCard({ offer, packageLevel = 'standard', index = 0 
             className={styles.image}
             loading="lazy"
           />
-          <div className={styles.overlay} />
           {offer.isSpecialOffer && (
             <span className={styles.discountBadge}>-{offer.discountPercent}%</span>
           )}
-          <span className={styles.eyebrow}>{eyebrow}</span>
         </div>
 
         <div className={styles.body}>
+          <span className={styles.eyebrow}>{eyebrow}</span>
           <h3 className={styles.title}>{getLocalizedField(offer.title, lang)}</h3>
-          <p className={styles.desc}>{getLocalizedField(offer.description, lang)}</p>
 
-          <div className={styles.ratingRow}>
-            <StarRating rating={offer.rating} />
-            <span className={styles.ratingNum}>{offer.rating} ({offer.reviewCount})</span>
-          </div>
-
-          <div className={styles.tags}>
-            {offer.tags.slice(0, 2).map((tag) => (
-              <span key={tag} className={styles.tagPill}>
-                {t(`categories.${tag}`)}
-              </span>
-            ))}
-          </div>
-
-          <div className={styles.footer}>
+          <div className={styles.metaRow}>
             <span className={styles.duration}>
               {offer.duration.days} {t('common.days')}
             </span>
-            <div className={styles.priceWrap}>
-              <RouteLine
-                variant={offer.type === 'domestic' ? 'domestic' : 'international'}
-                width={28}
-                height={10}
-                d="M2 5 H26"
-                className={styles.priceRoute}
-              />
-              <span className={styles.price}>
-                <span className={styles.priceFrom}>{t('common.from')} </span>
-                {formatPrice(price, offer.currency, lang)}
-              </span>
-            </div>
+            <span className={styles.metaDot} aria-hidden="true" />
+            <span className={styles.rating}>★ {offer.rating}</span>
+          </div>
+
+          <div className={styles.footer}>
+            <span className={styles.price}>
+              <span className={styles.priceFrom}>{t('common.from')} </span>
+              {formatPrice(price, offer.currency, lang)}
+            </span>
+            <span
+              className={`${styles.arrowBtn} ${offer.type === 'domestic' ? styles.arrowDomestic : styles.arrowIntl}`}
+              aria-hidden="true"
+            >
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M3 11L11 3M11 3H4.5M11 3V9.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </span>
           </div>
         </div>
       </Link>

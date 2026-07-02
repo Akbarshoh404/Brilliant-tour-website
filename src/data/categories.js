@@ -1,5 +1,5 @@
 import { img } from './images';
-import mountainHero from '../assets/pics/photo_1_2026-06-30_15-23-57.jpg';
+import mountainHero from '../assets/pics/Uzbekistan/photo_1_2026-06-30_15-23-57.jpg';
 
 // Domestic Uzbekistan tourism categories — /domestic/:categorySlug
 const categories = [

@@ -21,6 +21,9 @@ const EXTRA_FACTS = {
   maldives: { flightTime: '5h 50m', currency: 'MVR' },
   switzerland: { flightTime: '7h 20m', currency: 'CHF' },
   turkey: { flightTime: '3h 30m', currency: 'TRY' },
+  germany: { flightTime: '6h 10m', currency: 'EUR' },
+  korea: { flightTime: '7h 50m', currency: 'KRW' },
+  japan: { flightTime: '8h 40m', currency: 'JPY' },
 };
 
 export default function CountryPage() {

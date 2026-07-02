@@ -4,7 +4,7 @@ import ScrollCue from '../../components/ScrollCue/ScrollCue';
 import StatCounter from '../../components/StatCounter/StatCounter';
 import RouteLine from '../../components/RouteLine/RouteLine';
 import { avatarUrl } from '../../data/images';
-import aboutHero from '../../assets/pics/photo_11_2026-06-30_15-23-57.jpg';
+import aboutHero from '../../assets/pics/Uzbekistan/photo_11_2026-06-30_15-23-57.jpg';
 import styles from './About.module.scss';
 
 const TEAM = [

@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import ScrollCue from '../../components/ScrollCue/ScrollCue';
 import { img } from '../../data/images';
-import contactHero from '../../assets/pics/photo_12_2026-06-30_15-23-57.jpg';
+import contactHero from '../../assets/pics/Uzbekistan/photo_12_2026-06-30_15-23-57.jpg';
 import styles from './Contact.module.scss';
 
 const MAP_IMAGE = img('tashkent-city-map-placeholder', 1000, 700);

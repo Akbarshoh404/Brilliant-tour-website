@@ -2,24 +2,6 @@
 @use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
 
-.hero {
-  @extend %catalogHero;
-}
-.heroOverlay {
-  @extend %catalogHeroOverlay;
-}
-.heroInner {
-  @extend %catalogHeroInner;
-}
-.eyebrow {
-  @extend %catalogEyebrow;
-}
-.title {
-  @extend %catalogTitle;
-}
-.intro {
-  @extend %catalogIntro;
-}
 .sectionInner {
   @extend %catalogSectionInner;
 }

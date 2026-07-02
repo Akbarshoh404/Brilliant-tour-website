@@ -72,325 +72,6 @@
   }
 }
 
-// ── HERO ─────────────────────────────────────────────────────────────────────
-
-.hero {
-  position: relative;
-  height: 100vh;
-  min-height: 640px;
-  overflow: hidden;
-}
-
-// Background slideshow
-.heroBg {
-  position: absolute;
-  inset: 0;
-}
-
-.heroSlide {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  transition: opacity 1.2s ease-in-out;
-
-  @include reduce-motion {
-    transition: none;
-  }
-}
-
-.heroSlideActive {
-  opacity: 1;
-}
-
-// Gradient overlay — strong on left for text, fades right for photo impact
-.heroOverlay {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background:
-    linear-gradient(to right, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.55) 40%, rgba(0, 0, 0, 0.1) 75%, rgba(0, 0, 0, 0) 100%),
-    linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, transparent 40%);
-}
-
-// Content grid
-.heroInner {
-  position: relative;
-  z-index: 2;
-  height: 100%;
-  @include container;
-  padding: $navbar-height $space-lg $space-2xl;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: $space-xl;
-
-  @include respond(mobile) {
-    padding-left: $space-md;
-    padding-right: $space-md;
-    padding-bottom: $space-xl;
-  }
-}
-
-// Left: headline content
-.heroText {
-  max-width: 560px;
-  padding-bottom: $space-lg;
-
-  @include respond(below-desktop) {
-    max-width: 100%;
-  }
-}
-
-.heroEyebrow {
-  @include mono-eyebrow;
-  color: rgba(255, 255, 255, 0.55);
-  display: block;
-  margin-bottom: $space-sm;
-}
-
-.heroTitle {
-  font-family: $font-display;
-  font-size: clamp(3rem, 7vw, 6.5rem);
-  font-weight: 700;
-  color: $color-white;
-  line-height: 1.0;
-  letter-spacing: -0.015em;
-
-  em {
-    font-style: italic;
-    color: $color-gold-300;
-  }
-}
-
-.heroSubtitle {
-  margin-top: $space-md;
-  color: rgba(255, 255, 255, 0.65);
-  font-size: 1rem;
-  max-width: 44ch;
-  line-height: 1.65;
-}
-
-// Search bar embedded in hero
-.heroSearch {
-  margin-top: $space-lg;
-  display: flex;
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: $radius-sm;
-  overflow: hidden;
-  max-width: 440px;
-
-  @include respond(mobile) {
-    max-width: 100%;
-  }
-}
-
-.heroSearchInput {
-  flex: 1;
-  border: none;
-  background: transparent;
-  padding: 0.9rem 1.2rem;
-  font-size: 0.9rem;
-  color: $color-white;
-  min-width: 0;
-
-  &::placeholder {
-    color: rgba(255, 255, 255, 0.45);
-  }
-}
-
-.heroSearchBtn {
-  border: none;
-  background: $color-white;
-  color: $color-ink-900;
-  font-weight: 700;
-  font-size: 0.82rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  padding: 0 1.4rem;
-  cursor: pointer;
-  flex-shrink: 0;
-  transition: background $duration-fast $ease-base, color $duration-fast $ease-base;
-
-  &:hover {
-    background: $color-gold-500;
-    color: $color-white;
-  }
-}
-
-// Right: floating preview cards
-.heroCards {
-  display: flex;
-  align-items: flex-end;
-  gap: $space-sm;
-  flex-shrink: 0;
-  padding-bottom: $space-lg;
-
-  @include respond(below-desktop) {
-    display: none;
-  }
-}
-
-.heroCard {
-  position: relative;
-  border-radius: $radius-md;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
-.heroCardPrimary {
-  width: 210px;
-  height: 308px;
-}
-
-.heroCardSecondary {
-  width: 170px;
-  height: 252px;
-  opacity: 0.88;
-}
-
-.heroCardImg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.heroCardGrad {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.72) 0%, transparent 55%);
-}
-
-.heroCardLabel {
-  position: absolute;
-  bottom: $space-sm;
-  left: $space-sm;
-  right: $space-sm;
-  z-index: 1;
-  color: $color-white;
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-}
-
-// Arrow navigation (right-center of hero)
-.heroArrows {
-  position: absolute;
-  right: $space-md;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 3;
-  display: flex;
-  flex-direction: column;
-  gap: $space-xs;
-
-  @include respond(mobile) {
-    flex-direction: row;
-    top: auto;
-    bottom: 6rem;
-    right: $space-md;
-    transform: none;
-  }
-}
-
-.heroArrowBtn {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 1.5px solid rgba(255, 255, 255, 0.3);
-  background: rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(6px);
-  color: $color-white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: border-color $duration-fast $ease-base, background $duration-fast $ease-base;
-
-  &:hover {
-    border-color: $color-white;
-    background: rgba(255, 255, 255, 0.18);
-  }
-}
-
-// Slide counter (bottom-right)
-.heroCounter {
-  position: absolute;
-  bottom: $space-xl;
-  right: calc(#{$space-md} + 44px + #{$space-xs});
-  z-index: 3;
-  display: flex;
-  align-items: baseline;
-  gap: 0.2em;
-  font-family: $font-mono;
-  pointer-events: none;
-
-  @include respond(mobile) {
-    display: none;
-  }
-}
-
-.heroCounterCurrent {
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: $color-white;
-}
-
-.heroCounterDiv {
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.35);
-  margin: 0 0.1em;
-}
-
-.heroCounterTotal {
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.35);
-}
-
-// Current location indicator (bottom-left)
-.heroLocation {
-  position: absolute;
-  bottom: $space-md;
-  left: $space-lg;
-  z-index: 3;
-  display: flex;
-  align-items: center;
-  gap: $space-xs;
-  pointer-events: none;
-
-  @include respond(mobile) {
-    left: $space-md;
-    bottom: $space-sm;
-  }
-}
-
-.heroLocationDot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background-color: $color-gold-500;
-  flex-shrink: 0;
-}
-
-.heroLocationName {
-  color: $color-white;
-  font-size: 0.85rem;
-  font-weight: 600;
-}
-
-.heroLocationTag {
-  color: rgba(255, 255, 255, 0.45);
-  font-family: $font-mono;
-  font-size: 0.68rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
 // ── SPLIT (Two Routes) ────────────────────────────────────────────────────────
 
 .split {
@@ -503,6 +184,67 @@
   border-bottom: 2px solid $color-gold-500;
   padding-bottom: $space-2xs;
   display: inline;
+}
+
+// ── COUNTRIES ─────────────────────────────────────────────────────────────────
+
+.countries {
+  background-color: $color-plaster-50;
+  @include section-pad;
+}
+
+.countryGrid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: $space-sm;
+  margin-top: $space-xl;
+
+  @include respond(below-desktop) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include respond(mobile) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: $space-xs;
+  }
+}
+
+.countryTile {
+  position: relative;
+  display: block;
+  border-radius: $radius-md;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  @include card-hover;
+}
+
+.countryImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform $duration-slow $ease-out-expo;
+
+  .countryTile:hover & {
+    transform: scale(1.06);
+  }
+}
+
+.countryTile::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.1) 55%, rgba(0, 0, 0, 0) 100%);
+}
+
+.countryName {
+  position: absolute;
+  bottom: $space-sm;
+  left: $space-sm;
+  right: $space-sm;
+  z-index: 1;
+  color: $color-white;
+  font-weight: 700;
+  font-size: 0.95rem;
 }
 
 // ── POPULAR / SEASONAL ────────────────────────────────────────────────────────

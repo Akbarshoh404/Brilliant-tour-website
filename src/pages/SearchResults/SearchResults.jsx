@@ -8,7 +8,7 @@ import ScrollCue from '../../components/ScrollCue/ScrollCue';
 import useFilteredOffers from '../../hooks/useFilteredOffers';
 import useDebounce from '../../hooks/useDebounce';
 import offers from '../../data/offers';
-import searchHero from '../../assets/pics/photo_12_2026-06-30_15-23-57.jpg';
+import searchHero from '../../assets/pics/Uzbekistan/photo_12_2026-06-30_15-23-57.jpg';
 import styles from './SearchResults.module.scss';
 
 export default function SearchResults() {

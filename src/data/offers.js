@@ -1,7 +1,19 @@
 import { img } from './images';
-import chimganLake from '../assets/pics/photo_10_2026-06-30_15-23-57.jpg';
-import chimganTrail from '../assets/pics/photo_2_2026-06-30_15-23-57.jpg';
-import chimganValley from '../assets/pics/photo_5_2026-06-30_15-23-57.jpg';
+import chimganLake from '../assets/pics/Uzbekistan/photo_10_2026-06-30_15-23-57.jpg';
+import chimganTrail from '../assets/pics/Uzbekistan/photo_2_2026-06-30_15-23-57.jpg';
+import chimganValley from '../assets/pics/Uzbekistan/photo_5_2026-06-30_15-23-57.jpg';
+
+import germanyCastle from '../assets/pics/Germany/germany_1.jpg';
+import germanyGate from '../assets/pics/Germany/germany_2.jpg';
+import germanyRhine from '../assets/pics/Germany/germany_4.jpg';
+
+import koreaPalace from '../assets/pics/Korea/korea_1.jpg';
+import koreaSkyline from '../assets/pics/Korea/korea_2.jpg';
+import koreaHanok from '../assets/pics/Korea/korea_4.jpg';
+
+import japanFuji from '../assets/pics/Japan/japan_1.jpg';
+import japanTorii from '../assets/pics/Japan/japan_2.jpg';
+import japanBamboo from '../assets/pics/Japan/japan_5.jpg';
 
 // --- Shared service phrases, kept DRY across offers' includedServices ---
 const SERVICES = {
@@ -345,6 +357,87 @@ const offers = [
     discountPercent: 0,
     rating: 4.6,
     reviewCount: 141,
+  },
+  {
+    id: 'bavaria-castles-rhine',
+    slug: 'bavaria-castles-rhine',
+    type: 'international',
+    country: 'germany',
+    city: 'berlin',
+    categorySlug: null,
+    tags: ['family', 'custom-private'],
+    title: { en: 'Bavarian Castles & the Rhine', ru: 'Баварские замки и Рейн', uz: 'Bavariya qal’alari va Reyn daryosi' },
+    description: {
+      en: 'Neuschwanstein at first light, a Rhine river cruise past hilltop castles, and Berlin’s gates by night.',
+      ru: 'Нойшванштайн на рассвете, круиз по Рейну мимо замков на холмах и берлинские ворота ночью.',
+      uz: 'Tongda Neyshvanshtayn, tepalikdagi qal’alar yonidan Reyn bo‘ylab kruiz va tunda Berlin darvozalari.',
+    },
+    images: [germanyCastle, germanyRhine, germanyGate],
+    duration: { days: 6, nights: 5 },
+    includedServices: pickServices(['hotel', 'transfers', 'breakfast', 'train']),
+    basePrice: 1750,
+    currency: 'USD',
+    packages: buildPackages({ hotelEco: '3★ town hotel', hotelStd: '4★ old-town hotel', hotelPrem: '5★ castle-view hotel', extrasStd: ['Rhine river cruise'], extrasPrem: ['Rhine river cruise', 'Private Neuschwanstein tour'] }),
+    availableDates: buildDates(2),
+    travelLevel: 'easy',
+    isSpecialOffer: false,
+    discountPercent: 0,
+    rating: 4.7,
+    reviewCount: 76,
+  },
+  {
+    id: 'seoul-heritage-skyline',
+    slug: 'seoul-heritage-skyline',
+    type: 'international',
+    country: 'korea',
+    city: 'seoul',
+    categorySlug: null,
+    tags: ['custom-private', 'family'],
+    title: { en: 'Seoul Heritage & Skyline', ru: 'Сеул: наследие и небоскрёбы', uz: 'Seul: meros va osmono‘par binolar' },
+    description: {
+      en: 'Palace courtyards in hanbok, hanok village alleys at blue hour, and the city lit up from N Seoul Tower.',
+      ru: 'Дворцовые дворы в ханбоке, переулки ханок-деревни в синий час и город с высоты Сеульской башни.',
+      uz: 'Hanbokda saroy hovlilari, ko‘k soatdagi hanok qishlog‘i ko‘chalari va Seul minorasidan shahar manzarasi.',
+    },
+    images: [koreaPalace, koreaHanok, koreaSkyline],
+    duration: { days: 5, nights: 4 },
+    includedServices: pickServices(['hotel', 'transfers', 'breakfast', 'localGuide']),
+    basePrice: 1390,
+    currency: 'USD',
+    packages: buildPackages({ hotelEco: '3★ Myeongdong hotel', hotelStd: '4★ Gangnam hotel', hotelPrem: '5★ skyline hotel', extrasStd: ['Hanbok palace experience'], extrasPrem: ['Hanbok palace experience', 'Private hanok village tour'] }),
+    availableDates: buildDates(1),
+    travelLevel: 'easy',
+    isSpecialOffer: true,
+    discountPercent: 10,
+    rating: 4.8,
+    reviewCount: 103,
+  },
+  {
+    id: 'kyoto-fuji-honeymoon',
+    slug: 'kyoto-fuji-honeymoon',
+    type: 'international',
+    country: 'japan',
+    city: 'kyoto',
+    categorySlug: null,
+    tags: ['honeymoon', 'luxury'],
+    title: { en: 'Kyoto & Fuji Honeymoon', ru: 'Медовый месяц: Киото и Фудзи', uz: 'Asal oyi: Kioto va Fudziyama' },
+    description: {
+      en: 'A thousand red torii gates, a bamboo grove at dawn, and Mount Fuji reflected in a still lake.',
+      ru: 'Тысяча красных тории, бамбуковая роща на рассвете и Фудзи, отражённая в спокойном озере.',
+      uz: 'Ming qizil torii darvozasi, tongda bambuk o‘rmoni va sokin ko‘lda aks etgan Fudziyama.',
+    },
+    images: [japanTorii, japanBamboo, japanFuji],
+    duration: { days: 7, nights: 6 },
+    includedServices: pickServices(['hotel', 'transfers', 'breakfast', 'train', 'guide']),
+    basePrice: 2680,
+    currency: 'USD',
+    packages: buildPackages({ hotelEco: '3★ ryokan', hotelStd: '4★ Kyoto ryokan', hotelPrem: '5★ lakeview ryokan suite', extrasStd: ['Bullet train pass'], extrasPrem: ['Bullet train pass', 'Private tea ceremony'] }),
+    availableDates: buildDates(3),
+    travelLevel: 'easy',
+    isSpecialOffer: false,
+    discountPercent: 0,
+    rating: 4.9,
+    reviewCount: 91,
   },
 
   // ===================== DOMESTIC (UZBEKISTAN) =====================

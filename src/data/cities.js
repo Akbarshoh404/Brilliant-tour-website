@@ -1,4 +1,8 @@
 import { img } from './images';
+import berlinGate from '../assets/pics/Germany/germany_2.jpg';
+import seoulSkyline from '../assets/pics/Korea/korea_2.jpg';
+import kyotoTorii from '../assets/pics/Japan/japan_2.jpg';
+import tokyoShibuya from '../assets/pics/Japan/japan_3.jpg';
 
 const cities = [
   { id: 'paris', slug: 'paris', countrySlug: 'france', name: { en: 'Paris', ru: 'Париж', uz: 'Parij' }, heroImage: img('paris-louvre-evening', 1600, 900) },
@@ -10,6 +14,10 @@ const cities = [
   { id: 'interlaken', slug: 'interlaken', countrySlug: 'switzerland', name: { en: 'Interlaken', ru: 'Интерлакен', uz: 'Interlaken' }, heroImage: img('interlaken-alps-valley', 1600, 900) },
   { id: 'istanbul', slug: 'istanbul', countrySlug: 'turkey', name: { en: 'Istanbul', ru: 'Стамбул', uz: 'Istanbul' }, heroImage: img('istanbul-bosphorus-bridge', 1600, 900) },
   { id: 'cappadocia', slug: 'cappadocia', countrySlug: 'turkey', name: { en: 'Cappadocia', ru: 'Каппадокия', uz: 'Kappadokiya' }, heroImage: img('cappadocia-balloons-sunrise', 1600, 900) },
+  { id: 'berlin', slug: 'berlin', countrySlug: 'germany', name: { en: 'Berlin', ru: 'Берлин', uz: 'Berlin' }, heroImage: berlinGate },
+  { id: 'seoul', slug: 'seoul', countrySlug: 'korea', name: { en: 'Seoul', ru: 'Сеул', uz: 'Seul' }, heroImage: seoulSkyline },
+  { id: 'kyoto', slug: 'kyoto', countrySlug: 'japan', name: { en: 'Kyoto', ru: 'Киото', uz: 'Kioto' }, heroImage: kyotoTorii },
+  { id: 'tokyo', slug: 'tokyo', countrySlug: 'japan', name: { en: 'Tokyo', ru: 'Токио', uz: 'Tokio' }, heroImage: tokyoShibuya },
 ];
 
 export default cities;

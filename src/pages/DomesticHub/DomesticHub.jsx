@@ -1,13 +1,11 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
-import ScrollCue from '../../components/ScrollCue/ScrollCue';
+import DestinationHero from '../../components/DestinationHero/DestinationHero';
 import OfferCard from '../../components/OfferCard/OfferCard';
 import categories from '../../data/categories';
 import offers from '../../data/offers';
 import { getLocalizedField } from '../../utils/getLocalizedField';
-import heroImage from '../../assets/pics/photo_10_2026-06-30_15-23-57.jpg';
 import styles from './DomesticHub.module.scss';
 
 export default function DomesticHub() {
@@ -15,18 +13,22 @@ export default function DomesticHub() {
   const lang = i18n.language;
   const featured = offers.filter((o) => o.type === 'domestic').slice(0, 6);
 
+  const heroSlides = categories.map((cat) => ({
+    image: cat.heroImage,
+    name: getLocalizedField(cat.name, lang),
+    sublabel: 'Uzbekistan',
+    to: `/domestic/${cat.slug}`,
+  }));
+
   return (
     <>
-      <section className={styles.hero} style={{ backgroundImage: `url(${heroImage})` }}>
-        <div className={styles.heroOverlay} />
-        <div className={styles.heroInner}>
-          <Breadcrumbs items={[{ label: t('nav.domestic') }]} />
-          <span className={styles.eyebrow}>{t('domestic.eyebrow')}</span>
-          <h1 className={styles.title}>{t('domestic.title')}</h1>
-          <p className={styles.intro}>{t('domestic.intro')}</p>
-        </div>
-        <ScrollCue label={t('common.scroll')} />
-      </section>
+      <DestinationHero
+        eyebrow={t('domestic.eyebrow')}
+        title={t('domestic.title')}
+        subtitle={t('domestic.intro')}
+        slides={heroSlides}
+        scrollLabel={t('common.scroll')}
+      />
 
       <section className={styles.categorySection}>
         <div className={styles.sectionInner}>

@@ -2,20 +2,23 @@ import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
-import ScrollCue from '../../components/ScrollCue/ScrollCue';
+import DestinationHero from '../../components/DestinationHero/DestinationHero';
 import OfferCard from '../../components/OfferCard/OfferCard';
 import FilterDrawer from '../../components/FilterDrawer/FilterDrawer';
 import SortDropdown from '../../components/SortDropdown/SortDropdown';
 import useFilteredOffers from '../../hooks/useFilteredOffers';
 import countries from '../../data/countries';
+import cities from '../../data/cities';
 import offers from '../../data/offers';
-import { img } from '../../data/images';
 import { getLocalizedField } from '../../utils/getLocalizedField';
 import styles from './InternationalHub.module.scss';
 
-const HERO_IMAGE = img('world-map-routes-international', 1920, 700);
 const REGIONS = ['Europe', 'Middle East', 'Asia'];
+
+// The curated countries featured in the hero — matches the Home countries
+// showcase, each paired with its most popular city.
+const FEATURED_SLUGS = ['uae', 'france', 'germany', 'korea', 'japan'];
+const POPULAR_CITY_SLUG = { uae: 'dubai', france: 'paris', germany: 'berlin', korea: 'seoul', japan: 'tokyo' };
 
 function OfferRow({ title, offers: rowOffers, viewAllTo, t }) {
   if (rowOffers.length === 0) return null;
@@ -58,18 +61,26 @@ export default function InternationalHub() {
 
   const allFiltered = useFilteredOffers(intlOffers, filters, sortBy, lang);
 
+  const heroSlides = FEATURED_SLUGS.map((slug) => {
+    const country = countries.find((c) => c.slug === slug);
+    const city = cities.find((c) => c.slug === POPULAR_CITY_SLUG[slug]);
+    return {
+      image: city?.heroImage ?? country.heroImage,
+      name: city ? getLocalizedField(city.name, lang) : getLocalizedField(country.name, lang),
+      sublabel: getLocalizedField(country.name, lang),
+      to: `/international/${slug}`,
+    };
+  });
+
   return (
     <>
-      <section className={styles.hero} style={{ backgroundImage: `url(${HERO_IMAGE})` }}>
-        <div className={styles.heroOverlay} />
-        <div className={styles.heroInner}>
-          <Breadcrumbs items={[{ label: t('nav.international') }]} />
-          <span className={styles.eyebrow}>{t('international.eyebrow')}</span>
-          <h1 className={styles.title}>{t('international.title')}</h1>
-          <p className={styles.intro}>{t('international.intro')}</p>
-        </div>
-        <ScrollCue label={t('common.scroll')} />
-      </section>
+      <DestinationHero
+        eyebrow={t('international.eyebrow')}
+        title={t('international.title')}
+        subtitle={t('international.intro')}
+        slides={heroSlides}
+        scrollLabel={t('common.scroll')}
+      />
 
       <section className={styles.regionSection}>
         <div className={styles.sectionInner}>
