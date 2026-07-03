@@ -1,21 +1,34 @@
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import useScrollDirection from '../../hooks/useScrollDirection';
 import LanguageSwitcher from '../LanguageSwitcher/LanguageSwitcher';
-import SearchOverlay from '../SearchOverlay/SearchOverlay';
+import { useSearchOverlay } from '../../context/SearchOverlayContext';
 import styles from './Navbar.module.scss';
+
+// Routes whose pages don't open with a full-bleed dark hero image — the
+// navbar needs to default to its solid (opaque) look on these, since its
+// transparent/white-text look is designed to sit over a dark photo.
+const ALWAYS_SOLID_PREFIXES = ['/tours/'];
 
 export default function Navbar() {
   const { t } = useTranslation();
+  const { pathname } = useLocation();
   const { scrolledPast } = useScrollDirection(80);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
+  const [query, setQuery] = useState('');
+  const { openSearch } = useSearchOverlay();
+
+  const onSearchSubmit = (e) => {
+    e.preventDefault();
+    openSearch(query.trim());
+  };
 
   const NAV_LINKS = [
     { to: '/international', label: t('nav.international') },
     { to: '/domestic', label: t('nav.domestic') },
+    { to: '/visas', label: t('nav.visas') },
     { to: '/about', label: t('nav.about') },
     { to: '/contact', label: t('nav.contact') },
   ];
@@ -32,14 +45,14 @@ export default function Navbar() {
     const onKey = (e) => {
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
         e.preventDefault();
-        setSearchOpen(true);
+        openSearch();
       }
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, []);
+  }, [openSearch]);
 
-  const solid = scrolledPast || menuOpen;
+  const solid = scrolledPast || menuOpen || ALWAYS_SOLID_PREFIXES.some((p) => pathname.startsWith(p));
 
   return (
     <header className={`${styles.navbar} ${solid ? styles.solid : ''}`}>
@@ -62,10 +75,28 @@ export default function Navbar() {
         </ul>
 
         <div className={styles.actions}>
+          <form className={styles.navSearch} onSubmit={onSearchSubmit}>
+            <svg width="15" height="15" viewBox="0 0 20 20" aria-hidden="true" className={styles.navSearchIcon}>
+              <circle cx="9" cy="9" r="6.5" stroke="currentColor" strokeWidth="1.6" fill="none" />
+              <path d="M14 14l4.5 4.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+            </svg>
+            <input
+              type="text"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder={t('hero.searchPlaceholderShort')}
+              className={styles.navSearchInput}
+              aria-label={t('nav.search')}
+            />
+            <button type="submit" className={styles.navSearchBtn}>
+              {t('nav.search')}
+            </button>
+          </form>
+
           <button
             type="button"
             className={styles.searchBtn}
-            onClick={() => setSearchOpen(true)}
+            onClick={() => openSearch()}
             aria-label={t('nav.search')}
           >
             <svg width="19" height="19" viewBox="0 0 20 20" aria-hidden="true">
@@ -75,7 +106,7 @@ export default function Navbar() {
           </button>
 
           <div className={styles.langDesktop}>
-            <LanguageSwitcher variant={solid ? 'dark' : 'light'} />
+            <LanguageSwitcher variant="light" />
           </div>
 
           <button
@@ -114,8 +145,6 @@ export default function Navbar() {
               <LanguageSwitcher variant="dark" />
             </div>
           </div>
-
-          <SearchOverlay isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
         </>,
         document.body
       )}

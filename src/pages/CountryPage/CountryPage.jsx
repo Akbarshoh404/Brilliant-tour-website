@@ -1,16 +1,21 @@
 import { useMemo, useState } from 'react';
 import { Link, useParams, Navigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import ScrollCue from '../../components/ScrollCue/ScrollCue';
 import OfferCard from '../../components/OfferCard/OfferCard';
 import FilterDrawer from '../../components/FilterDrawer/FilterDrawer';
 import SortDropdown from '../../components/SortDropdown/SortDropdown';
+import ViewToggle from '../../components/ViewToggle/ViewToggle';
+import Lightbox from '../../components/Lightbox/Lightbox';
+import FlagIcon from '../../components/FlagIcon/FlagIcon';
 import useFilteredOffers from '../../hooks/useFilteredOffers';
 import countries from '../../data/countries';
 import cities from '../../data/cities';
 import offers from '../../data/offers';
+import countryGallery from '../../data/countryGallery';
+import visaCountries from '../../data/visaCountries';
 import { getLocalizedField } from '../../utils/getLocalizedField';
 import styles from './CountryPage.module.scss';
 
@@ -32,16 +37,36 @@ export default function CountryPage() {
   const lang = i18n.language;
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [sortBy, setSortBy] = useState('popular');
+  const [viewMode, setViewMode] = useState('grid');
   const [extraFilters, setExtraFilters] = useState({});
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [applyOpen, setApplyOpen] = useState(false);
+  const [applySubmitted, setApplySubmitted] = useState(false);
+  const [applyForm, setApplyForm] = useState({ name: '', phone: '' });
 
   const country = countries.find((c) => c.slug === countrySlug);
   const countryCities = cities.filter((c) => c.countrySlug === countrySlug);
   const filters = useMemo(() => ({ ...extraFilters, type: 'international', countrySlug }), [extraFilters, countrySlug]);
   const allOffersFiltered = useFilteredOffers(offers, filters, sortBy, lang);
+  const gallery = countryGallery[countrySlug] ?? [];
+  const visaInfo = visaCountries.find((v) => v.slug === countrySlug);
 
   if (!country) return <Navigate to="/international" replace />;
 
   const facts = EXTRA_FACTS[country.slug] ?? { flightTime: '—', currency: '—' };
+  const visaStatusKey = country.visaRequirement === 'visa-free' ? 'visaFree' : country.visaRequirement === 'eVisa' ? 'eVisa' : 'visaRequired';
+
+  const toggleApply = () => {
+    setApplySubmitted(false);
+    setApplyForm({ name: '', phone: '' });
+    setApplyOpen((open) => !open);
+  };
+
+  const onApplySubmit = (e) => {
+    e.preventDefault();
+    setApplySubmitted(true);
+  };
 
   return (
     <>
@@ -49,8 +74,21 @@ export default function CountryPage() {
         <div className={styles.heroOverlay} />
         <div className={styles.heroInner}>
           <Breadcrumbs items={[{ label: t('nav.international'), to: '/international' }, { label: getLocalizedField(country.name, lang) }]} />
+          <div className={styles.heroBadgeRow}>
+            <span className={styles.heroFlagBadge}>
+              <FlagIcon iso={country.iso} size={32} className={styles.heroFlagIcon} />
+              {country.region}
+            </span>
+            <span className={styles.heroVisaBadge}>{t(`visas.${visaStatusKey}`)}</span>
+          </div>
           <h1 className={styles.title}>{getLocalizedField(country.name, lang)}</h1>
           <p className={styles.intro}>{getLocalizedField(country.description, lang)}</p>
+          <div className={styles.heroActions}>
+            <a href="#offers" className={styles.heroCta}>{t('country.exploreToursCta')}</a>
+            {visaInfo && (
+              <a href="#visa" className={styles.heroCtaGhost}>{t('country.visaCta')}</a>
+            )}
+          </div>
         </div>
         <ScrollCue label={t('common.scroll')} />
       </section>
@@ -65,6 +103,124 @@ export default function CountryPage() {
           </div>
         </div>
       </section>
+
+      {gallery.length > 0 && (
+        <section className={styles.gallerySection}>
+          <div className={styles.sectionInner}>
+            <h2 className={styles.subheading}>{t('country.galleryTitle')}</h2>
+            <div className={styles.galleryMosaic}>
+              {gallery.map((src, i) => (
+                <button
+                  key={src}
+                  type="button"
+                  className={`${styles.galleryItem} ${styles[`galleryItem${i}`] ?? ''}`}
+                  onClick={() => {
+                    setLightboxIndex(i);
+                    setLightboxOpen(true);
+                  }}
+                >
+                  <img src={src} alt={`${getLocalizedField(country.name, lang)} ${i + 1}`} />
+                </button>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      <Lightbox
+        images={gallery}
+        initialIndex={lightboxIndex}
+        isOpen={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
+        alt={getLocalizedField(country.name, lang)}
+      />
+
+      {visaInfo && (
+        <section id="visa" className={styles.visaSection}>
+          <div className={styles.sectionInner}>
+            <h2 className={styles.subheading}>
+              {t('country.visaTitle')} {getLocalizedField(country.name, lang)}
+            </h2>
+            <div className={styles.visaCard}>
+              <div className={styles.visaHead}>
+                <FlagIcon iso={visaInfo.iso} size={72} className={styles.visaFlag} />
+                <div className={styles.visaHeadText}>
+                  <span className={styles.visaType}>{t(`visas.types.${visaInfo.visaTypeKey}`)}</span>
+                  <p className={styles.visaIntro}>{t('country.visaIntro')}</p>
+                </div>
+                <span className={styles.visaPriceBadge}>
+                  <span className={styles.visaPriceLabel}>{t('visas.priceFrom')}</span>
+                  <span className={styles.visaPriceValue}>${visaInfo.priceFrom}</span>
+                </span>
+              </div>
+
+              <div className={styles.visaFacts}>
+                <div>
+                  <span className={styles.factLabel}>{t('visas.processingTime')}</span>
+                  <span className={styles.factValue}>{visaInfo.processingDays} {t('visas.businessDays')}</span>
+                </div>
+              </div>
+
+              <div className={styles.reqTitle}>{t('visas.requirementsTitle')}</div>
+              <div className={styles.reqList}>
+                {visaInfo.requirementKeys.map((key) => (
+                  <span key={key} className={styles.reqPill}>{t(`visas.req.${key}`)}</span>
+                ))}
+              </div>
+
+              <button
+                type="button"
+                className={`${styles.visaCta} ${applyOpen ? styles.visaCtaActive : ''}`}
+                onClick={toggleApply}
+                aria-expanded={applyOpen}
+              >
+                {t('country.visaCta')}
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" className={styles.visaCtaIcon}>
+                  <path d="M3 5.5L7 9.5L11 5.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
+
+              <AnimatePresence initial={false}>
+                {applyOpen && (
+                  <motion.div
+                    className={styles.visaApplyPanel}
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3, ease: 'easeOut' }}
+                  >
+                    {applySubmitted ? (
+                      <p className={styles.visaApplySuccess}>{t('visas.applySuccess')}</p>
+                    ) : (
+                      <form className={styles.visaApplyForm} onSubmit={onApplySubmit}>
+                        <input
+                          type="text"
+                          required
+                          placeholder={t('contact.name')}
+                          value={applyForm.name}
+                          onChange={(e) => setApplyForm((f) => ({ ...f, name: e.target.value }))}
+                          className={styles.visaApplyInput}
+                        />
+                        <input
+                          type="tel"
+                          required
+                          placeholder={t('visas.applyPhone')}
+                          value={applyForm.phone}
+                          onChange={(e) => setApplyForm((f) => ({ ...f, phone: e.target.value }))}
+                          className={styles.visaApplyInput}
+                        />
+                        <button type="submit" className={styles.visaApplySubmitBtn}>
+                          {t('visas.applySubmit')}
+                        </button>
+                      </form>
+                    )}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          </div>
+        </section>
+      )}
 
       {countryCities.length > 0 && (
         <section className={styles.citiesSection}>
@@ -90,7 +246,7 @@ export default function CountryPage() {
         </section>
       )}
 
-      <section className={styles.offersSection}>
+      <section id="offers" className={styles.offersSection}>
         <div className={styles.sectionInner}>
           <h2 className={styles.subheading}>
             {t('country.offersTitle')} {getLocalizedField(country.name, lang)}
@@ -112,11 +268,14 @@ export default function CountryPage() {
                 <span className={styles.resultCount}>
                   {allOffersFiltered.length} {t('common.results')}
                 </span>
-                <SortDropdown value={sortBy} onChange={setSortBy} />
+                <div className={styles.resultsControls}>
+                  <SortDropdown value={sortBy} onChange={setSortBy} />
+                  <ViewToggle value={viewMode} onChange={setViewMode} />
+                </div>
               </div>
-              <div className={styles.offerGrid}>
+              <div className={viewMode === 'list' ? styles.offerGridList : styles.offerGrid}>
                 {allOffersFiltered.map((offer, i) => (
-                  <OfferCard key={offer.id} offer={offer} index={i} />
+                  <OfferCard key={offer.id} offer={offer} index={i} layout={viewMode} />
                 ))}
                 {allOffersFiltered.length === 0 && <p className={styles.noResults}>{t('common.noResults')}</p>}
               </div>

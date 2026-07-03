@@ -5,8 +5,9 @@ import ScrollCue from '../ScrollCue/ScrollCue';
 import styles from './DestinationHero.module.scss';
 
 // Shared slideshow hero used on Home, DomesticHub and InternationalHub.
-// `slides`: [{ image, name, sublabel, to }] — clicking a slide's preview
-// card or its top label navigates to `to`.
+// `slides`: [{ image, name, sublabel, to }] — clicking a preview card swaps
+// the background to that destination; the destination badge (below the
+// search bar) is the actual link to `to`.
 export default function DestinationHero({
   eyebrow,
   title,
@@ -34,8 +35,29 @@ export default function DestinationHero({
   const nextSlide = () => setSlide((s) => (s + 1) % slides.length);
 
   const current = slides[slide];
-  const next1 = slides[(slide + 1) % slides.length];
-  const next2 = slides[(slide + 2) % slides.length];
+  const next1Idx = (slide + 1) % slides.length;
+  const next2Idx = (slide + 2) % slides.length;
+  const next1 = slides[next1Idx];
+  const next2 = slides[next2Idx];
+
+  const destinationBadge = (
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={`loc-${slide}`}
+        initial={{ opacity: 0, y: 8 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -8 }}
+        transition={{ duration: 0.3 }}
+      >
+        <Link to={current.to} className={styles.heroLocationTop}>
+          <span className={styles.heroLocationDot} aria-hidden="true" />
+          <span className={styles.heroLocationName}>{current.name}</span>
+          {current.sublabel && <span className={styles.heroLocationTag}>{current.sublabel}</span>}
+          <span className={styles.heroLocationArrow} aria-hidden="true">→</span>
+        </Link>
+      </motion.div>
+    </AnimatePresence>
+  );
 
   return (
     <section
@@ -55,23 +77,6 @@ export default function DestinationHero({
       </div>
 
       <div className={styles.heroOverlay} aria-hidden="true" />
-
-      {/* Top-pinned current destination label */}
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={`loc-${slide}`}
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 10 }}
-          transition={{ duration: 0.35 }}
-        >
-          <Link to={current.to} className={styles.heroLocationTop}>
-            <span className={styles.heroLocationDot} aria-hidden="true" />
-            <span className={styles.heroLocationName}>{current.name}</span>
-            {current.sublabel && <span className={styles.heroLocationTag}>{current.sublabel}</span>}
-          </Link>
-        </motion.div>
-      </AnimatePresence>
 
       <div className={styles.heroInner}>
         <motion.div
@@ -123,6 +128,13 @@ export default function DestinationHero({
               </button>
             </motion.form>
           )}
+
+          <motion.div
+            className={styles.heroLocationWrap}
+            variants={{ hidden: { opacity: 0, y: 14 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } } }}
+          >
+            {destinationBadge}
+          </motion.div>
         </motion.div>
 
         {hasMultiple && (
@@ -135,14 +147,19 @@ export default function DestinationHero({
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
               >
-                <Link to={next1.to} className={`${styles.heroCard} ${styles.heroCardPrimary}`}>
+                <button
+                  type="button"
+                  onClick={() => setSlide(next1Idx)}
+                  className={`${styles.heroCard} ${styles.heroCardPrimary}`}
+                  aria-label={next1.name}
+                >
                   <img src={next1.image} alt={next1.name} className={styles.heroCardImg} />
                   <div className={styles.heroCardGrad} aria-hidden="true" />
                   <span className={styles.heroCardLabel}>
                     {next1.name}
                     {next1.sublabel && <em>{next1.sublabel}</em>}
                   </span>
-                </Link>
+                </button>
               </motion.div>
             </AnimatePresence>
 
@@ -154,14 +171,18 @@ export default function DestinationHero({
                 exit={{ opacity: 0, y: -24 }}
                 transition={{ duration: 0.45, delay: 0.07, ease: [0.22, 1, 0.36, 1] }}
               >
-                <Link to={next2.to} className={`${styles.heroCard} ${styles.heroCardSecondary}`}>
+                <button
+                  type="button"
+                  onClick={() => setSlide(next2Idx)}
+                  className={`${styles.heroCard} ${styles.heroCardSecondary}`}
+                >
                   <img src={next2.image} alt={next2.name} className={styles.heroCardImg} />
                   <div className={styles.heroCardGrad} aria-hidden="true" />
                   <span className={styles.heroCardLabel}>
                     {next2.name}
                     {next2.sublabel && <em>{next2.sublabel}</em>}
                   </span>
-                </Link>
+                </button>
               </motion.div>
             </AnimatePresence>
           </div>
@@ -169,18 +190,18 @@ export default function DestinationHero({
       </div>
 
       {hasMultiple && (
-        <div className={styles.heroArrows}>
-          <button className={styles.heroArrowBtn} onClick={prevSlide} aria-label="Previous slide">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-              <path d="M9 2L4 7l5 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </button>
-          <button className={styles.heroArrowBtn} onClick={nextSlide} aria-label="Next slide">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-              <path d="M5 2l5 5-5 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </button>
-        </div>
+        <button className={`${styles.heroArrowBtn} ${styles.heroArrowLeft}`} onClick={prevSlide} aria-label="Previous slide">
+          <svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M9 2L4 7l5 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </button>
+      )}
+      {hasMultiple && (
+        <button className={`${styles.heroArrowBtn} ${styles.heroArrowRight}`} onClick={nextSlide} aria-label="Next slide">
+          <svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M5 2l5 5-5 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </button>
       )}
 
       {hasMultiple && (

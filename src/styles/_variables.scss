@@ -10,10 +10,10 @@ $color-ink-700: #272727;
 $color-plaster-50: #f5f5f5;
 $color-plaster-100: #e0e0e0;
 
-// --- Brand accent — single warm accent (burnt terracotta) ---
-$color-gold-600: #9e4616;   // dark hover
-$color-gold-500: #c85c1e;   // primary accent
-$color-gold-300: #e8906a;   // light accent (on dark)
+// --- Brand accent — single accent (electric lime) ---
+$color-gold-600: #95bf27;   // dark hover
+$color-gold-500: #c6ff34;   // primary accent
+$color-gold-300: #ddff85;   // light accent (on dark)
 
 // --- Distinction colour (route lines + domestic vs intl labels only) ---
 $color-turquoise-600: #136e8a;
@@ -32,6 +32,12 @@ $color-stone-600: #666666;  // body text on light
 $font-display: 'Cormorant Garamond', serif;
 $font-body: 'Plus Jakarta Sans', sans-serif;
 $font-mono: 'IBM Plex Mono', monospace;
+
+// --- Feature display fonts (Latin-only — no Cyrillic glyphs, so RU/UZ
+// locales fall back to $font-display automatically) ---
+$font-citadel: 'Citadel', $font-display;   // hero headlines
+$font-milker: 'Milker', $font-body;        // wordmark / standalone brand text
+$font-monr: 'Monr', 'Unbounded', $font-body;   // bold display — Unbounded covers Cyrillic + Latin
 
 // --- Spacing scale ---
 $space-3xs: 0.25rem;
@@ -68,7 +74,7 @@ $z-drawer: 250;
 $shadow-card: 0 2px 20px rgba(0, 0, 0, 0.07);
 $shadow-card-hover: 0 16px 48px rgba(0, 0, 0, 0.18);
 $shadow-elevated: 0 32px 80px rgba(0, 0, 0, 0.30);
-$shadow-gold-glow: 0 0 0 1px rgba(200, 92, 30, 0.28), 0 12px 36px rgba(200, 92, 30, 0.16);
+$shadow-gold-glow: 0 0 0 1px rgba(198, 255, 52, 0.35), 0 12px 36px rgba(198, 255, 52, 0.2);
 $shadow-turquoise-glow: 0 0 0 1px rgba(26, 147, 184, 0.28), 0 12px 36px rgba(26, 147, 184, 0.14);
 
 // --- Glass surfaces ---

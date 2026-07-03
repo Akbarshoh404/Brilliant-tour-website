@@ -53,7 +53,8 @@
     "titleLine2": "Silk Road",
     "titleLine3": "and beyond",
     "subtitle": "Two routes, one journey — handcrafted trips across Uzbekistan and the world.",
-    "searchPlaceholder": "Where to next? Try \"Samarkand\" or \"Maldives\""
+    "searchPlaceholder": "Where to next? Try \"Samarkand\" or \"Maldives\"",
+    "searchPlaceholderShort": "Where to next?"
   },
   "home": {
     "splitTitle": "Two routes, one journey",
@@ -69,6 +70,10 @@
     "seasonalTitle": "Seasonal offers",
     "seasonalText": "Limited-time routes timed to the best season for each destination.",
     "statsTitle": "Brilliant, by the numbers",
+    "statYears": "Years of routing",
+    "statTravelers": "Happy travelers",
+    "statRoutes": "Curated routes",
+    "statRating": "Average rating",
     "whyTitle": "Why travel with Brilliant",
     "why1Title": "Local route experts",
     "why1Text": "Guides who grew up on these roads, from the Registan to the Pamirs.",
@@ -140,21 +145,28 @@
     "eyebrow": "Uzbekistan Tourism",
     "title": "The road through Uzbekistan",
     "intro": "Silk Road cities, desert horizons and mountain air — closer than you think.",
-    "featuredTitle": "Featured Uzbekistan journeys"
+    "featuredTitle": "Featured Uzbekistan journeys",
+    "allOffers": "All Uzbekistan journeys"
   },
   "country": {
     "bestSeason": "Best season",
     "flightTime": "Flight time",
     "visaNote": "Visa",
     "currency": "Currency",
+    "galleryTitle": "Highlights",
     "citiesTitle": "Cities to explore",
-    "offersTitle": "Journeys in"
+    "offersTitle": "Journeys in",
+    "visaTitle": "Visa for",
+    "visaIntro": "Here's exactly what it takes to get a visa for this destination — we can handle the whole process for you.",
+    "visaCta": "Start your visa application",
+    "exploreToursCta": "Explore tours"
   },
   "city": {
     "offersTitle": "Journeys in"
   },
   "filters": {
     "destination": "Destination",
+    "category": "Category",
     "priceRange": "Price range",
     "duration": "Duration",
     "departureDate": "Departure date",
@@ -199,6 +211,9 @@
     "packageComparison": "Choose your package",
     "availableDates": "Available dates",
     "viewGallery": "View all photos",
+    "saveToWishlist": "Save to wishlist",
+    "savedToWishlist": "Saved to wishlist",
+    "reviewsTitle": "Reviews",
     "relatedTitle": "You might also like",
     "economy": "Economy",
     "standard": "Standard",
@@ -212,11 +227,19 @@
     "dateLimited": "Limited",
     "dateSoldOut": "Sold out",
     "selectDate": "Select a date",
+    "pickStartDate": "Pick a start date",
+    "tripDates": "Trip dates",
+    "calendarWeekdays": ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
     "totalPrice": "Total price",
+    "reviews": "reviews",
     "travelLevel": "Travel level",
     "easy": "Easy",
     "moderate": "Moderate",
-    "adventure": "Adventure"
+    "adventure": "Adventure",
+    "groupSize": "Group size",
+    "people": "people",
+    "minAge": "Age requirement",
+    "anyAge": "All ages"
   },
   "cruises": {
     "eyebrow": "Cruises",
@@ -228,13 +251,59 @@
     "balcony": "Balcony suite"
   },
   "visas": {
-    "eyebrow": "Visas",
-    "title": "Know before you go",
-    "intro": "Visa requirements for every destination we route to.",
+    "eyebrow": "Visa Services",
+    "title": "Visas, handled for you",
+    "intro": "We prepare and file visa applications for 15+ countries, plus apostille, translation, and other document services — so you're not doing embassy paperwork alone.",
     "searchPlaceholder": "Search a country",
     "visaFree": "Visa-free",
     "eVisa": "E-visa",
-    "visaRequired": "Visa required"
+    "visaRequired": "Visa required",
+    "countriesTitle": "Countries we handle",
+    "processingTime": "Processing time",
+    "priceFrom": "Service fee from",
+    "businessDays": "business days",
+    "requirementsTitle": "What you'll need",
+    "applyCta": "Start application",
+    "applyPhone": "Phone number",
+    "applySubmit": "Send request",
+    "applySuccess": "Request received — we'll call you within a day to start your application.",
+    "types": {
+      "schengen": "Schengen Visa (Type C)",
+      "evisa": "E-Visa",
+      "visaOnArrival": "Visa on arrival",
+      "embassyVisa": "Embassy visa",
+      "sponsoredVisa": "Sponsored visa"
+    },
+    "req": {
+      "passport": "Valid passport",
+      "photos": "Passport photos",
+      "application": "Completed application form",
+      "funds": "Proof of funds",
+      "insurance": "Travel insurance",
+      "invitation": "Invitation letter",
+      "itinerary": "Travel itinerary",
+      "employment": "Employment letter"
+    },
+    "extraTitle": "Apostille & other document services",
+    "extraIntro": "Getting a visa is often the easy part — the paperwork behind it is where people get stuck. We handle that too.",
+    "extra": {
+      "apostille": { "title": "Apostille", "text": "International legalization of Uzbek documents — diplomas, certificates, powers of attorney — for use abroad." },
+      "translation": { "title": "Notarized translation", "text": "Certified translation of documents into English, Russian, or the destination country's language." },
+      "invitation": { "title": "Invitation letters", "text": "Business and tourist invitation letters drafted and, where needed, notarized." },
+      "insurance": { "title": "Travel insurance", "text": "Medical and trip insurance that meets embassy requirements." },
+      "legalization": { "title": "Document legalization", "text": "Consular legalization for documents an apostille doesn't cover." },
+      "express": { "title": "Express processing", "text": "Rush service when your travel dates are close." }
+    },
+    "processTitle": "How it works",
+    "process": [
+      { "title": "Consultation", "text": "Tell us where you're going — we confirm the exact visa type and document list." },
+      { "title": "Document prep", "text": "We prepare, translate, and apostille your paperwork if needed." },
+      { "title": "Submission", "text": "We file the application and track it until a decision is made." },
+      { "title": "Visa in hand", "text": "You collect your passport with the visa — ready to book the trip." }
+    ],
+    "ctaTitle": "Not sure which visa you need?",
+    "ctaText": "Tell us your destination and travel dates — we'll tell you exactly what's required.",
+    "ctaBtn": "Ask us"
   },
   "about": {
     "eyebrow": "About Brilliant",
@@ -243,7 +312,11 @@
     "story": "Brilliant began as a small Tashkent agency guiding travelers across Uzbekistan. We grew outward the same way the Silk Road did — one trusted route at a time.",
     "missionTitle": "Our mission",
     "mission": "To plan every journey, near or far, with the same care a caravan once took crossing the desert.",
-    "teamTitle": "The people behind the routes"
+    "teamTitle": "The people behind the routes",
+    "statYears": "Years routing",
+    "statTravelers": "Travelers",
+    "statRoutes": "Routes",
+    "statCities": "Cities with local teams"
   },
   "contact": {
     "eyebrow": "Contact",
@@ -255,6 +328,27 @@
     "send": "Send message",
     "sent": "Message sent — we'll reply within a day.",
     "officeTitle": "Our office",
-    "officeAddress": "12 Amir Temur Avenue, Tashkent, Uzbekistan"
+    "officeAddress": "12 Amir Temur Avenue, Tashkent, Uzbekistan",
+    "phone": "Phone",
+    "phoneValue": "+998 (33) 299-00-00",
+    "instagram": "Instagram",
+    "instagramValue": "@brillianttours_uz",
+    "telegram": "Telegram",
+    "telegramValue": "@brillianttours_uz",
+    "hours": "Office hours",
+    "hoursValue": "Mon–Sat, 9:00–19:00 (Tashkent time)",
+    "servicesTitle": "What we handle",
+    "servicesIntro": "Visas worldwide, study, tourism, cruises, translations, apostille, consulting, and flight tickets — one team for the whole trip.",
+    "services": [
+      "Visas worldwide",
+      "Study abroad",
+      "Domestic & international tourism",
+      "Cruises",
+      "Translations",
+      "Apostille",
+      "Consulting",
+      "Flight tickets"
+    ],
+    "directCta": "Message us on Instagram or Telegram — we usually reply within the hour."
   }
 }

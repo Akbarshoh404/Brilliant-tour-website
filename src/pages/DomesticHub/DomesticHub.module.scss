@@ -6,71 +6,43 @@
   @extend %catalogSectionInner;
 }
 
-.categorySection,
-.featuredSection {
+.offersSection {
   background-color: $color-plaster-50;
 }
 
-.tileGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: $space-md;
+.listingHeading {
+  margin-bottom: $space-lg;
 
-  @include respond(below-desktop) {
-    grid-template-columns: repeat(2, 1fr);
+  h2 {
+    font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+    color: $color-ink-900;
   }
 }
 
-.tile {
-  position: relative;
-  display: block;
-  border-radius: $radius-md;
-  overflow: hidden;
-  aspect-ratio: 4 / 3;
-  @include card-hover;
+.gridLayout {
+  @extend %catalogGridLayout;
 }
-
-.tileImg {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.results {
+  @extend %catalogResults;
 }
-
-.tile::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  @include gradient-overlay(rgba(11, 28, 40, 0.05), rgba(11, 28, 40, 0.72));
+.resultsHeader {
+  @extend %catalogResultsHeader;
 }
-
-.tileLabel {
-  position: absolute;
-  bottom: $space-sm;
-  left: $space-sm;
-  z-index: 1;
-  color: $color-white;
-  font-weight: 700;
-  font-size: 1.05rem;
+.resultCount {
+  @extend %catalogResultCount;
 }
-
-.subheading {
-  font-size: 1.5rem;
-  margin-bottom: $space-md;
+.resultsControls {
+  @extend %catalogResultsControls;
 }
-
+.mobileFilterBtn {
+  @extend %catalogMobileFilterBtn;
+}
 .offerGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: $space-md;
-
-  @include respond(below-desktop) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @include respond(mobile) {
-    grid-template-columns: 1fr;
-  }
+  @extend %catalogOfferGrid;
+}
+.offerGridList {
+  @extend %catalogOfferGridList;
+}
+.noResults {
+  @extend %catalogNoResults;
 }

@@ -9,6 +9,8 @@ const countries = [
   {
     id: 'fr',
     slug: 'france',
+    flag: '🇫🇷',
+    iso: 'fr',
     name: { en: 'France', ru: 'Франция', uz: 'Fransiya' },
     region: 'Europe',
     heroImage: franceHero,
@@ -23,6 +25,8 @@ const countries = [
   {
     id: 'ae',
     slug: 'uae',
+    flag: '🇦🇪',
+    iso: 'ae',
     name: { en: 'United Arab Emirates', ru: 'ОАЭ', uz: 'Birlashgan Arab Amirliklari' },
     region: 'Middle East',
     heroImage: uaeHero,
@@ -37,6 +41,8 @@ const countries = [
   {
     id: 'mv',
     slug: 'maldives',
+    flag: '🇲🇻',
+    iso: 'mv',
     name: { en: 'Maldives', ru: 'Мальдивы', uz: 'Maldiv orollari' },
     region: 'Asia',
     heroImage: img('maldives-overwater-villas', 1920, 1000),
@@ -51,6 +57,8 @@ const countries = [
   {
     id: 'ch',
     slug: 'switzerland',
+    flag: '🇨🇭',
+    iso: 'ch',
     name: { en: 'Switzerland', ru: 'Швейцария', uz: 'Shveytsariya' },
     region: 'Europe',
     heroImage: img('swiss-alps-mountains-lake', 1920, 1000),
@@ -65,6 +73,8 @@ const countries = [
   {
     id: 'tr',
     slug: 'turkey',
+    flag: '🇹🇷',
+    iso: 'tr',
     name: { en: 'Türkiye', ru: 'Турция', uz: 'Turkiya' },
     region: 'Middle East',
     heroImage: img('istanbul-mosque-skyline', 1920, 1000),
@@ -79,6 +89,8 @@ const countries = [
   {
     id: 'de',
     slug: 'germany',
+    flag: '🇩🇪',
+    iso: 'de',
     name: { en: 'Germany', ru: 'Германия', uz: 'Germaniya' },
     region: 'Europe',
     heroImage: germanyHero,
@@ -93,6 +105,8 @@ const countries = [
   {
     id: 'kr',
     slug: 'korea',
+    flag: '🇰🇷',
+    iso: 'kr',
     name: { en: 'South Korea', ru: 'Южная Корея', uz: 'Janubiy Koreya' },
     region: 'Asia',
     heroImage: koreaHero,
@@ -107,6 +121,8 @@ const countries = [
   {
     id: 'jp',
     slug: 'japan',
+    flag: '🇯🇵',
+    iso: 'jp',
     name: { en: 'Japan', ru: 'Япония', uz: 'Yaponiya' },
     region: 'Asia',
     heroImage: japanHero,

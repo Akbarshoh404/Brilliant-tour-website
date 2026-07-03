@@ -21,6 +21,86 @@
   @extend %catalogSectionInner;
 }
 
+.heroBadgeRow {
+  display: flex;
+  align-items: center;
+  gap: $space-xs;
+  margin-bottom: $space-sm;
+  flex-wrap: wrap;
+}
+
+.heroFlagBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-3xs;
+  background-color: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: $radius-pill;
+  padding: 0.35rem 0.8rem 0.35rem 0.4rem;
+  font-family: $font-mono;
+  font-size: 0.76rem;
+  letter-spacing: 0.02em;
+  color: $color-white;
+}
+
+.heroFlagIcon {
+  width: 1.3rem;
+  height: 0.95rem;
+  border-radius: 3px;
+}
+
+.heroVisaBadge {
+  display: inline-flex;
+  align-items: center;
+  background-color: $color-gold-500;
+  border-radius: $radius-pill;
+  padding: 0.35rem 0.9rem;
+  font-family: $font-mono;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: $color-ink-950;
+}
+
+.heroActions {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+  margin-top: $space-lg;
+  flex-wrap: wrap;
+}
+
+.heroCta {
+  @include btn-primary;
+  padding: 0.85rem 1.8rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.heroCtaGhost {
+  display: inline-flex;
+  align-items: center;
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  border-radius: $radius-pill;
+  padding: 0.85rem 1.8rem;
+  font-family: $font-mono;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: $color-white;
+  text-decoration: none;
+  transition: border-color $duration-fast $ease-base, background-color $duration-fast $ease-base;
+
+  &:hover {
+    border-color: $color-gold-500;
+    background-color: rgba(198, 255, 52, 0.12);
+  }
+}
+
 .factsSection {
   background-color: $color-plaster-50;
   padding-top: 0;
@@ -54,6 +134,254 @@
 .factValue {
   font-weight: 700;
   color: $color-ink-900;
+}
+
+.gallerySection {
+  background-color: $color-white;
+}
+
+.galleryMosaic {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 140px;
+  gap: $space-sm;
+
+  @include respond(below-desktop) {
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 110px;
+  }
+
+  @include respond(mobile) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 90px;
+  }
+}
+
+.galleryItem {
+  position: relative;
+  display: block;
+  border: none;
+  padding: 0;
+  border-radius: $radius-sm;
+  overflow: hidden;
+  cursor: zoom-in;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform $duration-slow $ease-out-expo;
+  }
+
+  &:hover img {
+    transform: scale(1.06);
+  }
+}
+
+.galleryItem0 {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.galleryItem3 {
+  grid-column: span 2;
+
+  @include respond(mobile) {
+    grid-column: span 1;
+  }
+}
+
+.visaSection {
+  background-color: $color-white;
+}
+
+.visaCard {
+  background-color: $color-ink-950;
+  border-radius: $radius-lg;
+  padding: $space-xl;
+
+  @include respond(mobile) {
+    padding: $space-lg;
+  }
+}
+
+.visaHead {
+  display: flex;
+  align-items: flex-start;
+  gap: $space-md;
+  margin-bottom: $space-lg;
+
+  @include respond(mobile) {
+    flex-wrap: wrap;
+  }
+}
+
+.visaFlag {
+  width: 4.5rem;
+  height: 3.3rem;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.visaHeadText {
+  flex: 1;
+  min-width: 200px;
+}
+
+.visaType {
+  display: block;
+  font-family: $font-mono;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: $color-gold-500;
+  margin-bottom: $space-3xs;
+}
+
+.visaIntro {
+  color: $color-mist;
+  font-size: 0.94rem;
+  line-height: 1.6;
+  max-width: 56ch;
+}
+
+.visaPriceBadge {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  flex-shrink: 0;
+}
+
+.visaPriceLabel {
+  font-family: $font-mono;
+  font-size: 0.64rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: $color-mist;
+}
+
+.visaPriceValue {
+  font-family: $font-monr;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: $color-gold-500;
+}
+
+.visaFacts {
+  display: flex;
+  gap: $space-lg;
+  padding: $space-md 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  margin-bottom: $space-md;
+
+  .factLabel {
+    color: $color-mist;
+  }
+
+  .factValue {
+    color: $color-white;
+  }
+}
+
+.reqTitle {
+  font-family: $font-mono;
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: $color-mist;
+  margin-bottom: $space-2xs;
+}
+
+.reqList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-3xs;
+  margin-bottom: $space-lg;
+}
+
+.reqPill {
+  font-family: $font-mono;
+  font-size: 0.7rem;
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: $color-mist;
+  padding: 0.25rem 0.6rem;
+  border-radius: $radius-pill;
+}
+
+.visaCta {
+  @include btn-primary;
+  display: inline-flex;
+  align-items: center;
+  gap: $space-3xs;
+  padding: 0.85rem 1.8rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+}
+
+.visaCtaActive {
+  background-color: $color-gold-300;
+}
+
+.visaCtaIcon {
+  transition: transform $duration-fast $ease-base;
+
+  .visaCtaActive & {
+    transform: rotate(180deg);
+  }
+}
+
+.visaApplyPanel {
+  overflow: hidden;
+}
+
+.visaApplyForm {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2xs;
+  padding-top: $space-md;
+  max-width: 26rem;
+}
+
+.visaApplyInput {
+  padding: 0.75rem 0.95rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: $radius-sm;
+  background-color: rgba(255, 255, 255, 0.06);
+  font-size: 0.9rem;
+  color: $color-white;
+
+  &::placeholder {
+    color: $color-mist;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $color-gold-500;
+  }
+}
+
+.visaApplySubmitBtn {
+  @include btn-primary;
+  margin-top: $space-3xs;
+  padding: 0.8rem 1.4rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  align-self: flex-start;
+}
+
+.visaApplySuccess {
+  padding-top: $space-md;
+  font-size: 0.92rem;
+  color: $color-gold-500;
+  font-weight: 600;
+  line-height: 1.5;
+  max-width: 40ch;
 }
 
 .citiesSection,
@@ -122,11 +450,17 @@
 .resultCount {
   @extend %catalogResultCount;
 }
+.resultsControls {
+  @extend %catalogResultsControls;
+}
 .mobileFilterBtn {
   @extend %catalogMobileFilterBtn;
 }
 .offerGrid {
   @extend %catalogOfferGrid;
+}
+.offerGridList {
+  @extend %catalogOfferGridList;
 }
 .noResults {
   @extend %catalogNoResults;

@@ -35,6 +35,54 @@ export default function Contact() {
         <ScrollCue label={t('common.scroll')} />
       </section>
 
+      <section className={styles.quickSection}>
+        <div className={styles.sectionInner}>
+          <div className={styles.quickGrid}>
+            <a href="tel:+998332990000" className={styles.quickCard}>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 3h3l2 5-2 1a10 10 0 005 5l1-2 5 2v3a2 2 0 01-2 2C9 19 1 11 1 5a2 2 0 012-2z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" /></svg>
+              <div>
+                <span className={styles.quickLabel}>{t('contact.phone')}</span>
+                <span className={styles.quickValue}>{t('contact.phoneValue')}</span>
+              </div>
+            </a>
+            <a href="https://instagram.com/brillianttours_uz" target="_blank" rel="noreferrer" className={styles.quickCard}>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2" y="2" width="16" height="16" rx="4.5" stroke="currentColor" strokeWidth="1.5" /><circle cx="10" cy="10" r="4" stroke="currentColor" strokeWidth="1.5" /><circle cx="14.6" cy="5.4" r="1" fill="currentColor" /></svg>
+              <div>
+                <span className={styles.quickLabel}>{t('contact.instagram')}</span>
+                <span className={styles.quickValue}>{t('contact.instagramValue')}</span>
+              </div>
+            </a>
+            <a href="https://t.me/brillianttours_uz" target="_blank" rel="noreferrer" className={styles.quickCard}>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M18 3L2 9.5l5 1.8M18 3l-3 14-6.5-5M18 3L7 12.3v4.7l2.5-2.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+              <div>
+                <span className={styles.quickLabel}>{t('contact.telegram')}</span>
+                <span className={styles.quickValue}>{t('contact.telegramValue')}</span>
+              </div>
+            </a>
+            <div className={styles.quickCard}>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="7.5" stroke="currentColor" strokeWidth="1.5" /><path d="M10 5.5V10l3 2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+              <div>
+                <span className={styles.quickLabel}>{t('contact.hours')}</span>
+                <span className={styles.quickValue}>{t('contact.hoursValue')}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.servicesSection}>
+        <div className={styles.sectionInner}>
+          <h2 className={styles.servicesTitle}>{t('contact.servicesTitle')}</h2>
+          <p className={styles.servicesIntro}>{t('contact.servicesIntro')}</p>
+          <div className={styles.servicesGrid}>
+            {t('contact.services', { returnObjects: true }).map((service) => (
+              <span key={service} className={styles.servicePill}>{service}</span>
+            ))}
+          </div>
+          <p className={styles.directCta}>{t('contact.directCta')}</p>
+        </div>
+      </section>
+
       <section className={styles.section}>
         <div className={styles.sectionInner}>
           <div className={styles.layout}>

@@ -46,15 +46,6 @@
   }
 }
 
-@mixin card-hover-premium {
-  transition: transform $duration-base $ease-out-expo, box-shadow $duration-base $ease-base;
-
-  &:hover {
-    transform: translateY(-6px);
-    box-shadow: $shadow-gold-glow, $shadow-card-hover;
-  }
-}
-
 @mixin section-pad {
   padding: $section-pad-desktop $space-lg;
 
@@ -92,7 +83,7 @@
 // Primary CTA — accent fill, no pill (rectangular with small radius)
 @mixin btn-primary {
   background-color: $color-gold-500;
-  color: $color-white;
+  color: $color-ink-950;
   border: none;
   border-radius: $radius-sm;
   font-weight: 700;
@@ -120,9 +111,9 @@
   transition: background-color $duration-fast $ease-base, color $duration-fast $ease-base, border-color $duration-fast $ease-base;
 
   &:hover {
-    background-color: rgba(200, 92, 30, 0.1);
+    background-color: rgba(198, 255, 52, 0.14);
     border-color: $color-gold-500;
-    color: $color-gold-500;
+    color: $color-gold-600;
   }
 
   @include focus-ring;

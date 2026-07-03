@@ -2,7 +2,7 @@
 @use '../../styles/mixins' as *;
 
 .page {
-  background-color: $color-plaster-50;
+  background-color: $color-white;
   padding-bottom: $space-3xl;
 
   @include respond(mobile) {
@@ -10,146 +10,83 @@
   }
 }
 
-// ===== 100VH HERO =====
-.hero {
-  position: relative;
-  min-height: 100vh;
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding-top: $navbar-height;
-  isolation: isolate;
-}
-
-.heroOverlay {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 0;
-  background-image: linear-gradient(
-    to bottom,
-    rgba($color-ink-950, 0.45) 0%,
-    rgba($color-ink-950, 0.1) 40%,
-    rgba($color-ink-950, 0.6) 70%,
-    rgba($color-ink-950, 0.97) 100%
-  );
-}
-
-.heroTop {
-  position: absolute;
-  top: calc(#{$navbar-height} + #{$space-md});
-  left: 0;
-  right: 0;
-  z-index: 1;
+.breadcrumbRow {
   @include container;
-  padding: 0 $space-lg;
+  padding: calc(#{$navbar-height} + #{$space-md}) $space-lg $space-sm;
 
   @include respond(mobile) {
-    padding: 0 $space-md;
+    padding: calc(#{$navbar-height} + #{$space-sm}) $space-md $space-sm;
   }
 }
 
-.heroContent {
-  position: relative;
-  z-index: 1;
+// ===== PRODUCT SECTION =====
+.productLayout {
   @include container;
-  padding: 0 $space-lg $space-2xl;
-  display: flex;
-  flex-direction: column;
-  gap: $space-sm;
+  padding: $space-md $space-lg $space-2xl;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: $space-2xl;
+  align-items: flex-start;
 
-  @include respond(mobile) {
-    padding: 0 $space-md $space-xl;
+  @include respond(below-desktop) {
+    grid-template-columns: 1fr;
+    gap: $space-lg;
+    padding: $space-sm $space-md $space-xl;
   }
 }
 
-.heroEyebrow {
-  @include mono-eyebrow;
-  color: $color-gold-300;
-}
-
-.heroTitle {
-  font-size: clamp(2.5rem, 6vw, 4rem);
-  color: $color-white;
-  max-width: 16ch;
-  line-height: 1.05;
-}
-
-.heroMeta {
-  display: flex;
-  align-items: center;
-  gap: $space-sm;
-  font-size: 0.92rem;
-  color: $color-mist;
-  flex-wrap: wrap;
-}
-
-.levelPill {
-  font-family: $font-mono;
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  padding: 0.2rem 0.6rem;
-  border-radius: $radius-pill;
-  background-color: $glass-bg;
-  border: 1px solid $glass-border;
-  color: $color-white;
-}
-
-.easy { color: $color-turquoise-300; }
-.moderate { color: $color-gold-300; }
-.adventure { color: #f99072; }
-
-.galleryBtn {
-  margin-top: $space-xs;
-  align-self: flex-start;
-  background-color: $glass-bg;
-  border: 1px solid $glass-border;
-  color: $color-white;
-  border-radius: $radius-pill;
-  padding: 0.6rem 1.2rem;
-  font-size: 0.85rem;
-  font-weight: 600;
-  transition: background-color $duration-fast $ease-base;
-  backdrop-filter: blur(8px);
-
-  &:hover {
-    background-color: $glass-bg-hover;
-  }
-}
-
-// ===== GALLERY THUMBNAILS (below hero) =====
 .gallery {
-  @include container;
-  padding: $space-sm $space-lg 0;
-  display: flex;
-  gap: $space-sm;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding-bottom: $space-sm;
+  position: sticky;
+  top: calc(#{$navbar-height} + #{$space-md});
 
-  @include respond(mobile) {
-    padding: $space-sm $space-md 0;
+  @include respond(below-desktop) {
+    position: static;
   }
 }
 
-.galleryThumb {
-  flex: 0 0 160px;
-  height: 110px;
+.mainImageWrap {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  background-color: $color-plaster-50;
+  border-radius: $radius-md;
+  overflow: hidden;
   border: none;
   padding: 0;
+  cursor: zoom-in;
+
+  @include respond(mobile) {
+    aspect-ratio: 1 / 1;
+  }
+}
+
+.mainImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform $duration-slow $ease-out-expo;
+
+  .mainImageWrap:hover & {
+    transform: scale(1.03);
+  }
+}
+
+.thumbRow {
+  margin-top: $space-sm;
+  display: flex;
+  gap: $space-xs;
+}
+
+.thumb {
+  flex: 0 0 72px;
+  height: 72px;
   border-radius: $radius-sm;
   overflow: hidden;
-  scroll-snap-align: start;
-  transition: opacity $duration-fast $ease-base, box-shadow $duration-fast $ease-base;
-
-  &:hover {
-    opacity: 0.85;
-    box-shadow: $shadow-gold-glow;
-  }
+  border: 2px solid transparent;
+  padding: 0;
+  background-color: $color-plaster-50;
+  opacity: 0.6;
+  transition: opacity $duration-fast $ease-base, border-color $duration-fast $ease-base;
 
   img {
     width: 100%;
@@ -157,32 +94,230 @@
     object-fit: cover;
   }
 
-  @include respond(mobile) {
-    flex-basis: 120px;
-    height: 85px;
+  &:hover {
+    opacity: 0.9;
   }
 }
 
-// ===== LAYOUT =====
-.layout {
-  @include container;
-  padding: $space-xl $space-lg 0;
-  display: grid;
-  grid-template-columns: 1fr 340px;
-  gap: $space-2xl;
+.thumbActive {
+  border-color: $color-ink-900;
+  opacity: 1;
+}
+
+// ===== INFO PANEL =====
+.infoPanel {
+  display: flex;
+  flex-direction: column;
   align-items: flex-start;
+}
 
-  @include respond(below-desktop) {
-    grid-template-columns: 1fr;
-    padding: $space-lg $space-md 0;
+.badge {
+  font-family: $font-mono;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: $color-clay-500;
+  border: 1px solid $color-clay-500;
+  border-radius: $radius-sm;
+  padding: 0.25rem 0.6rem;
+  margin-bottom: $space-sm;
+}
+
+.brandEyebrow {
+  @include mono-eyebrow;
+  color: $color-stone-600;
+}
+
+.productTitle {
+  margin-top: $space-2xs;
+  font-size: clamp(1.9rem, 3.6vw, 2.6rem);
+  line-height: 1.08;
+  color: $color-ink-950;
+}
+
+.ratingRow {
+  margin-top: $space-sm;
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2xs;
+}
+
+.stars {
+  color: $color-gold-600;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+}
+
+.ratingNum {
+  font-family: $font-mono;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: $color-ink-900;
+}
+
+.reviewCount {
+  font-family: $font-mono;
+  font-size: 0.8rem;
+  color: $color-stone-600;
+  text-decoration: underline;
+}
+
+.priceRow {
+  margin-top: $space-md;
+  font-family: $font-mono;
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: $color-ink-950;
+}
+
+.optionGroup {
+  margin-top: $space-lg;
+  width: 100%;
+}
+
+.optionLabel {
+  display: block;
+  font-family: $font-mono;
+  font-size: 0.78rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: $color-stone-600;
+  margin-bottom: $space-xs;
+
+  strong {
+    color: $color-ink-950;
+    text-transform: capitalize;
   }
 }
 
-.main {
-  min-width: 0;
+.swatches {
+  display: flex;
+  gap: $space-2xs;
+  flex-wrap: wrap;
 }
+
+.swatch {
+  border: 1.5px solid $color-plaster-100;
+  border-radius: $radius-sm;
+  padding: 0.6rem 1.1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: $color-ink-900;
+  background-color: $color-white;
+  text-transform: capitalize;
+  transition: border-color $duration-fast $ease-base, background-color $duration-fast $ease-base, color $duration-fast $ease-base;
+
+  &:hover {
+    border-color: $color-ink-900;
+  }
+}
+
+.swatchActive {
+  background-color: $color-ink-950;
+  border-color: $color-ink-950;
+  color: $color-white;
+}
+
+.bookBtn {
+  margin-top: $space-lg;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-2xs;
+  background-color: $color-ink-950;
+  color: $color-white;
+  border: none;
+  border-radius: $radius-sm;
+  padding: 1rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: background-color $duration-fast $ease-base;
+
+  &:hover {
+    background-color: $color-ink-800;
+  }
+}
+
+.wishlistBtn {
+  margin-top: $space-xs;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-2xs;
+  background-color: $color-white;
+  color: $color-ink-900;
+  border: 1.5px solid $color-plaster-100;
+  border-radius: $radius-sm;
+  padding: 0.9rem;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  transition: border-color $duration-fast $ease-base, color $duration-fast $ease-base;
+
+  &:hover {
+    border-color: $color-ink-900;
+  }
+}
+
+.wishlistActive {
+  border-color: $color-gold-600;
+  color: $color-gold-600;
+}
+
+.divider {
+  width: 100%;
+  border: none;
+  border-top: 1px solid $color-plaster-100;
+  margin: $space-lg 0;
+}
+
+.description {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: $color-stone-600;
+}
+
+.factsGrid {
+  margin-top: $space-lg;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-md;
+  width: 100%;
+  padding-top: $space-lg;
+  border-top: 1px solid $color-plaster-100;
+}
+
+.factBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.factBlockLabel {
+  font-family: $font-mono;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: $color-stone-600;
+}
+
+.factBlockValue {
+  font-weight: 600;
+  color: $color-ink-950;
+  text-transform: capitalize;
+}
+
+.easy { color: $color-turquoise-500; }
+.moderate { color: $color-gold-600; }
+.adventure { color: $color-clay-500; }
 
 .tags {
+  margin-top: $space-md;
   display: flex;
   flex-wrap: wrap;
   gap: $space-2xs;
@@ -193,27 +328,26 @@
   font-size: 0.68rem;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  background-color: $color-plaster-100;
+  background-color: $color-plaster-50;
   color: $color-stone-600;
   padding: 0.2rem 0.6rem;
   border-radius: $radius-pill;
 }
 
-.description {
-  margin-top: $space-lg;
-  font-size: 1.05rem;
-  line-height: 1.75;
-  color: $color-stone-600;
-  max-width: 70ch;
+// ===== DETAILS BELOW PRODUCT SECTION =====
+.detailsSection {
+  @include container;
+  padding: $space-2xl $space-lg 0;
+  border-top: 1px solid $color-plaster-100;
+
+  @include respond(mobile) {
+    padding: $space-xl $space-md 0;
+  }
 }
 
 .blockHeading {
   font-size: 1.3rem;
   margin-bottom: $space-md;
-}
-
-.servicesBlock {
-  margin-top: $space-2xl;
 }
 
 .servicesList {
@@ -239,89 +373,104 @@
   }
 }
 
-.comparisonBlock {
+
+// ===== REVIEWS =====
+.reviewsSection {
+  background-color: $color-plaster-50;
   margin-top: $space-2xl;
+  padding: $space-2xl 0;
 }
 
-.datesBlock {
-  margin-top: $space-2xl;
-}
+.reviewsInner {
+  @include container;
+  padding: 0 $space-lg;
 
-// ===== STICKY BOOKING PANEL =====
-.booking {
-  position: sticky;
-  top: calc(#{$navbar-height} + #{$space-md});
-
-  @include respond(below-desktop) {
-    display: none;
+  @include respond(mobile) {
+    padding: 0 $space-md;
   }
 }
 
-.bookingCard {
+.reviewsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: $space-md;
+  margin-bottom: $space-lg;
+}
+
+.reviewsSummary {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+}
+
+.reviewsScore {
+  font-family: $font-monr;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: $color-ink-950;
+}
+
+.reviewsCount {
+  display: block;
+  font-family: $font-mono;
+  font-size: 0.78rem;
+  color: $color-stone-600;
+  margin-top: 2px;
+}
+
+.reviewsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $space-md;
+
+  @include respond(mobile) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.reviewCard {
   background-color: $color-white;
   border-radius: $radius-md;
-  padding: $space-lg;
+  padding: $space-md;
   box-shadow: $shadow-card;
 }
 
-.bookingPriceRow {
+.reviewHead {
   display: flex;
-  align-items: baseline;
-  gap: $space-2xs;
-  flex-wrap: wrap;
+  align-items: center;
+  gap: $space-xs;
+  margin-bottom: $space-xs;
 }
 
-.bookingPriceFrom {
-  color: $color-stone-600;
-  font-size: 0.85rem;
+.reviewAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
 }
 
-.bookingPrice {
-  font-family: $font-mono;
-  font-size: 1.7rem;
+.reviewName {
+  display: block;
   font-weight: 700;
+  font-size: 0.9rem;
   color: $color-ink-900;
 }
 
-.bookingPriceUnit {
+.reviewDate {
+  display: block;
+  font-family: $font-mono;
+  font-size: 0.7rem;
   color: $color-stone-600;
-  font-size: 0.8rem;
 }
 
-.bookingTier {
-  margin-top: $space-2xs;
-  font-size: 0.85rem;
-  color: $color-gold-500;
-  font-weight: 600;
-  text-transform: capitalize;
-}
-
-.bookingDate {
-  margin-top: $space-sm;
-  font-size: 0.85rem;
+.reviewComment {
+  margin-top: $space-xs;
+  font-size: 0.9rem;
+  line-height: 1.6;
   color: $color-stone-600;
-
-  strong {
-    color: $color-ink-900;
-  }
-}
-
-.bookingCta {
-  margin-top: $space-md;
-  width: 100%;
-  background-color: $color-gold-500;
-  color: $color-ink-950;
-  border: none;
-  border-radius: $radius-pill;
-  padding: 0.85rem;
-  font-weight: 700;
-  font-size: 0.95rem;
-  transition: background-color $duration-fast $ease-base, box-shadow $duration-fast $ease-base;
-
-  &:hover {
-    background-color: $color-gold-300;
-    box-shadow: $shadow-gold-glow;
-  }
 }
 
 // ===== MOBILE STICKY BAR =====
@@ -357,8 +506,8 @@
 }
 
 .mobileBarCta {
-  background-color: $color-gold-500;
-  color: $color-ink-950;
+  background-color: $color-ink-950;
+  color: $color-white;
   border: none;
   border-radius: $radius-pill;
   padding: 0.7rem 1.4rem;

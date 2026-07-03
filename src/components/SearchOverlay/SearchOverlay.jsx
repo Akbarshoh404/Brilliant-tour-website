@@ -14,12 +14,13 @@ const POPULAR_SEARCHES = ['Samarkand', 'Dubai', 'Maldives', 'Bukhara', 'Honeymoo
 
 const STATIC_SERVICES = [
   { id: 'svc-visa', label: { en: 'Visa support', ru: 'Визовая поддержка', uz: 'Viza yordami' }, to: '/visas' },
-  { id: 'svc-custom', label: { en: 'Custom & private planning', ru: 'Индивидуальное планирование', uz: 'Individual rejalashtirish' }, to: '/collections/custom-private' },
-  { id: 'svc-group', label: { en: 'Group bookings', ru: 'Групповые бронирования', uz: 'Guruhli buyurtmalar' }, to: '/collections/group' },
-  { id: 'svc-insurance', label: { en: 'Travel insurance', ru: 'Страхование путешествий', uz: 'Sayohat sug‘urtasi' }, to: '/contact' },
+  { id: 'svc-apostille', label: { en: 'Apostille', ru: 'Апостиль', uz: 'Apostil' }, to: '/visas' },
+  { id: 'svc-custom', label: { en: 'Custom & private planning', ru: 'Индивидуальное планирование', uz: 'Individual rejalashtirish' }, to: '/contact' },
+  { id: 'svc-group', label: { en: 'Group bookings', ru: 'Групповые бронирования', uz: 'Guruhli buyurtmalar' }, to: '/contact' },
+  { id: 'svc-insurance', label: { en: 'Travel insurance', ru: 'Страхование путешествий', uz: 'Sayohat sug‘urtasi' }, to: '/visas' },
 ];
 
-export default function SearchOverlay({ isOpen, onClose }) {
+export default function SearchOverlay({ isOpen, onClose, initialQuery = '' }) {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const lang = i18n.language;
@@ -36,7 +37,7 @@ export default function SearchOverlay({ isOpen, onClose }) {
   if (isOpen !== prevIsOpen) {
     setPrevIsOpen(isOpen);
     if (isOpen) {
-      setQuery('');
+      setQuery(initialQuery);
       setActiveIndex(-1);
     }
   }

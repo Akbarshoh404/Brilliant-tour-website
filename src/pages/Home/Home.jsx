@@ -1,13 +1,12 @@
-import { useState, useRef } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import DestinationHero from '../../components/DestinationHero/DestinationHero';
-import OfferCard from '../../components/OfferCard/OfferCard';
+import FlagIcon from '../../components/FlagIcon/FlagIcon';
+import { useSearchOverlay } from '../../context/SearchOverlayContext';
 import StatCounter from '../../components/StatCounter/StatCounter';
 import LogoMarquee from '../../components/LogoMarquee/LogoMarquee';
-import offers from '../../data/offers';
-import collections from '../../data/collections';
 import homeCountries from '../../data/homeCountries';
 import { avatarUrl } from '../../data/images';
 import { getLocalizedField } from '../../utils/getLocalizedField';
@@ -24,20 +23,11 @@ import styles from './Home.module.scss';
 // Uzbekistan highlights used to interleave with the international countries
 // in the Home hero slideshow — a mix of domestic + international spots.
 const DOMESTIC_SPOTS = [
-  { image: p1,  name: 'Charvak Lake',     sublabel: 'Uzbekistan', to: '/domestic/mountain' },
-  { image: p3,  name: 'Aydarkul Lake',    sublabel: 'Uzbekistan', to: '/domestic/desert'   },
-  { image: p7,  name: 'Fergana Valley',   sublabel: 'Uzbekistan', to: '/domestic/cultural' },
-  { image: p9,  name: 'Beldersay Peak',   sublabel: 'Uzbekistan', to: '/domestic/mountain' },
-  { image: p13, name: 'Aral Sea Region',  sublabel: 'Uzbekistan', to: '/domestic/desert'   },
-];
-
-const POPULAR_IDS = [
-  'samarkand-registan-discovery',
-  'dubai-skyline-escape',
-  'maldives-overwater-retreat',
-  'kyzylkum-desert-safari',
-  'paris-romance-weekend',
-  'chimgan-mountains-trek',
+  { image: p1,  name: 'Charvak Lake',     to: '/domestic/mountain' },
+  { image: p3,  name: 'Aydarkul Lake',    to: '/domestic/desert'   },
+  { image: p7,  name: 'Fergana Valley',   to: '/domestic/cultural' },
+  { image: p9,  name: 'Beldersay Peak',   to: '/domestic/mountain' },
+  { image: p13, name: 'Aral Sea Region',  to: '/domestic/desert'   },
 ];
 
 const TESTIMONIALS = [
@@ -67,33 +57,25 @@ const TESTIMONIAL_TEXT = {
 export default function Home() {
   const { t, i18n } = useTranslation();
   const lang = i18n.language;
-  const navigate = useNavigate();
+  const { openSearch } = useSearchOverlay();
   const [query, setQuery] = useState('');
-  const popularScrollRef = useRef(null);
-  const seasonalScrollRef = useRef(null);
-
-  const popularPrev = () => popularScrollRef.current?.scrollBy({ left: -340, behavior: 'smooth' });
-  const popularNext = () => popularScrollRef.current?.scrollBy({ left:  340, behavior: 'smooth' });
-  const seasonalPrev = () => seasonalScrollRef.current?.scrollBy({ left: -340, behavior: 'smooth' });
-  const seasonalNext = () => seasonalScrollRef.current?.scrollBy({ left:  340, behavior: 'smooth' });
-
-  const popularOffers = POPULAR_IDS.map((id) => offers.find((o) => o.id === id)).filter(Boolean);
-  const seasonalOffers = offers.filter((o) => o.isSpecialOffer);
 
   const onSearchSubmit = (e) => {
     e.preventDefault();
-    navigate(query.trim() ? `/search?q=${encodeURIComponent(query.trim())}` : '/search');
+    openSearch(query.trim());
   };
 
   // Interleave Uzbekistan spots with the international countries so the
   // hero mixes domestic + international destinations.
+  const uzbekistanLabel = getLocalizedField(homeCountries[0].name, lang);
+  const domesticSpots = DOMESTIC_SPOTS.map((spot) => ({ ...spot, sublabel: uzbekistanLabel }));
   const internationalSpots = homeCountries.slice(1).map((c) => ({
     image: c.image,
     name: getLocalizedField(c.name, lang),
     sublabel: t('nav.international'),
     to: c.to,
   }));
-  const heroSlides = DOMESTIC_SPOTS.flatMap((spot, i) => [spot, internationalSpots[i]]).filter(Boolean);
+  const heroSlides = domesticSpots.flatMap((spot, i) => [spot, internationalSpots[i]]).filter(Boolean);
 
   return (
     <>
@@ -129,7 +111,7 @@ export default function Home() {
             <Link to="/domestic" className={`${styles.splitCard} ${styles.splitCardDomestic}`}>
               <img src={p1} alt="" className={styles.splitCardImg} />
               <div className={styles.splitCardBody}>
-                <span className={styles.splitCardEyebrow}>Domestic</span>
+                <span className={styles.splitCardEyebrow}>{t('nav.domestic')}</span>
                 <span className={styles.splitCardLabel}>{t('home.domesticCta')}</span>
                 <span className={styles.splitCardArrow} aria-hidden="true">→</span>
               </div>
@@ -137,7 +119,7 @@ export default function Home() {
             <Link to="/international" className={`${styles.splitCard} ${styles.splitCardIntl}`}>
               <img src={internationalCardImg} alt="" className={styles.splitCardImg} />
               <div className={styles.splitCardBody}>
-                <span className={styles.splitCardEyebrow}>International</span>
+                <span className={styles.splitCardEyebrow}>{t('nav.international')}</span>
                 <span className={styles.splitCardLabel}>{t('home.internationalCta')}</span>
                 <span className={styles.splitCardArrow} aria-hidden="true">→</span>
               </div>
@@ -161,26 +143,11 @@ export default function Home() {
               >
                 <Link to={c.to} className={styles.countryTile}>
                   <img src={c.image} alt={getLocalizedField(c.name, lang)} className={styles.countryImg} />
-                  <span className={styles.countryName}>{getLocalizedField(c.name, lang)}</span>
+                  <span className={styles.countryName}>
+                    <FlagIcon iso={c.iso} size={32} className={styles.countryFlagIcon} /> {getLocalizedField(c.name, lang)}
+                  </span>
                 </Link>
               </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ===== POPULAR DESTINATIONS ===== */}
-      <section className={styles.popular}>
-        <div className={styles.sectionInner}>
-          <div className={styles.sectionRow}>
-            <SectionHeading title={t('home.popularTitle')} text={t('home.popularText')} />
-            <CarouselArrows onPrev={popularPrev} onNext={popularNext} />
-          </div>
-          <div className={styles.popularScroll} ref={popularScrollRef}>
-            {popularOffers.map((offer, i) => (
-              <div key={offer.id} className={styles.popularItem}>
-                <OfferCard offer={offer} index={i} />
-              </div>
             ))}
           </div>
         </div>
@@ -190,51 +157,10 @@ export default function Home() {
       <section className={styles.stats}>
         <div className={styles.sectionInner}>
           <div className={styles.statsGrid}>
-            <StatCounter value={18}    suffix="+" label="Years of routing" />
-            <StatCounter value={42000} suffix="+" label="Happy travelers"  />
-            <StatCounter value={120}   suffix="+" label="Curated routes"   />
-            <StatCounter value={4.8}             label="Average rating"    />
-          </div>
-        </div>
-      </section>
-
-      {/* ===== TRAVEL YOUR WAY ===== */}
-      <section className={styles.travelWay}>
-        <div className={styles.sectionInner}>
-          <SectionHeading title={t('home.travelYourWayTitle')} text={t('home.travelYourWayText')} />
-          <div className={styles.tileGrid}>
-            {collections.map((c, i) => (
-              <motion.div
-                key={c.tag}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.45, delay: Math.min(i * 0.04, 0.3) }}
-              >
-                <Link to={`/collections/${c.tag}`} className={styles.tile}>
-                  <img src={c.heroImage} alt="" className={styles.tileImg} />
-                  <div className={styles.tileOverlay} aria-hidden="true" />
-                  <span className={styles.tileLabel}>{getLocalizedField(c.name, lang)}</span>
-                </Link>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ===== SEASONAL OFFERS ===== */}
-      <section className={styles.seasonal}>
-        <div className={styles.sectionInner}>
-          <div className={styles.sectionRow}>
-            <SectionHeading title={t('home.seasonalTitle')} text={t('home.seasonalText')} />
-            <CarouselArrows onPrev={seasonalPrev} onNext={seasonalNext} />
-          </div>
-          <div className={styles.popularScroll} ref={seasonalScrollRef}>
-            {seasonalOffers.map((offer, i) => (
-              <div key={offer.id} className={styles.popularItem}>
-                <OfferCard offer={offer} index={i} />
-              </div>
-            ))}
+            <StatCounter value={18}    suffix="+" label={t('home.statYears')} />
+            <StatCounter value={42000} suffix="+" label={t('home.statTravelers')} />
+            <StatCounter value={120}   suffix="+" label={t('home.statRoutes')} />
+            <StatCounter value={4.8}             label={t('home.statRating')} />
           </div>
         </div>
       </section>
@@ -306,23 +232,6 @@ function SectionHeading({ title, text, light = false }) {
       <h2>{title}</h2>
       {text && <p>{text}</p>}
     </motion.div>
-  );
-}
-
-function CarouselArrows({ onPrev, onNext }) {
-  return (
-    <div className={styles.carouselArrows}>
-      <button className={styles.carouselArrow} onClick={onPrev} aria-label="Previous">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <path d="M10 3L5 8l5 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      </button>
-      <button className={styles.carouselArrow} onClick={onNext} aria-label="Next">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <path d="M6 3l5 5-5 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      </button>
-    </div>
   );
 }
 

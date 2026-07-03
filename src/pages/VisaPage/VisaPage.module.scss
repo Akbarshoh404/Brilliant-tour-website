@@ -1,0 +1,478 @@
+@use '../../styles/catalog' as *;
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.hero {
+  @extend %catalogHero;
+}
+.heroOverlay {
+  @extend %catalogHeroOverlay;
+}
+.heroInner {
+  @extend %catalogHeroInner;
+}
+.eyebrow {
+  @extend %catalogEyebrow;
+}
+.title {
+  @extend %catalogTitle;
+}
+.intro {
+  @extend %catalogIntro;
+}
+.sectionInner {
+  @extend %catalogSectionInner;
+}
+
+// ── COUNTRIES ─────────────────────────────────────────────────────────────────
+
+.countriesSection {
+  background-color: $color-plaster-50;
+}
+
+.subheading {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  margin-bottom: $space-md;
+}
+
+.subheadingLight {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  color: $color-white;
+  margin-bottom: $space-xl;
+  text-align: center;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2xs;
+  margin-bottom: $space-lg;
+}
+
+.chip {
+  background-color: $color-white;
+  border: 1px solid $color-plaster-100;
+  border-radius: $radius-pill;
+  padding: 0.5rem 1.1rem;
+  font-size: 0.85rem;
+  color: $color-ink-900;
+  transition: background-color $duration-fast $ease-base, color $duration-fast $ease-base;
+}
+
+.chipActive {
+  background-color: $color-ink-950;
+  border-color: $color-ink-950;
+  color: $color-white;
+}
+
+.countryGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $space-md;
+
+  @include respond(below-desktop) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond(mobile) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.countryCard {
+  position: relative;
+  background-color: $color-white;
+  border-radius: $radius-md;
+  padding: $space-md;
+  box-shadow: $shadow-card;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  @include card-hover;
+
+  &:focus-visible {
+    outline: none;
+    border-color: $color-gold-500;
+  }
+}
+
+.countryCardActive {
+  border-color: $color-gold-500;
+  box-shadow: $shadow-card-hover;
+}
+
+.priceBadge {
+  position: absolute;
+  top: $space-md;
+  right: $space-md;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  line-height: 1.2;
+}
+
+.priceBadgeLabel {
+  font-family: $font-mono;
+  font-size: 0.6rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: $color-stone-600;
+}
+
+.priceBadgeValue {
+  font-family: $font-monr;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: $color-gold-600;
+}
+
+.countryHead {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+  margin-bottom: $space-md;
+  padding-right: 4.5rem;
+}
+
+.countryFlag {
+  width: 2.5rem;
+  height: 1.85rem;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.countryName {
+  font-size: 1.05rem;
+  color: $color-ink-950;
+}
+
+.countryType {
+  display: block;
+  font-family: $font-mono;
+  font-size: 0.7rem;
+  letter-spacing: 0.03em;
+  color: $color-gold-600;
+  margin-top: 2px;
+}
+
+.countryFacts {
+  display: flex;
+  gap: $space-lg;
+  padding: $space-sm 0;
+  border-top: 1px solid $color-plaster-100;
+  border-bottom: 1px solid $color-plaster-100;
+  margin-bottom: $space-sm;
+}
+
+.factLabel {
+  display: block;
+  font-family: $font-mono;
+  font-size: 0.64rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: $color-stone-600;
+}
+
+.factValue {
+  display: block;
+  font-weight: 700;
+  color: $color-ink-950;
+  margin-top: 2px;
+}
+
+.reqTitle {
+  font-family: $font-mono;
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: $color-stone-600;
+  margin-bottom: $space-2xs;
+}
+
+.reqList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-3xs;
+}
+
+.reqPill {
+  font-family: $font-mono;
+  font-size: 0.66rem;
+  background-color: $color-plaster-50;
+  border: 1px solid $color-plaster-100;
+  color: $color-stone-600;
+  padding: 0.2rem 0.55rem;
+  border-radius: $radius-pill;
+}
+
+.applyBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-3xs;
+  width: 100%;
+  margin-top: $space-md;
+  padding: 0.7rem 1rem;
+  border: 1px solid $color-ink-950;
+  border-radius: $radius-pill;
+  background-color: $color-ink-950;
+  color: $color-white;
+  font-family: $font-mono;
+  font-size: 0.78rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  transition: background-color $duration-fast $ease-base, color $duration-fast $ease-base;
+
+  &:hover {
+    background-color: $color-gold-500;
+    border-color: $color-gold-500;
+    color: $color-ink-950;
+  }
+}
+
+.applyBtnActive {
+  background-color: $color-gold-500;
+  border-color: $color-gold-500;
+  color: $color-ink-950;
+}
+
+.applyBtnIcon {
+  transition: transform $duration-fast $ease-base;
+
+  .applyBtnActive & {
+    transform: rotate(180deg);
+  }
+}
+
+.applyPanel {
+  overflow: hidden;
+}
+
+.applyForm {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2xs;
+  padding-top: $space-md;
+}
+
+.applyInput {
+  padding: 0.65rem 0.85rem;
+  border: 1px solid $color-plaster-100;
+  border-radius: $radius-sm;
+  background-color: $color-plaster-50;
+  font-size: 0.88rem;
+  color: $color-ink-950;
+
+  &:focus {
+    outline: none;
+    border-color: $color-gold-500;
+  }
+}
+
+.applySubmitBtn {
+  @include btn-primary;
+  margin-top: $space-3xs;
+  padding: 0.7rem 1rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.applySuccess {
+  padding-top: $space-md;
+  font-size: 0.88rem;
+  color: $color-gold-600;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+// ── PROCESS ──────────────────────────────────────────────────────────────────
+
+.processSection {
+  background-color: $color-ink-950;
+}
+
+.processGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $space-lg;
+
+  @include respond(below-desktop) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond(mobile) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.processStep {
+  h3 {
+    color: $color-white;
+    font-size: 1.1rem;
+    margin: $space-xs 0 $space-2xs;
+  }
+
+  p {
+    color: $color-mist;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+}
+
+.processNum {
+  font-family: $font-monr;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: $color-gold-500;
+}
+
+// ── EXTRA SERVICES ───────────────────────────────────────────────────────────
+
+.extraSection {
+  background-color: $color-plaster-50;
+}
+
+.extraIntro {
+  margin-top: -$space-sm;
+  margin-bottom: $space-xl;
+  color: $color-stone-600;
+  max-width: 60ch;
+  font-size: 0.98rem;
+}
+
+.extraGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $space-md;
+
+  @include respond(below-desktop) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond(mobile) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.extraCard {
+  position: relative;
+  background-color: $color-white;
+  border-radius: $radius-lg;
+  padding: $space-lg;
+  border: 1px solid $color-plaster-100;
+  box-shadow: $shadow-card;
+  overflow: hidden;
+  transition: border-color $duration-fast $ease-base, transform $duration-base $ease-out-expo, box-shadow $duration-base $ease-base;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: $color-gold-500;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform $duration-base $ease-out-expo;
+  }
+
+  &:hover {
+    border-color: $color-gold-500;
+    transform: translateY(-6px);
+    box-shadow: $shadow-card-hover;
+
+    &::before {
+      transform: scaleX(1);
+    }
+  }
+
+  h3 {
+    font-size: 1.1rem;
+    margin: $space-md 0 $space-2xs;
+  }
+
+  p {
+    color: $color-stone-600;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+}
+
+.extraIconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: rgba(198, 255, 52, 0.16);
+}
+
+.extraIcon {
+  color: $color-gold-600;
+}
+
+.extraPrice {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: $space-md;
+  background-color: $color-plaster-50;
+  border: 1px solid $color-plaster-100;
+  border-radius: $radius-pill;
+  padding: 0.35rem 0.85rem;
+  font-family: $font-mono;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: $color-ink-950;
+}
+
+// ── CTA ──────────────────────────────────────────────────────────────────────
+
+.ctaSection {
+  background-color: $color-plaster-50;
+  padding: 0 $space-lg $space-3xl;
+
+  @include respond(mobile) {
+    padding: 0 $space-md $space-xl;
+  }
+}
+
+.ctaInner {
+  @include container;
+  background-color: $color-ink-950;
+  border-radius: $radius-lg;
+  padding: $space-2xl;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-sm;
+
+  @include respond(mobile) {
+    padding: $space-xl $space-md;
+  }
+}
+
+.ctaTitle {
+  color: $color-white;
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+}
+
+.ctaText {
+  color: $color-mist;
+  max-width: 44ch;
+  font-size: 0.95rem;
+}
+
+.ctaBtn {
+  @include btn-primary;
+  margin-top: $space-sm;
+  padding: 0.85rem 2rem;
+  font-size: 0.88rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  display: inline-block;
+  text-decoration: none;
+}

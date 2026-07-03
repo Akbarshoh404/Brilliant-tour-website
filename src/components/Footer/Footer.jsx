@@ -5,9 +5,8 @@ import RouteLine from '../RouteLine/RouteLine';
 import styles from './Footer.module.scss';
 
 const SOCIAL = [
-  { id: 'instagram', label: 'Instagram', href: 'https://instagram.com' },
-  { id: 'twitter', label: 'Twitter', href: 'https://twitter.com' },
-  { id: 'facebook', label: 'Facebook', href: 'https://facebook.com' },
+  { id: 'instagram', label: 'Instagram', href: 'https://instagram.com/brillianttours_uz' },
+  { id: 'telegram', label: 'Telegram', href: 'https://t.me/brillianttours_uz' },
 ];
 
 export default function Footer() {
@@ -28,7 +27,7 @@ export default function Footer() {
       links: [
         { label: t('nav.international'), to: '/international' },
         { label: t('nav.domestic'), to: '/domestic' },
-        { label: t('nav.cruises'), to: '/cruises' },
+        { label: t('nav.visas'), to: '/visas' },
       ],
     },
     {
@@ -58,6 +57,7 @@ export default function Footer() {
               Brilliant
             </Link>
             <p className={styles.tagline}>{t('footer.tagline')}</p>
+            <a href="tel:+998332990000" className={styles.footerPhone}>{t('contact.phoneValue')}</a>
             <div className={styles.social}>
               {SOCIAL.map((s) => (
                 <a key={s.id} href={s.href} target="_blank" rel="noreferrer" className={styles.socialLink}>

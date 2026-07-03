@@ -52,10 +52,11 @@
 }
 
 %catalogTitle {
-  font-size: clamp(2.6rem, 6vw, 4.2rem);
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  text-transform: uppercase;
   color: $color-white;
   max-width: 18ch;
-  line-height: 1.05;
+  line-height: 1.1;
 }
 
 %catalogIntro {
@@ -126,6 +127,18 @@
   @include respond(mobile) {
     grid-template-columns: 1fr;
   }
+}
+
+%catalogOfferGridList {
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+}
+
+%catalogResultsControls {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
 }
 
 %catalogNoResults {

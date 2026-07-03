@@ -48,7 +48,7 @@
   z-index: 2;
   height: 100%;
   @include container;
-  padding: calc(#{$navbar-height} + #{$space-xl} + #{$space-sm}) $space-lg $space-2xl;
+  padding: calc(#{$navbar-height} + #{$space-lg}) $space-lg $space-2xl;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
@@ -64,8 +64,6 @@
 .heroText {
   max-width: 560px;
   padding-bottom: $space-lg;
-  max-height: 100%;
-  overflow: hidden;
 
   @include respond(below-desktop) {
     max-width: 100%;
@@ -80,16 +78,17 @@
 }
 
 .heroTitle {
-  font-family: $font-display;
-  font-size: clamp(2.2rem, 4.8vw, 4.4rem);
-  font-weight: 700;
+  font-family: $font-monr;
+  font-size: clamp(1.9rem, 4.2vw, 3.8rem);
+  font-weight: 800;
+  text-transform: uppercase;
   color: $color-white;
-  line-height: 1.08;
-  letter-spacing: -0.015em;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
 
   em {
-    font-style: italic;
-    color: $color-gold-300;
+    font-style: normal;
+    color: $color-gold-500;
   }
 }
 
@@ -146,7 +145,7 @@
 
   &:hover {
     background: $color-gold-500;
-    color: $color-white;
+    color: $color-ink-950;
   }
 }
 
@@ -169,6 +168,9 @@
   border-radius: $radius-md;
   overflow: hidden;
   flex-shrink: 0;
+  border: none;
+  padding: 0;
+  cursor: pointer;
   transition: transform $duration-base $ease-out-expo;
 
   &:hover {
@@ -227,25 +229,14 @@
   }
 }
 
-// Arrow navigation
-.heroArrows {
+// Arrow navigation — split to opposite edges of the hero
+.heroArrowBtn {
   position: absolute;
-  right: $space-md;
   top: 50%;
   transform: translateY(-50%);
   z-index: 3;
-  display: flex;
-  flex-direction: column;
-  gap: $space-xs;
-
-  @include respond(mobile) {
-    display: none;
-  }
-}
-
-.heroArrowBtn {
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   border: 1.5px solid rgba(255, 255, 255, 0.3);
   background: rgba(0, 0, 0, 0.25);
@@ -254,11 +245,40 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: border-color $duration-fast $ease-base, background $duration-fast $ease-base;
+  transition: border-color $duration-fast $ease-base, background $duration-fast $ease-base, transform $duration-fast $ease-base;
 
   &:hover {
     border-color: $color-white;
     background: rgba(255, 255, 255, 0.18);
+  }
+
+  @include respond(mobile) {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+.heroArrowLeft {
+  left: $space-md;
+
+  &:hover {
+    transform: translateY(-50%) translateX(-3px);
+  }
+
+  @include respond(mobile) {
+    left: $space-2xs;
+  }
+}
+
+.heroArrowRight {
+  right: $space-md;
+
+  &:hover {
+    transform: translateY(-50%) translateX(3px);
+  }
+
+  @include respond(mobile) {
+    right: $space-2xs;
   }
 }
 
@@ -280,8 +300,9 @@
 }
 
 .heroCounterCurrent {
-  font-size: 1.4rem;
-  font-weight: 600;
+  font-family: $font-monr;
+  font-size: 1.5rem;
+  font-weight: 400;
   color: $color-white;
 }
 
@@ -296,31 +317,28 @@
   color: rgba(255, 255, 255, 0.35);
 }
 
-// Current destination indicator — pinned to the TOP of the hero, below navbar
+// Current destination indicator — sits in the text flow, below the
+// search bar (or subtitle, when there's no search).
+.heroLocationWrap {
+  margin-top: $space-lg;
+}
+
 .heroLocationTop {
-  position: absolute;
-  top: calc(#{$navbar-height} + #{$space-md});
-  left: $space-lg;
-  z-index: 3;
   display: inline-flex;
   align-items: center;
   gap: $space-xs;
-  padding: 0.55rem 1rem;
-  background: rgba(0, 0, 0, 0.32);
+  padding: 0.55rem 0.6rem 0.55rem 1rem;
+  background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: $radius-pill;
   text-decoration: none;
-  transition: background $duration-fast $ease-base, border-color $duration-fast $ease-base;
+  transition: background $duration-fast $ease-base, border-color $duration-fast $ease-base, transform $duration-fast $ease-base;
 
   &:hover {
-    background: rgba(0, 0, 0, 0.5);
-    border-color: rgba(255, 255, 255, 0.35);
-  }
-
-  @include respond(mobile) {
-    left: $space-md;
-    top: calc(#{$navbar-height} + #{$space-sm});
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateX(2px);
   }
 }
 
@@ -334,14 +352,14 @@
 
 .heroLocationName {
   color: $color-white;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 700;
 }
 
 .heroLocationTag {
   color: rgba(255, 255, 255, 0.6);
   font-family: $font-mono;
-  font-size: 0.68rem;
+  font-size: 0.66rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 
@@ -349,5 +367,16 @@
     content: '·';
     margin-right: $space-xs;
     color: rgba(255, 255, 255, 0.35);
+  }
+}
+
+.heroLocationArrow {
+  color: $color-gold-300;
+  font-size: 0.95rem;
+  margin-left: $space-2xs;
+  transition: transform $duration-base $ease-out-expo;
+
+  .heroLocationTop:hover & {
+    transform: translateX(3px);
   }
 }

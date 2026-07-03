@@ -1,22 +1,34 @@
-import { Link } from 'react-router-dom';
+import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
 import DestinationHero from '../../components/DestinationHero/DestinationHero';
 import OfferCard from '../../components/OfferCard/OfferCard';
+import FilterDrawer from '../../components/FilterDrawer/FilterDrawer';
+import SortDropdown from '../../components/SortDropdown/SortDropdown';
+import ViewToggle from '../../components/ViewToggle/ViewToggle';
+import useFilteredOffers from '../../hooks/useFilteredOffers';
 import categories from '../../data/categories';
 import offers from '../../data/offers';
 import { getLocalizedField } from '../../utils/getLocalizedField';
 import styles from './DomesticHub.module.scss';
 
+const UZBEKISTAN_NAME = { en: 'Uzbekistan', ru: 'Узбекистан', uz: 'O‘zbekiston' };
+
 export default function DomesticHub() {
   const { t, i18n } = useTranslation();
   const lang = i18n.language;
-  const featured = offers.filter((o) => o.type === 'domestic').slice(0, 6);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [sortBy, setSortBy] = useState('popular');
+  const [viewMode, setViewMode] = useState('grid');
+  const [extraFilters, setExtraFilters] = useState({});
+
+  const domesticOffers = useMemo(() => offers.filter((o) => o.type === 'domestic'), []);
+  const filters = useMemo(() => ({ ...extraFilters, type: 'domestic' }), [extraFilters]);
+  const filtered = useFilteredOffers(domesticOffers, filters, sortBy, lang);
 
   const heroSlides = categories.map((cat) => ({
     image: cat.heroImage,
     name: getLocalizedField(cat.name, lang),
-    sublabel: 'Uzbekistan',
+    sublabel: getLocalizedField(UZBEKISTAN_NAME, lang),
     to: `/domestic/${cat.slug}`,
   }));
 
@@ -30,34 +42,41 @@ export default function DomesticHub() {
         scrollLabel={t('common.scroll')}
       />
 
-      <section className={styles.categorySection}>
+      <section className={styles.offersSection}>
         <div className={styles.sectionInner}>
-          <div className={styles.tileGrid}>
-            {categories.map((cat, i) => (
-              <motion.div
-                key={cat.slug}
-                initial={{ opacity: 0, y: 18 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.4, delay: Math.min(i * 0.04, 0.3) }}
-              >
-                <Link to={`/domestic/${cat.slug}`} className={styles.tile}>
-                  <img src={cat.heroImage} alt={getLocalizedField(cat.name, lang)} className={styles.tileImg} />
-                  <span className={styles.tileLabel}>{getLocalizedField(cat.name, lang)}</span>
-                </Link>
-              </motion.div>
-            ))}
+          <div className={styles.listingHeading}>
+            <h2>{t('domestic.allOffers')}</h2>
           </div>
-        </div>
-      </section>
-
-      <section className={styles.featuredSection}>
-        <div className={styles.sectionInner}>
-          <h2 className={styles.subheading}>{t('domestic.featuredTitle')}</h2>
-          <div className={styles.offerGrid}>
-            {featured.map((offer, i) => (
-              <OfferCard key={offer.id} offer={offer} index={i} />
-            ))}
+          <div className={styles.gridLayout}>
+            <FilterDrawer
+              filters={filters}
+              onChange={setExtraFilters}
+              onClear={() => setExtraFilters({})}
+              isOpen={drawerOpen}
+              onClose={() => setDrawerOpen(false)}
+              showDestination={false}
+              showCategory
+            />
+            <div className={styles.results}>
+              <div className={styles.resultsHeader}>
+                <button type="button" className={styles.mobileFilterBtn} onClick={() => setDrawerOpen(true)}>
+                  {t('common.filters')}
+                </button>
+                <span className={styles.resultCount}>
+                  {filtered.length} {t('common.results')}
+                </span>
+                <div className={styles.resultsControls}>
+                  <SortDropdown value={sortBy} onChange={setSortBy} />
+                  <ViewToggle value={viewMode} onChange={setViewMode} />
+                </div>
+              </div>
+              <div className={viewMode === 'list' ? styles.offerGridList : styles.offerGrid}>
+                {filtered.map((offer, i) => (
+                  <OfferCard key={offer.id} offer={offer} index={i} layout={viewMode} />
+                ))}
+                {filtered.length === 0 && <p className={styles.noResults}>{t('common.noResults')}</p>}
+              </div>
+            </div>
           </div>
         </div>
       </section>

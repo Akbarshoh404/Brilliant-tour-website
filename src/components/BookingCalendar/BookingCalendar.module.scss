@@ -1,0 +1,186 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.wrap {
+  width: 100%;
+  border: 1.5px solid $color-plaster-100;
+  border-radius: $radius-md;
+  padding: $space-md;
+  background-color: $color-white;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $space-sm;
+}
+
+.navBtn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1.5px solid $color-plaster-100;
+  background: $color-white;
+  color: $color-ink-900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color $duration-fast $ease-base, background-color $duration-fast $ease-base;
+
+  &:hover {
+    border-color: $color-ink-900;
+  }
+}
+
+.monthLabel {
+  font-family: $font-mono;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  color: $color-ink-950;
+}
+
+.weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-bottom: $space-2xs;
+
+  span {
+    text-align: center;
+    font-family: $font-mono;
+    font-size: 0.66rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: $color-stone-600;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 3px;
+}
+
+.blank {
+  aspect-ratio: 1;
+}
+
+.day {
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  border: 1px solid transparent;
+  border-radius: $radius-sm;
+  background: transparent;
+  color: $color-plaster-100;
+  transition: background-color $duration-fast $ease-base, color $duration-fast $ease-base, border-color $duration-fast $ease-base;
+
+  &:disabled {
+    cursor: default;
+  }
+}
+
+.dayNum {
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.dayPrice {
+  font-family: $font-mono;
+  font-size: 0.52rem;
+}
+
+.available {
+  color: $color-ink-900;
+  border-color: $color-plaster-100;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $color-ink-900;
+  }
+}
+
+.limited {
+  color: $color-gold-600;
+  border-color: rgba(149, 191, 39, 0.4);
+  cursor: pointer;
+
+  &:hover {
+    border-color: $color-gold-600;
+  }
+}
+
+.soldout {
+  color: $color-clay-500;
+  opacity: 0.5;
+
+  .dayNum {
+    text-decoration: line-through;
+  }
+}
+
+.inRange {
+  background-color: rgba(17, 17, 17, 0.06);
+  border-color: transparent;
+}
+
+.isStart {
+  background-color: $color-ink-950 !important;
+  border-color: $color-ink-950 !important;
+
+  .dayNum,
+  .dayPrice {
+    color: $color-white;
+  }
+}
+
+.legend {
+  margin-top: $space-sm;
+  padding-top: $space-sm;
+  border-top: 1px solid $color-plaster-100;
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-md;
+  justify-content: center;
+}
+
+.legendItem {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-3xs;
+  font-family: $font-mono;
+  font-size: 0.68rem;
+  letter-spacing: 0.02em;
+  color: $color-stone-600;
+}
+
+.legendDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.legendAvailable {
+  background-color: $color-ink-900;
+}
+
+.legendLimited {
+  background-color: $color-gold-600;
+}
+
+.legendSoldout {
+  background-color: $color-clay-500;
+}
+
+.hint {
+  margin-top: $space-sm;
+  font-family: $font-mono;
+  font-size: 0.76rem;
+  color: $color-stone-600;
+  text-align: center;
+}

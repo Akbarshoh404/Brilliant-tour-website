@@ -53,7 +53,8 @@
     "titleLine2": "kashf eting",
     "titleLine3": "va undan ham uzoqroqqa",
     "subtitle": "Ikki yo'l, bitta sayohat — O'zbekiston va butun dunyo bo'ylab maxsus tuzilgan turlar.",
-    "searchPlaceholder": "Qayerga boramiz? \"Samarqand\" yoki \"Maldiv\" deb yozing"
+    "searchPlaceholder": "Qayerga boramiz? \"Samarqand\" yoki \"Maldiv\" deb yozing",
+    "searchPlaceholderShort": "Qayerga boramiz?"
   },
   "home": {
     "splitTitle": "Ikki yo'l, bitta sayohat",
@@ -69,6 +70,10 @@
     "seasonalTitle": "Mavsumiy takliflar",
     "seasonalText": "Har bir yo'nalish uchun eng yaxshi mavsumga moslashtirilgan marshrutlar.",
     "statsTitle": "Brilliant raqamlarda",
+    "statYears": "Yillik tajriba",
+    "statTravelers": "Mamnun sayohatchilar",
+    "statRoutes": "Tayyor marshrutlar",
+    "statRating": "O'rtacha reyting",
     "whyTitle": "Nega Brilliant",
     "why1Title": "Mahalliy marshrut mutaxassislari",
     "why1Text": "Registondan Pomirgacha shu yo'llarda o'sgan gidlar.",
@@ -140,21 +145,28 @@
     "eyebrow": "O'zbekiston turizmi",
     "title": "O'zbekiston bo'ylab yo'l",
     "intro": "Ipak yo'li shaharlari, cho'l ufqlari va tog' havosi — o'ylaganingizdan yaqinroq.",
-    "featuredTitle": "Tavsiya etilgan O'zbekiston sayohatlari"
+    "featuredTitle": "Tavsiya etilgan O'zbekiston sayohatlari",
+    "allOffers": "Barcha O'zbekiston sayohatlari"
   },
   "country": {
     "bestSeason": "Eng yaxshi mavsum",
     "flightTime": "Parvoz vaqti",
     "visaNote": "Viza",
     "currency": "Valyuta",
+    "galleryTitle": "Diqqatga sazovor joylar",
     "citiesTitle": "Tashrif buyuriladigan shaharlar",
-    "offersTitle": "Sayohatlar:"
+    "offersTitle": "Sayohatlar:",
+    "visaTitle": "Viza:",
+    "visaIntro": "Ushbu manzil uchun viza olish uchun aynan nima kerakligi — butun jarayonni siz uchun biz amalga oshirishimiz mumkin.",
+    "visaCta": "Viza arizasini boshlash",
+    "exploreToursCta": "Turlarni ko'rish"
   },
   "city": {
     "offersTitle": "Sayohatlar:"
   },
   "filters": {
     "destination": "Yo'nalish",
+    "category": "Toifa",
     "priceRange": "Narx oralig'i",
     "duration": "Davomiyligi",
     "departureDate": "Jo'nash sanasi",
@@ -199,6 +211,9 @@
     "packageComparison": "Paketni tanlang",
     "availableDates": "Mavjud sanalar",
     "viewGallery": "Barcha fotolar",
+    "saveToWishlist": "Sevimlilarga saqlash",
+    "savedToWishlist": "Sevimlilarga saqlandi",
+    "reviewsTitle": "Sharhlar",
     "relatedTitle": "Sizga yoqishi mumkin",
     "economy": "Economy",
     "standard": "Standard",
@@ -212,11 +227,19 @@
     "dateLimited": "Joylar kam qoldi",
     "dateSoldOut": "Joylar qolmadi",
     "selectDate": "Sanani tanlang",
+    "pickStartDate": "Boshlanish sanasini tanlang",
+    "tripDates": "Sayohat sanalari",
+    "calendarWeekdays": ["Du", "Se", "Cho", "Pa", "Ju", "Sha", "Ya"],
     "totalPrice": "Umumiy narx",
+    "reviews": "sharh",
     "travelLevel": "Sayohat darajasi",
     "easy": "Yengil",
     "moderate": "O'rtacha",
-    "adventure": "Sarguzasht"
+    "adventure": "Sarguzasht",
+    "groupSize": "Guruh hajmi",
+    "people": "kishi",
+    "minAge": "Yosh talabi",
+    "anyAge": "Har qanday yosh"
   },
   "cruises": {
     "eyebrow": "Kruizlar",
@@ -228,13 +251,59 @@
     "balcony": "Balkonli lyuks"
   },
   "visas": {
-    "eyebrow": "Vizalar",
-    "title": "Oldindan biling",
-    "intro": "Bizning har bir marshrutimiz uchun viza talablari.",
+    "eyebrow": "Viza xizmatlari",
+    "title": "Vizalarni biz hal qilamiz",
+    "intro": "Biz 15 dan ortiq davlat uchun viza arizalarini tayyorlaymiz va topshiramiz, shuningdek apostil, tarjima va boshqa hujjat xizmatlarini ko'rsatamiz — elchixona bilan yolg'iz qolmaysiz.",
     "searchPlaceholder": "Davlatni qidirish",
     "visaFree": "Vizasiz",
     "eVisa": "Elektron viza",
-    "visaRequired": "Viza talab qilinadi"
+    "visaRequired": "Viza talab qilinadi",
+    "countriesTitle": "Biz ishlaydigan davlatlar",
+    "processingTime": "Rasmiylashtirish muddati",
+    "priceFrom": "Xizmat narxi",
+    "businessDays": "ish kuni",
+    "requirementsTitle": "Nima kerak bo'ladi",
+    "applyCta": "Arizani boshlash",
+    "applyPhone": "Telefon raqami",
+    "applySubmit": "So'rov yuborish",
+    "applySuccess": "So'rovingiz qabul qilindi — arizangizni boshlash uchun bir kun ichida qo'ng'iroq qilamiz.",
+    "types": {
+      "schengen": "Shengen vizasi (C turi)",
+      "evisa": "Elektron viza",
+      "visaOnArrival": "Kelganda beriladigan viza",
+      "embassyVisa": "Elchixona vizasi",
+      "sponsoredVisa": "Taklifnoma asosidagi viza"
+    },
+    "req": {
+      "passport": "Amal qiluvchi pasport",
+      "photos": "Fotosuratlar",
+      "application": "To'ldirilgan anketa",
+      "funds": "Mablag' mavjudligi tasdig'i",
+      "insurance": "Sayohat sug'urtasi",
+      "invitation": "Taklifnoma",
+      "itinerary": "Sayohat marshruti",
+      "employment": "Ish joyidan ma'lumotnoma"
+    },
+    "extraTitle": "Apostil va boshqa hujjat xizmatlari",
+    "extraIntro": "Viza olish ko'pincha eng oson qismi — qiyinchilik hujjatlarda boshlanadi. Buni ham biz hal qilamiz.",
+    "extra": {
+      "apostille": { "title": "Apostil", "text": "O'zbek hujjatlarini — diplom, guvohnoma, ishonchnoma — chet elda ishlatish uchun xalqaro legallashtirish." },
+      "translation": { "title": "Notarial tarjima", "text": "Hujjatlarni ingliz, rus yoki borilayotgan davlat tiliga tasdiqlangan tarjima qilish." },
+      "invitation": { "title": "Taklifnomalar", "text": "Biznes va turistik taklifnomalarni tayyorlash, zarur bo'lsa — notarial tasdiqlash." },
+      "insurance": { "title": "Sayohat sug'urtasi", "text": "Elchixona talablariga javob beradigan tibbiy va sayohat sug'urtasi." },
+      "legalization": { "title": "Hujjatlarni legallashtirish", "text": "Apostil qamrab olmaydigan hujjatlar uchun konsullik legallashtirish." },
+      "express": { "title": "Tezkor rasmiylashtirish", "text": "Sayohat sanalari yaqin bo'lsa — shoshilinch xizmat." }
+    },
+    "processTitle": "Bu qanday ishlaydi",
+    "process": [
+      { "title": "Konsultatsiya", "text": "Qayerga borishingizni ayting — biz aniq viza turi va hujjatlar ro'yxatini tasdiqlaymiz." },
+      { "title": "Hujjatlarni tayyorlash", "text": "Hujjatlaringizni tayyorlaymiz, tarjima qilamiz va zarur bo'lsa apostil qilamiz." },
+      { "title": "Topshirish", "text": "Arizani topshiramiz va qaror chiqqunga qadar kuzatib boramiz." },
+      { "title": "Viza qo'lingizda", "text": "Vizali pasportingizni olasiz — safarni band qilishga tayyor." }
+    ],
+    "ctaTitle": "Qaysi viza kerakligiga ishonchingiz komil emasmi?",
+    "ctaText": "Manzil va sayohat sanalarini ayting — nima kerakligini aniq aytamiz.",
+    "ctaBtn": "Bizdan so'rang"
   },
   "about": {
     "eyebrow": "Brilliant haqida",
@@ -243,7 +312,11 @@
     "story": "Brilliant Toshkentdagi kichik agentlik sifatida O'zbekiston bo'ylab sayohatchilarni kuzatishdan boshlandi. Biz xuddi Ipak yo'li kabi — bir vaqtning o'zida bitta ishonchli marshrut bilan o'sib bordik.",
     "missionTitle": "Bizning maqsadimiz",
     "mission": "Har bir sayohatni, yaqin yoki uzoq bo'lsin, karvon cho'lni kesib o'tganidagi kabi sinchkovlik bilan rejalashtirish.",
-    "teamTitle": "Marshrutlar ortidagi odamlar"
+    "teamTitle": "Marshrutlar ortidagi odamlar",
+    "statYears": "Yillik tajriba",
+    "statTravelers": "Sayohatchilar",
+    "statRoutes": "Marshrutlar",
+    "statCities": "Mahalliy jamoali shaharlar"
   },
   "contact": {
     "eyebrow": "Aloqa",
@@ -255,6 +328,27 @@
     "send": "Xabar yuborish",
     "sent": "Xabar yuborildi — bir kun ichida javob beramiz.",
     "officeTitle": "Bizning ofis",
-    "officeAddress": "Amir Temur shoh ko'chasi, 12, Toshkent, O'zbekiston"
+    "officeAddress": "Amir Temur shoh ko'chasi, 12, Toshkent, O'zbekiston",
+    "phone": "Telefon",
+    "phoneValue": "+998 (33) 299-00-00",
+    "instagram": "Instagram",
+    "instagramValue": "@brillianttours_uz",
+    "telegram": "Telegram",
+    "telegramValue": "@brillianttours_uz",
+    "hours": "Ish vaqti",
+    "hoursValue": "Dush–Shan, 9:00–19:00 (Toshkent vaqti)",
+    "servicesTitle": "Biz nima bilan shug'ullanamiz",
+    "servicesIntro": "Butun dunyo bo'ylab vizalar, o'qish, turizm, kruizlar, tarjimalar, apostil, konsalting va aviachiptalar — butun sayohat uchun bitta jamoa.",
+    "services": [
+      "Butun dunyo bo'ylab vizalar",
+      "Chet elda o'qish",
+      "Ichki va xalqaro turizm",
+      "Kruizlar",
+      "Tarjimalar",
+      "Apostil",
+      "Konsalting",
+      "Aviachiptalar"
+    ],
+    "directCta": "Instagram yoki Telegram orqali yozing — odatda bir soat ichida javob beramiz."
   }
 }

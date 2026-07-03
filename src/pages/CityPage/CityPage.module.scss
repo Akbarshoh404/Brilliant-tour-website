@@ -41,11 +41,17 @@
 .resultCount {
   @extend %catalogResultCount;
 }
+.resultsControls {
+  @extend %catalogResultsControls;
+}
 .mobileFilterBtn {
   @extend %catalogMobileFilterBtn;
 }
 .offerGrid {
   @extend %catalogOfferGrid;
+}
+.offerGridList {
+  @extend %catalogOfferGridList;
 }
 .noResults {
   @extend %catalogNoResults;

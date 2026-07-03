@@ -3,7 +3,7 @@
 @use '../../styles/animations' as *;
 
 .card {
-  border-radius: $radius-sm;
+  border-radius: $radius-md;
   overflow: hidden;
   background-color: $color-white;
   box-shadow: $shadow-card;
@@ -11,12 +11,8 @@
   transition: transform $duration-base $ease-out-expo, box-shadow $duration-base $ease-base;
 
   &:hover {
-    transform: translateY(-5px);
+    transform: translateY(-6px);
     box-shadow: $shadow-card-hover;
-  }
-
-  &.premium:hover {
-    box-shadow: $shadow-gold-glow, $shadow-card-hover;
   }
 }
 
@@ -76,12 +72,21 @@
   color: $color-stone-600;
 }
 
+.card:hover .eyebrowDomestic {
+  color: $color-turquoise-500;
+}
+
+.card:hover .eyebrowIntl {
+  color: $color-gold-600;
+}
+
 .title {
-  font-size: 1.08rem;
-  font-weight: 600;
-  line-height: 1.25;
+  font-size: 1.02rem;
+  font-weight: 700;
+  line-height: 1.3;
   color: $color-ink-900;
-  font-family: $font-display;
+  font-family: $font-monr;
+  letter-spacing: -0.01em;
   margin-top: 2px;
 }
 
@@ -104,7 +109,11 @@
 }
 
 .rating {
-  color: $color-gold-500;
+  color: $color-gold-600;
+}
+
+.groupSize {
+  white-space: nowrap;
 }
 
 .footer {
@@ -118,9 +127,9 @@
 
 .price {
   font-family: $font-mono;
-  font-weight: 600;
-  font-size: 0.92rem;
-  color: $color-ink-900;
+  font-weight: 700;
+  font-size: 1.02rem;
+  color: $color-ink-950;
 }
 
 .priceFrom {
@@ -151,5 +160,59 @@
 .card:hover .arrowIntl {
   background-color: $color-gold-500;
   border-color: $color-gold-500;
-  color: $color-white;
+  color: $color-ink-950;
+}
+
+// ── List layout modifier ─────────────────────────────────────────────────────
+
+.cardList {
+  .link {
+    flex-direction: row;
+  }
+
+  .imageWrap {
+    aspect-ratio: auto;
+    width: 220px;
+    flex-shrink: 0;
+
+    @include respond(mobile) {
+      width: 120px;
+    }
+  }
+
+  .body {
+    flex-direction: row;
+    align-items: center;
+    gap: $space-md;
+    padding: $space-md $space-lg;
+
+    @include respond(mobile) {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: $space-sm $space-md;
+      gap: $space-2xs;
+    }
+  }
+
+  .titleBlock {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .footer {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: $space-2xs;
+    flex-shrink: 0;
+
+    @include respond(mobile) {
+      flex-direction: row;
+      align-items: center;
+      width: 100%;
+      justify-content: space-between;
+    }
+  }
 }

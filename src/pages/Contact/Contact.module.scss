@@ -26,12 +26,119 @@
   @extend %catalogTitle;
 }
 
-.section {
-  background-color: $color-plaster-50;
-}
-
 .sectionInner {
   @extend %catalogSectionInner;
+}
+
+// ── QUICK CONTACT STRIP ──────────────────────────────────────────────────────
+
+.quickSection {
+  background-color: $color-ink-950;
+  padding: $space-lg;
+
+  .sectionInner {
+    padding: 0;
+  }
+}
+
+.quickGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $space-md;
+
+  @include respond(below-desktop) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond(mobile) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.quickCard {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+  padding: $space-md;
+  background-color: $glass-bg;
+  backdrop-filter: blur(12px);
+  border: 1px solid $glass-border;
+  border-radius: $radius-md;
+  color: $color-gold-500;
+  text-decoration: none;
+  transition: background-color $duration-fast $ease-base, border-color $duration-fast $ease-base, transform $duration-fast $ease-base;
+
+  &:hover {
+    background-color: $glass-bg-hover;
+    border-color: rgba(198, 255, 52, 0.3);
+    transform: translateY(-2px);
+  }
+}
+
+.quickLabel {
+  display: block;
+  font-family: $font-mono;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: $color-mist;
+}
+
+.quickValue {
+  display: block;
+  margin-top: 2px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: $color-white;
+}
+
+// ── SERVICES ──────────────────────────────────────────────────────────────────
+
+.servicesSection {
+  background-color: $color-white;
+}
+
+.servicesTitle {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  margin-bottom: $space-xs;
+}
+
+.servicesIntro {
+  color: $color-stone-600;
+  max-width: 62ch;
+  font-size: 0.98rem;
+  line-height: 1.6;
+  margin-bottom: $space-lg;
+}
+
+.servicesGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2xs;
+  margin-bottom: $space-md;
+}
+
+.servicePill {
+  font-family: $font-mono;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: $color-ink-950;
+  background-color: $color-plaster-50;
+  border: 1.5px solid $color-plaster-100;
+  padding: 0.55rem 1.1rem;
+  border-radius: $radius-pill;
+}
+
+.directCta {
+  font-size: 0.92rem;
+  color: $color-gold-600;
+  font-weight: 600;
+}
+
+// ── FORM + OFFICE ─────────────────────────────────────────────────────────────
+
+.section {
+  background-color: $color-plaster-50;
 }
 
 .layout {
@@ -58,14 +165,17 @@
 }
 
 .label {
-  font-size: 0.85rem;
+  font-family: $font-mono;
+  font-size: 0.72rem;
   font-weight: 600;
-  color: $color-ink-900;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: $color-stone-600;
 }
 
 .input,
 .textarea {
-  padding: 0.8rem 1rem;
+  padding: 0.9rem 1.1rem;
   border-radius: $radius-sm;
   border: 1.5px solid $color-plaster-100;
   background-color: $color-white;
@@ -75,8 +185,8 @@
 
   &:focus {
     outline: none;
-    border-color: $color-turquoise-500;
-    box-shadow: 0 0 0 3px rgba(43, 169, 161, 0.18);
+    border-color: $color-gold-600;
+    box-shadow: 0 0 0 3px rgba(198, 255, 52, 0.25);
   }
 }
 
@@ -87,8 +197,10 @@
 .submitBtn {
   @include btn-primary;
   align-self: flex-start;
-  padding: 0.85rem 1.8rem;
-  font-size: 0.92rem;
+  padding: 0.9rem 2rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .success {
@@ -97,28 +209,41 @@
 }
 
 .officePanel {
+  position: relative;
+  isolation: isolate;
   border-radius: $radius-lg;
   overflow: hidden;
-  background-color: $color-white;
-  box-shadow: $shadow-card;
+  box-shadow: $shadow-elevated;
 }
 
 .mapImg {
   width: 100%;
+  height: 100%;
+  min-height: 420px;
   aspect-ratio: 16 / 11;
   object-fit: cover;
 }
 
 .officeInfo {
+  position: absolute;
+  left: $space-md;
+  right: $space-md;
+  bottom: $space-md;
+  z-index: 1;
   padding: $space-lg;
+  background-color: rgba(8, 8, 8, 0.45);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: $radius-md;
 
   h2 {
     font-size: 1.2rem;
+    color: $color-white;
     margin-bottom: $space-2xs;
   }
 
   p {
-    color: $color-stone-600;
+    color: $color-mist;
     font-size: 0.92rem;
   }
 }

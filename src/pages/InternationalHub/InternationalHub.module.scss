@@ -83,75 +83,30 @@
   bottom: $space-sm;
   left: $space-sm;
   z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: $space-3xs;
   color: $color-white;
   font-weight: 700;
   font-size: 0.95rem;
 }
 
-// --- curated rows ---
-.curated {
-  background-color: $color-plaster-50;
+.countryFlagIcon {
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.5);
 }
 
-.row {
-  margin-bottom: $space-2xl;
-
-  &:last-child {
-    margin-bottom: 0;
-  }
+// --- full filterable grid ---
+.allOffers {
+  background-color: $color-white;
 }
 
-.rowHeader {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  margin-bottom: $space-md;
+.listingHeading {
+  margin-bottom: $space-lg;
 
   h2 {
-    font-size: 1.4rem;
+    font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+    color: $color-ink-900;
   }
-}
-
-.viewAll {
-  font-size: 0.85rem;
-  color: $color-turquoise-500;
-  text-decoration: underline;
-  white-space: nowrap;
-}
-
-.rowScroll {
-  display: flex;
-  gap: $space-md;
-  overflow-x: auto;
-  padding-bottom: $space-sm;
-  scroll-snap-type: x mandatory;
-}
-
-.rowItem {
-  flex: 0 0 300px;
-  scroll-snap-align: start;
-
-  @include respond(mobile) {
-    flex-basis: 260px;
-  }
-}
-
-// --- full filterable grid toggle ---
-.allOffers {
-  background-color: $color-plaster-50;
-}
-
-.toggleBtn {
-  width: 100%;
-  text-align: left;
-  background-color: $color-white;
-  border: 1px solid $color-plaster-100;
-  border-radius: $radius-md;
-  padding: $space-md;
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: $color-ink-900;
-  margin-bottom: $space-lg;
 }
 
 .gridLayout {
@@ -166,11 +121,17 @@
 .resultCount {
   @extend %catalogResultCount;
 }
+.resultsControls {
+  @extend %catalogResultsControls;
+}
 .mobileFilterBtn {
   @extend %catalogMobileFilterBtn;
 }
 .offerGrid {
   @extend %catalogOfferGrid;
+}
+.offerGridList {
+  @extend %catalogOfferGridList;
 }
 .noResults {
   @extend %catalogNoResults;

@@ -25,6 +25,7 @@
   max-height: 78vh;
   background-color: $color-plaster-50;
   border-radius: $radius-lg;
+  border: 1px solid $color-plaster-100;
   box-shadow: $shadow-elevated;
   display: flex;
   flex-direction: column;
@@ -35,8 +36,9 @@
   display: flex;
   align-items: center;
   gap: $space-sm;
-  padding: $space-md;
-  border-bottom: 1px solid rgba(11, 28, 40, 0.08);
+  padding: $space-md $space-lg;
+  border-bottom: 1px solid $color-plaster-100;
+  background-color: $color-white;
 }
 
 .searchIcon {
@@ -59,17 +61,27 @@
 }
 
 .closeBtn {
-  background: transparent;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: $color-plaster-50;
   border: none;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   line-height: 1;
   color: $color-stone-600;
+  transition: background-color $duration-fast $ease-base, color $duration-fast $ease-base;
   @include focus-ring;
+
+  &:hover {
+    background: $color-ink-950;
+    color: $color-white;
+  }
 }
 
 .results {
   overflow-y: auto;
-  padding: $space-md;
+  padding: $space-md $space-lg $space-lg;
 }
 
 .emptyState {
@@ -96,16 +108,16 @@
 }
 
 .chip {
-  background-color: $color-plaster-100;
-  border: none;
+  background-color: $color-white;
+  border: 1px solid $color-plaster-100;
   border-radius: $radius-pill;
   padding: 0.4rem 0.9rem;
   font-size: 0.85rem;
   color: $color-ink-900;
-  transition: background-color $duration-fast $ease-base;
+  transition: background-color $duration-fast $ease-base, border-color $duration-fast $ease-base;
 
   &:hover {
-    background-color: $color-turquoise-300;
+    border-color: $color-ink-950;
   }
 }
 
@@ -139,10 +151,11 @@
   padding: $space-xs $space-sm;
   border-radius: $radius-sm;
   font-size: 0.98rem;
+  font-weight: 500;
   color: $color-ink-900;
   transition: background-color $duration-fast $ease-base;
 }
 
 .activeItem {
-  background-color: $color-turquoise-300;
+  background-color: $color-gold-500;
 }

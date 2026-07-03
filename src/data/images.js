@@ -3,4 +3,4 @@
 export const img = (seed, width, height) =>
   `https://picsum.photos/seed/${encodeURIComponent(seed)}/${width}/${height}`;
 
-export const avatarUrl = (n) => `https://i.pravatar.cc/100?img=${n}`;
+export const avatarUrl = (n, size = 100) => `https://i.pravatar.cc/${size}?img=${n}`;

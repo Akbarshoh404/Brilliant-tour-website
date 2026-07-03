@@ -17,22 +17,38 @@
   align-items: center;
   gap: $space-3xs;
   font-family: $font-mono;
-  font-size: 0.78rem;
-  color: $color-stone-600;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: $color-mist;
 
   a {
     transition: color $duration-fast $ease-base;
 
     &:hover {
-      color: $color-turquoise-500;
+      color: $color-gold-500;
     }
   }
 
   span[aria-current='page'] {
-    color: $color-ink-900;
+    color: $color-gold-300;
   }
 }
 
 .sep {
-  opacity: 0.5;
+  opacity: 0.6;
+}
+
+.onLight {
+  .item {
+    color: $color-stone-600;
+
+    a:hover {
+      color: $color-turquoise-500;
+    }
+
+    span[aria-current='page'] {
+      color: $color-ink-900;
+    }
+  }
 }

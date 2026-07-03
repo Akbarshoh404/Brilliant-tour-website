@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { motion } from 'framer-motion';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import ScrollCue from '../../components/ScrollCue/ScrollCue';
 import StatCounter from '../../components/StatCounter/StatCounter';
@@ -12,6 +13,8 @@ const TEAM = [
   { id: 2, name: 'Otabek Yusupov', role: 'Domestic Operations', avatarImg: 13 },
   { id: 3, name: 'Sarah Lindqvist', role: 'International Partnerships', avatarImg: 28 },
   { id: 4, name: 'Farrukh Aliyev', role: 'Lead Guide, Samarkand', avatarImg: 19 },
+  { id: 5, name: 'Elena Petrova', role: 'Guest Experience', avatarImg: 44 },
+  { id: 6, name: 'Otabek Nazarov', role: 'Lead Guide, Bukhara', avatarImg: 51 },
 ];
 
 export default function About() {
@@ -32,6 +35,7 @@ export default function About() {
 
       <section className={styles.storySection}>
         <div className={styles.sectionInner}>
+          <span className={styles.quoteMark} aria-hidden="true">&ldquo;</span>
           <RouteLine variant="fork" dDomestic="M10 30 C 60 30, 80 10, 160 10" dInternational="M10 30 C 60 30, 80 50, 160 50" width={180} height={60} className={styles.storyRoute} />
           <p className={styles.story}>{t('about.story')}</p>
         </div>
@@ -39,8 +43,9 @@ export default function About() {
 
       <section className={styles.missionSection}>
         <div className={styles.sectionInner}>
-          <div className={styles.missionCard}>
-            <h2>{t('about.missionTitle')}</h2>
+          <div className={styles.missionCard} style={{ backgroundImage: `url(${aboutHero})` }}>
+            <div className={styles.missionOverlay} aria-hidden="true" />
+            <span className={styles.missionEyebrow}>{t('about.missionTitle')}</span>
             <p>{t('about.mission')}</p>
           </div>
         </div>
@@ -49,24 +54,41 @@ export default function About() {
       <section className={styles.statsSection}>
         <div className={styles.sectionInner}>
           <div className={styles.statsGrid}>
-            <StatCounter value={18} suffix="+" label="Years routing" />
-            <StatCounter value={42000} suffix="+" label="Travelers" />
-            <StatCounter value={120} suffix="+" label="Routes" />
-            <StatCounter value={9} label="Cities with local teams" />
+            <StatCounter value={18} suffix="+" label={t('about.statYears')} />
+            <StatCounter value={42000} suffix="+" label={t('about.statTravelers')} />
+            <StatCounter value={120} suffix="+" label={t('about.statRoutes')} />
+            <StatCounter value={9} label={t('about.statCities')} />
           </div>
         </div>
       </section>
 
       <section className={styles.teamSection}>
         <div className={styles.sectionInner}>
-          <h2 className={styles.teamTitle}>{t('about.teamTitle')}</h2>
+          <div className={styles.teamHeader}>
+            <span className={styles.teamEyebrow}>{t('nav.about')}</span>
+            <h2 className={styles.teamTitle}>{t('about.teamTitle')}</h2>
+          </div>
+
           <div className={styles.teamGrid}>
-            {TEAM.map((member) => (
-              <div key={member.id} className={styles.teamCard}>
-                <img src={avatarUrl(member.avatarImg)} alt={member.name} className={styles.teamAvatar} />
-                <span className={styles.teamName}>{member.name}</span>
-                <span className={styles.teamRole}>{member.role}</span>
-              </div>
+            {TEAM.map((member, i) => (
+              <motion.div
+                key={member.id}
+                className={styles.teamCard}
+                initial={{ opacity: 0, y: 22 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.5, delay: Math.min(i * 0.06, 0.3) }}
+              >
+                <div className={styles.teamPhotoWrap}>
+                  <img src={avatarUrl(member.avatarImg, 400)} alt={member.name} className={styles.teamPhoto} />
+                  <span className={styles.teamIndex}>{String(i + 1).padStart(2, '0')}</span>
+                </div>
+                <div className={styles.teamInfo}>
+                  <span className={styles.teamName}>{member.name}</span>
+                  <span className={styles.teamDivider} aria-hidden="true" />
+                  <span className={styles.teamRole}>{member.role}</span>
+                </div>
+              </motion.div>
             ))}
           </div>
         </div>

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AnimatePresence, motion } from 'framer-motion';
 import countries from '../../data/countries';
+import categories from '../../data/categories';
 import { getLocalizedField } from '../../utils/getLocalizedField';
 import styles from './FilterDrawer.module.scss';
 
@@ -75,10 +76,10 @@ function Section({ id, title, openSections, toggle, children }) {
   );
 }
 
-export default function FilterDrawer({ filters, onChange, onClear, isOpen, onClose, showDestination = true }) {
+export default function FilterDrawer({ filters, onChange, onClear, isOpen, onClose, showDestination = true, showCategory = false }) {
   const { t, i18n } = useTranslation();
   const lang = i18n.language;
-  const [openSections, setOpenSections] = useState(['destination', 'priceRange', 'travelType']);
+  const [openSections, setOpenSections] = useState(['destination', 'category']);
 
   const toggle = (id) =>
     setOpenSections((prev) => (prev.includes(id) ? prev.filter((s) => s !== id) : [...prev, id]));
@@ -120,6 +121,23 @@ export default function FilterDrawer({ filters, onChange, onClear, isOpen, onClo
             >
               <option value="">{t('international.allRegions')}</option>
               {countries.map((c) => (
+                <option key={c.slug} value={c.slug}>
+                  {c.flag} {getLocalizedField(c.name, lang)}
+                </option>
+              ))}
+            </select>
+          </Section>
+        )}
+
+        {showCategory && (
+          <Section id="category" title={t('filters.category')} openSections={openSections} toggle={toggle}>
+            <select
+              className={styles.select}
+              value={filters.categorySlug ?? ''}
+              onChange={(e) => patch({ categorySlug: e.target.value || null })}
+            >
+              <option value="">{t('international.allRegions')}</option>
+              {categories.map((c) => (
                 <option key={c.slug} value={c.slug}>
                   {getLocalizedField(c.name, lang)}
                 </option>

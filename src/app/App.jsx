@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import Navbar from '../components/Navbar/Navbar';
 import Footer from '../components/Footer/Footer';
 import useLenis from '../hooks/useLenis';
+import { SearchOverlayProvider } from '../context/SearchOverlayContext';
 import ScrollToTop from './ScrollToTop';
 import PageLoader from './PageLoader';
 import { routes } from './routes';
@@ -36,13 +37,13 @@ export default function App() {
   useLenis();
 
   return (
-    <>
+    <SearchOverlayProvider>
       <ScrollToTop />
       <Navbar />
       <main>
         <AnimatedRoutes />
       </main>
       <Footer />
-    </>
+    </SearchOverlayProvider>
   );
 }

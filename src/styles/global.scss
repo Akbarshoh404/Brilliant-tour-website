@@ -1,6 +1,26 @@
 @use 'variables' as *;
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Unbounded:wght@500;700;800;900&display=swap');
+
+// Downloaded display fonts (personal-use license — see src/assets/fonts).
+// Citadel/Milker are Latin-only, so RU/UZ text silently falls back to
+// $font-display. Unbounded (Google Fonts) covers Cyrillic + Latin, so it's
+// the workhorse "MONR" stand-in used for headings across all three locales.
+@font-face {
+  font-family: 'Citadel';
+  src: url('../assets/fonts/Citadel.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Milker';
+  src: url('../assets/fonts/Milker.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
 *,
 *::before,
@@ -17,40 +37,11 @@ body {
 
 html {
   scroll-padding-top: $navbar-height;
-
-  // Custom scrollbar — Firefox
-  scrollbar-width: thin;
-  scrollbar-color: $color-ink-700 $color-ink-950;
-}
-
-// Custom scrollbar — WebKit/Chromium
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: $color-ink-950;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: $color-ink-700;
-  border-radius: $radius-pill;
-  border: 2px solid $color-ink-950;
-  background-clip: padding-box;
-
-  &:hover {
-    background-color: $color-gold-500;
-  }
-}
-
-::-webkit-scrollbar-corner {
-  background: $color-ink-950;
 }
 
 ::selection {
   background-color: $color-gold-500;
-  color: $color-white;
+  color: $color-ink-950;
 }
 
 body {
@@ -93,8 +84,8 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: $font-display;
-  font-weight: 600;
+  font-family: $font-monr;
+  font-weight: 700;
   color: $color-ink-900;
   letter-spacing: -0.01em;
 }

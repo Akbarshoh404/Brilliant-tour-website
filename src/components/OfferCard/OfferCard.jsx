@@ -10,7 +10,7 @@ import styles from './OfferCard.module.scss';
 const countryBySlug = Object.fromEntries(countries.map((c) => [c.slug, c]));
 const categoryBySlug = Object.fromEntries(categories.map((c) => [c.slug, c]));
 
-export default function OfferCard({ offer, packageLevel = 'standard', index = 0 }) {
+export default function OfferCard({ offer, packageLevel = 'standard', index = 0, layout = 'grid' }) {
   const { t, i18n } = useTranslation();
   const lang = i18n.language;
 
@@ -21,11 +21,10 @@ export default function OfferCard({ offer, packageLevel = 'standard', index = 0 
 
   const pkg = offer.packages.find((p) => p.tier === packageLevel) ?? offer.packages[1];
   const price = applyPriceModifier(offer.basePrice, pkg.priceModifier);
-  const isPremium = offer.tags.includes('luxury') || offer.rating >= 4.8;
 
   return (
     <motion.article
-      className={`${styles.card} ${isPremium ? styles.premium : ''}`}
+      className={`${styles.card} ${layout === 'list' ? styles.cardList : ''}`}
       initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
@@ -45,15 +44,28 @@ export default function OfferCard({ offer, packageLevel = 'standard', index = 0 
         </div>
 
         <div className={styles.body}>
-          <span className={styles.eyebrow}>{eyebrow}</span>
-          <h3 className={styles.title}>{getLocalizedField(offer.title, lang)}</h3>
+          <div className={styles.titleBlock}>
+            <span className={`${styles.eyebrow} ${offer.type === 'domestic' ? styles.eyebrowDomestic : styles.eyebrowIntl}`}>{eyebrow}</span>
+            <h3 className={styles.title}>{getLocalizedField(offer.title, lang)}</h3>
 
-          <div className={styles.metaRow}>
-            <span className={styles.duration}>
-              {offer.duration.days} {t('common.days')}
-            </span>
-            <span className={styles.metaDot} aria-hidden="true" />
-            <span className={styles.rating}>★ {offer.rating}</span>
+            <div className={styles.metaRow}>
+              <span className={styles.duration}>
+                {offer.duration.days} {t('common.days')}
+              </span>
+              <span className={styles.metaDot} aria-hidden="true" />
+              <span className={styles.rating}>★ {offer.rating}</span>
+              {offer.groupSize && (
+                <>
+                  <span className={styles.metaDot} aria-hidden="true" />
+                  <span className={styles.groupSize}>
+                    {offer.groupSize.min === offer.groupSize.max
+                      ? offer.groupSize.min
+                      : `${offer.groupSize.min}–${offer.groupSize.max}`}{' '}
+                    {t('offer.people')}
+                  </span>
+                </>
+              )}
+            </div>
           </div>
 
           <div className={styles.footer}>

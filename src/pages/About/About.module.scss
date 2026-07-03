@@ -25,7 +25,18 @@
 }
 
 .storySection {
+  position: relative;
   background-color: $color-plaster-50;
+  text-align: center;
+}
+
+.quoteMark {
+  display: block;
+  font-family: $font-citadel;
+  font-size: 8rem;
+  line-height: 0.6;
+  color: rgba(149, 191, 39, 0.22);
+  margin-bottom: $space-sm;
 }
 
 .storyRoute {
@@ -37,10 +48,12 @@
   max-width: 760px;
   margin: 0 auto;
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 1.35rem;
   line-height: 1.7;
   color: $color-ink-900;
   font-family: $font-display;
+  font-style: italic;
+  font-weight: 500;
 }
 
 .missionSection {
@@ -49,21 +62,26 @@
 }
 
 .missionCard {
-  background-color: $color-ink-900;
+  position: relative;
+  isolation: isolate;
   border-radius: $radius-lg;
   padding: $space-2xl;
   text-align: center;
-  max-width: 720px;
+  max-width: 760px;
   margin: 0 auto;
-
-  h2 {
-    color: $color-white;
-    font-size: 1.6rem;
-    margin-bottom: $space-sm;
-  }
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  box-shadow: $shadow-elevated;
 
   p {
-    color: $color-mist;
+    position: relative;
+    z-index: 1;
+    color: $color-white;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    max-width: 56ch;
+    margin: 0 auto;
   }
 
   @include respond(mobile) {
@@ -71,18 +89,47 @@
   }
 }
 
+.missionOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(160deg, rgba($color-ink-950, 0.9) 0%, rgba(149, 191, 39, 0.3) 55%, rgba($color-ink-950, 0.92) 100%);
+}
+
+.missionEyebrow {
+  position: relative;
+  z-index: 1;
+  display: block;
+  @include mono-eyebrow;
+  color: $color-gold-300;
+  margin-bottom: $space-md;
+}
+
 .statsSection {
   background-color: $color-plaster-50;
 }
 
 .statsGrid {
+  position: relative;
+  isolation: isolate;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: $space-lg;
   text-align: center;
-  background-color: $color-ink-700;
+  background-color: $color-ink-950;
   border-radius: $radius-lg;
   padding: $space-xl;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(198, 255, 52, 0.22) 0%, transparent 45%),
+      radial-gradient(circle at 85% 80%, rgba(26, 147, 184, 0.18) 0%, transparent 45%);
+  }
 
   @include respond(mobile) {
     grid-template-columns: repeat(2, 1fr);
@@ -91,52 +138,131 @@
 }
 
 .teamSection {
-  background-color: $color-plaster-50;
+  background-color: $color-ink-950;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      radial-gradient(circle at 90% 10%, rgba(198, 255, 52, 0.14) 0%, transparent 45%),
+      radial-gradient(circle at 5% 90%, rgba(26, 147, 184, 0.16) 0%, transparent 45%);
+  }
+}
+
+.teamHeader {
+  text-align: center;
+  margin-bottom: $space-xl;
+}
+
+.teamEyebrow {
+  display: block;
+  @include mono-eyebrow;
+  color: $color-gold-500;
+  margin-bottom: $space-xs;
 }
 
 .teamTitle {
-  text-align: center;
-  font-size: 1.7rem;
-  margin-bottom: $space-xl;
+  font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+  color: $color-white;
 }
 
 .teamGrid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: $space-lg;
 
   @include respond(below-desktop) {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  @include respond(mobile) {
+    grid-template-columns: 1fr;
+    gap: $space-md;
+  }
 }
 
 .teamCard {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
   background-color: $color-white;
   border-radius: $radius-md;
-  padding: $space-lg $space-md;
-  box-shadow: $shadow-card;
+  overflow: hidden;
+  box-shadow: $shadow-elevated;
+  transition: transform $duration-base $ease-out-expo;
+
+  &:hover {
+    transform: translateY(-6px);
+  }
 }
 
-.teamAvatar {
-  width: 84px;
-  height: 84px;
-  border-radius: 50%;
+.teamPhotoWrap {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background-color: $color-ink-900;
+}
+
+.teamPhoto {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  margin-bottom: $space-sm;
+  filter: grayscale(85%);
+  transition: transform $duration-slow $ease-out-expo, filter $duration-slow $ease-base;
+
+  .teamCard:hover & {
+    transform: scale(1.06);
+    filter: grayscale(0%);
+  }
+}
+
+.teamIndex {
+  position: absolute;
+  top: $space-sm;
+  left: $space-sm;
+  z-index: 1;
+  font-family: $font-monr;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: $color-ink-950;
+  background-color: $color-gold-500;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.teamInfo {
+  padding: $space-md;
 }
 
 .teamName {
+  display: block;
+  font-family: $font-monr;
   font-weight: 700;
-  color: $color-ink-900;
-  font-size: 0.95rem;
+  color: $color-ink-950;
+  font-size: 1.1rem;
+  letter-spacing: -0.01em;
+}
+
+.teamDivider {
+  display: block;
+  width: 2rem;
+  height: 3px;
+  border-radius: $radius-pill;
+  background-color: $color-gold-500;
+  margin: $space-2xs 0;
 }
 
 .teamRole {
-  margin-top: 2px;
-  font-size: 0.78rem;
+  display: block;
+  font-family: $font-mono;
+  font-size: 0.72rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
   color: $color-stone-600;
 }

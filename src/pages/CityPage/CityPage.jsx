@@ -6,6 +6,7 @@ import ScrollCue from '../../components/ScrollCue/ScrollCue';
 import OfferCard from '../../components/OfferCard/OfferCard';
 import FilterDrawer from '../../components/FilterDrawer/FilterDrawer';
 import SortDropdown from '../../components/SortDropdown/SortDropdown';
+import ViewToggle from '../../components/ViewToggle/ViewToggle';
 import useFilteredOffers from '../../hooks/useFilteredOffers';
 import countries from '../../data/countries';
 import cities from '../../data/cities';
@@ -21,6 +22,7 @@ export default function CityPage() {
   const lang = i18n.language;
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [sortBy, setSortBy] = useState('popular');
+  const [viewMode, setViewMode] = useState('grid');
   const [extraFilters, setExtraFilters] = useState({});
 
   const city = cities.find((c) => c.slug === citySlug && c.countrySlug === countrySlug);
@@ -78,11 +80,14 @@ export default function CityPage() {
                 <span className={styles.resultCount}>
                   {filtered.length} {t('common.results')}
                 </span>
-                <SortDropdown value={sortBy} onChange={setSortBy} />
+                <div className={styles.resultsControls}>
+                  <SortDropdown value={sortBy} onChange={setSortBy} />
+                  <ViewToggle value={viewMode} onChange={setViewMode} />
+                </div>
               </div>
-              <div className={styles.offerGrid}>
+              <div className={viewMode === 'list' ? styles.offerGridList : styles.offerGrid}>
                 {filtered.map((offer, i) => (
-                  <OfferCard key={offer.id} offer={offer} index={i} />
+                  <OfferCard key={offer.id} offer={offer} index={i} layout={viewMode} />
                 ))}
                 {filtered.length === 0 && <p className={styles.noResults}>{t('common.noResults')}</p>}
               </div>
