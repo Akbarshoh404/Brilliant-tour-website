@@ -87,6 +87,9 @@ export default function FilterDrawer({ filters, onChange, onClear, isOpen, onClo
         <div className={styles.headerActions}>
           {activeCount > 0 && (
             <button type="button" className={styles.clearBtn} onClick={onClear}>
+              <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                <path d="M2 2l8 8M10 2l-8 8" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+              </svg>
               {t('common.clearFilters')}
             </button>
           )}

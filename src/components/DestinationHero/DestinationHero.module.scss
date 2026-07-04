@@ -54,9 +54,16 @@
   justify-content: space-between;
   gap: $space-xl;
 
-  @include respond(mobile) {
+  // The prev/next arrows sit vertically centered over the hero (see
+  // .heroArrowBtn) and the side preview cards disappear below desktop too,
+  // so on both tablet and mobile the text block is tall enough on its own
+  // that bottom-anchoring it would push its top edge into those arrows —
+  // it's pinned to the top instead for the whole below-desktop range.
+  @include respond(below-desktop) {
+    align-items: flex-start;
     padding-left: $space-md;
     padding-right: $space-md;
+    padding-top: calc(#{$navbar-height} + #{$space-md});
     padding-bottom: $space-xl;
   }
 }
@@ -67,6 +74,7 @@
 
   @include respond(below-desktop) {
     max-width: 100%;
+    padding-bottom: 0;
   }
 }
 
@@ -75,11 +83,15 @@
   color: rgba(255, 255, 255, 0.55);
   display: block;
   margin-bottom: $space-sm;
+
+  @include respond(below-desktop) {
+    font-size: 0.78rem;
+  }
 }
 
 .heroTitle {
   font-family: $font-monr;
-  font-size: clamp(1.5rem, 3.2vw, 2.7rem);
+  font-size: clamp(1.8rem, 4vw, 2.9rem);
   font-weight: 800;
   text-transform: uppercase;
   color: $color-white;
@@ -98,6 +110,29 @@
   font-size: 1rem;
   max-width: 44ch;
   line-height: 1.65;
+
+  @include respond(below-desktop) {
+    margin-top: $space-2xs;
+    font-size: 1.05rem;
+  }
+}
+
+// Search bar + destination badge travel together as one unit below desktop
+// (see .heroBottomCluster) — the arrows are vertically centered over the
+// whole hero and the title/subtitle above already claim the upper portion,
+// so this pair is pinned near the bottom instead of following right under
+// the subtitle.
+.heroBottomCluster {
+  @include respond(below-desktop) {
+    position: absolute;
+    left: $space-md;
+    right: $space-md;
+    bottom: $space-lg;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    gap: $space-sm;
+  }
 }
 
 // Search bar embedded in hero (Home only)
@@ -111,7 +146,8 @@
   overflow: hidden;
   max-width: 440px;
 
-  @include respond(mobile) {
+  @include respond(below-desktop) {
+    margin-top: 0;
     max-width: 100%;
   }
 }
@@ -124,6 +160,11 @@
   font-size: 0.9rem;
   color: $color-white;
   min-width: 0;
+
+  @include respond(below-desktop) {
+    padding: 0.95rem 1.1rem;
+    font-size: 1rem;
+  }
 
   &::placeholder {
     color: rgba(255, 255, 255, 0.45);
@@ -142,6 +183,11 @@
   cursor: pointer;
   flex-shrink: 0;
   transition: background $duration-fast $ease-base, color $duration-fast $ease-base;
+
+  @include respond(below-desktop) {
+    padding: 0 1.2rem;
+    font-size: 0.85rem;
+  }
 
   &:hover {
     background: $color-gold-500;
@@ -318,9 +364,16 @@
 }
 
 // Current destination indicator — sits in the text flow, below the
-// search bar (or subtitle, when there's no search).
+// search bar (or subtitle, when there's no search). Below desktop it moves
+// into .heroBottomCluster alongside the search bar instead — as a compact,
+// centered pill rather than stretching to the cluster's full width.
 .heroLocationWrap {
   margin-top: $space-lg;
+
+  @include respond(below-desktop) {
+    margin-top: 0;
+    align-self: center;
+  }
 }
 
 .heroLocationTop {

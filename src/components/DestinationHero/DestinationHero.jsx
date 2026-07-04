@@ -110,31 +110,36 @@ export default function DestinationHero({
             </motion.p>
           )}
 
-          {showSearch && (
-            <motion.form
-              className={styles.heroSearch}
-              onSubmit={onSearchSubmit}
-              variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } } }}
-            >
-              <input
-                type="text"
-                value={query}
-                onChange={(e) => onQueryChange?.(e.target.value)}
-                placeholder={searchPlaceholder}
-                className={styles.heroSearchInput}
-              />
-              <button type="submit" className={styles.heroSearchBtn}>
-                {searchLabel}
-              </button>
-            </motion.form>
-          )}
+          {/* Search + destination badge move together as one bottom-anchored
+              cluster below desktop, so the search bar reads as "paired with"
+              the badge instead of stranded up near the title. */}
+          <div className={styles.heroBottomCluster}>
+            {showSearch && (
+              <motion.form
+                className={styles.heroSearch}
+                onSubmit={onSearchSubmit}
+                variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } } }}
+              >
+                <input
+                  type="text"
+                  value={query}
+                  onChange={(e) => onQueryChange?.(e.target.value)}
+                  placeholder={searchPlaceholder}
+                  className={styles.heroSearchInput}
+                />
+                <button type="submit" className={styles.heroSearchBtn}>
+                  {searchLabel}
+                </button>
+              </motion.form>
+            )}
 
-          <motion.div
-            className={styles.heroLocationWrap}
-            variants={{ hidden: { opacity: 0, y: 14 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } } }}
-          >
-            {destinationBadge}
-          </motion.div>
+            <motion.div
+              className={styles.heroLocationWrap}
+              variants={{ hidden: { opacity: 0, y: 14 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } } }}
+            >
+              {destinationBadge}
+            </motion.div>
+          </div>
         </motion.div>
 
         {hasMultiple && (

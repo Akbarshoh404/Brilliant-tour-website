@@ -1,0 +1,61 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.wrap {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: $radius-pill;
+}
+
+.fullWidth {
+  width: 100%;
+
+  .option {
+    flex: 1;
+  }
+}
+
+.option {
+  position: relative;
+  padding: 0.42rem 0.85rem;
+  border: none;
+  background: transparent;
+  border-radius: $radius-pill;
+  overflow: hidden;
+  cursor: pointer;
+  @include focus-ring($color-white);
+}
+
+.highlight {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-color: $color-gold-500;
+  border-radius: $radius-pill;
+}
+
+.optionLabel {
+  position: relative;
+  z-index: 1;
+  font-family: $font-mono;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+  transition: color $duration-fast $ease-base;
+}
+
+.option:hover .optionLabel {
+  color: $color-white;
+}
+
+.option[aria-pressed='true'] .optionLabel {
+  color: $color-ink-950;
+}

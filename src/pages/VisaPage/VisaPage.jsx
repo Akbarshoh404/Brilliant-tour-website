@@ -156,34 +156,40 @@ export default function VisaPage() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: 'easeOut' }}
+                      transition={{ height: { duration: 0.42, ease: [0.22, 1, 0.36, 1] }, opacity: { duration: 0.28 } }}
                       onClick={(e) => e.stopPropagation()}
                     >
-                      {submittedSlug === c.slug ? (
-                        <p className={styles.applySuccess}>{t('visas.applySuccess')}</p>
-                      ) : (
-                        <form className={styles.applyForm} onSubmit={onApplySubmit(c.slug)}>
-                          <input
-                            type="text"
-                            required
-                            placeholder={t('contact.name')}
-                            value={applyForm.name}
-                            onChange={(e) => setApplyForm((f) => ({ ...f, name: e.target.value }))}
-                            className={styles.applyInput}
-                          />
-                          <input
-                            type="tel"
-                            required
-                            placeholder={t('visas.applyPhone')}
-                            value={applyForm.phone}
-                            onChange={(e) => setApplyForm((f) => ({ ...f, phone: e.target.value }))}
-                            className={styles.applyInput}
-                          />
-                          <button type="submit" className={styles.applySubmitBtn}>
-                            {t('visas.applySubmit')}
-                          </button>
-                        </form>
-                      )}
+                      <motion.div
+                        initial={{ y: -8, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 0.32, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
+                      >
+                        {submittedSlug === c.slug ? (
+                          <p className={styles.applySuccess}>{t('visas.applySuccess')}</p>
+                        ) : (
+                          <form className={styles.applyForm} onSubmit={onApplySubmit(c.slug)}>
+                            <input
+                              type="text"
+                              required
+                              placeholder={t('contact.name')}
+                              value={applyForm.name}
+                              onChange={(e) => setApplyForm((f) => ({ ...f, name: e.target.value }))}
+                              className={styles.applyInput}
+                            />
+                            <input
+                              type="tel"
+                              required
+                              placeholder={t('visas.applyPhone')}
+                              value={applyForm.phone}
+                              onChange={(e) => setApplyForm((f) => ({ ...f, phone: e.target.value }))}
+                              className={styles.applyInput}
+                            />
+                            <button type="submit" className={styles.applySubmitBtn}>
+                              {t('visas.applySubmit')}
+                            </button>
+                          </form>
+                        )}
+                      </motion.div>
                     </motion.div>
                   )}
                 </AnimatePresence>

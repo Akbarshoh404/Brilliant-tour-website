@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { useParams, Navigate } from 'react-router-dom';
+import { useParams, Navigate, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import Lightbox from '../../components/Lightbox/Lightbox';
@@ -63,13 +63,20 @@ export default function OfferDetail() {
   const formatDate = (iso) =>
     new Date(iso).toLocaleDateString(LOCALE_BY_LANG[lang] ?? 'en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 
+  const parentTo = offer.type === 'international' ? '/international' : '/domestic';
+
   return (
     <div className={styles.page}>
       <div className={styles.breadcrumbRow}>
+        <Link to={parentTo} className={styles.backBtn} aria-label={t('common.back')}>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M10 3L5 8l5 5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </Link>
         <Breadcrumbs
           variant="onLight"
           items={[
-            { label: offer.type === 'international' ? t('nav.international') : t('nav.domestic'), to: offer.type === 'international' ? '/international' : '/domestic' },
+            { label: offer.type === 'international' ? t('nav.international') : t('nav.domestic'), to: parentTo },
             { label: getLocalizedField(offer.title, lang) },
           ]}
         />

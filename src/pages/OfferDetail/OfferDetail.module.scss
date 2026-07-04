@@ -12,10 +12,35 @@
 
 .breadcrumbRow {
   @include container;
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
   padding: calc(#{$navbar-height} + #{$space-md}) $space-lg $space-sm;
 
   @include respond(mobile) {
     padding: calc(#{$navbar-height} + #{$space-sm}) $space-md $space-sm;
+  }
+}
+
+.backBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: $color-white;
+  border: 1.5px solid $color-plaster-100;
+  color: $color-ink-900;
+  box-shadow: $shadow-card;
+  transition: background-color $duration-fast $ease-base, border-color $duration-fast $ease-base, transform $duration-fast $ease-base;
+
+  &:hover {
+    background-color: $color-ink-950;
+    border-color: $color-ink-950;
+    color: $color-white;
+    transform: translateX(-2px);
   }
 }
 

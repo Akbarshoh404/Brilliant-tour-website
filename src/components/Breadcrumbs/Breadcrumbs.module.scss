@@ -2,22 +2,28 @@
 @use '../../styles/mixins' as *;
 
 .breadcrumbs {
-  margin-bottom: $space-md;
+  margin-bottom: $space-lg;
 }
 
 .list {
-  display: flex;
+  display: inline-flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: $space-3xs;
+  gap: $space-2xs;
+  background-color: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: $radius-pill;
+  padding: 0.5rem 1rem;
 }
 
 .item {
   display: flex;
   align-items: center;
-  gap: $space-3xs;
+  gap: $space-2xs;
   font-family: $font-mono;
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   font-weight: 600;
   letter-spacing: 0.02em;
   color: $color-mist;
@@ -36,10 +42,16 @@
 }
 
 .sep {
-  opacity: 0.6;
+  opacity: 0.5;
+  flex-shrink: 0;
 }
 
 .onLight {
+  .list {
+    background-color: $color-plaster-50;
+    border-color: $color-plaster-100;
+  }
+
   .item {
     color: $color-stone-600;
 

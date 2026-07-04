@@ -211,15 +211,18 @@
   gap: $space-3xs;
   width: 100%;
   margin-top: $space-md;
-  padding: 0.7rem 1rem;
+  padding: 0.7rem 0.6rem;
   border: 1px solid $color-ink-950;
   border-radius: $radius-pill;
   background-color: $color-ink-950;
   color: $color-white;
   font-family: $font-mono;
-  font-size: 0.78rem;
-  letter-spacing: 0.03em;
+  font-size: 0.72rem;
+  letter-spacing: 0.01em;
   text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   transition: background-color $duration-fast $ease-base, color $duration-fast $ease-base;
 
   &:hover {
@@ -236,6 +239,7 @@
 }
 
 .applyBtnIcon {
+  flex-shrink: 0;
   transition: transform $duration-fast $ease-base;
 
   .applyBtnActive & {

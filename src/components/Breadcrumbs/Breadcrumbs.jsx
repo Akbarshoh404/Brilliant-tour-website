@@ -17,7 +17,11 @@ export default function Breadcrumbs({ items, variant }) {
               ) : (
                 <Link to={item.to}>{item.label}</Link>
               )}
-              {!isLast && <span className={styles.sep} aria-hidden="true">/</span>}
+              {!isLast && (
+                <svg className={styles.sep} width="7" height="11" viewBox="0 0 7 11" fill="none" aria-hidden="true">
+                  <path d="M1 1l5 4.5L1 10" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              )}
             </li>
           );
         })}

@@ -84,15 +84,26 @@
 }
 
 .clearBtn {
-  background: transparent;
-  border: none;
-  color: $color-gold-600;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: $color-plaster-50;
+  border: 1px solid $color-plaster-100;
+  border-radius: $radius-pill;
+  color: $color-ink-900;
+  padding: 0.35rem 0.7rem;
   font-family: $font-mono;
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.03em;
   text-transform: uppercase;
-  text-decoration: underline;
+  transition: background-color $duration-fast $ease-base, border-color $duration-fast $ease-base, color $duration-fast $ease-base;
+
+  &:hover {
+    background-color: $color-ink-950;
+    border-color: $color-ink-950;
+    color: $color-white;
+  }
 }
 
 .closeBtn {

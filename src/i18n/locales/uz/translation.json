@@ -8,7 +8,11 @@
     "contact": "Aloqa",
     "search": "Qidiruv",
     "menu": "Menyu",
-    "close": "Yopish"
+    "close": "Yopish",
+    "home": "Bosh sahifa",
+    "modeSwitcher": "Ko'rish rejimi",
+    "clientMode": "Mijoz",
+    "businessMode": "Biznes"
   },
   "footer": {
     "tagline": "Ikki yo'l. Bitta sayohat.",
@@ -39,6 +43,7 @@
     "noResults": "Ushbu filtrlarga mos sayohatlar topilmadi.",
     "clearFilters": "Barchasini tozalash",
     "filters": "Filtrlar",
+    "back": "Orqaga",
     "sortBy": "Saralash",
     "results": "natija",
     "backToTop": "Yuqoriga",

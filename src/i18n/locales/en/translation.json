@@ -8,7 +8,11 @@
     "contact": "Contact",
     "search": "Search",
     "menu": "Menu",
-    "close": "Close"
+    "close": "Close",
+    "home": "Home",
+    "modeSwitcher": "Browsing mode",
+    "clientMode": "Client",
+    "businessMode": "Business"
   },
   "footer": {
     "tagline": "Two routes. One journey.",
@@ -39,6 +43,7 @@
     "noResults": "No journeys match these filters yet.",
     "clearFilters": "Clear all",
     "filters": "Filters",
+    "back": "Back",
     "sortBy": "Sort by",
     "results": "results",
     "backToTop": "Back to top",
