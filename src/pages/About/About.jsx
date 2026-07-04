@@ -6,6 +6,7 @@ import StatCounter from '../../components/StatCounter/StatCounter';
 import RouteLine from '../../components/RouteLine/RouteLine';
 import { avatarUrl } from '../../data/images';
 import aboutHero from '../../assets/pics/Uzbekistan/photo_11_2026-06-30_15-23-57.jpg';
+import storyPhoto from '../../assets/pics/Uzbekistan/photo_9_2026-06-30_15-23-57.jpg';
 import styles from './About.module.scss';
 
 const TEAM = [
@@ -35,9 +36,30 @@ export default function About() {
 
       <section className={styles.storySection}>
         <div className={styles.sectionInner}>
-          <span className={styles.quoteMark} aria-hidden="true">&ldquo;</span>
-          <RouteLine variant="fork" dDomestic="M10 30 C 60 30, 80 10, 160 10" dInternational="M10 30 C 60 30, 80 50, 160 50" width={180} height={60} className={styles.storyRoute} />
-          <p className={styles.story}>{t('about.story')}</p>
+          <div className={styles.storyLayout}>
+            <motion.div
+              className={styles.storyPhotoWrap}
+              initial={{ opacity: 0, x: -24 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6 }}
+            >
+              <img src={storyPhoto} alt="" className={styles.storyPhoto} />
+              <span className={styles.storyBadge}>{t('about.since')}</span>
+            </motion.div>
+
+            <motion.div
+              className={styles.storyText}
+              initial={{ opacity: 0, x: 24 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
+              <span className={styles.quoteMark} aria-hidden="true">&ldquo;</span>
+              <p className={styles.story}>{t('about.story')}</p>
+              <RouteLine variant="fork" dDomestic="M10 30 C 60 30, 80 10, 160 10" dInternational="M10 30 C 60 30, 80 50, 160 50" width={180} height={60} className={styles.storyRoute} />
+            </motion.div>
+          </div>
         </div>
       </section>
 

@@ -8,61 +8,97 @@
 .trigger {
   display: flex;
   align-items: center;
-  gap: $space-2xs;
+  gap: 0.4rem;
   background: transparent;
-  border: 1px solid currentColor;
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
   border-radius: $radius-pill;
-  padding: 0.4rem 0.8rem;
+  padding: 0.38rem 0.75rem;
   font-family: $font-mono;
-  font-size: 0.78rem;
+  font-size: 0.76rem;
+  font-weight: 600;
   letter-spacing: 0.04em;
   color: inherit;
+  transition: border-color $duration-fast $ease-base, background-color $duration-fast $ease-base, color $duration-fast $ease-base;
   @include focus-ring;
+
+  &:hover,
+  &[aria-expanded='true'] {
+    border-color: $color-gold-500;
+    background-color: rgba(198, 255, 52, 0.12);
+    color: $color-gold-500;
+  }
+}
+
+.globe {
+  flex-shrink: 0;
+  opacity: 0.85;
 }
 
 .chevron {
   opacity: 0.7;
+  flex-shrink: 0;
+  transition: transform $duration-fast $ease-base;
+}
+
+.trigger[aria-expanded='true'] .chevron {
+  transform: rotate(180deg);
 }
 
 .light .trigger {
   color: $color-white;
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 .dark .trigger {
   color: $color-ink-900;
+  border-color: rgba(11, 28, 40, 0.2);
+
+  &:hover,
+  &[aria-expanded='true'] {
+    color: $color-gold-600;
+  }
 }
 
 .menu {
   position: absolute;
-  top: calc(100% + #{$space-2xs});
+  top: calc(100% + #{$space-xs});
   right: 0;
   background-color: $color-white;
-  border-radius: $radius-sm;
+  border-radius: $radius-md;
   box-shadow: $shadow-card-hover;
+  border: 1px solid $color-plaster-100;
   padding: $space-2xs;
-  min-width: 84px;
+  min-width: 108px;
   z-index: $z-overlay;
 }
 
 .option {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-xs;
   width: 100%;
   text-align: left;
-  padding: $space-2xs $space-xs;
+  padding: 0.5rem 0.65rem;
   border-radius: $radius-sm;
   background: transparent;
   border: none;
   font-family: $font-mono;
   font-size: 0.8rem;
+  font-weight: 600;
   color: $color-ink-900;
   transition: background-color $duration-fast $ease-base;
 
   &:hover {
-    background-color: $color-plaster-100;
+    background-color: $color-plaster-50;
   }
 }
 
 .active {
-  color: $color-turquoise-500;
-  font-weight: 600;
+  color: $color-gold-600;
+  background-color: rgba(198, 255, 52, 0.14);
+
+  &:hover {
+    background-color: rgba(198, 255, 52, 0.2);
+  }
 }

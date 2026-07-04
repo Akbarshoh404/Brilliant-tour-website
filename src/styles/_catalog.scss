@@ -101,19 +101,6 @@
   color: $color-stone-600;
 }
 
-%catalogMobileFilterBtn {
-  display: none;
-  background-color: $color-white;
-  border: 1px solid $color-plaster-100;
-  border-radius: $radius-pill;
-  padding: 0.5rem 1rem;
-  font-size: 0.85rem;
-  font-weight: 600;
-
-  @media (max-width: #{$bp-tablet - 1px}) {
-    display: block;
-  }
-}
 
 %catalogOfferGrid {
   display: grid;

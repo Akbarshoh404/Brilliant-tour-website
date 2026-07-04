@@ -6,6 +6,7 @@ import DestinationHero from '../../components/DestinationHero/DestinationHero';
 import FlagIcon from '../../components/FlagIcon/FlagIcon';
 import OfferCard from '../../components/OfferCard/OfferCard';
 import FilterDrawer from '../../components/FilterDrawer/FilterDrawer';
+import FilterOpenerButton from '../../components/FilterOpenerButton/FilterOpenerButton';
 import SortDropdown from '../../components/SortDropdown/SortDropdown';
 import ViewToggle from '../../components/ViewToggle/ViewToggle';
 import useFilteredOffers from '../../hooks/useFilteredOffers';
@@ -106,9 +107,7 @@ export default function InternationalHub() {
             />
             <div className={styles.results}>
               <div className={styles.resultsHeader}>
-                <button type="button" className={styles.mobileFilterBtn} onClick={() => setDrawerOpen(true)}>
-                  {t('common.filters')}
-                </button>
+                <FilterOpenerButton filters={filters} onClick={() => setDrawerOpen(true)} />
                 <span className={styles.resultCount}>
                   {allFiltered.length} {t('common.results')}
                 </span>

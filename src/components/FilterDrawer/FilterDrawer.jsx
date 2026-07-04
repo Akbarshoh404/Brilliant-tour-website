@@ -3,6 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { AnimatePresence, motion } from 'framer-motion';
 import countries from '../../data/countries';
 import categories from '../../data/categories';
+import CountrySelect from '../CountrySelect/CountrySelect';
+import { countActiveFilters } from '../../utils/countActiveFilters';
 import { getLocalizedField } from '../../utils/getLocalizedField';
 import styles from './FilterDrawer.module.scss';
 
@@ -31,23 +33,6 @@ const ACTIVITIES = [
 const SEASONS = ['spring', 'summer', 'autumn', 'winter'];
 const TOUR_LANGUAGES = ['English', 'Russian', 'Uzbek'];
 const GROUP_SIZES = ['Solo', 'Couple', 'Small group (2-6)', 'Large group (7+)'];
-
-function countActive(filters) {
-  let n = 0;
-  if (filters.countrySlug) n++;
-  if (filters.priceMin != null || filters.priceMax != null) n++;
-  if (filters.durationBucket) n++;
-  if (filters.season) n++;
-  if (filters.tags?.length) n += filters.tags.length;
-  if (filters.visaRequirement) n++;
-  if (filters.hotelCategoryKeyword) n++;
-  if (filters.transportation) n++;
-  if (filters.activityKeyword) n++;
-  if (filters.packageLevel) n++;
-  if (filters.tourLanguage) n++;
-  if (filters.groupSize) n++;
-  return n;
-}
 
 function Section({ id, title, openSections, toggle, children }) {
   const isOpen = openSections.includes(id);
@@ -85,7 +70,7 @@ export default function FilterDrawer({ filters, onChange, onClear, isOpen, onClo
     setOpenSections((prev) => (prev.includes(id) ? prev.filter((s) => s !== id) : [...prev, id]));
 
   const patch = (p) => onChange({ ...filters, ...p });
-  const activeCount = countActive(filters);
+  const activeCount = countActiveFilters(filters);
 
   const toggleTag = (tag) => {
     const tags = filters.tags ?? [];
@@ -114,18 +99,12 @@ export default function FilterDrawer({ filters, onChange, onClear, isOpen, onClo
       <div className={styles.body}>
         {showDestination && (
           <Section id="destination" title={t('filters.destination')} openSections={openSections} toggle={toggle}>
-            <select
-              className={styles.select}
+            <CountrySelect
+              options={countries}
               value={filters.countrySlug ?? ''}
-              onChange={(e) => patch({ countrySlug: e.target.value || null })}
-            >
-              <option value="">{t('international.allRegions')}</option>
-              {countries.map((c) => (
-                <option key={c.slug} value={c.slug}>
-                  {c.flag} {getLocalizedField(c.name, lang)}
-                </option>
-              ))}
-            </select>
+              onChange={(slug) => patch({ countrySlug: slug || null })}
+              placeholder={t('international.allRegions')}
+            />
           </Section>
         )}
 

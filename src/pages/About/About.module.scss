@@ -27,27 +27,65 @@
 .storySection {
   position: relative;
   background-color: $color-plaster-50;
-  text-align: center;
+}
+
+.storyLayout {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: $space-2xl;
+  align-items: center;
+
+  @include respond(below-desktop) {
+    grid-template-columns: 1fr;
+    gap: $space-xl;
+  }
+}
+
+.storyPhotoWrap {
+  position: relative;
+  isolation: isolate;
+}
+
+.storyPhoto {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-elevated;
+}
+
+.storyBadge {
+  position: absolute;
+  left: $space-md;
+  bottom: $space-md;
+  z-index: 1;
+  background-color: $color-gold-500;
+  color: $color-ink-950;
+  font-family: $font-monr;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: -0.01em;
+  padding: 0.55rem 1.1rem;
+  border-radius: $radius-pill;
+  box-shadow: $shadow-card;
 }
 
 .quoteMark {
   display: block;
   font-family: $font-citadel;
-  font-size: 8rem;
+  font-size: 6rem;
   line-height: 0.6;
-  color: rgba(149, 191, 39, 0.22);
+  color: rgba(149, 191, 39, 0.3);
   margin-bottom: $space-sm;
 }
 
 .storyRoute {
-  margin: 0 auto $space-md;
+  margin-top: $space-md;
   display: block;
 }
 
 .story {
-  max-width: 760px;
-  margin: 0 auto;
-  text-align: center;
+  max-width: 52ch;
   font-size: 1.35rem;
   line-height: 1.7;
   color: $color-ink-900;

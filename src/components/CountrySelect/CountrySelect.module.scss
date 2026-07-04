@@ -1,0 +1,99 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.wrap {
+  position: relative;
+  width: 100%;
+}
+
+.trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-xs;
+  padding: 0.65rem 0.85rem;
+  border-radius: $radius-sm;
+  border: 1.5px solid $color-plaster-100;
+  background-color: $color-plaster-50;
+  font-size: 0.86rem;
+  color: $color-ink-900;
+  transition: border-color $duration-fast $ease-base;
+
+  &:hover {
+    border-color: $color-gold-600;
+  }
+
+  &[aria-expanded='true'] {
+    border-color: $color-gold-600;
+  }
+}
+
+.triggerContent {
+  display: flex;
+  align-items: center;
+  gap: $space-2xs;
+  text-align: left;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.triggerFlag {
+  flex-shrink: 0;
+}
+
+.chevron {
+  flex-shrink: 0;
+  opacity: 0.6;
+  transition: transform $duration-fast $ease-base;
+}
+
+.trigger[aria-expanded='true'] .chevron {
+  transform: rotate(180deg);
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% + #{$space-2xs});
+  left: 0;
+  right: 0;
+  max-height: 280px;
+  overflow-y: auto;
+  background-color: $color-white;
+  border-radius: $radius-sm;
+  box-shadow: $shadow-card-hover;
+  border: 1px solid $color-plaster-100;
+  padding: $space-2xs;
+  z-index: $z-overlay;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: $space-2xs;
+  width: 100%;
+  text-align: left;
+  padding: 0.5rem 0.6rem;
+  border-radius: $radius-sm;
+  background: transparent;
+  border: none;
+  font-size: 0.85rem;
+  color: $color-ink-900;
+  transition: background-color $duration-fast $ease-base;
+
+  &:hover {
+    background-color: $color-plaster-50;
+  }
+}
+
+.optionFlag {
+  flex-shrink: 0;
+}
+
+.active {
+  color: $color-gold-600;
+  font-weight: 600;
+  background-color: rgba(198, 255, 52, 0.14);
+}

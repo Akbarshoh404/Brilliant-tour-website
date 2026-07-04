@@ -1,0 +1,239 @@
+[
+  {
+    "slug": "germany",
+    "iso": "de",
+    "name": { "en": "Germany", "ru": "Германия", "uz": "Germaniya" },
+    "region": "Schengen",
+    "visaTypeKey": "schengen",
+    "processingDays": "10–15",
+    "priceFrom": 130,
+    "requirementKeys": [
+      "passport",
+      "photos",
+      "application",
+      "funds",
+      "insurance",
+      "itinerary"
+    ]
+  },
+  {
+    "slug": "france",
+    "iso": "fr",
+    "name": { "en": "France", "ru": "Франция", "uz": "Fransiya" },
+    "region": "Schengen",
+    "visaTypeKey": "schengen",
+    "processingDays": "10–15",
+    "priceFrom": 130,
+    "requirementKeys": [
+      "passport",
+      "photos",
+      "application",
+      "funds",
+      "insurance",
+      "itinerary"
+    ]
+  },
+  {
+    "slug": "spain",
+    "iso": "es",
+    "name": { "en": "Spain", "ru": "Испания", "uz": "Ispaniya" },
+    "region": "Schengen",
+    "visaTypeKey": "schengen",
+    "processingDays": "10–15",
+    "priceFrom": 130,
+    "requirementKeys": [
+      "passport",
+      "photos",
+      "application",
+      "funds",
+      "insurance",
+      "itinerary"
+    ]
+  },
+  {
+    "slug": "hungary",
+    "iso": "hu",
+    "name": { "en": "Hungary", "ru": "Венгрия", "uz": "Vengriya" },
+    "region": "Schengen",
+    "visaTypeKey": "schengen",
+    "processingDays": "10–15",
+    "priceFrom": 120,
+    "requirementKeys": [
+      "passport",
+      "photos",
+      "application",
+      "funds",
+      "insurance",
+      "itinerary"
+    ]
+  },
+  {
+    "slug": "italy",
+    "iso": "it",
+    "name": { "en": "Italy", "ru": "Италия", "uz": "Italiya" },
+    "region": "Schengen",
+    "visaTypeKey": "schengen",
+    "processingDays": "10–15",
+    "priceFrom": 130,
+    "requirementKeys": [
+      "passport",
+      "photos",
+      "application",
+      "funds",
+      "insurance",
+      "itinerary"
+    ]
+  },
+  {
+    "slug": "uk",
+    "iso": "gb",
+    "name": {
+      "en": "United Kingdom",
+      "ru": "Великобритания",
+      "uz": "Buyuk Britaniya"
+    },
+    "region": "Europe",
+    "visaTypeKey": "embassyVisa",
+    "processingDays": "15–20",
+    "priceFrom": 160,
+    "requirementKeys": [
+      "passport",
+      "photos",
+      "application",
+      "funds",
+      "employment",
+      "itinerary"
+    ]
+  },
+  {
+    "slug": "uae",
+    "iso": "ae",
+    "name": {
+      "en": "United Arab Emirates",
+      "ru": "ОАЭ",
+      "uz": "Birlashgan Arab Amirliklari"
+    },
+    "region": "Middle East",
+    "visaTypeKey": "evisa",
+    "processingDays": "3–5",
+    "priceFrom": 90,
+    "requirementKeys": ["passport", "photos", "application"]
+  },
+  {
+    "slug": "saudi",
+    "iso": "sa",
+    "name": {
+      "en": "Saudi Arabia",
+      "ru": "Саудовская Аравия",
+      "uz": "Saudiya Arabistoni"
+    },
+    "region": "Middle East",
+    "visaTypeKey": "evisa",
+    "processingDays": "2–4",
+    "priceFrom": 110,
+    "requirementKeys": ["passport", "photos", "application", "insurance"]
+  },
+  {
+    "slug": "turkey",
+    "iso": "tr",
+    "name": { "en": "Türkiye", "ru": "Турция", "uz": "Turkiya" },
+    "region": "Middle East",
+    "visaTypeKey": "evisa",
+    "processingDays": "1–2",
+    "priceFrom": 60,
+    "requirementKeys": ["passport", "application"]
+  },
+  {
+    "slug": "japan",
+    "iso": "jp",
+    "name": { "en": "Japan", "ru": "Япония", "uz": "Yaponiya" },
+    "region": "Asia",
+    "visaTypeKey": "embassyVisa",
+    "processingDays": "5–7",
+    "priceFrom": 70,
+    "requirementKeys": [
+      "passport",
+      "photos",
+      "application",
+      "funds",
+      "itinerary"
+    ]
+  },
+  {
+    "slug": "korea",
+    "iso": "kr",
+    "name": {
+      "en": "South Korea",
+      "ru": "Южная Корея",
+      "uz": "Janubiy Koreya"
+    },
+    "region": "Asia",
+    "visaTypeKey": "evisa",
+    "processingDays": "3–5",
+    "priceFrom": 75,
+    "requirementKeys": ["passport", "photos", "application", "funds"]
+  },
+  {
+    "slug": "china",
+    "iso": "cn",
+    "name": { "en": "China", "ru": "Китай", "uz": "Xitoy" },
+    "region": "Asia",
+    "visaTypeKey": "embassyVisa",
+    "processingDays": "7–10",
+    "priceFrom": 140,
+    "requirementKeys": [
+      "passport",
+      "photos",
+      "application",
+      "invitation",
+      "itinerary"
+    ]
+  },
+  {
+    "slug": "india",
+    "iso": "in",
+    "name": { "en": "India", "ru": "Индия", "uz": "Hindiston" },
+    "region": "Asia",
+    "visaTypeKey": "evisa",
+    "processingDays": "3–5",
+    "priceFrom": 80,
+    "requirementKeys": ["passport", "photos", "application"]
+  },
+  {
+    "slug": "usa",
+    "iso": "us",
+    "name": { "en": "United States", "ru": "США", "uz": "AQSH" },
+    "region": "Americas",
+    "visaTypeKey": "sponsoredVisa",
+    "processingDays": "30–60",
+    "priceFrom": 250,
+    "requirementKeys": [
+      "passport",
+      "photos",
+      "application",
+      "funds",
+      "employment",
+      "invitation"
+    ]
+  },
+  {
+    "slug": "brazil",
+    "iso": "br",
+    "name": { "en": "Brazil", "ru": "Бразилия", "uz": "Braziliya" },
+    "region": "Americas",
+    "visaTypeKey": "evisa",
+    "processingDays": "5–7",
+    "priceFrom": 100,
+    "requirementKeys": ["passport", "photos", "application", "funds"]
+  },
+  {
+    "slug": "egypt",
+    "iso": "eg",
+    "name": { "en": "Egypt", "ru": "Египет", "uz": "Misr" },
+    "region": "Middle East",
+    "visaTypeKey": "visaOnArrival",
+    "processingDays": "0–1",
+    "priceFrom": 50,
+    "requirementKeys": ["passport", "photos"]
+  }
+]

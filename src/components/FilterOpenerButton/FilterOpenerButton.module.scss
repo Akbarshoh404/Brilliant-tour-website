@@ -1,0 +1,39 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.btn {
+  display: none;
+  align-items: center;
+  gap: $space-2xs;
+  background-color: $color-ink-950;
+  color: $color-white;
+  border: none;
+  border-radius: $radius-pill;
+  padding: 0.65rem 1.1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: background-color $duration-fast $ease-base;
+
+  &:hover {
+    background-color: $color-ink-900;
+  }
+
+  @media (max-width: #{$bp-tablet - 1px}) {
+    display: flex;
+  }
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.2rem;
+  height: 1.2rem;
+  padding: 0 0.3rem;
+  border-radius: $radius-pill;
+  background-color: $color-gold-500;
+  color: $color-ink-950;
+  font-family: $font-mono;
+  font-size: 0.68rem;
+  font-weight: 700;
+}

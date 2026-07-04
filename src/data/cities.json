@@ -1,0 +1,93 @@
+[
+  {
+    "id": "paris",
+    "slug": "paris",
+    "countrySlug": "france",
+    "name": { "en": "Paris", "ru": "Париж", "uz": "Parij" },
+    "imageUrl": "https://picsum.photos/seed/paris-louvre-evening/1600/900"
+  },
+  {
+    "id": "nice",
+    "slug": "nice",
+    "countrySlug": "france",
+    "name": { "en": "Nice", "ru": "Ницца", "uz": "Nitssa" },
+    "imageUrl": "https://picsum.photos/seed/nice-riviera-coast/1600/900"
+  },
+  {
+    "id": "dubai",
+    "slug": "dubai",
+    "countrySlug": "uae",
+    "name": { "en": "Dubai", "ru": "Дубай", "uz": "Dubay" },
+    "imageUrl": "https://picsum.photos/seed/dubai-marina-night/1600/900"
+  },
+  {
+    "id": "abu-dhabi",
+    "slug": "abu-dhabi",
+    "countrySlug": "uae",
+    "name": { "en": "Abu Dhabi", "ru": "Абу-Даби", "uz": "Abu-Dabi" },
+    "imageUrl": "https://picsum.photos/seed/abu-dhabi-grand-mosque/1600/900"
+  },
+  {
+    "id": "male",
+    "slug": "male",
+    "countrySlug": "maldives",
+    "name": { "en": "Malé Atoll", "ru": "Атолл Мале", "uz": "Male atolli" },
+    "imageUrl": "https://picsum.photos/seed/maldives-lagoon-aerial/1600/900"
+  },
+  {
+    "id": "zurich",
+    "slug": "zurich",
+    "countrySlug": "switzerland",
+    "name": { "en": "Zurich", "ru": "Цюрих", "uz": "Sityurix" },
+    "imageUrl": "https://picsum.photos/seed/zurich-lake-city/1600/900"
+  },
+  {
+    "id": "interlaken",
+    "slug": "interlaken",
+    "countrySlug": "switzerland",
+    "name": { "en": "Interlaken", "ru": "Интерлакен", "uz": "Interlaken" },
+    "imageUrl": "https://picsum.photos/seed/interlaken-alps-valley/1600/900"
+  },
+  {
+    "id": "istanbul",
+    "slug": "istanbul",
+    "countrySlug": "turkey",
+    "name": { "en": "Istanbul", "ru": "Стамбул", "uz": "Istanbul" },
+    "imageUrl": "https://picsum.photos/seed/istanbul-bosphorus-bridge/1600/900"
+  },
+  {
+    "id": "cappadocia",
+    "slug": "cappadocia",
+    "countrySlug": "turkey",
+    "name": { "en": "Cappadocia", "ru": "Каппадокия", "uz": "Kappadokiya" },
+    "imageUrl": "https://picsum.photos/seed/cappadocia-balloons-sunrise/1600/900"
+  },
+  {
+    "id": "berlin",
+    "slug": "berlin",
+    "countrySlug": "germany",
+    "name": { "en": "Berlin", "ru": "Берлин", "uz": "Berlin" },
+    "imageKey": "germany-2"
+  },
+  {
+    "id": "seoul",
+    "slug": "seoul",
+    "countrySlug": "korea",
+    "name": { "en": "Seoul", "ru": "Сеул", "uz": "Seul" },
+    "imageKey": "korea-2"
+  },
+  {
+    "id": "kyoto",
+    "slug": "kyoto",
+    "countrySlug": "japan",
+    "name": { "en": "Kyoto", "ru": "Киото", "uz": "Kioto" },
+    "imageKey": "japan-2"
+  },
+  {
+    "id": "tokyo",
+    "slug": "tokyo",
+    "countrySlug": "japan",
+    "name": { "en": "Tokyo", "ru": "Токио", "uz": "Tokio" },
+    "imageKey": "japan-3"
+  }
+]

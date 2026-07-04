@@ -1,0 +1,360 @@
+[
+  {
+    "id": "fr",
+    "slug": "france",
+    "iso": "fr",
+    "name": { "en": "France", "ru": "Франция", "uz": "Fransiya" },
+    "region": "Europe",
+    "imageKey": "france-1",
+    "description": {
+      "en": "Romance, riviera light and centuries of art along the Seine and the Mediterranean coast.",
+      "ru": "Романтика, свет Лазурного берега и века искусства вдоль Сены и Средиземноморья.",
+      "uz": "Sena daryosi va O’rta yer dengizi sohili bo‘ylab romantika, yorug‘lik va asrlar davomidagi san’at."
+    },
+    "visaRequirement": "eVisa",
+    "bestSeason": {
+      "en": "April – June, September – October",
+      "ru": "Апрель – июнь, сентябрь – октябрь",
+      "uz": "Aprel – iyun, sentabr – oktabr"
+    }
+  },
+  {
+    "id": "ae",
+    "slug": "uae",
+    "iso": "ae",
+    "name": {
+      "en": "United Arab Emirates",
+      "ru": "ОАЭ",
+      "uz": "Birlashgan Arab Amirliklari"
+    },
+    "region": "Middle East",
+    "imageKey": "uae-1",
+    "description": {
+      "en": "Glass towers, desert dunes and a coastline built for a different idea of luxury.",
+      "ru": "Стеклянные башни, песчаные дюны и побережье для совершенно иного представления о роскоши.",
+      "uz": "Shisha minoralar, cho‘l qumtepalari va boshqacha hashamat tushunchasi uchun qurilgan sohil."
+    },
+    "visaRequirement": "visa-free",
+    "bestSeason": {
+      "en": "November – March",
+      "ru": "Ноябрь – март",
+      "uz": "Noyabr – mart"
+    }
+  },
+  {
+    "id": "mv",
+    "slug": "maldives",
+    "iso": "mv",
+    "name": { "en": "Maldives", "ru": "Мальдивы", "uz": "Maldiv orollari" },
+    "region": "Asia",
+    "imageUrl": "https://picsum.photos/seed/maldives-overwater-villas/1920/1000",
+    "description": {
+      "en": "Overwater villas, glass-clear lagoons, and a horizon with nothing on it but water.",
+      "ru": "Виллы над водой, прозрачные лагуны и горизонт, где нет ничего, кроме воды.",
+      "uz": "Suv ustidagi villalar, tiniq laguna va ufqda faqat suvdan boshqa narsa yo‘q."
+    },
+    "visaRequirement": "visa-free",
+    "bestSeason": {
+      "en": "December – April",
+      "ru": "Декабрь – апрель",
+      "uz": "Dekabr – aprel"
+    }
+  },
+  {
+    "id": "ch",
+    "slug": "switzerland",
+    "iso": "ch",
+    "name": { "en": "Switzerland", "ru": "Швейцария", "uz": "Shveytsariya" },
+    "region": "Europe",
+    "imageUrl": "https://picsum.photos/seed/swiss-alps-mountains-lake/1920/1000",
+    "description": {
+      "en": "Glacier peaks, cobalt lakes and railways that climb higher than the clouds.",
+      "ru": "Ледниковые вершины, кобальтовые озёра и железные дороги, поднимающиеся выше облаков.",
+      "uz": "Muzlik cho‘qqilari, ko‘k ko‘llar va bulutlardan ham balandga ko‘tariladigan temir yo‘llar."
+    },
+    "visaRequirement": "visa-required",
+    "bestSeason": {
+      "en": "June – September, December – March",
+      "ru": "Июнь – сентябрь, декабрь – март",
+      "uz": "Iyun – sentabr, dekabr – mart"
+    }
+  },
+  {
+    "id": "tr",
+    "slug": "turkey",
+    "iso": "tr",
+    "name": { "en": "Türkiye", "ru": "Турция", "uz": "Turkiya" },
+    "region": "Middle East",
+    "imageUrl": "https://picsum.photos/seed/istanbul-mosque-skyline/1920/1000",
+    "description": {
+      "en": "Where two continents meet — domed skylines, balloon-lit valleys, and bazaars that never close.",
+      "ru": "Где встречаются два континента — купольные силуэты, долины в свете воздушных шаров и базары, которые никогда не закрываются.",
+      "uz": "Ikki qit’a tutashgan joy — gumbazli shahar siluetlari, sharlar yorug‘idagi vodiylar va hech qachon yopilmaydigan bozorlar."
+    },
+    "visaRequirement": "eVisa",
+    "bestSeason": {
+      "en": "April – May, September – November",
+      "ru": "Апрель – май, сентябрь – ноябрь",
+      "uz": "Aprel – may, sentabr – noyabr"
+    }
+  },
+  {
+    "id": "de",
+    "slug": "germany",
+    "iso": "de",
+    "name": { "en": "Germany", "ru": "Германия", "uz": "Germaniya" },
+    "region": "Europe",
+    "imageKey": "germany-1",
+    "description": {
+      "en": "Fairy-tale castles, riverside vineyards and cities that mix medieval streets with modern skylines.",
+      "ru": "Сказочные замки, прибрежные виноградники и города, где средневековые улицы соседствуют с современными небоскрёбами.",
+      "uz": "Ertak qal’alari, daryo bo‘yidagi uzumzorlar va o‘rta asr ko‘chalari zamonaviy shahar siluetlari bilan uyg‘unlashgan shaharlar."
+    },
+    "visaRequirement": "eVisa",
+    "bestSeason": {
+      "en": "May – September, December (Christmas markets)",
+      "ru": "Май – сентябрь, декабрь (рождественские ярмарки)",
+      "uz": "May – sentabr, dekabr (Rojdestvo bozorlari)"
+    }
+  },
+  {
+    "id": "kr",
+    "slug": "korea",
+    "iso": "kr",
+    "name": {
+      "en": "South Korea",
+      "ru": "Южная Корея",
+      "uz": "Janubiy Koreya"
+    },
+    "region": "Asia",
+    "imageKey": "korea-1",
+    "description": {
+      "en": "Palace courtyards, neon skylines and coastlines where centuries-old tradition sits beside hyper-modern cities.",
+      "ru": "Дворцовые дворы, неоновые небоскрёбы и побережья, где вековые традиции соседствуют с ультрасовременными городами.",
+      "uz": "Saroy hovlilari, neon shahar siluetlari va asrlar davomidagi an’analar zamonaviy shaharlar bilan yonma-yon turgan sohillar."
+    },
+    "visaRequirement": "eVisa",
+    "bestSeason": {
+      "en": "March – May, September – November",
+      "ru": "Март – май, сентябрь – ноябрь",
+      "uz": "Mart – may, sentabr – noyabr"
+    }
+  },
+  {
+    "id": "jp",
+    "slug": "japan",
+    "iso": "jp",
+    "name": { "en": "Japan", "ru": "Япония", "uz": "Yaponiya" },
+    "region": "Asia",
+    "imageKey": "japan-2",
+    "description": {
+      "en": "Red torii gates, bamboo groves and a snow-capped Fuji watching over it all.",
+      "ru": "Красные ворота тории, бамбуковые рощи и заснеженная Фудзи, возвышающаяся над всем этим.",
+      "uz": "Qizil torii darvozalari, bambuk o‘rmonlari va bularning barchasini kuzatib turgan qorli Fudziyama."
+    },
+    "visaRequirement": "eVisa",
+    "bestSeason": {
+      "en": "March – May, October – November",
+      "ru": "Март – май, октябрь – ноябрь",
+      "uz": "Mart – may, oktabr – noyabr"
+    }
+  },
+  {
+    "id": "es",
+    "slug": "spain",
+    "iso": "es",
+    "name": { "en": "Spain", "ru": "Испания", "uz": "Ispaniya" },
+    "region": "Europe",
+    "imageUrl": "https://picsum.photos/seed/barcelona-sagrada-familia/1920/1000",
+    "description": {
+      "en": "Flamenco courtyards, Gaudí spires and a Mediterranean coastline built for long lunches.",
+      "ru": "Дворики фламенко, шпили Гауди и средиземноморское побережье, созданное для долгих обедов.",
+      "uz": "Flamenko hovlilari, Gaudi minoralari va uzoq tushliklar uchun yaratilgan O‘rta yer dengizi sohili."
+    },
+    "visaRequirement": "visa-required",
+    "bestSeason": {
+      "en": "April – June, September – October",
+      "ru": "Апрель – июнь, сентябрь – октябрь",
+      "uz": "Aprel – iyun, sentabr – oktabr"
+    }
+  },
+  {
+    "id": "hu",
+    "slug": "hungary",
+    "iso": "hu",
+    "name": { "en": "Hungary", "ru": "Венгрия", "uz": "Vengriya" },
+    "region": "Europe",
+    "imageUrl": "https://picsum.photos/seed/budapest-parliament-danube/1920/1000",
+    "description": {
+      "en": "Thermal baths, a lit-up Parliament on the Danube, and a capital built for slow evenings.",
+      "ru": "Термальные купальни, подсвеченный парламент на Дунае и столица, созданная для неспешных вечеров.",
+      "uz": "Termal hammomlar, Dunay bo‘yidagi yoritilgan parlament va sokin kechalar uchun qurilgan poytaxt."
+    },
+    "visaRequirement": "visa-required",
+    "bestSeason": {
+      "en": "April – June, September – October",
+      "ru": "Апрель – июнь, сентябрь – октябрь",
+      "uz": "Aprel – iyun, sentabr – oktabr"
+    }
+  },
+  {
+    "id": "it",
+    "slug": "italy",
+    "iso": "it",
+    "name": { "en": "Italy", "ru": "Италия", "uz": "Italiya" },
+    "region": "Europe",
+    "imageUrl": "https://picsum.photos/seed/venice-canals-gondola/1920/1000",
+    "description": {
+      "en": "Roman ruins, Venetian canals and Tuscan hills — a country that rewards slow travel.",
+      "ru": "Римские руины, венецианские каналы и тосканские холмы — страна, вознаграждающая неспешные путешествия.",
+      "uz": "Rim xarobalari, Venetsiya kanallari va Toskana tepaliklari — sekin sayohatni mukofotlaydigan davlat."
+    },
+    "visaRequirement": "visa-required",
+    "bestSeason": {
+      "en": "April – June, September – October",
+      "ru": "Апрель – июнь, сентябрь – октябрь",
+      "uz": "Aprel – iyun, sentabr – oktabr"
+    }
+  },
+  {
+    "id": "gb",
+    "slug": "uk",
+    "iso": "gb",
+    "name": {
+      "en": "United Kingdom",
+      "ru": "Великобритания",
+      "uz": "Buyuk Britaniya"
+    },
+    "region": "Europe",
+    "imageUrl": "https://picsum.photos/seed/london-bridge-skyline/1920/1000",
+    "description": {
+      "en": "Castles, countryside and a capital that moves between history and skyline in a single street.",
+      "ru": "Замки, сельская местность и столица, где история и небоскрёбы соседствуют на одной улице.",
+      "uz": "Qal’alar, qishloq manzaralari va bitta ko‘chada tarix va zamonaviylik uyg‘unlashgan poytaxt."
+    },
+    "visaRequirement": "visa-required",
+    "bestSeason": {
+      "en": "May – September",
+      "ru": "Май – сентябрь",
+      "uz": "May – sentabr"
+    }
+  },
+  {
+    "id": "sa",
+    "slug": "saudi",
+    "iso": "sa",
+    "name": {
+      "en": "Saudi Arabia",
+      "ru": "Саудовская Аравия",
+      "uz": "Saudiya Arabistoni"
+    },
+    "region": "Middle East",
+    "imageUrl": "https://picsum.photos/seed/alula-desert-canyon/1920/1000",
+    "description": {
+      "en": "AlUla's carved canyons, Red Sea reefs and cities where old pilgrimage routes meet new skylines.",
+      "ru": "Резные каньоны Аль-Улы, рифы Красного моря и города, где старые паломнические пути встречаются с новыми горизонтами.",
+      "uz": "Al-Ula o‘yma kanyonlari, Qizil dengiz riflari va eski ziyorat yo‘llari zamonaviylik bilan uchrashadigan shaharlar."
+    },
+    "visaRequirement": "eVisa",
+    "bestSeason": {
+      "en": "November – March",
+      "ru": "Ноябрь – март",
+      "uz": "Noyabr – mart"
+    }
+  },
+  {
+    "id": "cn",
+    "slug": "china",
+    "iso": "cn",
+    "name": { "en": "China", "ru": "Китай", "uz": "Xitoy" },
+    "region": "Asia",
+    "imageUrl": "https://picsum.photos/seed/great-wall-mountains/1920/1000",
+    "description": {
+      "en": "The Great Wall's mountain ridges, imperial courtyards and cities racing into the future.",
+      "ru": "Горные хребты Великой стены, императорские дворы и города, стремительно устремлённые в будущее.",
+      "uz": "Buyuk devorning tog‘ tizmalari, imperator hovlilari va kelajakka intilayotgan shaharlar."
+    },
+    "visaRequirement": "visa-required",
+    "bestSeason": {
+      "en": "September – November, March – May",
+      "ru": "Сентябрь – ноябрь, март – май",
+      "uz": "Sentabr – noyabr, mart – may"
+    }
+  },
+  {
+    "id": "in",
+    "slug": "india",
+    "iso": "in",
+    "name": { "en": "India", "ru": "Индия", "uz": "Hindiston" },
+    "region": "Asia",
+    "imageUrl": "https://picsum.photos/seed/taj-mahal-sunrise/1920/1000",
+    "description": {
+      "en": "The Taj Mahal at sunrise, Kerala's backwaters and Rajasthan's desert forts.",
+      "ru": "Тадж-Махал на рассвете, заводи Кералы и пустынные форты Раджастана.",
+      "uz": "Tongda Toj-Mahal, Kerala orqa suvlari va Rajastan cho‘l qal’alari."
+    },
+    "visaRequirement": "eVisa",
+    "bestSeason": {
+      "en": "October – March",
+      "ru": "Октябрь – март",
+      "uz": "Oktabr – mart"
+    }
+  },
+  {
+    "id": "us",
+    "slug": "usa",
+    "iso": "us",
+    "name": { "en": "United States", "ru": "США", "uz": "AQSH" },
+    "region": "Americas",
+    "imageUrl": "https://picsum.photos/seed/new-york-skyline-evening/1920/1000",
+    "description": {
+      "en": "Coast-to-coast skylines, national parks and road trips built around a single, enormous map.",
+      "ru": "Небоскрёбы от побережья до побережья, национальные парки и путешествия по одной огромной карте.",
+      "uz": "Sohildan sohilgacha shahar siluetlari, milliy bog‘lar va ulkan xarita bo‘ylab yo‘l sayohatlari."
+    },
+    "visaRequirement": "visa-required",
+    "bestSeason": {
+      "en": "April – June, September – October",
+      "ru": "Апрель – июнь, сентябрь – октябрь",
+      "uz": "Aprel – iyun, sentabr – oktabr"
+    }
+  },
+  {
+    "id": "br",
+    "slug": "brazil",
+    "iso": "br",
+    "name": { "en": "Brazil", "ru": "Бразилия", "uz": "Braziliya" },
+    "region": "Americas",
+    "imageUrl": "https://picsum.photos/seed/rio-sugarloaf-beach/1920/1000",
+    "description": {
+      "en": "Rio's beaches under Sugarloaf Mountain, Amazon rainforest, and carnival energy year-round.",
+      "ru": "Пляжи Рио под горой Сахарная Голова, тропики Амазонии и карнавальная энергия круглый год.",
+      "uz": "Shakarbosh tog‘i ostidagi Rio plyajlari, Amazoniya o‘rmoni va yil bo‘yi karnaval energiyasi."
+    },
+    "visaRequirement": "eVisa",
+    "bestSeason": {
+      "en": "May – October",
+      "ru": "Май – октябрь",
+      "uz": "May – oktabr"
+    }
+  },
+  {
+    "id": "eg",
+    "slug": "egypt",
+    "iso": "eg",
+    "name": { "en": "Egypt", "ru": "Египет", "uz": "Misr" },
+    "region": "Middle East",
+    "imageUrl": "https://picsum.photos/seed/giza-pyramids-desert/1920/1000",
+    "description": {
+      "en": "The Pyramids of Giza, a slow Nile cruise, and Red Sea reefs a short drive from the desert.",
+      "ru": "Пирамиды Гизы, неспешный круиз по Нилу и рифы Красного моря в двух шагах от пустыни.",
+      "uz": "Giza piramidalari, sokin Nil kruizi va cho‘ldan bir qadam narida Qizil dengiz riflari."
+    },
+    "visaRequirement": "eVisa",
+    "bestSeason": {
+      "en": "October – April",
+      "ru": "Октябрь – апрель",
+      "uz": "Oktabr – aprel"
+    }
+  }
+]
