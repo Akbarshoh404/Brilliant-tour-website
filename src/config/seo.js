@@ -2,7 +2,7 @@
 // production .uz domain via the VITE_SITE_URL env var on Vercel; the
 // fallback here only matters for local dev/preview builds.
 export const SITE_URL = (
-  import.meta.env.VITE_SITE_URL || "https://brillianttourism.uz"
+  import.meta.env.VITE_SITE_URL || "https://brillianttour.uz"
 ).replace(/\/$/, "");
 export const SITE_NAME = "Brilliant Tourism";
 export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-cover.jpg`;

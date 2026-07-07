@@ -11,7 +11,7 @@ import path from "node:path";
 const rootDir = path.dirname(fileURLToPath(new URL(".", import.meta.url)));
 const dataDir = path.join(rootDir, "src/data");
 const SITE_URL = (
-  process.env.VITE_SITE_URL || "https://brillianttourism.uz"
+  process.env.VITE_SITE_URL || "https://brillianttour.uz"
 ).replace(/\/$/, "");
 
 const countries = JSON.parse(
