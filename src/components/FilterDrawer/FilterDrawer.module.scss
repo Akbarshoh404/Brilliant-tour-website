@@ -11,6 +11,13 @@
     align-self: flex-start;
     position: sticky;
     top: calc(#{$navbar-height} + #{$space-md});
+    // `position: sticky` establishes its own stacking context even without
+    // a z-index — without one set here, this whole context (including the
+    // CountrySelect dropdown inside it, z-index 300 of its own) stacks by
+    // DOM order against the offer-card grid next to it, and the cards (each
+    // in their own stacking context via framer-motion's transform) were
+    // painting on top of the open dropdown instead of under it.
+    z-index: 5;
     background-color: $color-white;
     border-radius: $radius-lg;
     box-shadow: $shadow-card;

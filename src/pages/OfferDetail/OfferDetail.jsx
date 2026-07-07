@@ -5,6 +5,9 @@ import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import Lightbox from '../../components/Lightbox/Lightbox';
 import BookingCalendar from '../../components/BookingCalendar/BookingCalendar';
 import OfferCard from '../../components/OfferCard/OfferCard';
+import Seo from '../../components/Seo/Seo';
+import { breadcrumbSchema, touristTripSchema } from '../../utils/structuredData';
+import { SITE_URL } from '../../config/seo';
 import countries from '../../data/countries';
 import categories from '../../data/categories';
 import offers from '../../data/offers';
@@ -64,9 +67,23 @@ export default function OfferDetail() {
     new Date(iso).toLocaleDateString(LOCALE_BY_LANG[lang] ?? 'en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 
   const parentTo = offer.type === 'international' ? '/international' : '/domestic';
+  const offerTitle = getLocalizedField(offer.title, lang);
+  const offerDescription = getLocalizedField(offer.description, lang);
+  const breadcrumbItems = [
+    { label: offer.type === 'international' ? t('nav.international') : t('nav.domestic'), to: parentTo },
+    { label: offerTitle },
+  ];
+  const offerUrl = `${SITE_URL}/tours/${offer.slug}`;
 
   return (
     <div className={styles.page}>
+      <Seo
+        title={offerTitle}
+        description={offerDescription}
+        image={offer.images?.[0]}
+        type="product"
+        jsonLd={[breadcrumbSchema(breadcrumbItems), touristTripSchema(offer, offerTitle, offerDescription, offerUrl)]}
+      />
       <div className={styles.breadcrumbRow}>
         <Link to={parentTo} className={styles.backBtn} aria-label={t('common.back')}>
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -75,10 +92,7 @@ export default function OfferDetail() {
         </Link>
         <Breadcrumbs
           variant="onLight"
-          items={[
-            { label: offer.type === 'international' ? t('nav.international') : t('nav.domestic'), to: parentTo },
-            { label: getLocalizedField(offer.title, lang) },
-          ]}
+          items={breadcrumbItems}
         />
       </div>
 

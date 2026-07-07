@@ -8,6 +8,8 @@ import FilterDrawer from '../../components/FilterDrawer/FilterDrawer';
 import FilterOpenerButton from '../../components/FilterOpenerButton/FilterOpenerButton';
 import SortDropdown from '../../components/SortDropdown/SortDropdown';
 import ViewToggle from '../../components/ViewToggle/ViewToggle';
+import Seo from '../../components/Seo/Seo';
+import { breadcrumbSchema } from '../../utils/structuredData';
 import useFilteredOffers from '../../hooks/useFilteredOffers';
 import countries from '../../data/countries';
 import cities from '../../data/cities';
@@ -39,8 +41,22 @@ export default function CityPage() {
 
   if (!city || !country) return <Navigate to="/international" replace />;
 
+  const cityName = getLocalizedField(city.name, lang);
+  const countryName = getLocalizedField(country.name, lang);
+  const breadcrumbItems = [
+    { label: t('nav.international'), to: '/international' },
+    { label: countryName, to: `/international/${country.slug}` },
+    { label: cityName },
+  ];
+
   return (
     <>
+      <Seo
+        title={`${cityName}, ${countryName} — туры`}
+        description={`Туры в ${cityName} (${countryName}): маршруты, даты выезда и цены от Brilliant Tourism.`}
+        image={city.heroImage}
+        jsonLd={breadcrumbSchema(breadcrumbItems)}
+      />
       <section className={styles.hero} style={{ backgroundImage: `url(${city.heroImage})` }}>
         <div className={styles.heroOverlay} />
         <div className={styles.heroInner}>

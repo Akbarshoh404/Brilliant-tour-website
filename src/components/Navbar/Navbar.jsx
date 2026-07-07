@@ -168,9 +168,12 @@ export default function Navbar() {
                   ))}
                 </ul>
 
+                <div className={styles.drawerLangRow}>
+                  <LanguageSwitcher variant="light" />
+                </div>
+
                 <div className={styles.drawerFooter}>
                   <ModeSwitcher instanceId="drawer" fullWidth />
-                  <LanguageSwitcher variant="dark" />
                 </div>
               </motion.div>
             </>

@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import ScrollCue from '../../components/ScrollCue/ScrollCue';
+import Seo from '../../components/Seo/Seo';
 import { img } from '../../data/images';
 import contactHero from '../../assets/pics/Uzbekistan/photo_12_2026-06-30_15-23-57.jpg';
 import styles from './Contact.module.scss';
@@ -24,6 +25,10 @@ export default function Contact() {
 
   return (
     <>
+      <Seo
+        title="Контакты"
+        description="Свяжитесь с Brilliant Tourism в Ташкенте: телефон, Telegram, Instagram и офис для планирования вашего следующего тура."
+      />
       <section className={styles.heroBand} style={{ backgroundImage: `url(${contactHero})` }}>
         <div className={styles.heroOverlay} />
         <div className={styles.heroInner}>

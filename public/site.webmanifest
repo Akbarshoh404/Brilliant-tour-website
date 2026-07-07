@@ -1,0 +1,17 @@
+{
+  "name": "Brilliant Tourism",
+  "short_name": "Brilliant",
+  "description": "Авторские туры по Узбекистану и всему миру",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b1c28",
+  "theme_color": "#0b1c28",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

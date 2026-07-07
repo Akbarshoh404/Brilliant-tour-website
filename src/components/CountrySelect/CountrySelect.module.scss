@@ -54,11 +54,10 @@
   transform: rotate(180deg);
 }
 
+// Positioned via inline style (top/left/width) computed from the trigger's
+// bounding rect — see CountrySelect.jsx. It's portaled into <body>, so this
+// class only supplies the visual chrome, not placement.
 .menu {
-  position: absolute;
-  top: calc(100% + #{$space-2xs});
-  left: 0;
-  right: 0;
   max-height: 280px;
   overflow-y: auto;
   background-color: $color-white;

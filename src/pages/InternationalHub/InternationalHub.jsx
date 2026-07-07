@@ -9,6 +9,7 @@ import FilterDrawer from '../../components/FilterDrawer/FilterDrawer';
 import FilterOpenerButton from '../../components/FilterOpenerButton/FilterOpenerButton';
 import SortDropdown from '../../components/SortDropdown/SortDropdown';
 import ViewToggle from '../../components/ViewToggle/ViewToggle';
+import Seo from '../../components/Seo/Seo';
 import useFilteredOffers from '../../hooks/useFilteredOffers';
 import countries from '../../data/countries';
 import cities from '../../data/cities';
@@ -49,6 +50,10 @@ export default function InternationalHub() {
 
   return (
     <>
+      <Seo
+        title="Международные туры"
+        description="Туры за рубеж от Brilliant Tourism: ОАЭ, Франция, Германия, Корея, Япония и другие направления с визовой поддержкой."
+      />
       <DestinationHero
         eyebrow={t('international.eyebrow')}
         title={t('international.title')}

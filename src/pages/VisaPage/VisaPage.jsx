@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import ScrollCue from '../../components/ScrollCue/ScrollCue';
 import FlagIcon from '../../components/FlagIcon/FlagIcon';
+import Seo from '../../components/Seo/Seo';
 import visaCountries from '../../data/visaCountries';
 import visaExtraServices from '../../data/visaExtraServices';
 import countries from '../../data/countries';
@@ -60,6 +61,10 @@ export default function VisaPage() {
 
   return (
     <>
+      <Seo
+        title="Визовые услуги"
+        description="Оформление виз для путешественников из Узбекистана: Шенген, ОАЭ, Корея, Япония и другие направления — полное сопровождение заявки."
+      />
       <section className={styles.hero} style={{ backgroundImage: `url(${HERO_IMAGE})` }}>
         <div className={styles.heroOverlay} />
         <div className={styles.heroInner}>

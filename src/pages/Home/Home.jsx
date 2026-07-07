@@ -4,9 +4,10 @@ import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import DestinationHero from '../../components/DestinationHero/DestinationHero';
 import FlagIcon from '../../components/FlagIcon/FlagIcon';
-import { useSearchOverlay } from '../../context/SearchOverlayContext';
 import StatCounter from '../../components/StatCounter/StatCounter';
 import LogoMarquee from '../../components/LogoMarquee/LogoMarquee';
+import Seo from '../../components/Seo/Seo';
+import { faqSchema } from '../../utils/structuredData';
 import homeCountries from '../../data/homeCountries';
 import { avatarUrl } from '../../data/images';
 import { getLocalizedField } from '../../utils/getLocalizedField';
@@ -57,13 +58,6 @@ const TESTIMONIAL_TEXT = {
 export default function Home() {
   const { t, i18n } = useTranslation();
   const lang = i18n.language;
-  const { openSearch } = useSearchOverlay();
-  const [query, setQuery] = useState('');
-
-  const onSearchSubmit = (e) => {
-    e.preventDefault();
-    openSearch(query.trim());
-  };
 
   // Interleave Uzbekistan spots with the international countries so the
   // hero mixes domestic + international destinations.
@@ -76,20 +70,20 @@ export default function Home() {
     to: c.to,
   }));
   const heroSlides = domesticSpots.flatMap((spot, i) => [spot, internationalSpots[i]]).filter(Boolean);
+  const faqItems = t('home.faqItems', { returnObjects: true });
 
   return (
     <>
+      <Seo
+        title="Brilliant Tourism — туры по Узбекистану и всему миру"
+        description="Авторские туры по Узбекистану и международные направления: подбор маршрута, визовая поддержка, готовые и индивидуальные туры от Brilliant Tourism."
+        jsonLd={faqSchema(faqItems.map((item) => ({ question: item.q, answer: item.a })))}
+      />
       <DestinationHero
         eyebrow={t('hero.eyebrow')}
         title={<>{t('hero.titleLine1')} <em>{t('hero.titleLine2')}</em><br />{t('hero.titleLine3')}</>}
         subtitle={t('hero.subtitle')}
         slides={heroSlides}
-        showSearch
-        query={query}
-        onQueryChange={setQuery}
-        onSearchSubmit={onSearchSubmit}
-        searchPlaceholder={t('hero.searchPlaceholder')}
-        searchLabel={t('nav.search')}
         scrollLabel={t('common.scroll')}
       />
 

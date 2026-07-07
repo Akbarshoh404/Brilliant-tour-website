@@ -8,6 +8,8 @@ import FilterDrawer from '../../components/FilterDrawer/FilterDrawer';
 import FilterOpenerButton from '../../components/FilterOpenerButton/FilterOpenerButton';
 import SortDropdown from '../../components/SortDropdown/SortDropdown';
 import ViewToggle from '../../components/ViewToggle/ViewToggle';
+import Seo from '../../components/Seo/Seo';
+import { breadcrumbSchema } from '../../utils/structuredData';
 import useFilteredOffers from '../../hooks/useFilteredOffers';
 import categories from '../../data/categories';
 import offers from '../../data/offers';
@@ -32,12 +34,21 @@ export default function DomesticCategoryPage() {
 
   if (!category) return <Navigate to="/domestic" replace />;
 
+  const categoryName = getLocalizedField(category.name, lang);
+  const breadcrumbItems = [{ label: t('nav.domestic'), to: '/domestic' }, { label: categoryName }];
+
   return (
     <>
+      <Seo
+        title={`${categoryName} — туры по Узбекистану`}
+        description={`${categoryName}: подборка туров по Узбекистану с датами выезда и ценами от Brilliant Tourism.`}
+        image={category.heroImage}
+        jsonLd={breadcrumbSchema(breadcrumbItems)}
+      />
       <section className={styles.hero} style={{ backgroundImage: `url(${category.heroImage})` }}>
         <div className={styles.heroOverlay} />
         <div className={styles.heroInner}>
-          <Breadcrumbs items={[{ label: t('nav.domestic'), to: '/domestic' }, { label: getLocalizedField(category.name, lang) }]} />
+          <Breadcrumbs items={breadcrumbItems} />
           <h1 className={styles.title}>{getLocalizedField(category.name, lang)}</h1>
           <p className={styles.intro}>{getLocalizedField(category.description, lang)}</p>
         </div>

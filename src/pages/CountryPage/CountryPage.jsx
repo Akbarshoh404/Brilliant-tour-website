@@ -11,6 +11,8 @@ import SortDropdown from '../../components/SortDropdown/SortDropdown';
 import ViewToggle from '../../components/ViewToggle/ViewToggle';
 import Lightbox from '../../components/Lightbox/Lightbox';
 import FlagIcon from '../../components/FlagIcon/FlagIcon';
+import Seo from '../../components/Seo/Seo';
+import { breadcrumbSchema } from '../../utils/structuredData';
 import useFilteredOffers from '../../hooks/useFilteredOffers';
 import countries from '../../data/countries';
 import cities from '../../data/cities';
@@ -69,12 +71,21 @@ export default function CountryPage() {
     setApplySubmitted(true);
   };
 
+  const countryName = getLocalizedField(country.name, lang);
+  const breadcrumbItems = [{ label: t('nav.international'), to: '/international' }, { label: countryName }];
+
   return (
     <>
+      <Seo
+        title={`Туры в ${countryName}`}
+        description={`${countryName}: готовые туры, визовые требования и лучшие даты для поездки — подберите маршрут вместе с Brilliant Tourism.`}
+        image={country.heroImage}
+        jsonLd={breadcrumbSchema(breadcrumbItems)}
+      />
       <section className={styles.hero} style={{ backgroundImage: `url(${country.heroImage})` }}>
         <div className={styles.heroOverlay} />
         <div className={styles.heroInner}>
-          <Breadcrumbs items={[{ label: t('nav.international'), to: '/international' }, { label: getLocalizedField(country.name, lang) }]} />
+          <Breadcrumbs items={breadcrumbItems} />
           <div className={styles.heroBadgeRow}>
             <span className={styles.heroFlagBadge}>
               <FlagIcon iso={country.iso} size={32} className={styles.heroFlagIcon} />

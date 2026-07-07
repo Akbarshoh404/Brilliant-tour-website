@@ -6,6 +6,7 @@ import FilterDrawer from '../../components/FilterDrawer/FilterDrawer';
 import FilterOpenerButton from '../../components/FilterOpenerButton/FilterOpenerButton';
 import SortDropdown from '../../components/SortDropdown/SortDropdown';
 import ViewToggle from '../../components/ViewToggle/ViewToggle';
+import Seo from '../../components/Seo/Seo';
 import useFilteredOffers from '../../hooks/useFilteredOffers';
 import categories from '../../data/categories';
 import offers from '../../data/offers';
@@ -35,6 +36,10 @@ export default function DomesticHub() {
 
   return (
     <>
+      <Seo
+        title="Туры по Узбекистану"
+        description="Внутренний туризм: горы, пустыни, культурные маршруты и озёра Узбекистана — готовые туры с датами выезда и ценами."
+      />
       <DestinationHero
         eyebrow={t('domestic.eyebrow')}
         title={t('domestic.title')}

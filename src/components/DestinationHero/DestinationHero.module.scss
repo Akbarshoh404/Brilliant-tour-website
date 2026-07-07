@@ -54,13 +54,12 @@
   justify-content: space-between;
   gap: $space-xl;
 
-  // The prev/next arrows sit vertically centered over the hero (see
-  // .heroArrowBtn) and the side preview cards disappear below desktop too,
-  // so on both tablet and mobile the text block is tall enough on its own
-  // that bottom-anchoring it would push its top edge into those arrows —
-  // it's pinned to the top instead for the whole below-desktop range.
+  // Below desktop, the text block is centered on the page and sized down —
+  // see .heroText/.heroTitle/.heroSubtitle — while desktop keeps the
+  // original left-aligned, bottom-anchored layout alongside the side cards.
   @include respond(below-desktop) {
-    align-items: flex-start;
+    align-items: center;
+    justify-content: flex-start;
     padding-left: $space-md;
     padding-right: $space-md;
     padding-top: calc(#{$navbar-height} + #{$space-md});
@@ -73,8 +72,11 @@
   padding-bottom: $space-lg;
 
   @include respond(below-desktop) {
+    width: 100%;
     max-width: 100%;
     padding-bottom: 0;
+    text-align: center;
+    margin: 0 auto;
   }
 }
 
@@ -102,6 +104,10 @@
     font-style: normal;
     color: $color-gold-500;
   }
+
+  @include respond(below-desktop) {
+    font-size: clamp(1.4rem, 5vw, 2rem);
+  }
 }
 
 .heroSubtitle {
@@ -113,15 +119,16 @@
 
   @include respond(below-desktop) {
     margin-top: $space-2xs;
-    font-size: 1.05rem;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 0.92rem;
+    max-width: 40ch;
   }
 }
 
-// Search bar + destination badge travel together as one unit below desktop
-// (see .heroBottomCluster) — the arrows are vertically centered over the
-// whole hero and the title/subtitle above already claim the upper portion,
-// so this pair is pinned near the bottom instead of following right under
-// the subtitle.
+// Holds the destination badge below the title/subtitle; pinned near the
+// bottom below desktop since the arrows sit vertically centered over the
+// hero and the text block already claims the upper portion there.
 .heroBottomCluster {
   @include respond(below-desktop) {
     position: absolute;
@@ -132,66 +139,6 @@
     display: flex;
     flex-direction: column;
     gap: $space-sm;
-  }
-}
-
-// Search bar embedded in hero (Home only)
-.heroSearch {
-  margin-top: $space-lg;
-  display: flex;
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: $radius-sm;
-  overflow: hidden;
-  max-width: 440px;
-
-  @include respond(below-desktop) {
-    margin-top: 0;
-    max-width: 100%;
-  }
-}
-
-.heroSearchInput {
-  flex: 1;
-  border: none;
-  background: transparent;
-  padding: 0.9rem 1.2rem;
-  font-size: 0.9rem;
-  color: $color-white;
-  min-width: 0;
-
-  @include respond(below-desktop) {
-    padding: 0.95rem 1.1rem;
-    font-size: 1rem;
-  }
-
-  &::placeholder {
-    color: rgba(255, 255, 255, 0.45);
-  }
-}
-
-.heroSearchBtn {
-  border: none;
-  background: $color-white;
-  color: $color-ink-900;
-  font-weight: 700;
-  font-size: 0.82rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  padding: 0 1.4rem;
-  cursor: pointer;
-  flex-shrink: 0;
-  transition: background $duration-fast $ease-base, color $duration-fast $ease-base;
-
-  @include respond(below-desktop) {
-    padding: 0 1.2rem;
-    font-size: 0.85rem;
-  }
-
-  &:hover {
-    background: $color-gold-500;
-    color: $color-ink-950;
   }
 }
 

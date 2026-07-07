@@ -4,6 +4,7 @@ import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import ScrollCue from '../../components/ScrollCue/ScrollCue';
 import StatCounter from '../../components/StatCounter/StatCounter';
 import RouteLine from '../../components/RouteLine/RouteLine';
+import Seo from '../../components/Seo/Seo';
 import { avatarUrl } from '../../data/images';
 import aboutHero from '../../assets/pics/Uzbekistan/photo_11_2026-06-30_15-23-57.jpg';
 import storyPhoto from '../../assets/pics/Uzbekistan/photo_9_2026-06-30_15-23-57.jpg';
@@ -23,6 +24,10 @@ export default function About() {
 
   return (
     <>
+      <Seo
+        title="О компании"
+        description="Brilliant Tourism — команда, которая проектирует туры по Узбекистану и всему миру: от Шёлкового пути до пляжей Мальдив."
+      />
       <section className={styles.hero} style={{ backgroundImage: `url(${aboutHero})` }}>
         <div className={styles.heroOverlay} />
         <div className={styles.heroInner}>

@@ -123,6 +123,10 @@
   &:hover {
     color: $color-white;
   }
+
+  @include respond(below-desktop) {
+    display: none;
+  }
 }
 
 .langDesktop {
@@ -272,6 +276,12 @@
   .drawerLinkDot {
     background-color: $color-gold-500;
   }
+}
+
+.drawerLangRow {
+  margin-top: $space-lg;
+  display: flex;
+  justify-content: center;
 }
 
 .drawerFooter {
