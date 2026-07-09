@@ -1,0 +1,65 @@
+[
+  {
+    "key": "turkey",
+    "iso": "tr",
+    "name": { "en": "Turkey", "ru": "Турция", "uz": "Turkiya" },
+    "cities": [
+      { "key": "istanbul", "name": { "en": "Istanbul", "ru": "Стамбул", "uz": "Istanbul" } },
+      { "key": "antalya", "name": { "en": "Antalya", "ru": "Анталия", "uz": "Antalya" } },
+      { "key": "bodrum", "name": { "en": "Bodrum", "ru": "Бодрум", "uz": "Bodrum" } }
+    ]
+  },
+  {
+    "key": "uae",
+    "iso": "ae",
+    "name": { "en": "UAE", "ru": "ОАЭ", "uz": "BAA" },
+    "cities": [
+      { "key": "dubai", "name": { "en": "Dubai", "ru": "Дубай", "uz": "Dubay" } },
+      { "key": "sharjah", "name": { "en": "Sharjah", "ru": "Шарджа", "uz": "Sharja" } },
+      { "key": "abudhabi", "name": { "en": "Abu Dhabi", "ru": "Абу-Даби", "uz": "Abu-Dabi" } }
+    ]
+  },
+  {
+    "key": "uzbekistan",
+    "iso": "uz",
+    "name": { "en": "Uzbekistan", "ru": "Узбекистан", "uz": "O'zbekiston" },
+    "cities": [
+      { "key": "samarkand", "name": { "en": "Samarkand", "ru": "Самарканд", "uz": "Samarqand" } },
+      { "key": "bukhara", "name": { "en": "Bukhara", "ru": "Бухара", "uz": "Buxoro" } },
+      { "key": "khiva", "name": { "en": "Khiva", "ru": "Хива", "uz": "Xiva" } }
+    ]
+  },
+  {
+    "key": "maldives",
+    "iso": "mv",
+    "name": { "en": "Maldives", "ru": "Мальдивы", "uz": "Maldiv orollari" },
+    "cities": [{ "key": "male", "name": { "en": "Malé", "ru": "Мале", "uz": "Male" } }]
+  },
+  {
+    "key": "korea",
+    "iso": "kr",
+    "name": { "en": "South Korea", "ru": "Южная Корея", "uz": "Janubiy Koreya" },
+    "cities": [
+      { "key": "seoul", "name": { "en": "Seoul", "ru": "Сеул", "uz": "Seul" } },
+      { "key": "busan", "name": { "en": "Busan", "ru": "Пусан", "uz": "Pusan" } }
+    ]
+  },
+  {
+    "key": "egypt",
+    "iso": "eg",
+    "name": { "en": "Egypt", "ru": "Египет", "uz": "Misr" },
+    "cities": [
+      { "key": "hurghada", "name": { "en": "Hurghada", "ru": "Хургада", "uz": "Xurgada" } },
+      { "key": "sharmelsheikh", "name": { "en": "Sharm El Sheikh", "ru": "Шарм-эль-Шейх", "uz": "Sharm-el-Shayx" } }
+    ]
+  },
+  {
+    "key": "georgia",
+    "iso": "ge",
+    "name": { "en": "Georgia", "ru": "Грузия", "uz": "Gruziya" },
+    "cities": [
+      { "key": "tbilisi", "name": { "en": "Tbilisi", "ru": "Тбилиси", "uz": "Tbilisi" } },
+      { "key": "batumi", "name": { "en": "Batumi", "ru": "Батуми", "uz": "Batumi" } }
+    ]
+  }
+]

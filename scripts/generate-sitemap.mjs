@@ -34,6 +34,7 @@ const staticRoutes = [
   { path: "/international", priority: "0.9", changefreq: "daily" },
   { path: "/domestic", priority: "0.9", changefreq: "daily" },
   { path: "/visas", priority: "0.8", changefreq: "weekly" },
+  { path: "/business", priority: "0.7", changefreq: "monthly" },
   { path: "/about", priority: "0.5", changefreq: "monthly" },
   { path: "/contact", priority: "0.5", changefreq: "monthly" },
 ];

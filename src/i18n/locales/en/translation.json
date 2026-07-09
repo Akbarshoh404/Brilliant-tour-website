@@ -356,5 +356,75 @@
       "Flight tickets"
     ],
     "directCta": "Message us on Instagram or Telegram — we usually reply within the hour."
+  },
+  "business": {
+    "eyebrow": "Brilliant Partner Network",
+    "hubCity": "Tashkent",
+    "titleLine1": "Sell the",
+    "titleHighlight": "Silk Road",
+    "titleLine2": "under your brand",
+    "subtitle": "Net rates and live inventory for agencies and DMCs.",
+    "trustCaption": "Trusted by 214+ agencies across Central Asia and beyond",
+    "ratesLabel": "Exchange rates to UZS",
+    "listingEyebrow": "Live inventory",
+    "listingTitle": "Rates for partners",
+    "filterOpen": "Filters",
+    "filters": {
+      "title": "Filters",
+      "clear": "Clear",
+      "close": "Close filters",
+      "destination": "Destination",
+      "anyCountry": "Any country",
+      "anyCity": "Any city",
+      "hotel": "Hotel",
+      "hotelPlaceholder": "Hotel name",
+      "stars": "Hotel category",
+      "nights": "Nights",
+      "price": "Price",
+      "from": "From",
+      "to": "To",
+      "board": "Board",
+      "priceType": "Rate type",
+      "transport": "Transport"
+    },
+    "priceTypeLabels": {
+      "netto": "Net",
+      "gds": "GDS",
+      "charter": "Charter"
+    },
+    "transportLabels": {
+      "economy": "Economy",
+      "standard": "Standard",
+      "business": "Business"
+    },
+    "results": {
+      "found": "{{count}} rates found",
+      "sort": "Sort by",
+      "nights": "nights",
+      "seats": "seats",
+      "empty": "No rates match these filters.",
+      "reset": "Reset filters"
+    },
+    "sortOptions": {
+      "priceAsc": "Price: low to high",
+      "priceDesc": "Price: high to low",
+      "nightsAsc": "Nights: fewer to more",
+      "dateAsc": "By check-in date"
+    },
+    "lead": {
+      "title": "Ready to start?",
+      "text": "Leave your contacts — we'll send the full price list and partner portal access.",
+      "companyPlaceholder": "Agency name",
+      "contactPlaceholder": "Phone or Telegram",
+      "submit": "Request rates",
+      "sent": "Request sent — a manager will contact you within the business day."
+    },
+    "perksEyebrow": "Why Brilliant",
+    "perks": [
+      { "title": "Net rates", "text": "Direct access to wholesale pricing with no markup — you set the margin." },
+      { "title": "White-label itineraries", "text": "Ready-made programs with no Brilliant branding — send them to clients under your own name." },
+      { "title": "Live inventory", "text": "Availability and dates refresh daily across Uzbekistan and 40+ destinations." },
+      { "title": "Dedicated manager", "text": "One contact for bookings, changes and escalations — no support queue." }
+    ]
   }
 }

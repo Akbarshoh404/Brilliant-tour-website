@@ -1,0 +1,956 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+// ===== Hero =====
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 90% 60% at 78% 20%, rgba(198, 255, 52, 0.06), transparent 60%),
+    linear-gradient(180deg, #0d0d0d 0%, $color-ink-950 55%, #050505 100%);
+}
+
+// A smaller decorative graphic pinned to the right side of the hero rather
+// than a full-bleed background — kept off entirely below desktop, where
+// there's no room for it beside the text without competing for attention.
+.netmap {
+  position: absolute;
+  top: 50%;
+  right: $space-lg;
+  transform: translateY(-50%);
+  width: 58%;
+  max-width: 680px;
+  height: 78%;
+  max-height: 620px;
+
+  @include respond(below-desktop) {
+    display: none;
+  }
+}
+
+.route {
+  fill: none;
+  stroke: $color-gold-500;
+  stroke-width: 1.1;
+  stroke-opacity: 0.28;
+  stroke-dasharray: 2 7;
+  stroke-linecap: round;
+  animation: dash 34s linear infinite;
+
+  @include reduce-motion {
+    animation: none;
+  }
+}
+
+.routeAlt {
+  animation-duration: 46s;
+  stroke-opacity: 0.16;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: -1000;
+  }
+}
+
+.hub {
+  fill: $color-gold-500;
+}
+
+.node {
+  fill: #d9ded2;
+  opacity: 0.55;
+}
+
+.pulse {
+  fill: none;
+  stroke: $color-gold-500;
+  stroke-width: 1;
+  opacity: 0;
+  transform-origin: center;
+  animation: pulse 3.6s ease-out infinite;
+
+  @include reduce-motion {
+    animation: none;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    r: 6;
+    opacity: 0.7;
+  }
+  100% {
+    r: 26;
+    opacity: 0;
+  }
+}
+
+.nodeLabel {
+  font-family: $font-mono;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  fill: rgba(255, 255, 255, 0.45);
+  text-transform: uppercase;
+}
+
+.heroInner {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  @include container;
+  width: 100%;
+  padding: calc(#{$navbar-height} + #{$space-xl}) $space-lg $space-xl;
+  display: flex;
+  align-items: center;
+
+  @include respond(below-desktop) {
+    padding: calc(#{$navbar-height} + #{$space-lg}) $space-md $space-lg;
+  }
+}
+
+.heroText {
+  max-width: 560px;
+
+  @include respond(below-desktop) {
+    max-width: 660px;
+  }
+}
+
+.eyebrow {
+  @include mono-eyebrow;
+  color: $color-gold-500;
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2xs;
+  margin-bottom: $space-md;
+}
+
+.eyebrowDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: $color-gold-500;
+  box-shadow: 0 0 0 4px rgba(198, 255, 52, 0.15);
+}
+
+.title {
+  font-family: $font-monr;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: clamp(2rem, 4.5vw, 3.4rem);
+  line-height: 1.04;
+  letter-spacing: -0.01em;
+  color: $color-white;
+}
+
+.lime {
+  color: $color-gold-500;
+}
+
+.subtitle {
+  max-width: 46ch;
+  margin-top: $space-md;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+// ===== Exchange rates strip =====
+.ratesStrip {
+  margin-top: $space-xl;
+  display: inline-flex;
+  flex-direction: column;
+  gap: $space-sm;
+  padding: $space-md $space-lg;
+  background: $glass-bg;
+  border: 1px solid $glass-border;
+  border-radius: $radius-md;
+
+  @include respond(below-desktop) {
+    margin-top: $space-lg;
+    width: 100%;
+  }
+}
+
+.ratesLabel {
+  @include mono-eyebrow;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.ratesList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-lg;
+}
+
+.rateItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+
+  b {
+    font-family: $font-monr;
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: $color-gold-500;
+    letter-spacing: -0.01em;
+  }
+
+  span {
+    font-family: $font-mono;
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.6);
+  }
+}
+
+// ===== Trust strip =====
+.trust {
+  position: relative;
+  z-index: 2;
+  @include container;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: $space-md;
+  padding: $space-md $space-lg $space-lg;
+  border-top: 1px solid $glass-border;
+
+  @include respond(below-desktop) {
+    padding: $space-md $space-md $space-lg;
+  }
+}
+
+.trustCaption {
+  @include mono-eyebrow;
+  color: rgba(255, 255, 255, 0.4);
+  white-space: nowrap;
+}
+
+.trustLogos {
+  display: flex;
+  gap: $space-lg;
+  flex-wrap: wrap;
+
+  span {
+    font-family: $font-monr;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.01em;
+    color: rgba(255, 255, 255, 0.4);
+  }
+}
+
+.eyebrowDark {
+  @include mono-eyebrow;
+  color: $color-gold-600;
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2xs;
+
+  .eyebrowDot {
+    background-color: $color-gold-600;
+  }
+}
+
+// ===== Listing section (filters + results) =====
+.listing {
+  background-color: $color-plaster-50;
+  @include section-pad;
+}
+
+.listingInner {
+  @include container;
+}
+
+.listingHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: $space-md;
+  flex-wrap: wrap;
+}
+
+.listingTitle {
+  margin-top: $space-2xs;
+  font-family: $font-monr;
+  font-weight: 700;
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
+  color: $color-ink-950;
+}
+
+.filterOpenMobile {
+  display: none;
+  align-items: center;
+  gap: $space-2xs;
+  background-color: $color-ink-950;
+  color: $color-white;
+  border: none;
+  border-radius: $radius-pill;
+  padding: 0.6rem 1.1rem;
+  font-family: $font-mono;
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+
+  @include respond(below-desktop) {
+    display: inline-flex;
+  }
+}
+
+.listingLayout {
+  margin-top: $space-lg;
+  display: flex;
+  align-items: flex-start;
+  gap: $space-lg;
+}
+
+// ----- Filter sidebar -----
+.filterSidebar {
+  display: none;
+
+  @include respond(desktop) {
+    display: block;
+    width: 300px;
+    flex-shrink: 0;
+    position: sticky;
+    top: calc(#{$navbar-height} + #{$space-md});
+    background-color: $color-white;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-card;
+    border: 1px solid $color-plaster-100;
+  }
+}
+
+.filterMobileBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: $z-drawer;
+  background-color: rgba(11, 28, 40, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: flex-end;
+
+  @include respond(desktop) {
+    display: none;
+  }
+}
+
+.filterMobileSheet {
+  width: 100%;
+  max-height: 88vh;
+  background-color: $color-white;
+  border-radius: $radius-lg $radius-lg 0 0;
+  overflow-y: auto;
+}
+
+.filterHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $space-md $space-lg;
+  border-bottom: 1px solid $color-plaster-100;
+  position: sticky;
+  top: 0;
+  background-color: $color-white;
+  z-index: 1;
+  border-radius: $radius-lg $radius-lg 0 0;
+
+  h3 {
+    display: flex;
+    align-items: center;
+    gap: $space-2xs;
+    font-family: $font-monr;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: $color-ink-950;
+  }
+}
+
+.filterBadge {
+  background-color: $color-gold-500;
+  color: $color-ink-950;
+  font-family: $font-mono;
+  font-size: 0.66rem;
+  font-weight: 700;
+  border-radius: $radius-pill;
+  padding: 0.12rem 0.48rem;
+}
+
+.filterHeadActions {
+  display: flex;
+  align-items: center;
+  gap: $space-md;
+}
+
+.filterClear {
+  background: $color-plaster-50;
+  border: 1px solid $color-plaster-100;
+  border-radius: $radius-pill;
+  color: $color-ink-900;
+  padding: 0.35rem 0.7rem;
+  font-family: $font-mono;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  transition: background-color $duration-fast $ease-base, border-color $duration-fast $ease-base, color $duration-fast $ease-base;
+
+  &:hover {
+    background-color: $color-ink-950;
+    border-color: $color-ink-950;
+    color: $color-white;
+  }
+}
+
+.filterCloseMobile {
+  display: none;
+  background: transparent;
+  border: none;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: $color-stone-600;
+
+  @include respond(below-desktop) {
+    display: block;
+  }
+}
+
+.filterBody {
+  padding: 0 $space-lg $space-md;
+}
+
+.filterSection {
+  border-bottom: 1px solid $color-plaster-100;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.filterSectionHeader {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: transparent;
+  border: none;
+  padding: $space-sm 0;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: $color-ink-950;
+  text-align: left;
+  transition: color $duration-fast $ease-base;
+
+  span {
+    display: flex;
+    align-items: center;
+    gap: $space-2xs;
+  }
+
+  em {
+    font-style: normal;
+    background-color: $color-plaster-100;
+    color: $color-ink-900;
+    font-family: $font-mono;
+    font-size: 0.65rem;
+    font-weight: 700;
+    border-radius: $radius-pill;
+    padding: 0.05rem 0.4rem;
+  }
+
+  &:hover {
+    color: $color-gold-600;
+  }
+}
+
+.filterChevron {
+  display: inline-block;
+  font-size: 0.9rem;
+  color: $color-stone-600;
+}
+
+.filterSectionBody {
+  overflow: hidden;
+}
+
+.filterSectionInner {
+  padding-bottom: $space-sm;
+  display: flex;
+  flex-direction: column;
+  gap: $space-2xs;
+}
+
+.filterSelect {
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  border-radius: $radius-sm;
+  border: 1.5px solid $color-plaster-100;
+  background-color: $color-plaster-50;
+  font-size: 0.86rem;
+  color: $color-ink-900;
+  transition: border-color $duration-fast $ease-base;
+
+  &:focus {
+    outline: none;
+    border-color: $color-gold-600;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.filterRow {
+  display: flex;
+  align-items: center;
+  gap: $space-xs;
+}
+
+.filterRowSep {
+  color: $color-stone-600;
+}
+
+.filterNumberInput {
+  width: 0;
+  flex: 1;
+  padding: 0.65rem 0.85rem;
+  border-radius: $radius-sm;
+  border: 1.5px solid $color-plaster-100;
+  background-color: $color-plaster-50;
+  font-size: 0.86rem;
+
+  &:focus {
+    outline: none;
+    border-color: $color-gold-600;
+  }
+}
+
+.filterPillGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-3xs;
+}
+
+.filterPill {
+  background-color: $color-plaster-50;
+  border: 1.5px solid $color-plaster-100;
+  border-radius: $radius-pill;
+  padding: 0.4rem 0.85rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: $color-ink-900;
+  transition: background-color $duration-fast $ease-base, border-color $duration-fast $ease-base, color $duration-fast $ease-base;
+
+  &:hover {
+    border-color: $color-ink-900;
+  }
+}
+
+.filterPillActive {
+  background-color: $color-ink-950;
+  border-color: $color-ink-950;
+  color: $color-white;
+
+  &:hover {
+    border-color: $color-ink-950;
+  }
+}
+
+// ----- Results column -----
+.resultsCol {
+  flex: 1;
+  min-width: 0;
+}
+
+.resultsToolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: $space-sm;
+  margin-bottom: $space-md;
+}
+
+.resultsCount {
+  font-size: 0.88rem;
+  color: $color-stone-600;
+
+  b {
+    color: $color-ink-950;
+    font-weight: 700;
+  }
+}
+
+.sortSelect {
+  display: flex;
+  align-items: center;
+  gap: $space-2xs;
+  font-size: 0.8rem;
+  color: $color-stone-600;
+
+  select {
+    border: 1.5px solid $color-plaster-100;
+    background-color: $color-white;
+    border-radius: $radius-sm;
+    padding: 0.5rem 0.7rem;
+    font-size: 0.82rem;
+    color: $color-ink-950;
+
+    &:focus {
+      outline: none;
+      border-color: $color-gold-600;
+    }
+  }
+}
+
+.emptyState {
+  padding: $space-2xl $space-lg;
+  text-align: center;
+  background-color: $color-white;
+  border-radius: $radius-lg;
+  border: 1px solid $color-plaster-100;
+
+  p {
+    color: $color-stone-600;
+    margin-bottom: $space-md;
+  }
+}
+
+.resultsList {
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+}
+
+$results-grid: 100px 2.2fr 74px 68px 78px 128px 96px 20px;
+
+.resultRow {
+  display: grid;
+  grid-template-columns: $results-grid;
+  gap: $space-md;
+  align-items: center;
+  padding: $space-md $space-lg;
+  cursor: pointer;
+  background-color: $color-white;
+  border-radius: $radius-md;
+  border: 1px solid $color-plaster-100;
+  box-shadow: $shadow-card;
+  transition: transform $duration-base $ease-out-expo, box-shadow $duration-base $ease-base, border-color $duration-fast $ease-base;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: $shadow-card-hover;
+    border-color: $color-plaster-100;
+
+    .resultArrow {
+      opacity: 1;
+      transform: translateX(2px);
+    }
+  }
+
+  @include respond(below-desktop) {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      'name name'
+      'date price'
+      'board seats'
+      'transport transport';
+    row-gap: $space-2xs;
+    padding: $space-md;
+  }
+}
+
+.resultCell {
+  font-size: 0.85rem;
+  color: $color-stone-600;
+}
+
+.resultDate {
+  font-family: $font-mono;
+  font-size: 0.8rem;
+  color: $color-stone-600;
+
+  @include respond(below-desktop) {
+    grid-area: date;
+  }
+}
+
+.resultName {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+
+  b {
+    font-family: $font-monr;
+    font-size: 0.92rem;
+    color: $color-ink-950;
+  }
+
+  em {
+    font-style: normal;
+    font-size: 0.78rem;
+    color: $color-stone-600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .resultFlag {
+    flex-shrink: 0;
+  }
+
+  i {
+    font-style: normal;
+    font-size: 0.72rem;
+    color: $color-stone-600;
+    opacity: 0.7;
+  }
+
+  @include respond(below-desktop) {
+    grid-area: name;
+  }
+}
+
+.boardBadge,
+.seatsBadge,
+.transportBadge {
+  display: inline-flex;
+  align-self: start;
+  font-family: $font-mono;
+  font-size: 0.72rem;
+  font-weight: 700;
+  border-radius: $radius-sm;
+  padding: 0.2rem 0.5rem;
+  white-space: nowrap;
+}
+
+.boardBadge {
+  color: $color-ink-950;
+  background-color: $color-plaster-100;
+
+  @include respond(below-desktop) {
+    grid-area: board;
+  }
+}
+
+.seatsBadge {
+  color: $color-stone-600;
+  background-color: $color-plaster-50;
+  border: 1px solid $color-plaster-100;
+  font-weight: 600;
+
+  @include respond(below-desktop) {
+    grid-area: seats;
+    justify-self: end;
+  }
+}
+
+.resultPrice {
+  display: flex;
+  flex-direction: column;
+  font-family: $font-monr;
+  font-weight: 800;
+  font-size: 1rem;
+  color: $color-ink-950;
+
+  small {
+    font-family: $font-mono;
+    font-weight: 600;
+    font-size: 0.65rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: $color-stone-600;
+    margin-top: 0.1rem;
+  }
+
+  @include respond(below-desktop) {
+    grid-area: price;
+    align-items: flex-end;
+  }
+}
+
+.transportBadge {
+  color: $color-stone-600;
+  background-color: $color-plaster-100;
+
+  @include respond(below-desktop) {
+    grid-area: transport;
+    justify-self: start;
+    margin-top: $space-2xs;
+  }
+}
+
+.transport-Стандарт {
+  color: $color-turquoise-600;
+  background-color: rgba(26, 147, 184, 0.12);
+}
+
+.transport-Бизнес {
+  color: $color-gold-600;
+  background-color: rgba(198, 255, 52, 0.16);
+}
+
+.resultArrow {
+  justify-self: end;
+  color: $color-stone-600;
+  opacity: 0;
+  transition: opacity $duration-fast $ease-base, transform $duration-fast $ease-base;
+
+  @include respond(below-desktop) {
+    display: none;
+  }
+}
+
+// ===== Lead capture band =====
+.lead {
+  background-color: $color-ink-950;
+  padding: $space-xl $space-lg;
+
+  @include respond(below-desktop) {
+    padding: $space-lg $space-md;
+  }
+}
+
+.leadInner {
+  @include container;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-xl;
+  flex-wrap: wrap;
+
+  h2 {
+    font-family: $font-monr;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: $color-white;
+  }
+
+  p {
+    margin-top: $space-2xs;
+    font-size: 0.92rem;
+    color: rgba(255, 255, 255, 0.55);
+  }
+}
+
+.rateForm {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2xs;
+  max-width: 500px;
+  border: 1px solid $glass-border;
+  background: $glass-bg;
+  border-radius: $radius-md;
+  padding: $space-2xs;
+
+  @include respond(below-desktop) {
+    flex-direction: column;
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+.rateInput {
+  flex: 1;
+  min-width: 160px;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: $color-white;
+  font-family: $font-body;
+  font-size: 0.92rem;
+  padding: 0.85rem 1rem;
+
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+  }
+}
+
+.rateBtnDark {
+  @include btn-primary;
+  padding: 0 1.6rem;
+  font-family: $font-mono;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+
+  @include respond(below-desktop) {
+    padding: 0.85rem 1.6rem;
+  }
+}
+
+.leadDone {
+  background-color: $color-ink-950;
+  padding: $space-lg;
+}
+
+.leadDoneInner {
+  @include container;
+  color: $color-gold-300;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+// ===== Perks section =====
+.perks {
+  background-color: $color-white;
+  @include section-pad;
+}
+
+.perksInner {
+  @include container;
+
+  .eyebrow {
+    color: $color-gold-600;
+  }
+}
+
+.perksGrid {
+  margin-top: $space-lg;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $space-md;
+
+  @include respond(below-desktop) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond(mobile) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.perkCard {
+  padding: $space-lg $space-md;
+  border-radius: $radius-md;
+  border: 1px solid $color-plaster-100;
+  background-color: $color-plaster-50;
+
+  h3 {
+    font-family: $font-monr;
+    font-size: 1.05rem;
+    margin-top: $space-sm;
+    color: $color-ink-950;
+  }
+
+  p {
+    margin-top: $space-2xs;
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: $color-stone-600;
+  }
+}
+
+.perkIndex {
+  @include mono-eyebrow;
+  color: $color-gold-600;
+}

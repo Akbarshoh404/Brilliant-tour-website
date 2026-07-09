@@ -356,5 +356,75 @@
       "Aviachiptalar"
     ],
     "directCta": "Instagram yoki Telegram orqali yozing — odatda bir soat ichida javob beramiz."
+  },
+  "business": {
+    "eyebrow": "Brilliant hamkorlik tarmog'i",
+    "hubCity": "Toshkent",
+    "titleLine1": "Ipak yo'lini",
+    "titleHighlight": "soting",
+    "titleLine2": "o'z brendingiz ostida",
+    "subtitle": "Agentliklar va DMC uchun netto tariflar va jonli inventar.",
+    "trustCaption": "Markaziy Osiyo va undan tashqarida 214+ agentlik bizga ishonadi",
+    "ratesLabel": "So'mga valyuta kurslari",
+    "listingEyebrow": "Jonli inventar",
+    "listingTitle": "Hamkorlar uchun tariflar",
+    "filterOpen": "Filtrlar",
+    "filters": {
+      "title": "Filtrlar",
+      "clear": "Tozalash",
+      "close": "Filtrlarni yopish",
+      "destination": "Yo'nalish",
+      "anyCountry": "Istalgan davlat",
+      "anyCity": "Istalgan shahar",
+      "hotel": "Mehmonxona",
+      "hotelPlaceholder": "Mehmonxona nomi",
+      "stars": "Mehmonxona toifasi",
+      "nights": "Tunlar",
+      "price": "Narx",
+      "from": "Dan",
+      "to": "Gacha",
+      "board": "Ovqatlanish",
+      "priceType": "Narx turi",
+      "transport": "Transport"
+    },
+    "priceTypeLabels": {
+      "netto": "Netto",
+      "gds": "GDS",
+      "charter": "Charter"
+    },
+    "transportLabels": {
+      "economy": "Ekonom",
+      "standard": "Standart",
+      "business": "Biznes"
+    },
+    "results": {
+      "found": "{{count}} ta tarif topildi",
+      "sort": "Saralash",
+      "nights": "tun",
+      "seats": "o'rin",
+      "empty": "Bu filtrlar bo'yicha tariflar topilmadi.",
+      "reset": "Filtrlarni tozalash"
+    },
+    "sortOptions": {
+      "priceAsc": "Narx: avval arzon",
+      "priceDesc": "Narx: avval qimmat",
+      "nightsAsc": "Tunlar: kamdan ko'pga",
+      "dateAsc": "Kirish sanasi bo'yicha"
+    },
+    "lead": {
+      "title": "Boshlashga tayyormisiz?",
+      "text": "Kontaktlaringizni qoldiring — to'liq narxlar ro'yxati va hamkor kabinetiga kirishni yuboramiz.",
+      "companyPlaceholder": "Agentlik nomi",
+      "contactPlaceholder": "Telefon yoki Telegram",
+      "submit": "Tariflarni so'rash",
+      "sent": "So'rov yuborildi — menejer bir ish kuni ichida siz bilan bog'lanadi."
+    },
+    "perksEyebrow": "Nega Brilliant",
+    "perks": [
+      { "title": "Netto tariflar", "text": "Ulgurji narxlarga to'g'ridan-to'g'ri kirish, ustama yo'q — margani o'zingiz belgilaysiz." },
+      { "title": "White-label marshrutlar", "text": "Brilliant brendisiz tayyor dasturlar — mijozlarga o'z nomingizdan yuboring." },
+      { "title": "Jonli inventar", "text": "O'zbekiston va 40+ yo'nalish bo'yicha joylar va sanalar har kuni yangilanadi." },
+      { "title": "Shaxsiy menejer", "text": "Bron qilish, o'zgartirish va murakkab holatlar uchun bitta aloqa — navbatsiz." }
+    ]
   }
 }

@@ -1,0 +1,6 @@
+[
+  { "code": "USD", "rate": 12900 },
+  { "code": "EUR", "rate": 13950 },
+  { "code": "GBP", "rate": 16300 },
+  { "code": "CHF", "rate": 14700 }
+]

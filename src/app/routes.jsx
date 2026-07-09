@@ -11,6 +11,7 @@ const OfferDetail = lazy(() => import('../pages/OfferDetail/OfferDetail'));
 const VisaPage = lazy(() => import('../pages/VisaPage/VisaPage'));
 const About = lazy(() => import('../pages/About/About'));
 const Contact = lazy(() => import('../pages/Contact/Contact'));
+const Business = lazy(() => import('../pages/Business/Business'));
 
 export const routes = [
   { path: '/', element: Home },
@@ -23,4 +24,5 @@ export const routes = [
   { path: '/visas', element: VisaPage },
   { path: '/about', element: About },
   { path: '/contact', element: Contact },
+  { path: '/business', element: Business },
 ];
