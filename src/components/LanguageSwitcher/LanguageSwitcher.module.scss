@@ -72,6 +72,13 @@
   z-index: $z-overlay;
 }
 
+// Opens above the trigger instead of below — for triggers anchored near
+// the bottom of the viewport (the mobile drawer footer).
+.menuUp {
+  top: auto;
+  bottom: calc(100% + #{$space-xs});
+}
+
 .option {
   display: flex;
   align-items: center;

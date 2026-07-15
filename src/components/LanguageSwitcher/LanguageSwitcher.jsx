@@ -9,7 +9,11 @@ const LANGS = [
   { code: 'uz', label: 'UZ' },
 ];
 
-export default function LanguageSwitcher({ variant = 'light' }) {
+// `openUp`: the dropdown opens downward by default, which is fine when the
+// trigger sits near the top of the screen (desktop navbar) — but in the
+// mobile drawer, the switcher lives in the footer near the bottom edge, so
+// a downward menu runs off the viewport. Pass `openUp` there to flip it.
+export default function LanguageSwitcher({ variant = 'light', openUp = false }) {
   const { i18n } = useTranslation();
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
@@ -50,11 +54,11 @@ export default function LanguageSwitcher({ variant = 'light' }) {
       <AnimatePresence>
         {open && (
           <motion.ul
-            className={styles.menu}
+            className={`${styles.menu} ${openUp ? styles.menuUp : ''}`}
             role="listbox"
-            initial={{ opacity: 0, y: -6 }}
+            initial={{ opacity: 0, y: openUp ? 6 : -6 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -6 }}
+            exit={{ opacity: 0, y: openUp ? 6 : -6 }}
             transition={{ duration: 0.18 }}
           >
             {LANGS.map((l) => (

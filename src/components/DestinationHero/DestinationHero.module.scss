@@ -222,7 +222,13 @@
   }
 }
 
-// Arrow navigation — split to opposite edges of the hero
+// Arrow navigation — split to opposite edges of the hero. Below desktop,
+// .heroText switches to centered/stacked layout (see above), so a
+// vertically-centered arrow can land right on top of the title/subtitle
+// depending on how much text a given page has. Anchoring the arrows to the
+// bottom instead — just above .heroBottomCluster, which is itself always
+// bottom-anchored regardless of content length — keeps them clear of text
+// on every page that uses this hero.
 .heroArrowBtn {
   position: absolute;
   top: 50%;
@@ -245,6 +251,12 @@
     background: rgba(255, 255, 255, 0.18);
   }
 
+  @include respond(below-desktop) {
+    top: auto;
+    bottom: calc(#{$space-lg} + 60px);
+    transform: none;
+  }
+
   @include respond(mobile) {
     width: 38px;
     height: 38px;
@@ -258,6 +270,12 @@
     transform: translateY(-50%) translateX(-3px);
   }
 
+  @include respond(below-desktop) {
+    &:hover {
+      transform: translateX(-3px);
+    }
+  }
+
   @include respond(mobile) {
     left: $space-2xs;
   }
@@ -268,6 +286,12 @@
 
   &:hover {
     transform: translateY(-50%) translateX(3px);
+  }
+
+  @include respond(below-desktop) {
+    &:hover {
+      transform: translateX(3px);
+    }
   }
 
   @include respond(mobile) {

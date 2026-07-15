@@ -108,7 +108,11 @@
   position: relative;
 }
 
-// Pill badge + hand-drawn arrow, nudging attention to the phone card.
+// Pill badge + hand-drawn arrow, nudging attention to the phone card. On
+// mobile the channel grid stacks to a single column and the phone card is
+// already first (i.e. already the visually emphasized one), and there
+// isn't room to float this pill without it overlapping the card below it
+// — so it's dropped there rather than fixed into an awkward spot.
 .tapHint {
   position: absolute;
   top: -34px;
@@ -131,10 +135,7 @@
   transform: rotate(-4deg);
 
   @include respond(mobile) {
-    position: static;
-    align-self: flex-start;
-    margin-bottom: $space-2xs;
-    transform: none;
+    display: none;
   }
 }
 

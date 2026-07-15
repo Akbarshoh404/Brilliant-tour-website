@@ -158,8 +158,8 @@ export default function Navbar() {
                 </ul>
 
                 <div className={styles.drawerFooter}>
-                  <LanguageSwitcher variant="light" />
                   <ThemeToggle className={styles.drawerThemeToggle} />
+                  <LanguageSwitcher variant="light" openUp />
                 </div>
               </motion.div>
             </>
