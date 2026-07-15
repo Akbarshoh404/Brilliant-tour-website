@@ -2,32 +2,294 @@
 @use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
 
-.hero {
-  @extend %catalogHero;
-}
-.heroOverlay {
-  @extend %catalogHeroOverlay;
-}
-.heroInner {
-  @extend %catalogHeroInner;
-}
-.eyebrow {
-  @extend %catalogEyebrow;
-}
-.title {
-  @extend %catalogTitle;
-}
-.intro {
-  @extend %catalogIntro;
-}
 .sectionInner {
   @extend %catalogSectionInner;
+}
+
+// ── HERO — "stamped passport page" instead of a destination slideshow ──────
+
+.visaHero {
+  background-color: $surface-card;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: calc(#{$navbar-height} + #{$space-xl});
+  padding-bottom: $space-2xl;
+  padding-left: $space-lg;
+  padding-right: $space-lg;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image:
+      linear-gradient($grid-line 1px, transparent 1px),
+      linear-gradient(90deg, $grid-line 1px, transparent 1px);
+    background-size: 32px 32px;
+    mask-image: radial-gradient(circle at 75% 30%, black, transparent 70%);
+  }
+
+  @include respond(mobile) {
+    min-height: auto;
+    padding-top: calc(#{$navbar-height} + #{$space-lg});
+    padding-bottom: $space-xl;
+    padding-left: $space-md;
+    padding-right: $space-md;
+  }
+}
+
+.visaHeroInner {
+  @include container;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: $space-2xl;
+  align-items: center;
+
+  @include respond(below-desktop) {
+    grid-template-columns: 1fr;
+    gap: $space-xl;
+  }
+}
+
+.visaHeroText {
+  padding-top: $space-md;
+}
+
+.visaHeroEyebrow {
+  @include mono-eyebrow;
+  display: block;
+  color: $color-gold-600;
+  margin: $space-md 0 $space-xs;
+}
+
+.visaHeroTitle {
+  font-family: $font-monr;
+  font-size: clamp(2rem, 4.4vw, 3.2rem);
+  color: $text-primary;
+  line-height: 1.08;
+  max-width: 14ch;
+}
+
+.visaHeroIntro {
+  margin-top: $space-md;
+  color: $text-secondary;
+  font-size: 1.02rem;
+  line-height: 1.65;
+  max-width: 50ch;
+}
+
+.visaHeroStats {
+  display: flex;
+  gap: $space-xl;
+  margin-top: $space-xl;
+  padding-top: $space-lg;
+  border-top: 1px solid $surface-muted-2;
+}
+
+.visaHeroStat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.visaHeroStatValue {
+  font-family: $font-monr;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: $text-primary;
+}
+
+.visaHeroStatLabel {
+  font-family: $font-mono;
+  font-size: 0.7rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: $text-secondary;
+}
+
+// A loose scatter of "stamps" — flag + name in a dashed, slightly rotated
+// card — standing in for the destination photography used elsewhere.
+.visaHeroStamps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $space-md;
+
+  @include respond(below-desktop) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @include respond(mobile) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: $space-sm;
+  }
+}
+
+.stampCard {
+  --r: 0deg;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-2xs;
+  padding: $space-sm $space-2xs;
+  background-color: $surface-card;
+  border: 1.5px dashed $surface-muted-2;
+  border-radius: $radius-md;
+  transform: rotate(var(--r));
+  transition: transform $duration-base $ease-out-expo, border-color $duration-fast $ease-base;
+  box-shadow: $shadow-card;
+
+  &:hover {
+    transform: rotate(0deg) translateY(-4px);
+    border-color: $color-gold-500;
+  }
+}
+
+.stampFlag {
+  border-radius: 4px;
+  box-shadow: 0 0 0 1px rgba($color-ink-950, 0.08);
+}
+
+.stampName {
+  font-family: $font-mono;
+  font-size: 0.62rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: $text-secondary;
+  text-align: center;
+}
+
+// ── CONTACT — stamped document card instead of a full-viewport CTA ─────────
+
+.contactSection {
+  background-color: $surface-muted;
+  padding: $space-2xl $space-lg;
+  display: flex;
+  justify-content: center;
+
+  @include respond(mobile) {
+    padding: $space-xl $space-md;
+  }
+}
+
+.contactCard {
+  position: relative;
+  max-width: 640px;
+  width: 100%;
+  text-align: center;
+  background-color: $surface-card;
+  border: 1.5px dashed $surface-muted-2;
+  border-radius: $radius-lg;
+  padding: $space-2xl $space-xl;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-xs;
+  box-shadow: $shadow-elevated;
+
+  @include respond(mobile) {
+    padding: $space-xl $space-md;
+  }
+}
+
+.contactStamp {
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-8deg);
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: $color-gold-500;
+  color: $color-ink-950;
+  box-shadow: $shadow-card;
+}
+
+.comingSoonTag {
+  margin-top: $space-md;
+  @include mono-eyebrow;
+  font-size: 0.7rem;
+  color: $color-gold-600;
+}
+
+.contactTitle {
+  color: $text-primary;
+  font-size: clamp(1.7rem, 3.2vw, 2.3rem);
+}
+
+.contactText {
+  color: $text-secondary;
+  max-width: 46ch;
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
+.contactActions {
+  display: flex;
+  align-items: center;
+  gap: $space-md;
+  margin-top: $space-md;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  @include respond(mobile) {
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+.contactCallBtn {
+  @include btn-primary;
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2xs;
+  padding: 0.9rem 2rem;
+  font-size: 0.9rem;
+  text-decoration: none;
+
+  @include respond(mobile) {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+.contactMsgBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2xs;
+  padding: 0.9rem 2rem;
+  border: 1.5px solid $text-primary;
+  border-radius: $radius-sm;
+  color: $text-primary;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: background-color $duration-fast $ease-base, color $duration-fast $ease-base, transform $duration-fast $ease-base;
+
+  &:hover {
+    background-color: $text-primary;
+    color: $surface-page;
+    transform: translateY(-2px);
+  }
+
+  @include respond(mobile) {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 // ── COUNTRIES ─────────────────────────────────────────────────────────────────
 
 .countriesSection {
-  background-color: $color-plaster-50;
+  background-color: $surface-muted;
 }
 
 .subheading {
@@ -50,19 +312,19 @@
 }
 
 .chip {
-  background-color: $color-white;
-  border: 1px solid $color-plaster-100;
+  background-color: $surface-card;
+  border: 1px solid $surface-muted-2;
   border-radius: $radius-pill;
   padding: 0.5rem 1.1rem;
   font-size: 0.85rem;
-  color: $color-ink-900;
+  color: $text-primary;
   transition: background-color $duration-fast $ease-base, color $duration-fast $ease-base;
 }
 
 .chipActive {
-  background-color: $color-ink-950;
-  border-color: $color-ink-950;
-  color: $color-white;
+  background-color: $text-primary;
+  border-color: $text-primary;
+  color: $surface-page;
 }
 
 .countryGrid {
@@ -81,23 +343,12 @@
 
 .countryCard {
   position: relative;
-  background-color: $color-white;
+  background-color: $surface-card;
   border-radius: $radius-md;
   padding: $space-md;
   box-shadow: $shadow-card;
   border: 1.5px solid transparent;
-  cursor: pointer;
-  @include card-hover;
-
-  &:focus-visible {
-    outline: none;
-    border-color: $color-gold-500;
-  }
-}
-
-.countryCardActive {
-  border-color: $color-gold-500;
-  box-shadow: $shadow-card-hover;
+  transition: box-shadow $duration-base $ease-base;
 }
 
 .priceBadge {
@@ -115,7 +366,7 @@
   font-size: 0.6rem;
   letter-spacing: 0.03em;
   text-transform: uppercase;
-  color: $color-stone-600;
+  color: $text-secondary;
 }
 
 .priceBadgeValue {
@@ -142,7 +393,7 @@
 
 .countryName {
   font-size: 1.05rem;
-  color: $color-ink-950;
+  color: $text-primary;
 }
 
 .countryType {
@@ -158,8 +409,8 @@
   display: flex;
   gap: $space-lg;
   padding: $space-sm 0;
-  border-top: 1px solid $color-plaster-100;
-  border-bottom: 1px solid $color-plaster-100;
+  border-top: 1px solid $surface-muted-2;
+  border-bottom: 1px solid $surface-muted-2;
   margin-bottom: $space-sm;
 }
 
@@ -169,13 +420,13 @@
   font-size: 0.64rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: $color-stone-600;
+  color: $text-secondary;
 }
 
 .factValue {
   display: block;
   font-weight: 700;
-  color: $color-ink-950;
+  color: $text-primary;
   margin-top: 2px;
 }
 
@@ -184,7 +435,7 @@
   font-size: 0.68rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: $color-stone-600;
+  color: $text-secondary;
   margin-bottom: $space-2xs;
 }
 
@@ -197,96 +448,11 @@
 .reqPill {
   font-family: $font-mono;
   font-size: 0.66rem;
-  background-color: $color-plaster-50;
-  border: 1px solid $color-plaster-100;
-  color: $color-stone-600;
+  background-color: $surface-muted;
+  border: 1px solid $surface-muted-2;
+  color: $text-secondary;
   padding: 0.2rem 0.55rem;
   border-radius: $radius-pill;
-}
-
-.applyBtn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: $space-3xs;
-  width: 100%;
-  margin-top: $space-md;
-  padding: 0.7rem 0.6rem;
-  border: 1px solid $color-ink-950;
-  border-radius: $radius-pill;
-  background-color: $color-ink-950;
-  color: $color-white;
-  font-family: $font-mono;
-  font-size: 0.72rem;
-  letter-spacing: 0.01em;
-  text-transform: uppercase;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  transition: background-color $duration-fast $ease-base, color $duration-fast $ease-base;
-
-  &:hover {
-    background-color: $color-gold-500;
-    border-color: $color-gold-500;
-    color: $color-ink-950;
-  }
-}
-
-.applyBtnActive {
-  background-color: $color-gold-500;
-  border-color: $color-gold-500;
-  color: $color-ink-950;
-}
-
-.applyBtnIcon {
-  flex-shrink: 0;
-  transition: transform $duration-fast $ease-base;
-
-  .applyBtnActive & {
-    transform: rotate(180deg);
-  }
-}
-
-.applyPanel {
-  overflow: hidden;
-}
-
-.applyForm {
-  display: flex;
-  flex-direction: column;
-  gap: $space-2xs;
-  padding-top: $space-md;
-}
-
-.applyInput {
-  padding: 0.65rem 0.85rem;
-  border: 1px solid $color-plaster-100;
-  border-radius: $radius-sm;
-  background-color: $color-plaster-50;
-  font-size: 0.88rem;
-  color: $color-ink-950;
-
-  &:focus {
-    outline: none;
-    border-color: $color-gold-500;
-  }
-}
-
-.applySubmitBtn {
-  @include btn-primary;
-  margin-top: $space-3xs;
-  padding: 0.7rem 1rem;
-  font-size: 0.82rem;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-}
-
-.applySuccess {
-  padding-top: $space-md;
-  font-size: 0.88rem;
-  color: $color-gold-600;
-  font-weight: 600;
-  line-height: 1.5;
 }
 
 // ── PROCESS ──────────────────────────────────────────────────────────────────
@@ -333,13 +499,13 @@
 // ── EXTRA SERVICES ───────────────────────────────────────────────────────────
 
 .extraSection {
-  background-color: $color-plaster-50;
+  background-color: $surface-muted;
 }
 
 .extraIntro {
   margin-top: -$space-sm;
   margin-bottom: $space-xl;
-  color: $color-stone-600;
+  color: $text-secondary;
   max-width: 60ch;
   font-size: 0.98rem;
 }
@@ -360,10 +526,10 @@
 
 .extraCard {
   position: relative;
-  background-color: $color-white;
+  background-color: $surface-card;
   border-radius: $radius-lg;
   padding: $space-lg;
-  border: 1px solid $color-plaster-100;
+  border: 1px solid $surface-muted-2;
   box-shadow: $shadow-card;
   overflow: hidden;
   transition: border-color $duration-fast $ease-base, transform $duration-base $ease-out-expo, box-shadow $duration-base $ease-base;
@@ -397,7 +563,7 @@
   }
 
   p {
-    color: $color-stone-600;
+    color: $text-secondary;
     font-size: 0.9rem;
     line-height: 1.6;
   }
@@ -422,20 +588,20 @@
   align-items: center;
   gap: 0.3rem;
   margin-top: $space-md;
-  background-color: $color-plaster-50;
-  border: 1px solid $color-plaster-100;
+  background-color: $surface-muted;
+  border: 1px solid $surface-muted-2;
   border-radius: $radius-pill;
   padding: 0.35rem 0.85rem;
   font-family: $font-mono;
   font-size: 0.76rem;
   font-weight: 700;
-  color: $color-ink-950;
+  color: $text-primary;
 }
 
 // ── CTA ──────────────────────────────────────────────────────────────────────
 
 .ctaSection {
-  background-color: $color-plaster-50;
+  background-color: $surface-muted;
   padding: 0 $space-lg $space-3xl;
 
   @include respond(mobile) {

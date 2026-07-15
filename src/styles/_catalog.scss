@@ -98,7 +98,7 @@
 %catalogResultCount {
   font-family: $font-mono;
   font-size: 0.82rem;
-  color: $color-stone-600;
+  color: $text-secondary;
 }
 
 
@@ -131,6 +131,162 @@
 %catalogNoResults {
   grid-column: 1 / -1;
   text-align: center;
-  color: $color-stone-600;
+  color: $text-secondary;
   padding: $space-xl 0;
+}
+
+// Booking for this section isn't live yet — a banner pointing to Contact Us
+// instead of the real listing/apply flow. Shared so International & Visas
+// stay visually consistent.
+%catalogComingSoon {
+  display: flex;
+  align-items: center;
+  gap: $space-md;
+  padding: $space-lg;
+  border-radius: $radius-md;
+  border: 1px dashed $surface-muted-2;
+  background-color: $surface-muted;
+  margin-bottom: $space-xl;
+
+  @include respond(mobile) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+%catalogComingSoonTag {
+  @include mono-eyebrow;
+  font-size: 0.66rem;
+  color: $color-ink-950;
+  background-color: $color-gold-500;
+  padding: 0.2rem 0.55rem;
+  border-radius: $radius-pill;
+  flex-shrink: 0;
+}
+
+%catalogComingSoonText {
+  flex: 1;
+  color: $text-secondary;
+  font-size: 0.92rem;
+  max-width: 62ch;
+}
+
+%catalogComingSoonBtn {
+  @include btn-primary;
+  flex-shrink: 0;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  text-decoration: none;
+
+  @include respond(mobile) {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+// Full-viewport "book by contacting us" CTA — used where a whole catalog
+// section (International hub, Visas hub) is replaced by one strong call to
+// action rather than a live booking flow.
+%catalogFullContact {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: $space-2xl $space-lg;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(198, 255, 52, 0.08), transparent 45%),
+    linear-gradient(160deg, $color-ink-950 0%, $color-ink-900 55%, $color-ink-800 100%);
+
+  @include respond(mobile) {
+    padding: $space-xl $space-md;
+  }
+}
+
+%catalogFullContactInner {
+  max-width: 840px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-sm;
+}
+
+%catalogFullContactTag {
+  @include mono-eyebrow;
+  font-size: 0.7rem;
+  color: $color-ink-950;
+  background-color: $color-gold-500;
+  padding: 0.3rem 0.8rem;
+  border-radius: $radius-pill;
+  margin-bottom: $space-sm;
+}
+
+%catalogFullContactTitle {
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  color: $color-white;
+  line-height: 1.15;
+}
+
+%catalogFullContactText {
+  margin-top: $space-xs;
+  color: $color-mist;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  max-width: 72ch;
+}
+
+%catalogFullContactActions {
+  display: flex;
+  align-items: center;
+  gap: $space-md;
+  margin-top: $space-lg;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  @include respond(mobile) {
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+%catalogFullContactCallBtn {
+  @include btn-primary;
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2xs;
+  padding: 1rem 2.2rem;
+  font-size: 0.95rem;
+  text-decoration: none;
+
+  @include respond(mobile) {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+%catalogFullContactMsgBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2xs;
+  padding: 1rem 2.2rem;
+  border: 1.5px solid rgba(255, 255, 255, 0.28);
+  border-radius: $radius-sm;
+  color: $color-white;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: border-color $duration-fast $ease-base, background-color $duration-fast $ease-base, transform $duration-fast $ease-base;
+
+  &:hover {
+    border-color: $color-white;
+    background-color: rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
+  }
+
+  @include respond(mobile) {
+    width: 100%;
+    justify-content: center;
+  }
 }

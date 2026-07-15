@@ -2,31 +2,174 @@
 @use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
 
+// ── HERO — light "travel journal" page, same graphic family as Visas ───────
+
 .hero {
-  @extend %catalogHero;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: $surface-card;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: calc(#{$navbar-height} + #{$space-xl}) $space-lg $space-2xl;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image:
+      linear-gradient($grid-line 1px, transparent 1px),
+      linear-gradient(90deg, $grid-line 1px, transparent 1px);
+    background-size: 32px 32px;
+    mask-image: radial-gradient(circle at 80% 25%, black, transparent 70%);
+  }
+
+  @include respond(mobile) {
+    min-height: auto;
+    padding: calc(#{$navbar-height} + #{$space-lg}) $space-md $space-xl;
+  }
 }
-.heroOverlay {
-  @extend %catalogHeroOverlay;
-}
+
 .heroInner {
-  @extend %catalogHeroInner;
+  @include container;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: $space-2xl;
+  align-items: center;
+
+  @include respond(below-desktop) {
+    grid-template-columns: 1fr;
+    gap: $space-xl;
+  }
 }
+
+.heroText {
+  padding-top: $space-md;
+}
+
 .eyebrow {
-  @extend %catalogEyebrow;
+  @include mono-eyebrow;
+  color: $color-gold-600;
+  display: block;
+  margin: $space-md 0 $space-xs;
 }
-.intro {
-  @extend %catalogIntro;
-}
+
 .title {
-  @extend %catalogTitle;
+  font-family: $font-monr;
+  font-size: clamp(2rem, 4.4vw, 3.2rem);
+  color: $text-primary;
+  max-width: 14ch;
+  line-height: 1.08;
 }
+
+.intro {
+  margin-top: $space-md;
+  color: $text-secondary;
+  max-width: 50ch;
+  font-size: 1.02rem;
+  line-height: 1.65;
+}
+
+.heroMilestones {
+  display: flex;
+  gap: $space-xl;
+  margin-top: $space-xl;
+  padding-top: $space-lg;
+  border-top: 1px solid $surface-muted-2;
+}
+
+.heroMilestone {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.heroMilestoneValue {
+  font-family: $font-monr;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: $text-primary;
+}
+
+.heroMilestoneLabel {
+  font-family: $font-mono;
+  font-size: 0.7rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: $text-secondary;
+}
+
+// Two overlapping "taped photo" frames — sits where Visas puts its stamps.
+.heroCollage {
+  position: relative;
+  padding-bottom: $space-xl;
+
+  @include respond(below-desktop) {
+    max-width: 480px;
+  }
+}
+
+.collageFrame {
+  background-color: $surface-card;
+  padding: 10px 10px 26px;
+  border-radius: $radius-sm;
+  box-shadow: $shadow-card-hover;
+
+  img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+}
+
+.collageMain {
+  width: 80%;
+  transform: rotate(-3deg);
+
+  img {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+.collageAccent {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 52%;
+  transform: rotate(5deg);
+
+  img {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+.collageBadge {
+  position: absolute;
+  top: -$space-xs;
+  left: 58%;
+  z-index: 1;
+  transform: rotate(-6deg);
+  background-color: $color-gold-500;
+  color: $color-ink-950;
+  font-family: $font-monr;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 0.5rem 1rem;
+  border-radius: $radius-pill;
+  box-shadow: $shadow-card;
+}
+
 .sectionInner {
   @extend %catalogSectionInner;
 }
 
 .storySection {
   position: relative;
-  background-color: $color-plaster-50;
+  background-color: $surface-muted;
 }
 
 .storyLayout {
@@ -70,12 +213,35 @@
   box-shadow: $shadow-card;
 }
 
-.quoteMark {
+// A second, smaller photo layered over the top-right corner — a simple
+// collage effect so the story block doesn't read as a single flat image.
+.storyAccentWrap {
+  position: absolute;
+  top: -$space-lg;
+  right: -$space-lg;
+  z-index: 2;
+  width: 46%;
+  aspect-ratio: 4 / 3;
+  border-radius: $radius-md;
+  overflow: hidden;
+  border: 5px solid $surface-muted;
+  box-shadow: $shadow-elevated;
+
+  @include respond(below-desktop) {
+    display: none;
+  }
+}
+
+.storyAccentPhoto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.storyEyebrow {
+  @include mono-eyebrow;
   display: block;
-  font-family: $font-citadel;
-  font-size: 6rem;
-  line-height: 0.6;
-  color: rgba(149, 191, 39, 0.3);
+  color: $color-gold-600;
   margin-bottom: $space-sm;
 }
 
@@ -85,17 +251,19 @@
 }
 
 .story {
-  max-width: 52ch;
-  font-size: 1.35rem;
-  line-height: 1.7;
-  color: $color-ink-900;
-  font-family: $font-display;
-  font-style: italic;
-  font-weight: 500;
+  max-width: 46ch;
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  line-height: 1.35;
+  color: $text-primary;
+  font-family: $font-monr;
+  font-weight: 700;
+  letter-spacing: -0.01em;
 }
 
+// ── MISSION — a frosted glass panel floating on the photo ──────────────────
+
 .missionSection {
-  background-color: $color-plaster-50;
+  background-color: $surface-muted;
   padding-top: 0;
 }
 
@@ -103,76 +271,136 @@
   position: relative;
   isolation: isolate;
   border-radius: $radius-lg;
-  padding: $space-2xl;
-  text-align: center;
-  max-width: 760px;
+  max-width: 900px;
+  min-height: 380px;
   margin: 0 auto;
+  display: flex;
+  align-items: flex-end;
   background-size: cover;
   background-position: center;
   overflow: hidden;
   box-shadow: $shadow-elevated;
 
-  p {
-    position: relative;
-    z-index: 1;
-    color: $color-white;
-    font-size: 1.15rem;
-    line-height: 1.7;
-    max-width: 56ch;
-    margin: 0 auto;
-  }
-
   @include respond(mobile) {
-    padding: $space-xl $space-md;
+    min-height: 320px;
   }
 }
 
-.missionOverlay {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background: linear-gradient(160deg, rgba($color-ink-950, 0.9) 0%, rgba(149, 191, 39, 0.3) 55%, rgba($color-ink-950, 0.92) 100%);
+// One translucent material, not glass-on-glass: a single frosted sheet
+// sitting on the photo, not stacked overlays.
+.missionGlass {
+  position: relative;
+  width: 100%;
+  margin: $space-md;
+  padding: $space-xl $space-lg;
+  border-radius: $radius-md;
+  background-color: rgba(0, 0, 0, 0.42);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+
+  @include respond(mobile) {
+    margin: $space-sm;
+    padding: $space-lg $space-md;
+  }
 }
 
 .missionEyebrow {
-  position: relative;
-  z-index: 1;
   display: block;
   @include mono-eyebrow;
   color: $color-gold-300;
-  margin-bottom: $space-md;
+  margin-bottom: $space-sm;
 }
+
+.missionText {
+  color: $color-white;
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  line-height: 1.55;
+  max-width: 52ch;
+  font-family: $font-monr;
+  font-weight: 500;
+}
+
+// ── SHARED SECTION HEADING ──────────────────────────────────────────────────
+
+.sectionHeading {
+  text-align: center;
+  max-width: 480px;
+  margin: 0 auto $space-xl;
+}
+
+.sectionHeadingEyebrow {
+  @include mono-eyebrow;
+  display: block;
+  color: $color-gold-600;
+  margin-bottom: $space-xs;
+}
+
+.sectionHeadingTitle {
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+  color: $text-primary;
+}
+
+// ── STATS — even bento grid, four equal tiles ───────────────────────────────
 
 .statsSection {
-  background-color: $color-plaster-50;
+  background-color: $surface-muted;
 }
 
-.statsGrid {
-  position: relative;
-  isolation: isolate;
+.bento {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: $space-lg;
-  text-align: center;
-  background-color: $color-ink-950;
-  border-radius: $radius-lg;
-  padding: $space-xl;
-  overflow: hidden;
+  gap: $space-md;
 
+  @include respond(below-desktop) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond(mobile) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.bentoTile {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: $radius-lg;
+  padding: $space-lg;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: $space-xl;
+  min-height: 168px;
+  background-color: $color-ink-950;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: $shadow-card;
+  transition: transform $duration-base $ease-out-expo, box-shadow $duration-base $ease-base;
+
+  // A faint corner sheen, not a color wash — reads as glass, not a tint.
   &::before {
     content: '';
     position: absolute;
     inset: 0;
     z-index: -1;
-    background:
-      radial-gradient(circle at 15% 20%, rgba(198, 255, 52, 0.22) 0%, transparent 45%),
-      radial-gradient(circle at 85% 80%, rgba(26, 147, 184, 0.18) 0%, transparent 45%);
+    background: radial-gradient(circle at 85% 10%, rgba(255, 255, 255, 0.08) 0%, transparent 50%);
   }
 
-  @include respond(mobile) {
-    grid-template-columns: repeat(2, 1fr);
-    padding: $space-lg;
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-card-hover;
   }
+}
+
+.bentoIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  background-color: rgba(198, 255, 52, 0.14);
+  color: $color-gold-500;
 }
 
 .teamSection {
@@ -225,7 +453,6 @@
 }
 
 .teamCard {
-  background-color: $color-white;
   border-radius: $radius-md;
   overflow: hidden;
   box-shadow: $shadow-elevated;
@@ -238,7 +465,7 @@
 
 .teamPhotoWrap {
   position: relative;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 4 / 5;
   overflow: hidden;
   background-color: $color-ink-900;
 }
@@ -256,51 +483,40 @@
   }
 }
 
-.teamIndex {
+// A frosted strip pinned to the bottom of the photo — name/role stay
+// legible without needing hover, the strip just brightens a touch on it.
+.teamGlassStrip {
   position: absolute;
-  top: $space-sm;
-  left: $space-sm;
+  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: 1;
-  font-family: $font-monr;
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: $color-ink-950;
-  background-color: $color-gold-500;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.teamInfo {
   padding: $space-md;
+  background: linear-gradient(to top, rgba(8, 8, 8, 0.78) 0%, rgba(8, 8, 8, 0.28) 70%, transparent 100%);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: background $duration-base $ease-base;
+
+  .teamCard:hover & {
+    background: linear-gradient(to top, rgba(8, 8, 8, 0.9) 0%, rgba(8, 8, 8, 0.4) 70%, transparent 100%);
+  }
 }
 
 .teamName {
   display: block;
   font-family: $font-monr;
   font-weight: 700;
-  color: $color-ink-950;
-  font-size: 1.1rem;
+  color: $color-white;
+  font-size: 1.05rem;
   letter-spacing: -0.01em;
-}
-
-.teamDivider {
-  display: block;
-  width: 2rem;
-  height: 3px;
-  border-radius: $radius-pill;
-  background-color: $color-gold-500;
-  margin: $space-2xs 0;
 }
 
 .teamRole {
   display: block;
+  margin-top: 2px;
   font-family: $font-mono;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   letter-spacing: 0.03em;
   text-transform: uppercase;
-  color: $color-stone-600;
+  color: $color-gold-300;
 }

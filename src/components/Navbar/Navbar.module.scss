@@ -104,26 +104,7 @@
   gap: $space-sm;
 }
 
-// Client/Business mode switcher — visible from desktop up, where there's
-// room for it alongside the nav links.
-.modeDesktop {
-  @include respond(below-desktop) {
-    display: none;
-  }
-}
-
-.searchBtn {
-  background: transparent;
-  border: none;
-  color: rgba(255, 255, 255, 0.75);
-  padding: $space-2xs;
-  transition: color $duration-base $ease-base;
-  @include focus-ring($color-white);
-
-  &:hover {
-    color: $color-white;
-  }
-
+.themeDesktop {
   @include respond(below-desktop) {
     display: none;
   }
@@ -278,17 +259,16 @@
   }
 }
 
-.drawerLangRow {
-  margin-top: $space-lg;
-  display: flex;
-  justify-content: center;
-}
-
 .drawerFooter {
   margin-top: auto;
   padding-top: $space-lg;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: $space-md;
-  align-items: flex-start;
+}
+
+.drawerThemeToggle {
+  width: 40px;
+  height: 40px;
 }

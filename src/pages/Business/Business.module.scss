@@ -260,7 +260,7 @@
 
 // ===== Listing section (filters + results) =====
 .listing {
-  background-color: $color-plaster-50;
+  background-color: $surface-muted;
   @include section-pad;
 }
 
@@ -281,15 +281,15 @@
   font-family: $font-monr;
   font-weight: 700;
   font-size: clamp(1.4rem, 2.6vw, 2rem);
-  color: $color-ink-950;
+  color: $text-primary;
 }
 
 .filterOpenMobile {
   display: none;
   align-items: center;
   gap: $space-2xs;
-  background-color: $color-ink-950;
-  color: $color-white;
+  background-color: $text-primary;
+  color: $surface-page;
   border: none;
   border-radius: $radius-pill;
   padding: 0.6rem 1.1rem;
@@ -321,10 +321,10 @@
     flex-shrink: 0;
     position: sticky;
     top: calc(#{$navbar-height} + #{$space-md});
-    background-color: $color-white;
+    background-color: $surface-card;
     border-radius: $radius-lg;
     box-shadow: $shadow-card;
-    border: 1px solid $color-plaster-100;
+    border: 1px solid $surface-muted-2;
   }
 }
 
@@ -345,7 +345,7 @@
 .filterMobileSheet {
   width: 100%;
   max-height: 88vh;
-  background-color: $color-white;
+  background-color: $surface-card;
   border-radius: $radius-lg $radius-lg 0 0;
   overflow-y: auto;
 }
@@ -355,10 +355,10 @@
   align-items: center;
   justify-content: space-between;
   padding: $space-md $space-lg;
-  border-bottom: 1px solid $color-plaster-100;
+  border-bottom: 1px solid $surface-muted-2;
   position: sticky;
   top: 0;
-  background-color: $color-white;
+  background-color: $surface-card;
   z-index: 1;
   border-radius: $radius-lg $radius-lg 0 0;
 
@@ -370,7 +370,7 @@
     font-size: 1rem;
     font-weight: 700;
     text-transform: uppercase;
-    color: $color-ink-950;
+    color: $text-primary;
   }
 }
 
@@ -391,10 +391,10 @@
 }
 
 .filterClear {
-  background: $color-plaster-50;
-  border: 1px solid $color-plaster-100;
+  background: $surface-muted;
+  border: 1px solid $surface-muted-2;
   border-radius: $radius-pill;
-  color: $color-ink-900;
+  color: $text-primary;
   padding: 0.35rem 0.7rem;
   font-family: $font-mono;
   font-size: 0.68rem;
@@ -404,9 +404,9 @@
   transition: background-color $duration-fast $ease-base, border-color $duration-fast $ease-base, color $duration-fast $ease-base;
 
   &:hover {
-    background-color: $color-ink-950;
-    border-color: $color-ink-950;
-    color: $color-white;
+    background-color: $text-primary;
+    border-color: $text-primary;
+    color: $surface-page;
   }
 }
 
@@ -416,7 +416,7 @@
   border: none;
   font-size: 1.6rem;
   line-height: 1;
-  color: $color-stone-600;
+  color: $text-secondary;
 
   @include respond(below-desktop) {
     display: block;
@@ -428,7 +428,7 @@
 }
 
 .filterSection {
-  border-bottom: 1px solid $color-plaster-100;
+  border-bottom: 1px solid $surface-muted-2;
 
   &:last-child {
     border-bottom: none;
@@ -445,7 +445,7 @@
   padding: $space-sm 0;
   font-weight: 700;
   font-size: 0.9rem;
-  color: $color-ink-950;
+  color: $text-primary;
   text-align: left;
   transition: color $duration-fast $ease-base;
 
@@ -457,8 +457,8 @@
 
   em {
     font-style: normal;
-    background-color: $color-plaster-100;
-    color: $color-ink-900;
+    background-color: $surface-muted-2;
+    color: $text-primary;
     font-family: $font-mono;
     font-size: 0.65rem;
     font-weight: 700;
@@ -474,7 +474,7 @@
 .filterChevron {
   display: inline-block;
   font-size: 0.9rem;
-  color: $color-stone-600;
+  color: $text-secondary;
 }
 
 .filterSectionBody {
@@ -492,10 +492,10 @@
   width: 100%;
   padding: 0.65rem 0.85rem;
   border-radius: $radius-sm;
-  border: 1.5px solid $color-plaster-100;
-  background-color: $color-plaster-50;
+  border: 1.5px solid $surface-muted-2;
+  background-color: $surface-muted;
   font-size: 0.86rem;
-  color: $color-ink-900;
+  color: $text-primary;
   transition: border-color $duration-fast $ease-base;
 
   &:focus {
@@ -516,7 +516,7 @@
 }
 
 .filterRowSep {
-  color: $color-stone-600;
+  color: $text-secondary;
 }
 
 .filterNumberInput {
@@ -524,8 +524,8 @@
   flex: 1;
   padding: 0.65rem 0.85rem;
   border-radius: $radius-sm;
-  border: 1.5px solid $color-plaster-100;
-  background-color: $color-plaster-50;
+  border: 1.5px solid $surface-muted-2;
+  background-color: $surface-muted;
   font-size: 0.86rem;
 
   &:focus {
@@ -541,27 +541,27 @@
 }
 
 .filterPill {
-  background-color: $color-plaster-50;
-  border: 1.5px solid $color-plaster-100;
+  background-color: $surface-muted;
+  border: 1.5px solid $surface-muted-2;
   border-radius: $radius-pill;
   padding: 0.4rem 0.85rem;
   font-size: 0.8rem;
   font-weight: 500;
-  color: $color-ink-900;
+  color: $text-primary;
   transition: background-color $duration-fast $ease-base, border-color $duration-fast $ease-base, color $duration-fast $ease-base;
 
   &:hover {
-    border-color: $color-ink-900;
+    border-color: $text-primary;
   }
 }
 
 .filterPillActive {
-  background-color: $color-ink-950;
-  border-color: $color-ink-950;
-  color: $color-white;
+  background-color: $text-primary;
+  border-color: $text-primary;
+  color: $surface-page;
 
   &:hover {
-    border-color: $color-ink-950;
+    border-color: $text-primary;
   }
 }
 
@@ -582,10 +582,10 @@
 
 .resultsCount {
   font-size: 0.88rem;
-  color: $color-stone-600;
+  color: $text-secondary;
 
   b {
-    color: $color-ink-950;
+    color: $text-primary;
     font-weight: 700;
   }
 }
@@ -595,15 +595,15 @@
   align-items: center;
   gap: $space-2xs;
   font-size: 0.8rem;
-  color: $color-stone-600;
+  color: $text-secondary;
 
   select {
-    border: 1.5px solid $color-plaster-100;
-    background-color: $color-white;
+    border: 1.5px solid $surface-muted-2;
+    background-color: $surface-card;
     border-radius: $radius-sm;
     padding: 0.5rem 0.7rem;
     font-size: 0.82rem;
-    color: $color-ink-950;
+    color: $text-primary;
 
     &:focus {
       outline: none;
@@ -615,12 +615,12 @@
 .emptyState {
   padding: $space-2xl $space-lg;
   text-align: center;
-  background-color: $color-white;
+  background-color: $surface-card;
   border-radius: $radius-lg;
-  border: 1px solid $color-plaster-100;
+  border: 1px solid $surface-muted-2;
 
   p {
-    color: $color-stone-600;
+    color: $text-secondary;
     margin-bottom: $space-md;
   }
 }
@@ -640,16 +640,16 @@ $results-grid: 100px 2.2fr 74px 68px 78px 128px 96px 20px;
   align-items: center;
   padding: $space-md $space-lg;
   cursor: pointer;
-  background-color: $color-white;
+  background-color: $surface-card;
   border-radius: $radius-md;
-  border: 1px solid $color-plaster-100;
+  border: 1px solid $surface-muted-2;
   box-shadow: $shadow-card;
   transition: transform $duration-base $ease-out-expo, box-shadow $duration-base $ease-base, border-color $duration-fast $ease-base;
 
   &:hover {
     transform: translateY(-3px);
     box-shadow: $shadow-card-hover;
-    border-color: $color-plaster-100;
+    border-color: $surface-muted-2;
 
     .resultArrow {
       opacity: 1;
@@ -671,13 +671,13 @@ $results-grid: 100px 2.2fr 74px 68px 78px 128px 96px 20px;
 
 .resultCell {
   font-size: 0.85rem;
-  color: $color-stone-600;
+  color: $text-secondary;
 }
 
 .resultDate {
   font-family: $font-mono;
   font-size: 0.8rem;
-  color: $color-stone-600;
+  color: $text-secondary;
 
   @include respond(below-desktop) {
     grid-area: date;
@@ -693,13 +693,13 @@ $results-grid: 100px 2.2fr 74px 68px 78px 128px 96px 20px;
   b {
     font-family: $font-monr;
     font-size: 0.92rem;
-    color: $color-ink-950;
+    color: $text-primary;
   }
 
   em {
     font-style: normal;
     font-size: 0.78rem;
-    color: $color-stone-600;
+    color: $text-secondary;
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
@@ -712,7 +712,7 @@ $results-grid: 100px 2.2fr 74px 68px 78px 128px 96px 20px;
   i {
     font-style: normal;
     font-size: 0.72rem;
-    color: $color-stone-600;
+    color: $text-secondary;
     opacity: 0.7;
   }
 
@@ -735,8 +735,8 @@ $results-grid: 100px 2.2fr 74px 68px 78px 128px 96px 20px;
 }
 
 .boardBadge {
-  color: $color-ink-950;
-  background-color: $color-plaster-100;
+  color: $text-primary;
+  background-color: $surface-muted-2;
 
   @include respond(below-desktop) {
     grid-area: board;
@@ -744,9 +744,9 @@ $results-grid: 100px 2.2fr 74px 68px 78px 128px 96px 20px;
 }
 
 .seatsBadge {
-  color: $color-stone-600;
-  background-color: $color-plaster-50;
-  border: 1px solid $color-plaster-100;
+  color: $text-secondary;
+  background-color: $surface-muted;
+  border: 1px solid $surface-muted-2;
   font-weight: 600;
 
   @include respond(below-desktop) {
@@ -761,7 +761,7 @@ $results-grid: 100px 2.2fr 74px 68px 78px 128px 96px 20px;
   font-family: $font-monr;
   font-weight: 800;
   font-size: 1rem;
-  color: $color-ink-950;
+  color: $text-primary;
 
   small {
     font-family: $font-mono;
@@ -769,7 +769,7 @@ $results-grid: 100px 2.2fr 74px 68px 78px 128px 96px 20px;
     font-size: 0.65rem;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    color: $color-stone-600;
+    color: $text-secondary;
     margin-top: 0.1rem;
   }
 
@@ -780,8 +780,8 @@ $results-grid: 100px 2.2fr 74px 68px 78px 128px 96px 20px;
 }
 
 .transportBadge {
-  color: $color-stone-600;
-  background-color: $color-plaster-100;
+  color: $text-secondary;
+  background-color: $surface-muted-2;
 
   @include respond(below-desktop) {
     grid-area: transport;
@@ -802,7 +802,7 @@ $results-grid: 100px 2.2fr 74px 68px 78px 128px 96px 20px;
 
 .resultArrow {
   justify-self: end;
-  color: $color-stone-600;
+  color: $text-secondary;
   opacity: 0;
   transition: opacity $duration-fast $ease-base, transform $duration-fast $ease-base;
 
@@ -902,7 +902,7 @@ $results-grid: 100px 2.2fr 74px 68px 78px 128px 96px 20px;
 
 // ===== Perks section =====
 .perks {
-  background-color: $color-white;
+  background-color: $surface-card;
   @include section-pad;
 }
 
@@ -932,21 +932,21 @@ $results-grid: 100px 2.2fr 74px 68px 78px 128px 96px 20px;
 .perkCard {
   padding: $space-lg $space-md;
   border-radius: $radius-md;
-  border: 1px solid $color-plaster-100;
-  background-color: $color-plaster-50;
+  border: 1px solid $surface-muted-2;
+  background-color: $surface-muted;
 
   h3 {
     font-family: $font-monr;
     font-size: 1.05rem;
     margin-top: $space-sm;
-    color: $color-ink-950;
+    color: $text-primary;
   }
 
   p {
     margin-top: $space-2xs;
     font-size: 0.9rem;
     line-height: 1.55;
-    color: $color-stone-600;
+    color: $text-secondary;
   }
 }
 

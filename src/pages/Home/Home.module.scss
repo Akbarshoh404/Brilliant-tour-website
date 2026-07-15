@@ -15,12 +15,12 @@
 .sectionHeading {
   h2 {
     font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-    color: $color-ink-900;
+    color: $text-primary;
   }
 
   p {
     margin-top: $space-xs;
-    color: $color-stone-600;
+    color: $text-secondary;
     font-size: 0.95rem;
     max-width: 52ch;
   }
@@ -39,7 +39,7 @@
 // ── SPLIT (Two Routes) ────────────────────────────────────────────────────────
 
 .split {
-  background-color: $color-white;
+  background-color: $surface-card;
   @include section-pad;
 }
 
@@ -55,12 +55,12 @@
 
 .splitTitle {
   font-size: clamp(2rem, 4vw, 3rem);
-  color: $color-ink-900;
+  color: $text-primary;
 }
 
 .splitBody {
   margin-top: $space-xs;
-  color: $color-stone-600;
+  color: $text-secondary;
   font-size: 0.95rem;
 }
 
@@ -81,6 +81,19 @@
   aspect-ratio: 16 / 10;
   display: block;
   @include card-hover;
+}
+
+.splitCardComingSoon {
+  position: absolute;
+  top: $space-md;
+  right: $space-md;
+  z-index: 2;
+  @include mono-eyebrow;
+  font-size: 0.66rem;
+  color: $color-ink-950;
+  background-color: $color-gold-500;
+  padding: 0.25rem 0.6rem;
+  border-radius: $radius-pill;
 }
 
 .splitCardImg {
@@ -119,11 +132,12 @@
 }
 
 .splitCardLabel {
-  font-family: $font-display;
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-family: $font-monr;
+  font-size: 1.4rem;
+  font-weight: 700;
   color: $color-white;
-  line-height: 1.1;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
 }
 
 .splitCardArrow {
@@ -153,7 +167,7 @@
 // ── COUNTRIES ─────────────────────────────────────────────────────────────────
 
 .countries {
-  background-color: $color-plaster-50;
+  background-color: $surface-muted;
   @include section-pad;
 }
 
@@ -180,6 +194,19 @@
   overflow: hidden;
   aspect-ratio: 3 / 4;
   @include card-hover;
+}
+
+.countryComingSoon {
+  position: absolute;
+  top: $space-xs;
+  right: $space-xs;
+  z-index: 2;
+  @include mono-eyebrow;
+  font-size: 0.6rem;
+  color: $color-ink-950;
+  background-color: $color-gold-500;
+  padding: 0.2rem 0.5rem;
+  border-radius: $radius-pill;
 }
 
 .countryImg {
@@ -308,10 +335,10 @@
 // ── PARTNERS ─────────────────────────────────────────────────────────────────
 
 .partners {
-  background-color: $color-plaster-50;
+  background-color: $surface-muted;
   padding: $space-xl $space-lg;
-  border-top: 1px solid $color-plaster-100;
-  border-bottom: 1px solid $color-plaster-100;
+  border-top: 1px solid $surface-muted-2;
+  border-bottom: 1px solid $surface-muted-2;
 
   @include respond(mobile) {
     padding: $space-lg $space-md;
@@ -322,14 +349,14 @@
   display: block;
   text-align: center;
   @include mono-eyebrow;
-  color: $color-stone-600;
+  color: $text-secondary;
   margin-bottom: $space-md;
 }
 
 // ── FAQ ───────────────────────────────────────────────────────────────────────
 
 .faq {
-  background-color: $color-white;
+  background-color: $surface-card;
   @include section-pad;
 }
 
@@ -341,10 +368,10 @@
 }
 
 .faqItem {
-  border-bottom: 1px solid $color-plaster-100;
+  border-bottom: 1px solid $surface-muted-2;
 
   &:first-child {
-    border-top: 1px solid $color-plaster-100;
+    border-top: 1px solid $surface-muted-2;
   }
 }
 
@@ -361,7 +388,7 @@
   font-family: $font-display;
   font-size: 1.1rem;
   font-weight: 600;
-  color: $color-ink-900;
+  color: $text-primary;
   cursor: pointer;
   transition: color $duration-fast $ease-base;
 
@@ -385,7 +412,7 @@
 
 .faqA {
   padding-bottom: $space-md;
-  color: $color-stone-600;
+  color: $text-secondary;
   font-size: 0.95rem;
   line-height: 1.7;
   max-width: 640px;
@@ -394,7 +421,7 @@
 // ── NEWSLETTER CTA ────────────────────────────────────────────────────────────
 
 .newsletterCta {
-  background-color: $color-plaster-50;
+  background-color: $surface-card;
   padding: 0 $space-lg $space-3xl;
 
   @include respond(mobile) {

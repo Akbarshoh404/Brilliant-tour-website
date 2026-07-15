@@ -1,23 +1,22 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
-import ScrollCue from '../../components/ScrollCue/ScrollCue';
 import FlagIcon from '../../components/FlagIcon/FlagIcon';
 import Seo from '../../components/Seo/Seo';
 import visaCountries from '../../data/visaCountries';
 import visaExtraServices from '../../data/visaExtraServices';
-import countries from '../../data/countries';
 import { getLocalizedField } from '../../utils/getLocalizedField';
-import HERO_IMAGE from '../../assets/pics/Germany/germany_3.jpg';
 import styles from './VisaPage.module.scss';
 
 const REGIONS = ['Schengen', 'Europe', 'Middle East', 'Asia', 'Americas'];
-// Countries with a full destination page get sent there — the visa CTA on
-// that page already handles the apply flow. Countries we only offer visa
-// services for (no destination page) apply inline, right here.
-const COUNTRY_PAGE_SLUGS = new Set(countries.map((c) => c.slug));
+
+// Hero is a "stamped passport page" rather than a destination-photo
+// slideshow — visas aren't about picking a place to browse, they're a
+// document process, so the imagery leans into that instead.
+const STAMP_SLUGS = ['germany', 'france', 'italy', 'uk', 'uae', 'japan', 'korea', 'usa'];
+const STAMP_ROTATIONS = [-6, 4, -8, 6, -4, 7, -5, 3];
 
 const EXTRA_ICONS = {
   stamp: <path d="M4 14h12M6 14V9a4 4 0 018 0v5M8 9V6M12 9V6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />,
@@ -31,33 +30,14 @@ const EXTRA_ICONS = {
 export default function VisaPage() {
   const { t, i18n } = useTranslation();
   const lang = i18n.language;
-  const navigate = useNavigate();
   const [region, setRegion] = useState(null);
-  const [openSlug, setOpenSlug] = useState(null);
-  const [submittedSlug, setSubmittedSlug] = useState(null);
-  const [applyForm, setApplyForm] = useState({ name: '', phone: '' });
 
   const filteredCountries = region ? visaCountries.filter((c) => c.region === region) : visaCountries;
   const process = t('visas.process', { returnObjects: true });
 
-  const activateCard = (c) => {
-    if (COUNTRY_PAGE_SLUGS.has(c.slug)) {
-      navigate(`/international/${c.slug}#visa`);
-      return;
-    }
-    toggleApply(c.slug);
-  };
-
-  const toggleApply = (slug) => {
-    setSubmittedSlug(null);
-    setApplyForm({ name: '', phone: '' });
-    setOpenSlug((cur) => (cur === slug ? null : slug));
-  };
-
-  const onApplySubmit = (slug) => (e) => {
-    e.preventDefault();
-    setSubmittedSlug(slug);
-  };
+  const stamps = STAMP_SLUGS
+    .map((slug) => visaCountries.find((c) => c.slug === slug))
+    .filter(Boolean);
 
   return (
     <>
@@ -65,15 +45,71 @@ export default function VisaPage() {
         title="Визовые услуги"
         description="Оформление виз для путешественников из Узбекистана: Шенген, ОАЭ, Корея, Япония и другие направления — полное сопровождение заявки."
       />
-      <section className={styles.hero} style={{ backgroundImage: `url(${HERO_IMAGE})` }}>
-        <div className={styles.heroOverlay} />
-        <div className={styles.heroInner}>
-          <Breadcrumbs items={[{ label: t('nav.visas') }]} />
-          <span className={styles.eyebrow}>{t('visas.eyebrow')}</span>
-          <h1 className={styles.title}>{t('visas.title')}</h1>
-          <p className={styles.intro}>{t('visas.intro')}</p>
+
+      <section className={styles.visaHero}>
+        <div className={styles.visaHeroInner}>
+          <div className={styles.visaHeroText}>
+            <Breadcrumbs items={[{ label: t('nav.visas') }]} variant="onLight" />
+            <span className={styles.visaHeroEyebrow}>{t('visas.eyebrow')}</span>
+            <h1 className={styles.visaHeroTitle}>{t('visas.title')}</h1>
+            <p className={styles.visaHeroIntro}>{t('visas.intro')}</p>
+
+            <div className={styles.visaHeroStats}>
+              <div className={styles.visaHeroStat}>
+                <span className={styles.visaHeroStatValue}>{visaCountries.length}+</span>
+                <span className={styles.visaHeroStatLabel}>{t('visas.statCountries')}</span>
+              </div>
+              <div className={styles.visaHeroStat}>
+                <span className={styles.visaHeroStatValue}>10–15</span>
+                <span className={styles.visaHeroStatLabel}>{t('visas.statProcessing')}</span>
+              </div>
+            </div>
+          </div>
+
+          <div className={styles.visaHeroStamps} aria-hidden="true">
+            {stamps.map((c, i) => (
+              <div
+                key={c.slug}
+                className={styles.stampCard}
+                style={{ '--r': `${STAMP_ROTATIONS[i % STAMP_ROTATIONS.length]}deg` }}
+              >
+                <FlagIcon iso={c.iso} size={26} className={styles.stampFlag} />
+                <span className={styles.stampName}>{getLocalizedField(c.name, lang)}</span>
+              </div>
+            ))}
+          </div>
         </div>
-        <ScrollCue label={t('common.scroll')} />
+      </section>
+
+      {/* Online visa applications aren't live yet — styled as a stamped
+          document card rather than the dark full-viewport CTA used on
+          International, to match this page's paperwork theme. */}
+      <section className={styles.contactSection}>
+        <div className={styles.contactCard}>
+          <span className={styles.contactStamp} aria-hidden="true">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+              <path d="M12 3l2.2 4.4 4.9.7-3.5 3.4.8 4.9L12 14l-4.4 2.4.8-4.9-3.5-3.4 4.9-.7L12 3z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+            </svg>
+          </span>
+          <span className={styles.comingSoonTag}>{t('common.comingSoon')}</span>
+          <h2 className={styles.contactTitle}>{t('visas.contactTitle')}</h2>
+          <p className={styles.contactText}>{t('visas.comingSoonText')}</p>
+
+          <div className={styles.contactActions}>
+            <a href="tel:+998332990000" className={styles.contactCallBtn}>
+              <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M4 3h3.2l1.3 4-2 1.3a10.5 10.5 0 004.8 4.8l1.3-2 4 1.3V16a1.5 1.5 0 01-1.6 1.5C9.4 16.9 3.1 10.6 2.5 4.6A1.5 1.5 0 014 3z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+              </svg>
+              {t('contact.phoneValue')}
+            </a>
+            <Link to="/contact" className={styles.contactMsgBtn}>
+              <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M3 5h14v10H8l-4 3.5V15H3z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+              </svg>
+              {t('common.contactUs')}
+            </Link>
+          </div>
+        </div>
       </section>
 
       {/* ===== COUNTRIES ===== */}
@@ -91,25 +127,17 @@ export default function VisaPage() {
             ))}
           </div>
 
+          {/* Informational only — applying happens via the Contact Us
+              section above, not a per-card action. */}
           <div className={styles.countryGrid}>
             {filteredCountries.map((c, i) => (
               <motion.div
                 key={c.slug}
-                className={`${styles.countryCard} ${openSlug === c.slug ? styles.countryCardActive : ''}`}
+                className={styles.countryCard}
                 initial={{ opacity: 0, y: 18 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.4, delay: Math.min(i * 0.04, 0.3) }}
-                onClick={() => activateCard(c)}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => {
-                  if (e.target !== e.currentTarget) return;
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    activateCard(c);
-                  }
-                }}
               >
                 <span className={styles.priceBadge}>
                   <span className={styles.priceBadgeLabel}>{t('visas.priceFrom')}</span>
@@ -137,67 +165,6 @@ export default function VisaPage() {
                     <span key={key} className={styles.reqPill}>{t(`visas.req.${key}`)}</span>
                   ))}
                 </div>
-
-                <span
-                  className={`${styles.applyBtn} ${openSlug === c.slug ? styles.applyBtnActive : ''}`}
-                  aria-hidden="true"
-                >
-                  {t('visas.applyCta')}
-                  {COUNTRY_PAGE_SLUGS.has(c.slug) ? (
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" className={styles.applyBtnIcon}>
-                      <path d="M4 10L10 4M10 4H5M10 4V9" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  ) : (
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" className={styles.applyBtnIcon}>
-                      <path d="M3 5.5L7 9.5L11 5.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  )}
-                </span>
-
-                <AnimatePresence initial={false}>
-                  {openSlug === c.slug && (
-                    <motion.div
-                      className={styles.applyPanel}
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ height: { duration: 0.42, ease: [0.22, 1, 0.36, 1] }, opacity: { duration: 0.28 } }}
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <motion.div
-                        initial={{ y: -8, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ duration: 0.32, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-                      >
-                        {submittedSlug === c.slug ? (
-                          <p className={styles.applySuccess}>{t('visas.applySuccess')}</p>
-                        ) : (
-                          <form className={styles.applyForm} onSubmit={onApplySubmit(c.slug)}>
-                            <input
-                              type="text"
-                              required
-                              placeholder={t('contact.name')}
-                              value={applyForm.name}
-                              onChange={(e) => setApplyForm((f) => ({ ...f, name: e.target.value }))}
-                              className={styles.applyInput}
-                            />
-                            <input
-                              type="tel"
-                              required
-                              placeholder={t('visas.applyPhone')}
-                              value={applyForm.phone}
-                              onChange={(e) => setApplyForm((f) => ({ ...f, phone: e.target.value }))}
-                              className={styles.applyInput}
-                            />
-                            <button type="submit" className={styles.applySubmitBtn}>
-                              {t('visas.applySubmit')}
-                            </button>
-                          </form>
-                        )}
-                      </motion.div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
               </motion.div>
             ))}
           </div>

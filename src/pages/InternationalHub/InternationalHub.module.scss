@@ -1,135 +1,26 @@
-@use '../../styles/variables' as *;
-@use '../../styles/mixins' as *;
 @use '../../styles/catalog' as *;
 
-.sectionInner {
-  @extend %catalogSectionInner;
+.contactSection {
+  @extend %catalogFullContact;
 }
-
-// --- region chips + country grid ---
-.regionSection {
-  background-color: $color-plaster-50;
+.contactInner {
+  @extend %catalogFullContactInner;
 }
-
-.regionTitle {
-  font-size: 1.4rem;
-  margin-bottom: $space-md;
+.comingSoonTag {
+  @extend %catalogFullContactTag;
 }
-
-.chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: $space-2xs;
-  margin-bottom: $space-lg;
+.contactTitle {
+  @extend %catalogFullContactTitle;
 }
-
-.chip {
-  background-color: $color-white;
-  border: 1px solid $color-plaster-100;
-  border-radius: $radius-pill;
-  padding: 0.5rem 1.1rem;
-  font-size: 0.85rem;
-  color: $color-ink-900;
-  transition: background-color $duration-fast $ease-base, color $duration-fast $ease-base;
+.contactText {
+  @extend %catalogFullContactText;
 }
-
-.chipActive {
-  background-color: $color-turquoise-500;
-  border-color: $color-turquoise-500;
-  color: $color-white;
+.contactActions {
+  @extend %catalogFullContactActions;
 }
-
-.countryGrid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: $space-md;
-
-  @include respond(below-desktop) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  @include respond(mobile) {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.contactCallBtn {
+  @extend %catalogFullContactCallBtn;
 }
-
-.countryTile {
-  position: relative;
-  display: block;
-  border-radius: $radius-md;
-  overflow: hidden;
-  aspect-ratio: 3 / 4;
-  @include card-hover;
-}
-
-.countryImg {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.countryTile::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  @include gradient-overlay(rgba(11, 28, 40, 0.05), rgba(11, 28, 40, 0.7));
-}
-
-.countryName {
-  position: absolute;
-  bottom: $space-sm;
-  left: $space-sm;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  gap: $space-3xs;
-  color: $color-white;
-  font-weight: 700;
-  font-size: 0.95rem;
-}
-
-.countryFlagIcon {
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.5);
-}
-
-// --- full filterable grid ---
-.allOffers {
-  background-color: $color-white;
-}
-
-.listingHeading {
-  margin-bottom: $space-lg;
-
-  h2 {
-    font-size: clamp(1.8rem, 3.2vw, 2.4rem);
-    color: $color-ink-900;
-  }
-}
-
-.gridLayout {
-  @extend %catalogGridLayout;
-}
-.results {
-  @extend %catalogResults;
-}
-.resultsHeader {
-  @extend %catalogResultsHeader;
-}
-.resultCount {
-  @extend %catalogResultCount;
-}
-.resultsControls {
-  @extend %catalogResultsControls;
-}
-.offerGrid {
-  @extend %catalogOfferGrid;
-}
-.offerGridList {
-  @extend %catalogOfferGridList;
-}
-.noResults {
-  @extend %catalogNoResults;
+.contactMsgBtn {
+  @extend %catalogFullContactMsgBtn;
 }

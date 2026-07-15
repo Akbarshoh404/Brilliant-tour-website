@@ -48,19 +48,19 @@
 
 .onLight {
   .list {
-    background-color: $color-plaster-50;
-    border-color: $color-plaster-100;
+    background-color: $surface-muted;
+    border-color: $surface-muted-2;
   }
 
   .item {
-    color: $color-stone-600;
+    color: $text-secondary;
 
     a:hover {
       color: $color-turquoise-500;
     }
 
     span[aria-current='page'] {
-      color: $color-ink-900;
+      color: $text-primary;
     }
   }
 }

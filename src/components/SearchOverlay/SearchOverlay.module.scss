@@ -23,9 +23,9 @@
   width: 100%;
   max-width: 680px;
   max-height: 78vh;
-  background-color: $color-plaster-50;
+  background-color: $surface-muted;
   border-radius: $radius-lg;
-  border: 1px solid $color-plaster-100;
+  border: 1px solid $surface-muted-2;
   box-shadow: $shadow-elevated;
   display: flex;
   flex-direction: column;
@@ -37,12 +37,12 @@
   align-items: center;
   gap: $space-sm;
   padding: $space-md $space-lg;
-  border-bottom: 1px solid $color-plaster-100;
-  background-color: $color-white;
+  border-bottom: 1px solid $surface-muted-2;
+  background-color: $surface-card;
 }
 
 .searchIcon {
-  color: $color-stone-600;
+  color: $text-secondary;
   flex-shrink: 0;
 }
 
@@ -52,11 +52,11 @@
   background: transparent;
   font-family: $font-body;
   font-size: 1.05rem;
-  color: $color-ink-900;
+  color: $text-primary;
   outline: none;
 
   &::placeholder {
-    color: $color-stone-600;
+    color: $text-secondary;
   }
 }
 
@@ -65,11 +65,11 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: $color-plaster-50;
+  background: $surface-muted;
   border: none;
   font-size: 1.4rem;
   line-height: 1;
-  color: $color-stone-600;
+  color: $text-secondary;
   transition: background-color $duration-fast $ease-base, color $duration-fast $ease-base;
   @include focus-ring;
 
@@ -98,7 +98,7 @@
 
 .chipLabel {
   @include mono-eyebrow;
-  color: $color-stone-600;
+  color: $text-secondary;
 }
 
 .chips {
@@ -108,21 +108,21 @@
 }
 
 .chip {
-  background-color: $color-white;
-  border: 1px solid $color-plaster-100;
+  background-color: $surface-card;
+  border: 1px solid $surface-muted-2;
   border-radius: $radius-pill;
   padding: 0.4rem 0.9rem;
   font-size: 0.85rem;
-  color: $color-ink-900;
+  color: $text-primary;
   transition: background-color $duration-fast $ease-base, border-color $duration-fast $ease-base;
 
   &:hover {
-    border-color: $color-ink-950;
+    border-color: $text-primary;
   }
 }
 
 .noResults {
-  color: $color-stone-600;
+  color: $text-secondary;
   font-size: 0.95rem;
   padding: $space-md 0;
 }
@@ -137,7 +137,7 @@
 
 .groupTitle {
   @include mono-eyebrow;
-  color: $color-stone-600;
+  color: $text-secondary;
   display: block;
   margin-bottom: $space-2xs;
 }
@@ -152,7 +152,7 @@
   border-radius: $radius-sm;
   font-size: 0.98rem;
   font-weight: 500;
-  color: $color-ink-900;
+  color: $text-primary;
   transition: background-color $duration-fast $ease-base;
 }
 

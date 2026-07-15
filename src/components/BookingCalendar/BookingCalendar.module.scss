@@ -3,10 +3,10 @@
 
 .wrap {
   width: 100%;
-  border: 1.5px solid $color-plaster-100;
+  border: 1.5px solid $surface-muted-2;
   border-radius: $radius-md;
   padding: $space-md;
-  background-color: $color-white;
+  background-color: $surface-card;
 }
 
 .header {
@@ -20,16 +20,16 @@
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  border: 1.5px solid $color-plaster-100;
+  border: 1.5px solid $surface-muted-2;
   background: $color-white;
-  color: $color-ink-900;
+  color: $text-primary;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: border-color $duration-fast $ease-base, background-color $duration-fast $ease-base;
 
   &:hover {
-    border-color: $color-ink-900;
+    border-color: $text-primary;
   }
 }
 
@@ -38,7 +38,7 @@
   font-size: 0.82rem;
   font-weight: 600;
   text-transform: capitalize;
-  color: $color-ink-950;
+  color: $text-primary;
 }
 
 .weekdays {
@@ -52,7 +52,7 @@
     font-size: 0.66rem;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    color: $color-stone-600;
+    color: $text-secondary;
   }
 }
 
@@ -76,7 +76,7 @@
   border: 1px solid transparent;
   border-radius: $radius-sm;
   background: transparent;
-  color: $color-plaster-100;
+  color: $text-secondary;
   transition: background-color $duration-fast $ease-base, color $duration-fast $ease-base, border-color $duration-fast $ease-base;
 
   &:disabled {
@@ -95,12 +95,12 @@
 }
 
 .available {
-  color: $color-ink-900;
-  border-color: $color-plaster-100;
+  color: $text-primary;
+  border-color: $surface-muted-2;
   cursor: pointer;
 
   &:hover {
-    border-color: $color-ink-900;
+    border-color: $text-primary;
   }
 }
 
@@ -124,24 +124,24 @@
 }
 
 .inRange {
-  background-color: rgba(17, 17, 17, 0.06);
+  background-color: rgba(198, 255, 52, 0.12);
   border-color: transparent;
 }
 
 .isStart {
-  background-color: $color-ink-950 !important;
-  border-color: $color-ink-950 !important;
+  background-color: $text-primary !important;
+  border-color: $text-primary !important;
 
   .dayNum,
   .dayPrice {
-    color: $color-white;
+    color: $surface-page;
   }
 }
 
 .legend {
   margin-top: $space-sm;
   padding-top: $space-sm;
-  border-top: 1px solid $color-plaster-100;
+  border-top: 1px solid $surface-muted-2;
   display: flex;
   flex-wrap: wrap;
   gap: $space-md;
@@ -155,7 +155,7 @@
   font-family: $font-mono;
   font-size: 0.68rem;
   letter-spacing: 0.02em;
-  color: $color-stone-600;
+  color: $text-secondary;
 }
 
 .legendDot {
@@ -166,7 +166,7 @@
 }
 
 .legendAvailable {
-  background-color: $color-ink-900;
+  background-color: $text-primary;
 }
 
 .legendLimited {
@@ -181,6 +181,6 @@
   margin-top: $space-sm;
   font-family: $font-mono;
   font-size: 0.76rem;
-  color: $color-stone-600;
+  color: $text-secondary;
   text-align: center;
 }

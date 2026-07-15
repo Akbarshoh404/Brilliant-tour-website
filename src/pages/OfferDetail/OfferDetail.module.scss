@@ -2,7 +2,7 @@
 @use '../../styles/mixins' as *;
 
 .page {
-  background-color: $color-white;
+  background-color: $surface-card;
   padding-bottom: $space-3xl;
 
   @include respond(mobile) {
@@ -30,16 +30,16 @@
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  background-color: $color-white;
-  border: 1.5px solid $color-plaster-100;
-  color: $color-ink-900;
+  background-color: $surface-card;
+  border: 1.5px solid $surface-muted-2;
+  color: $text-primary;
   box-shadow: $shadow-card;
   transition: background-color $duration-fast $ease-base, border-color $duration-fast $ease-base, transform $duration-fast $ease-base;
 
   &:hover {
-    background-color: $color-ink-950;
-    border-color: $color-ink-950;
-    color: $color-white;
+    background-color: $text-primary;
+    border-color: $text-primary;
+    color: $surface-page;
     transform: translateX(-2px);
   }
 }
@@ -73,7 +73,7 @@
   display: block;
   width: 100%;
   aspect-ratio: 4 / 5;
-  background-color: $color-plaster-50;
+  background-color: $surface-muted;
   border-radius: $radius-md;
   overflow: hidden;
   border: none;
@@ -109,7 +109,7 @@
   overflow: hidden;
   border: 2px solid transparent;
   padding: 0;
-  background-color: $color-plaster-50;
+  background-color: $surface-muted;
   opacity: 0.6;
   transition: opacity $duration-fast $ease-base, border-color $duration-fast $ease-base;
 
@@ -125,7 +125,7 @@
 }
 
 .thumbActive {
-  border-color: $color-ink-900;
+  border-color: $text-primary;
   opacity: 1;
 }
 
@@ -151,14 +151,14 @@
 
 .brandEyebrow {
   @include mono-eyebrow;
-  color: $color-stone-600;
+  color: $text-secondary;
 }
 
 .productTitle {
   margin-top: $space-2xs;
   font-size: clamp(1.9rem, 3.6vw, 2.6rem);
   line-height: 1.08;
-  color: $color-ink-950;
+  color: $text-primary;
 }
 
 .ratingRow {
@@ -178,13 +178,13 @@
   font-family: $font-mono;
   font-size: 0.85rem;
   font-weight: 600;
-  color: $color-ink-900;
+  color: $text-primary;
 }
 
 .reviewCount {
   font-family: $font-mono;
   font-size: 0.8rem;
-  color: $color-stone-600;
+  color: $text-secondary;
   text-decoration: underline;
 }
 
@@ -193,7 +193,7 @@
   font-family: $font-mono;
   font-size: 1.9rem;
   font-weight: 700;
-  color: $color-ink-950;
+  color: $text-primary;
 }
 
 .optionGroup {
@@ -207,11 +207,11 @@
   font-size: 0.78rem;
   letter-spacing: 0.03em;
   text-transform: uppercase;
-  color: $color-stone-600;
+  color: $text-secondary;
   margin-bottom: $space-xs;
 
   strong {
-    color: $color-ink-950;
+    color: $text-primary;
     text-transform: capitalize;
   }
 }
@@ -223,25 +223,25 @@
 }
 
 .swatch {
-  border: 1.5px solid $color-plaster-100;
+  border: 1.5px solid $surface-muted-2;
   border-radius: $radius-sm;
   padding: 0.6rem 1.1rem;
   font-size: 0.85rem;
   font-weight: 600;
-  color: $color-ink-900;
-  background-color: $color-white;
+  color: $text-primary;
+  background-color: $surface-card;
   text-transform: capitalize;
   transition: border-color $duration-fast $ease-base, background-color $duration-fast $ease-base, color $duration-fast $ease-base;
 
   &:hover {
-    border-color: $color-ink-900;
+    border-color: $text-primary;
   }
 }
 
 .swatchActive {
-  background-color: $color-ink-950;
-  border-color: $color-ink-950;
-  color: $color-white;
+  background-color: $text-primary;
+  border-color: $text-primary;
+  color: $surface-page;
 }
 
 .bookBtn {
@@ -251,8 +251,8 @@
   align-items: center;
   justify-content: center;
   gap: $space-2xs;
-  background-color: $color-ink-950;
-  color: $color-white;
+  background-color: $color-gold-500;
+  color: $color-ink-950;
   border: none;
   border-radius: $radius-sm;
   padding: 1rem;
@@ -274,9 +274,9 @@
   align-items: center;
   justify-content: center;
   gap: $space-2xs;
-  background-color: $color-white;
-  color: $color-ink-900;
-  border: 1.5px solid $color-plaster-100;
+  background-color: $surface-card;
+  color: $text-primary;
+  border: 1.5px solid $surface-muted-2;
   border-radius: $radius-sm;
   padding: 0.9rem;
   font-weight: 600;
@@ -285,7 +285,7 @@
   transition: border-color $duration-fast $ease-base, color $duration-fast $ease-base;
 
   &:hover {
-    border-color: $color-ink-900;
+    border-color: $text-primary;
   }
 }
 
@@ -297,14 +297,14 @@
 .divider {
   width: 100%;
   border: none;
-  border-top: 1px solid $color-plaster-100;
+  border-top: 1px solid $surface-muted-2;
   margin: $space-lg 0;
 }
 
 .description {
   font-size: 1rem;
   line-height: 1.7;
-  color: $color-stone-600;
+  color: $text-secondary;
 }
 
 .factsGrid {
@@ -314,7 +314,7 @@
   gap: $space-md;
   width: 100%;
   padding-top: $space-lg;
-  border-top: 1px solid $color-plaster-100;
+  border-top: 1px solid $surface-muted-2;
 }
 
 .factBlock {
@@ -328,12 +328,12 @@
   font-size: 0.68rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: $color-stone-600;
+  color: $text-secondary;
 }
 
 .factBlockValue {
   font-weight: 600;
-  color: $color-ink-950;
+  color: $text-primary;
   text-transform: capitalize;
 }
 
@@ -353,8 +353,8 @@
   font-size: 0.68rem;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  background-color: $color-plaster-50;
-  color: $color-stone-600;
+  background-color: $surface-muted;
+  color: $text-secondary;
   padding: 0.2rem 0.6rem;
   border-radius: $radius-pill;
 }
@@ -363,7 +363,7 @@
 .detailsSection {
   @include container;
   padding: $space-2xl $space-lg 0;
-  border-top: 1px solid $color-plaster-100;
+  border-top: 1px solid $surface-muted-2;
 
   @include respond(mobile) {
     padding: $space-xl $space-md 0;
@@ -390,7 +390,7 @@
   align-items: center;
   gap: $space-2xs;
   font-size: 0.92rem;
-  color: $color-ink-900;
+  color: $text-primary;
 
   svg {
     color: $color-turquoise-500;
@@ -401,7 +401,7 @@
 
 // ===== REVIEWS =====
 .reviewsSection {
-  background-color: $color-plaster-50;
+  background-color: $surface-muted;
   margin-top: $space-2xl;
   padding: $space-2xl 0;
 }
@@ -434,14 +434,14 @@
   font-family: $font-monr;
   font-size: 2.2rem;
   font-weight: 700;
-  color: $color-ink-950;
+  color: $text-primary;
 }
 
 .reviewsCount {
   display: block;
   font-family: $font-mono;
   font-size: 0.78rem;
-  color: $color-stone-600;
+  color: $text-secondary;
   margin-top: 2px;
 }
 
@@ -456,7 +456,7 @@
 }
 
 .reviewCard {
-  background-color: $color-white;
+  background-color: $surface-card;
   border-radius: $radius-md;
   padding: $space-md;
   box-shadow: $shadow-card;
@@ -481,21 +481,21 @@
   display: block;
   font-weight: 700;
   font-size: 0.9rem;
-  color: $color-ink-900;
+  color: $text-primary;
 }
 
 .reviewDate {
   display: block;
   font-family: $font-mono;
   font-size: 0.7rem;
-  color: $color-stone-600;
+  color: $text-secondary;
 }
 
 .reviewComment {
   margin-top: $space-xs;
   font-size: 0.9rem;
   line-height: 1.6;
-  color: $color-stone-600;
+  color: $text-secondary;
 }
 
 // ===== MOBILE STICKY BAR =====
@@ -511,7 +511,7 @@
     left: 0;
     right: 0;
     z-index: $z-navbar;
-    background-color: $color-white;
+    background-color: $surface-card;
     padding: $space-sm $space-md;
     box-shadow: 0 -8px 24px rgba(6, 15, 20, 0.16);
   }
@@ -521,18 +521,18 @@
   font-family: $font-mono;
   font-weight: 700;
   font-size: 1.2rem;
-  color: $color-ink-900;
+  color: $text-primary;
   margin-right: $space-2xs;
 }
 
 .mobileBarUnit {
   font-size: 0.78rem;
-  color: $color-stone-600;
+  color: $text-secondary;
 }
 
 .mobileBarCta {
-  background-color: $color-ink-950;
-  color: $color-white;
+  background-color: $color-gold-500;
+  color: $color-ink-950;
   border: none;
   border-radius: $radius-pill;
   padding: 0.7rem 1.4rem;

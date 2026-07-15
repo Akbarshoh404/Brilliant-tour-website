@@ -21,6 +21,26 @@
   @extend %catalogSectionInner;
 }
 
+.comingSoonSection {
+  background-color: $surface-card;
+}
+
+.comingSoonBanner {
+  @extend %catalogComingSoon;
+}
+
+.comingSoonTag {
+  @extend %catalogComingSoonTag;
+}
+
+.comingSoonText {
+  @extend %catalogComingSoonText;
+}
+
+.comingSoonBtn {
+  @extend %catalogComingSoonBtn;
+}
+
 .heroBadgeRow {
   display: flex;
   align-items: center;
@@ -61,7 +81,7 @@
   font-weight: 700;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  color: $color-ink-950;
+  color: $text-primary;
 }
 
 .heroActions {
@@ -102,7 +122,7 @@
 }
 
 .factsSection {
-  background-color: $color-plaster-50;
+  background-color: $surface-muted;
   padding-top: 0;
 }
 
@@ -110,7 +130,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: $space-md;
-  background-color: $color-white;
+  background-color: $surface-card;
   border-radius: $radius-md;
   padding: $space-lg;
   box-shadow: $shadow-card;
@@ -128,16 +148,16 @@
 
 .factLabel {
   @include mono-eyebrow;
-  color: $color-stone-600;
+  color: $text-secondary;
 }
 
 .factValue {
   font-weight: 700;
-  color: $color-ink-900;
+  color: $text-primary;
 }
 
 .gallerySection {
-  background-color: $color-white;
+  background-color: $surface-card;
 }
 
 .galleryMosaic {
@@ -192,7 +212,7 @@
 }
 
 .visaSection {
-  background-color: $color-white;
+  background-color: $surface-card;
 }
 
 .visaCard {
@@ -386,7 +406,7 @@
 
 .citiesSection,
 .offersSection {
-  background-color: $color-plaster-50;
+  background-color: $surface-muted;
 }
 
 .subheading {

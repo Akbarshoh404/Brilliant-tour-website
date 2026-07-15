@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { Link, useParams, Navigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import ScrollCue from '../../components/ScrollCue/ScrollCue';
 import OfferCard from '../../components/OfferCard/OfferCard';
@@ -44,9 +44,6 @@ export default function CountryPage() {
   const [extraFilters, setExtraFilters] = useState({});
   const [lightboxIndex, setLightboxIndex] = useState(0);
   const [lightboxOpen, setLightboxOpen] = useState(false);
-  const [applyOpen, setApplyOpen] = useState(false);
-  const [applySubmitted, setApplySubmitted] = useState(false);
-  const [applyForm, setApplyForm] = useState({ name: '', phone: '' });
 
   const country = countries.find((c) => c.slug === countrySlug);
   const countryCities = cities.filter((c) => c.countrySlug === countrySlug);
@@ -59,17 +56,6 @@ export default function CountryPage() {
 
   const facts = EXTRA_FACTS[country.slug] ?? { flightTime: '—', currency: '—' };
   const visaStatusKey = country.visaRequirement === 'visa-free' ? 'visaFree' : country.visaRequirement === 'eVisa' ? 'eVisa' : 'visaRequired';
-
-  const toggleApply = () => {
-    setApplySubmitted(false);
-    setApplyForm({ name: '', phone: '' });
-    setApplyOpen((open) => !open);
-  };
-
-  const onApplySubmit = (e) => {
-    e.preventDefault();
-    setApplySubmitted(true);
-  };
 
   const countryName = getLocalizedField(country.name, lang);
   const breadcrumbItems = [{ label: t('nav.international'), to: '/international' }, { label: countryName }];
@@ -103,6 +89,18 @@ export default function CountryPage() {
           </div>
         </div>
         <ScrollCue label={t('common.scroll')} />
+      </section>
+
+      {/* Online booking isn't live for international tours yet — this
+          banner routes interested travelers to Contact Us instead. */}
+      <section className={styles.comingSoonSection}>
+        <div className={styles.sectionInner}>
+          <div className={styles.comingSoonBanner}>
+            <span className={styles.comingSoonTag}>{t('common.comingSoon')}</span>
+            <p className={styles.comingSoonText}>{t('international.comingSoonText')}</p>
+            <Link to="/contact" className={styles.comingSoonBtn}>{t('common.contactUs')}</Link>
+          </div>
+        </div>
       </section>
 
       <section className={styles.factsSection}>
@@ -180,61 +178,14 @@ export default function CountryPage() {
                 ))}
               </div>
 
-              <button
-                type="button"
-                className={`${styles.visaCta} ${applyOpen ? styles.visaCtaActive : ''}`}
-                onClick={toggleApply}
-                aria-expanded={applyOpen}
-              >
+              {/* Visa applications aren't handled online yet — send
+                  travelers to Contact Us instead of a fake apply form. */}
+              <Link to="/contact" className={styles.visaCta}>
                 {t('country.visaCta')}
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" className={styles.visaCtaIcon}>
-                  <path d="M3 5.5L7 9.5L11 5.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M4 10L10 4M10 4H5M10 4V9" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-              </button>
-
-              <AnimatePresence initial={false}>
-                {applyOpen && (
-                  <motion.div
-                    className={styles.visaApplyPanel}
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: 'auto', opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ height: { duration: 0.42, ease: [0.22, 1, 0.36, 1] }, opacity: { duration: 0.28 } }}
-                  >
-                    <motion.div
-                      initial={{ y: -8, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      transition={{ duration: 0.32, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-                    >
-                      {applySubmitted ? (
-                        <p className={styles.visaApplySuccess}>{t('visas.applySuccess')}</p>
-                      ) : (
-                        <form className={styles.visaApplyForm} onSubmit={onApplySubmit}>
-                          <input
-                            type="text"
-                            required
-                            placeholder={t('contact.name')}
-                            value={applyForm.name}
-                            onChange={(e) => setApplyForm((f) => ({ ...f, name: e.target.value }))}
-                            className={styles.visaApplyInput}
-                          />
-                          <input
-                            type="tel"
-                            required
-                            placeholder={t('visas.applyPhone')}
-                            value={applyForm.phone}
-                            onChange={(e) => setApplyForm((f) => ({ ...f, phone: e.target.value }))}
-                            className={styles.visaApplyInput}
-                          />
-                          <button type="submit" className={styles.visaApplySubmitBtn}>
-                            {t('visas.applySubmit')}
-                          </button>
-                        </form>
-                      )}
-                    </motion.div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              </Link>
             </div>
           </div>
         </section>

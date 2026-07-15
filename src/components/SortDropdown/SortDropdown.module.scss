@@ -9,17 +9,17 @@
   display: flex;
   align-items: center;
   gap: $space-2xs;
-  background-color: $color-white;
-  border: 1px solid $color-plaster-100;
+  background-color: $surface-card;
+  border: 1px solid $surface-muted-2;
   border-radius: $radius-pill;
   padding: 0.55rem 1rem;
   font-size: 0.85rem;
-  color: $color-ink-900;
+  color: $text-primary;
   @include focus-ring;
 }
 
 .label {
-  color: $color-stone-600;
+  color: $text-secondary;
 }
 
 .value {
@@ -27,14 +27,14 @@
 }
 
 .chevron {
-  color: $color-stone-600;
+  color: $text-secondary;
 }
 
 .menu {
   position: absolute;
   top: calc(100% + #{$space-2xs});
   right: 0;
-  background-color: $color-white;
+  background-color: $surface-card;
   border-radius: $radius-sm;
   box-shadow: $shadow-card-hover;
   padding: $space-2xs;
@@ -51,11 +51,11 @@
   background: transparent;
   border: none;
   font-size: 0.85rem;
-  color: $color-ink-900;
+  color: $text-primary;
   transition: background-color $duration-fast $ease-base;
 
   &:hover {
-    background-color: $color-plaster-100;
+    background-color: $surface-muted-2;
   }
 }
 

@@ -67,6 +67,7 @@ export default function OfferDetail() {
     new Date(iso).toLocaleDateString(LOCALE_BY_LANG[lang] ?? 'en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 
   const parentTo = offer.type === 'international' ? '/international' : '/domestic';
+  const isInternational = offer.type === 'international';
   const offerTitle = getLocalizedField(offer.title, lang);
   const offerDescription = getLocalizedField(offer.description, lang);
   const breadcrumbItems = [
@@ -158,10 +159,19 @@ export default function OfferDetail() {
             />
           </div>
 
-          <button type="button" className={styles.bookBtn}>
-            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="3" y="4" width="14" height="13" rx="2" stroke="currentColor" strokeWidth="1.6" /><path d="M3 8h14M7 2v4M13 2v4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" /></svg>
-            {t('common.bookNow')}
-          </button>
+          {isInternational ? (
+            // Online booking isn't live for international tours yet —
+            // route to Contact Us instead of a non-functional book button.
+            <Link to="/contact" className={styles.bookBtn}>
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="3" y="4" width="14" height="13" rx="2" stroke="currentColor" strokeWidth="1.6" /><path d="M3 8h14M7 2v4M13 2v4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" /></svg>
+              {t('offer.contactToBook')}
+            </Link>
+          ) : (
+            <button type="button" className={styles.bookBtn}>
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="3" y="4" width="14" height="13" rx="2" stroke="currentColor" strokeWidth="1.6" /><path d="M3 8h14M7 2v4M13 2v4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" /></svg>
+              {t('common.bookNow')}
+            </button>
+          )}
           <button type="button" className={`${styles.wishlistBtn} ${wishlisted ? styles.wishlistActive : ''}`} onClick={() => setWishlisted((w) => !w)}>
             <svg width="16" height="16" viewBox="0 0 20 20" fill={wishlisted ? 'currentColor' : 'none'} aria-hidden="true"><path d="M10 17s-6.5-4.1-6.5-9A3.9 3.9 0 0110 5.5 3.9 3.9 0 0116.5 8c0 4.9-6.5 9-6.5 9z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" /></svg>
             {wishlisted ? t('offer.savedToWishlist') : t('offer.saveToWishlist')}
@@ -267,9 +277,15 @@ export default function OfferDetail() {
           <span className={styles.mobileBarPrice}>{formatPrice(price, offer.currency, lang)}</span>
           <span className={styles.mobileBarUnit}>{t('common.perPerson')}</span>
         </div>
-        <button type="button" className={styles.mobileBarCta}>
-          {t('common.bookNow')}
-        </button>
+        {isInternational ? (
+          <Link to="/contact" className={styles.mobileBarCta}>
+            {t('offer.contactToBook')}
+          </Link>
+        ) : (
+          <button type="button" className={styles.mobileBarCta}>
+            {t('common.bookNow')}
+          </button>
+        )}
       </div>
 
       {/* ===== RELATED ===== */}

@@ -5,14 +5,15 @@ import { NavLink, Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import useScrollDirection from '../../hooks/useScrollDirection';
 import LanguageSwitcher from '../LanguageSwitcher/LanguageSwitcher';
-import ModeSwitcher from '../ModeSwitcher/ModeSwitcher';
+import ThemeToggle from '../ThemeToggle/ThemeToggle';
 import { useSearchOverlay } from '../../context/SearchOverlayContext';
 import styles from './Navbar.module.scss';
 
 // Routes whose pages don't open with a full-bleed dark hero image — the
 // navbar needs to default to its solid (opaque) look on these, since its
 // transparent/white-text look is designed to sit over a dark photo.
-const ALWAYS_SOLID_PREFIXES = ['/tours/'];
+// Visas/About/Contact open with light "paper" heroes.
+const ALWAYS_SOLID_PREFIXES = ['/tours/', '/visas', '/about', '/contact'];
 
 export default function Navbar() {
   const { t } = useTranslation();
@@ -71,21 +72,9 @@ export default function Navbar() {
         </ul>
 
         <div className={styles.actions}>
-          <div className={styles.modeDesktop}>
-            <ModeSwitcher instanceId="desktop" />
+          <div className={styles.themeDesktop}>
+            <ThemeToggle />
           </div>
-
-          <button
-            type="button"
-            className={styles.searchBtn}
-            onClick={() => openSearch()}
-            aria-label={t('nav.search')}
-          >
-            <svg width="19" height="19" viewBox="0 0 20 20" aria-hidden="true">
-              <circle cx="9" cy="9" r="6.5" stroke="currentColor" strokeWidth="1.6" fill="none" />
-              <path d="M14 14l4.5 4.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-            </svg>
-          </button>
 
           <div className={styles.langDesktop}>
             <LanguageSwitcher variant="light" />
@@ -168,12 +157,9 @@ export default function Navbar() {
                   ))}
                 </ul>
 
-                <div className={styles.drawerLangRow}>
-                  <LanguageSwitcher variant="light" />
-                </div>
-
                 <div className={styles.drawerFooter}>
-                  <ModeSwitcher instanceId="drawer" fullWidth />
+                  <LanguageSwitcher variant="light" />
+                  <ThemeToggle className={styles.drawerThemeToggle} />
                 </div>
               </motion.div>
             </>

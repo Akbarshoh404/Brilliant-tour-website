@@ -7,7 +7,7 @@
 }
 
 .offersSection {
-  background-color: $color-plaster-50;
+  background-color: $surface-muted;
 }
 
 .listingHeading {
@@ -15,7 +15,7 @@
 
   h2 {
     font-size: clamp(1.8rem, 3.2vw, 2.4rem);
-    color: $color-ink-900;
+    color: $text-primary;
   }
 }
 

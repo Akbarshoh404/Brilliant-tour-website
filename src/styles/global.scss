@@ -28,6 +28,41 @@
   box-sizing: border-box;
 }
 
+// --- Theme tokens ---------------------------------------------------------
+// Light is the default (no attribute needed); [data-theme="dark"] on <html>
+// (set by ThemeContext, see src/context/ThemeContext.jsx) overrides these.
+// Sections that are deliberately always-dark (ink-900/950 backgrounds with
+// white/mist text) don't use these tokens — they're correct in both themes
+// already.
+:root {
+  --surface-page: #{$color-white};
+  --surface-card: #{$color-white};
+  --surface-muted: #{$color-plaster-50};
+  --surface-muted-2: #{$color-plaster-100};
+  --text-primary: #{$color-ink-900};
+  --text-secondary: #{$color-stone-600};
+  --grid-line: rgba(8, 8, 8, 0.05);
+  --scrollbar-thumb: rgba(17, 17, 17, 0.22);
+  --scrollbar-thumb-hover: rgba(17, 17, 17, 0.38);
+  color-scheme: light;
+}
+
+// Apple's own system-gray dark scale (systemGray6→4) — neutral, so it
+// doesn't fight the gold-lime accent the way a tinted charcoal does, and
+// still reads as "soft dark", not a true/near-black.
+:root[data-theme='dark'] {
+  --surface-page: #1c1c1e;
+  --surface-muted: #232326;
+  --surface-card: #2c2c2e;
+  --surface-muted-2: #3a3a3c;
+  --text-primary: #f5f5f7;
+  --text-secondary: #98989d;
+  --grid-line: rgba(245, 245, 247, 0.07);
+  --scrollbar-thumb: rgba(245, 245, 247, 0.16);
+  --scrollbar-thumb-hover: rgba(245, 245, 247, 0.28);
+  color-scheme: dark;
+}
+
 html,
 body {
   margin: 0;
@@ -46,8 +81,8 @@ html {
 
 body {
   min-height: 100vh;
-  background-color: $color-white;
-  color: $color-stone-600;
+  background-color: $surface-page;
+  color: $text-secondary;
   font-family: $font-body;
   font-size: 1rem;
   line-height: 1.65;
@@ -55,6 +90,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
+  transition: background-color $duration-base $ease-base, color $duration-base $ease-base;
 }
 
 #root {
@@ -86,7 +122,7 @@ h3,
 h4 {
   font-family: $font-monr;
   font-weight: 700;
-  color: $color-ink-900;
+  color: $text-primary;
   letter-spacing: -0.01em;
 }
 
@@ -116,4 +152,36 @@ ul {
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+// --- Scrollbar — thin, translucent, floating pill (macOS/iPadOS style) ----
+* {
+  scrollbar-width: thin;
+  scrollbar-color: $scrollbar-thumb transparent;
+}
+
+::-webkit-scrollbar {
+  width: 11px;
+  height: 11px;
+  background: transparent;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $scrollbar-thumb;
+  border-radius: $radius-pill;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+  transition: background-color $duration-fast $ease-base;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: $scrollbar-thumb-hover;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
 }

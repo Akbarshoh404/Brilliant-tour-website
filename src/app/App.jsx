@@ -6,6 +6,7 @@ import Navbar from '../components/Navbar/Navbar';
 import Footer from '../components/Footer/Footer';
 import useLenis from '../hooks/useLenis';
 import { SearchOverlayProvider } from '../context/SearchOverlayContext';
+import { ThemeProvider } from '../context/ThemeContext';
 import { organizationSchema, websiteSchema } from '../utils/structuredData';
 import ScrollToTop from './ScrollToTop';
 import PageLoader from './PageLoader';
@@ -43,20 +44,22 @@ export default function App() {
   useLenis();
 
   return (
-    <SearchOverlayProvider>
-      <Helmet>
-        {SITE_JSON_LD.map((schema, i) => (
-          <script key={i} type="application/ld+json">
-            {JSON.stringify(schema)}
-          </script>
-        ))}
-      </Helmet>
-      <ScrollToTop />
-      <Navbar />
-      <main>
-        <AnimatedRoutes />
-      </main>
-      <Footer />
-    </SearchOverlayProvider>
+    <ThemeProvider>
+      <SearchOverlayProvider>
+        <Helmet>
+          {SITE_JSON_LD.map((schema, i) => (
+            <script key={i} type="application/ld+json">
+              {JSON.stringify(schema)}
+            </script>
+          ))}
+        </Helmet>
+        <ScrollToTop />
+        <Navbar />
+        <main>
+          <AnimatedRoutes />
+        </main>
+        <Footer />
+      </SearchOverlayProvider>
+    </ThemeProvider>
   );
 }

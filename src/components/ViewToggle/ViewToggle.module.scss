@@ -6,8 +6,8 @@
   align-items: center;
   gap: 2px;
   padding: 3px;
-  background-color: $color-plaster-50;
-  border: 1px solid $color-plaster-100;
+  background-color: $surface-muted;
+  border: 1px solid $surface-muted-2;
   border-radius: $radius-sm;
   flex-shrink: 0;
 }
@@ -21,16 +21,16 @@
   border-radius: 6px;
   background: transparent;
   border: none;
-  color: $color-stone-600;
+  color: $text-secondary;
   transition: background-color $duration-fast $ease-base, color $duration-fast $ease-base;
 
   &:hover {
-    color: $color-ink-900;
+    color: $text-primary;
   }
 }
 
 .active {
-  background-color: $color-white;
-  color: $color-ink-950;
+  background-color: $surface-card;
+  color: $text-primary;
   box-shadow: $shadow-card;
 }

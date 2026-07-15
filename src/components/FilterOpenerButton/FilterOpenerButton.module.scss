@@ -5,8 +5,8 @@
   display: none;
   align-items: center;
   gap: $space-2xs;
-  background-color: $color-ink-950;
-  color: $color-white;
+  background-color: $text-primary;
+  color: $surface-page;
   border: none;
   border-radius: $radius-pill;
   padding: 0.65rem 1.1rem;
@@ -15,7 +15,8 @@
   transition: background-color $duration-fast $ease-base;
 
   &:hover {
-    background-color: $color-ink-900;
+    background-color: $color-gold-500;
+    color: $color-ink-950;
   }
 
   @media (max-width: #{$bp-tablet - 1px}) {

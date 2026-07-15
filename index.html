@@ -13,6 +13,17 @@
     <title>Brilliant Tourism — туры по Узбекистану и всему миру</title>
   </head>
   <body>
+    <!-- Sets the theme before first paint so there's no light-mode flash
+         for users with a saved or system dark preference. -->
+    <script>
+      (function () {
+        var stored = localStorage.getItem('brilliant-theme');
+        var theme = stored === 'light' || stored === 'dark'
+          ? stored
+          : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

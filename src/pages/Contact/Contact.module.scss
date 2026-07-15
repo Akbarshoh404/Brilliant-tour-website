@@ -2,134 +2,272 @@
 @use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
 
-.heroBand {
-  @extend %catalogHero;
-}
-
-.heroOverlay {
-  @extend %catalogHeroOverlay;
-}
-
-.heroInner {
-  @extend %catalogHeroInner;
-}
-
-.eyebrow {
-  @extend %catalogEyebrow;
-}
-
-.heroIntro {
-  @extend %catalogIntro;
-}
-
-.title {
-  @extend %catalogTitle;
-}
-
 .sectionInner {
   @extend %catalogSectionInner;
 }
 
-// ── QUICK CONTACT STRIP ──────────────────────────────────────────────────────
+// ── HERO — light "paper" page, same graphic family as Visas/About ──────────
 
-.quickSection {
-  background-color: $color-ink-950;
-  padding: $space-lg;
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: $surface-card;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: calc(#{$navbar-height} + #{$space-xl}) $space-lg $space-2xl;
 
-  .sectionInner {
-    padding: 0;
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image:
+      linear-gradient($grid-line 1px, transparent 1px),
+      linear-gradient(90deg, $grid-line 1px, transparent 1px);
+    background-size: 32px 32px;
+    mask-image: radial-gradient(circle at 78% 30%, black, transparent 70%);
+  }
+
+  @include respond(mobile) {
+    min-height: auto;
+    padding: calc(#{$navbar-height} + #{$space-lg}) $space-md $space-xl;
   }
 }
 
-.quickGrid {
+.heroInner {
+  @include container;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: $space-2xl;
+  align-items: center;
+
+  @include respond(below-desktop) {
+    grid-template-columns: 1fr;
+    gap: $space-xl;
+  }
+}
+
+.heroText {
+  padding-top: $space-md;
+}
+
+.eyebrow {
+  @include mono-eyebrow;
+  color: $color-gold-600;
+  display: block;
+  margin: $space-md 0 $space-xs;
+}
+
+.title {
+  font-family: $font-monr;
+  font-size: clamp(2rem, 4.4vw, 3.2rem);
+  color: $text-primary;
+  max-width: 14ch;
+  line-height: 1.08;
+}
+
+.heroIntro {
+  margin-top: $space-md;
+  color: $text-secondary;
+  max-width: 50ch;
+  font-size: 1.02rem;
+  line-height: 1.65;
+}
+
+.heroHours {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2xs;
+  margin-top: $space-lg;
+  padding-top: $space-lg;
+  border-top: 1px solid $surface-muted-2;
+  font-family: $font-mono;
+  font-size: 0.78rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: $text-secondary;
+}
+
+// The contact channels ARE the hero visual — rotated stamp cards, matching
+// the Visas page's stamp scatter.
+.heroChannels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-md;
+
+  @include respond(mobile) {
+    grid-template-columns: 1fr;
+    gap: $space-sm;
+  }
+}
+
+.tapHintWrap {
+  position: relative;
+}
+
+// Pill badge + hand-drawn arrow, nudging attention to the phone card.
+.tapHint {
+  position: absolute;
+  top: -34px;
+  right: -12px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-family: $font-mono;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: $text-primary;
+  background-color: $surface-muted;
+  border: 1px solid $surface-muted-2;
+  border-radius: $radius-pill;
+  padding: 0.35rem 0.8rem;
+  white-space: nowrap;
+  transform: rotate(-4deg);
+
+  @include respond(mobile) {
+    position: static;
+    align-self: flex-start;
+    margin-bottom: $space-2xs;
+    transform: none;
+  }
+}
+
+.tapHintArrow {
+  position: absolute;
+  top: 100%;
+  right: 18px;
+  color: $text-secondary;
+
+  @include respond(mobile) {
+    display: none;
+  }
+}
+
+.channelCard {
+  --r: 0deg;
+  display: flex;
+  flex-direction: column;
+  gap: $space-3xs;
+  padding: $space-md;
+  background-color: $surface-card;
+  border: 1.5px dashed $surface-muted-2;
+  border-radius: $radius-md;
+  color: $color-gold-600;
+  text-decoration: none;
+  transform: rotate(var(--r));
+  transition: transform $duration-base $ease-out-expo, border-color $duration-fast $ease-base;
+  box-shadow: $shadow-card;
+
+  &:hover {
+    transform: rotate(0deg) translateY(-4px);
+    border-color: $color-gold-500;
+  }
+}
+
+.channelLabel {
+  margin-top: $space-2xs;
+  font-family: $font-mono;
+  font-size: 0.66rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: $text-secondary;
+}
+
+.channelValue {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: $text-primary;
+  line-height: 1.4;
+}
+
+// ── SHARED SECTION HEADING ──────────────────────────────────────────────────
+
+.sectionHeading {
+  text-align: center;
+  max-width: 520px;
+  margin: 0 auto $space-xl;
+}
+
+.sectionHeadingEyebrow {
+  @include mono-eyebrow;
+  display: block;
+  color: $color-gold-600;
+  margin-bottom: $space-xs;
+}
+
+.sectionHeadingTitle {
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+  color: $text-primary;
+}
+
+// ── SERVICES — glass icon-card grid ─────────────────────────────────────────
+
+.servicesSection {
+  background-color: $surface-card;
+}
+
+.servicesIntro {
+  margin-top: $space-xs;
+  color: $text-secondary;
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
+.servicesGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: $space-md;
+  gap: $space-sm;
+  margin-bottom: $space-lg;
 
   @include respond(below-desktop) {
     grid-template-columns: repeat(2, 1fr);
   }
-
-  @include respond(mobile) {
-    grid-template-columns: 1fr;
-  }
 }
 
-.quickCard {
+.serviceCard {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   gap: $space-sm;
   padding: $space-md;
-  background-color: $glass-bg;
-  backdrop-filter: blur(12px);
-  border: 1px solid $glass-border;
   border-radius: $radius-md;
-  color: $color-gold-500;
-  text-decoration: none;
-  transition: background-color $duration-fast $ease-base, border-color $duration-fast $ease-base, transform $duration-fast $ease-base;
+  background-color: $surface-muted;
+  border: 1px solid $surface-muted-2;
+  transition: transform $duration-base $ease-out-expo, border-color $duration-fast $ease-base, box-shadow $duration-base $ease-base;
 
   &:hover {
-    background-color: $glass-bg-hover;
-    border-color: rgba(198, 255, 52, 0.3);
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    border-color: $color-gold-500;
+    box-shadow: $shadow-card;
   }
 }
 
-.quickLabel {
-  display: block;
-  font-family: $font-mono;
-  font-size: 0.68rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: $color-mist;
-}
-
-.quickValue {
-  display: block;
-  margin-top: 2px;
-  font-weight: 700;
-  font-size: 0.95rem;
-  color: $color-white;
-}
-
-// ── SERVICES ──────────────────────────────────────────────────────────────────
-
-.servicesSection {
-  background-color: $color-white;
-}
-
-.servicesTitle {
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
-  margin-bottom: $space-xs;
-}
-
-.servicesIntro {
-  color: $color-stone-600;
-  max-width: 62ch;
-  font-size: 0.98rem;
-  line-height: 1.6;
-  margin-bottom: $space-lg;
-}
-
-.servicesGrid {
+.serviceIcon {
   display: flex;
-  flex-wrap: wrap;
-  gap: $space-2xs;
-  margin-bottom: $space-md;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  background-color: rgba(198, 255, 52, 0.14);
+  color: $color-gold-600;
 }
 
-.servicePill {
-  font-family: $font-mono;
-  font-size: 0.82rem;
+.serviceLabel {
+  font-size: 0.92rem;
   font-weight: 600;
-  color: $color-ink-950;
-  background-color: $color-plaster-50;
-  border: 1.5px solid $color-plaster-100;
-  padding: 0.55rem 1.1rem;
-  border-radius: $radius-pill;
+  color: $text-primary;
+  line-height: 1.3;
 }
 
 .directCta {
+  text-align: center;
   font-size: 0.92rem;
   color: $color-gold-600;
   font-weight: 600;
@@ -138,7 +276,7 @@
 // ── FORM + OFFICE ─────────────────────────────────────────────────────────────
 
 .section {
-  background-color: $color-plaster-50;
+  background-color: $surface-muted;
 }
 
 .layout {
@@ -151,42 +289,105 @@
   }
 }
 
+.formCard {
+  position: relative;
+  padding: $space-xl;
+  border-radius: $radius-lg;
+  background-color: $surface-card;
+  border: 1px solid $surface-muted-2;
+  box-shadow: $shadow-card;
+
+  @include respond(mobile) {
+    padding: $space-lg $space-md;
+  }
+}
+
+.formBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 50%;
+  background-color: rgba(198, 255, 52, 0.14);
+  color: $color-gold-600;
+  margin-bottom: $space-md;
+}
+
+.formTitle {
+  font-size: clamp(1.3rem, 2.4vw, 1.6rem);
+}
+
+.formSubtitle {
+  margin-top: $space-2xs;
+  margin-bottom: $space-lg;
+  color: $text-secondary;
+  font-size: 0.92rem;
+  max-width: 40ch;
+}
+
 .form {
   display: flex;
   flex-direction: column;
-  gap: $space-md;
+  gap: $space-lg;
   position: relative;
 }
 
+// Floating label: the field starts as a placeholder-sized label and lifts
+// into a small caption once the input has focus or a value (`:not(:placeholder-shown)`
+// works because every input renders `placeholder=" "`, a non-empty string).
+// Selectors use `~` rather than `+` since the decorative icon sits between
+// the input and its label in the DOM.
 .field {
-  display: flex;
-  flex-direction: column;
-  gap: $space-2xs;
+  position: relative;
 }
 
-.label {
-  font-family: $font-mono;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: $color-stone-600;
+.fieldIcon {
+  position: absolute;
+  left: 1rem;
+  top: 1.05rem;
+  color: $text-secondary;
+  pointer-events: none;
+  transition: color $duration-fast $ease-base;
+}
+
+.floatLabel {
+  position: absolute;
+  left: 2.7rem;
+  top: 0.95rem;
+  font-size: 0.95rem;
+  color: $text-secondary;
+  pointer-events: none;
+  transform-origin: left top;
+  transition: transform $duration-fast $ease-base, color $duration-fast $ease-base;
 }
 
 .input,
 .textarea {
-  padding: 0.9rem 1.1rem;
+  width: 100%;
+  padding: 0.95rem 1.1rem 0.95rem 2.7rem;
   border-radius: $radius-sm;
-  border: 1.5px solid $color-plaster-100;
-  background-color: $color-white;
+  border: 1.5px solid $surface-muted-2;
+  background-color: $surface-muted;
   font-size: 0.95rem;
   font-family: $font-body;
+  color: $text-primary;
   transition: border-color $duration-fast $ease-base, box-shadow $duration-fast $ease-base;
 
   &:focus {
     outline: none;
     border-color: $color-gold-600;
-    box-shadow: 0 0 0 3px rgba(198, 255, 52, 0.25);
+    box-shadow: 0 0 0 3px rgba(198, 255, 52, 0.2);
+  }
+
+  &:focus ~ .fieldIcon {
+    color: $color-gold-600;
+  }
+
+  &:focus ~ .floatLabel,
+  &:not(:placeholder-shown) ~ .floatLabel {
+    transform: translateY(-1.55rem) scale(0.78);
+    color: $color-gold-600;
   }
 }
 
@@ -196,11 +397,27 @@
 
 .submitBtn {
   @include btn-primary;
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2xs;
   align-self: flex-start;
-  padding: 0.9rem 2rem;
+  padding: 0.9rem 1.8rem;
   font-size: 0.85rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
+
+  svg {
+    transition: transform $duration-fast $ease-base;
+  }
+
+  &:hover svg {
+    transform: translateX(3px);
+  }
+
+  @include respond(mobile) {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 .success {
@@ -208,42 +425,92 @@
   font-size: 0.9rem;
 }
 
+// A dot-grid "map" card instead of a stock photo — controlled and on-brand,
+// same graphic language as the hero sections rather than a random image.
 .officePanel {
   position: relative;
   isolation: isolate;
-  border-radius: $radius-lg;
   overflow: hidden;
-  box-shadow: $shadow-elevated;
-}
-
-.mapImg {
-  width: 100%;
-  height: 100%;
   min-height: 420px;
-  aspect-ratio: 16 / 11;
-  object-fit: cover;
-}
+  border-radius: $radius-lg;
+  padding: $space-2xl $space-xl;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: $space-2xs;
+  background-color: $color-ink-950;
+  box-shadow: $shadow-elevated;
 
-.officeInfo {
-  position: absolute;
-  left: $space-md;
-  right: $space-md;
-  bottom: $space-md;
-  z-index: 1;
-  padding: $space-lg;
-  background-color: rgba(8, 8, 8, 0.45);
-  backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: $radius-md;
-
-  h2 {
-    font-size: 1.2rem;
-    color: $color-white;
-    margin-bottom: $space-2xs;
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image:
+      linear-gradient(rgba(245, 245, 247, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(245, 245, 247, 0.07) 1px, transparent 1px);
+    background-size: 28px 28px;
+    mask-image: radial-gradient(circle at 50% 40%, black, transparent 75%);
   }
 
-  p {
-    color: $color-mist;
-    font-size: 0.92rem;
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  @include respond(mobile) {
+    min-height: 340px;
+    padding: $space-xl $space-md;
+  }
+}
+
+.officePin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.4rem;
+  height: 3.4rem;
+  border-radius: 50%;
+  background-color: $color-gold-500;
+  color: $color-ink-950;
+  margin-bottom: $space-xs;
+  box-shadow: 0 0 0 8px rgba(198, 255, 52, 0.12);
+}
+
+.officeTitle {
+  font-size: 1.3rem;
+  color: $color-white;
+}
+
+.officeAddress {
+  color: $color-mist;
+  font-size: 0.98rem;
+  max-width: 32ch;
+}
+
+.officeMeta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-xs;
+  margin-top: $space-md;
+  padding-top: $space-md;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.officeMetaRow {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2xs;
+  font-family: $font-mono;
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+  color: $color-mist;
+  transition: color $duration-fast $ease-base;
+
+  &:is(a):hover {
+    color: $color-gold-500;
   }
 }

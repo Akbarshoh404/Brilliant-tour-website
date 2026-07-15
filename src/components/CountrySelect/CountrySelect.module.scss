@@ -14,10 +14,10 @@
   gap: $space-xs;
   padding: 0.65rem 0.85rem;
   border-radius: $radius-sm;
-  border: 1.5px solid $color-plaster-100;
-  background-color: $color-plaster-50;
+  border: 1.5px solid $surface-muted-2;
+  background-color: $surface-muted;
   font-size: 0.86rem;
-  color: $color-ink-900;
+  color: $text-primary;
   transition: border-color $duration-fast $ease-base;
 
   &:hover {
@@ -60,10 +60,10 @@
 .menu {
   max-height: 280px;
   overflow-y: auto;
-  background-color: $color-white;
+  background-color: $surface-card;
   border-radius: $radius-sm;
   box-shadow: $shadow-card-hover;
-  border: 1px solid $color-plaster-100;
+  border: 1px solid $surface-muted-2;
   padding: $space-2xs;
   z-index: $z-overlay;
 }
@@ -79,11 +79,11 @@
   background: transparent;
   border: none;
   font-size: 0.85rem;
-  color: $color-ink-900;
+  color: $text-primary;
   transition: background-color $duration-fast $ease-base;
 
   &:hover {
-    background-color: $color-plaster-50;
+    background-color: $surface-muted;
   }
 }
 

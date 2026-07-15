@@ -111,6 +111,7 @@ export default function Home() {
               </div>
             </Link>
             <Link to="/international" className={`${styles.splitCard} ${styles.splitCardIntl}`}>
+              <span className={styles.splitCardComingSoon}>{t('common.comingSoon')}</span>
               <img src={internationalCardImg} alt="" className={styles.splitCardImg} />
               <div className={styles.splitCardBody}>
                 <span className={styles.splitCardEyebrow}>{t('nav.international')}</span>
@@ -135,7 +136,13 @@ export default function Home() {
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.4, delay: Math.min(i * 0.05, 0.3) }}
               >
-                <Link to={c.to} className={styles.countryTile}>
+                {/* International destinations aren't live yet — send to the
+                    International hub's contact CTA rather than a specific
+                    country page. */}
+                <Link to={c.slug === 'uzbekistan' ? c.to : '/international'} className={styles.countryTile}>
+                  {c.slug !== 'uzbekistan' && (
+                    <span className={styles.countryComingSoon}>{t('common.comingSoon')}</span>
+                  )}
                   <img src={c.image} alt={getLocalizedField(c.name, lang)} className={styles.countryImg} />
                   <span className={styles.countryName}>
                     <FlagIcon iso={c.iso} size={32} className={styles.countryFlagIcon} /> {getLocalizedField(c.name, lang)}

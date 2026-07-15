@@ -28,6 +28,23 @@ $color-white: #ffffff;
 $color-mist: #9a9a9a;       // body text on dark
 $color-stone-600: #666666;  // body text on light
 
+// --- Theme-aware tokens ---
+// These resolve to CSS custom properties (defined in global.scss) so they
+// respond live to [data-theme="dark"] on <html> without a rebuild. Only the
+// tokens that are unambiguously "light UI chrome" route through here —
+// sections that are deliberately always-dark (ink-900/950 backgrounds,
+// white text on them) are correct in both themes already and stay as
+// literal $color-* values.
+$surface-page: var(--surface-page);       // page canvas — was $color-white
+$surface-card: var(--surface-card);       // card/panel bg — was $color-white
+$surface-muted: var(--surface-muted);     // was $color-plaster-50
+$surface-muted-2: var(--surface-muted-2); // was $color-plaster-100 (borders)
+$text-primary: var(--text-primary);       // was $color-ink-950 / $color-ink-900 as text
+$text-secondary: var(--text-secondary);   // was $color-stone-600
+$grid-line: var(--grid-line);             // dotted/graph-paper hero texture, needs alpha baked per-theme
+$scrollbar-thumb: var(--scrollbar-thumb);
+$scrollbar-thumb-hover: var(--scrollbar-thumb-hover);
+
 // --- Fonts ---
 $font-display: 'Cormorant Garamond', serif;
 $font-body: 'Plus Jakarta Sans', sans-serif;

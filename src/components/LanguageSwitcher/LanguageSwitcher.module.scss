@@ -50,7 +50,7 @@
 }
 
 .dark .trigger {
-  color: $color-ink-900;
+  color: $text-primary;
   border-color: rgba(11, 28, 40, 0.2);
 
   &:hover,
@@ -63,10 +63,10 @@
   position: absolute;
   top: calc(100% + #{$space-xs});
   right: 0;
-  background-color: $color-white;
+  background-color: $surface-card;
   border-radius: $radius-md;
   box-shadow: $shadow-card-hover;
-  border: 1px solid $color-plaster-100;
+  border: 1px solid $surface-muted-2;
   padding: $space-2xs;
   min-width: 108px;
   z-index: $z-overlay;
@@ -86,11 +86,11 @@
   font-family: $font-mono;
   font-size: 0.8rem;
   font-weight: 600;
-  color: $color-ink-900;
+  color: $text-primary;
   transition: background-color $duration-fast $ease-base;
 
   &:hover {
-    background-color: $color-plaster-50;
+    background-color: $surface-muted;
   }
 }
 
